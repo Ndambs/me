@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Benson Ndambiri — DevOps, Cloud & Cybersecurity Engineer based in Nairobi, Kenya. Certified Ethical Hacker, Azure-certified, and builder of impactful tech solutions." />
+  <meta name="keywords" content="DevOps Engineer, Cloud Engineer, Cybersecurity, Nairobi, Kenya, Docker, Kubernetes, Azure, CEH, Python, Flutter" />
+  <meta name="author" content="Benson Ndambiri" />
+  <meta property="og:title" content="Benson Ndambiri | DevOps & Cloud Engineer" />
+  <meta property="og:description" content="Senior DevOps, Cloud & Cybersecurity professional based in Nairobi, Kenya." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <title>Benson Ndambiri | DevOps · Cloud · Cybersecurity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Benson Ndambiri home">
+        <span class="logo-bracket">&lt;</span>BN<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle color theme">
+          <span class="theme-icon">◐</span>
+        </button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#skills" class="mobile-link">Skills</a></li>
+        <li><a href="#experience" class="mobile-link">Experience</a></li>
+        <li><a href="#projects" class="mobile-link">Projects</a></li>
+        <li><a href="#certifications" class="mobile-link">Certifications</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero" class="hero" aria-label="Introduction">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Available for opportunities</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="hero-name-first reveal-up">Benson</span>
+        <span class="hero-name-last reveal-up delay-1">Ndambiri</span>
+      </h1>
+      <div class="hero-title-line reveal-up delay-2">
+        <span class="title-static">I architect</span>
+        <span class="title-rotating" id="rotating-text" aria-live="polite"></span>
+      </div>
+      <p class="hero-summary reveal-up delay-3">
+        DevOps · Cloud · Cybersecurity · AI<br />
+        <span class="hero-location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Nairobi, Kenya
+        </span>
+      </p>
+      <div class="hero-cta reveal-up delay-4">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Let's Connect</a>
+      </div>
+      <div class="hero-stats reveal-up delay-5" aria-label="Key statistics">
+        <div class="stat">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Years Building</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">CEH</span>
+          <span class="stat-label">Certified Ethical Hacker</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">AZ-900</span>
+          <span class="stat-label">Azure Certified</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-label="Scroll down">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about" class="section" aria-label="About Benson">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>01 — About</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="avatar-frame">
+            <div class="avatar-placeholder" aria-label="Profile photo placeholder">BN</div>
+            <div class="avatar-ring" aria-hidden="true"></div>
+            <div class="avatar-tag" aria-hidden="true">
+              <span class="tag-dot"></span>Open to Work
+            </div>
+          </div>
+          <div class="about-terminal" aria-label="Quick facts terminal" role="complementary">
+            <div class="terminal-bar" aria-hidden="true">
+              <span class="t-dot red"></span>
+              <span class="t-dot yellow"></span>
+              <span class="t-dot green"></span>
+              <span class="t-title">benson@ndambiri ~ </span>
+            </div>
+            <pre class="terminal-body" aria-label="Profile summary in terminal format"><span class="t-cmd">$ cat profile.json</span>
+<span class="t-key">"role"</span>: <span class="t-val">"DevOps &amp; Cloud Engineer"</span>,
+<span class="t-key">"base"</span>: <span class="t-val">"Nairobi, Kenya 🇰🇪"</span>,
+<span class="t-key">"certs"</span>: [<span class="t-val">"CEH"</span>, <span class="t-val">"AZ-900"</span>],
+<span class="t-key">"stack"</span>: [<span class="t-val">"K8s"</span>,<span class="t-val">"Docker"</span>,<span class="t-val">"Azure"</span>],
+<span class="t-key">"status"</span>: <span class="t-green">"available"</span></pre>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-heading">Engineering<br /><em>impact</em>, not just code.</h2>
+          <p class="about-para">
+            I'm a technology professional at the intersection of <strong>DevOps, cloud infrastructure, and cybersecurity</strong> — building systems that are resilient, scalable, and secure by design. My work spans enterprise environments to grassroots community impact in East Africa.
+          </p>
+          <p class="about-para">
+            With experience at <strong>M-PESA Africa</strong> and a foundation from the <strong>University of East London</strong>, I've developed a systems-level perspective on how technology solves real problems — from AI-driven mental health platforms to secure cloud deployments on Microsoft Azure.
+          </p>
+          <p class="about-para">
+            I'm driven by the belief that the best infrastructure is invisible — it just works. That same philosophy guides how I write code, design pipelines, and mentor the next generation of African engineers.
+          </p>
+          <div class="about-langs" role="list" aria-label="Languages spoken">
+            <span class="lang-chip" role="listitem"><span class="lang-level native"></span>Swahili — Native</span>
+            <span class="lang-chip" role="listitem"><span class="lang-level pro"></span>English — Professional</span>
+            <span class="lang-chip" role="listitem"><span class="lang-level basic"></span>French — Basic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+  ============================================================ -->
+  <section id="skills" class="section section-alt" aria-label="Technical skills">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>02 — Skills</span>
+      </div>
+      <h2 class="section-heading center">The full-stack<br /><em>toolkit.</em></h2>
+      <p class="section-sub center">From infrastructure pipelines to mobile apps — built to deploy, defend, and deliver.</p>
+
+      <div class="skills-grid">
+
+        <div class="skill-card" data-category="devops">
+          <div class="skill-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="skill-card-title">DevOps & CI/CD</h3>
+          <ul class="skill-list" role="list">
+            <li class="skill-item">
+              <span class="skill-name">GitHub / Git</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="GitHub proficiency 92%">
+                <div class="skill-fill" data-width="92"></div>
+              </div>
+              <span class="skill-pct">92%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Docker</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Docker proficiency 85%">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+              <span class="skill-pct">85%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Kubernetes</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Kubernetes proficiency 78%">
+                <div class="skill-fill" data-width="78"></div>
+              </div>
+              <span class="skill-pct">78%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Jenkins</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Jenkins proficiency 80%">
+                <div class="skill-fill" data-width="80"></div>
+              </div>
+              <span class="skill-pct">80%</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-card" data-category="cloud">
+          <div class="skill-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <h3 class="skill-card-title">Cloud & Infrastructure</h3>
+          <ul class="skill-list" role="list">
+            <li class="skill-item">
+              <span class="skill-name">Microsoft Azure</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+              <span class="skill-pct">85%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Cloud Architecture</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="80"></div>
+              </div>
+              <span class="skill-pct">80%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">IaC / Pipelines</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="75"></div>
+              </div>
+              <span class="skill-pct">75%</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-card" data-category="security">
+          <div class="skill-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="skill-card-title">Cybersecurity</h3>
+          <ul class="skill-list" role="list">
+            <li class="skill-item">
+              <span class="skill-name">Ethical Hacking (CEH)</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="88"></div>
+              </div>
+              <span class="skill-pct">88%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Threat Analysis</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="82"></div>
+              </div>
+              <span class="skill-pct">82%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Secure Architecture</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="78"></div>
+              </div>
+              <span class="skill-pct">78%</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-card" data-category="dev">
+          <div class="skill-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="skill-card-title">Development</h3>
+          <ul class="skill-list" role="list">
+            <li class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="88"></div>
+              </div>
+              <span class="skill-pct">88%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Flutter / Dart</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="82"></div>
+              </div>
+              <span class="skill-pct">82%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Laravel / PHP</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="75"></div>
+              </div>
+              <span class="skill-pct">75%</span>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name">Web Development</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="85"></div>
+              </div>
+              <span class="skill-pct">85%</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Pipeline visual -->
+      <div class="pipeline-strip" aria-hidden="true">
+        <div class="pipeline-flow">
+          <div class="pipe-node">Code</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-node active">Build</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-node">Test</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-node">Deploy</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-node">Monitor</div>
+          <div class="pipe-arrow">→</div>
+          <div class="pipe-node accent">Secure</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE
+  ============================================================ -->
+  <section id="experience" class="section" aria-label="Work experience">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>03 — Experience</span>
+      </div>
+      <h2 class="section-heading">Where I've<br /><em>shipped</em> things.</h2>
+
+      <div class="timeline" role="list">
+
+        <div class="timeline-item" role="listitem">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <div class="tl-header">
+              <div class="tl-meta">
+                <span class="tl-company">M-PESA Africa</span>
+                <span class="tl-period">Experience</span>
+              </div>
+              <div class="tl-badge">Fintech · Telco</div>
+            </div>
+            <h3 class="tl-role">Technology Professional</h3>
+            <p class="tl-desc">
+              Contributed to tech operations and development workflows within Africa's leading mobile money platform — serving over 50 million users across the continent. Gained deep exposure to enterprise-scale fintech infrastructure, secure data pipelines, and high-availability system design.
+            </p>
+            <ul class="tl-highlights" role="list">
+              <li>Integrated DevOps tooling into existing workflows</li>
+              <li>Collaborated on enterprise-level infrastructure projects</li>
+              <li>Applied security-first thinking to system design</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+  ============================================================ -->
+  <section id="projects" class="section section-alt" aria-label="Projects">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>04 — Projects</span>
+      </div>
+      <h2 class="section-heading center">Built with<br /><em>purpose.</em></h2>
+      <p class="section-sub center">Each project targets a real-world problem — from mental health to community education.</p>
+
+      <div class="projects-grid">
+
+        <article class="project-card featured" aria-label="Mental Health AI System project">
+          <div class="project-card-inner">
+            <div class="project-visual" aria-hidden="true">
+              <div class="project-bg bg-1"></div>
+              <div class="project-icon-large">🧠</div>
+              <div class="project-glow" aria-hidden="true"></div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags" role="list" aria-label="Technologies used">
+                <span class="tag" role="listitem">Python</span>
+                <span class="tag" role="listitem">AI / ML</span>
+                <span class="tag" role="listitem">SDG 3</span>
+                <span class="tag tag-featured" role="listitem">⭐ Featured</span>
+              </div>
+              <h3 class="project-title">Mental Health AI System</h3>
+              <p class="project-desc">
+                An AI-powered platform designed to improve access to mental health resources across underserved communities in Africa. Built in alignment with UN Sustainable Development Goal 3 (Good Health & Well-being), leveraging Python and machine learning to deliver intelligent, context-aware support pathways.
+              </p>
+              <ul class="project-highlights" role="list">
+                <li>AI-driven assessment and resource matching engine</li>
+                <li>Aligned with UN SDG 3 impact metrics</li>
+                <li>Built for accessibility in low-bandwidth environments</li>
+              </ul>
+              <div class="project-actions">
+                <a href="#" class="btn btn-primary btn-sm" aria-label="View Mental Health AI System on GitHub">View on GitHub</a>
+                <a href="#" class="btn btn-ghost btn-sm" aria-label="View live demo">Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" aria-label="Mental Health Flutter App project">
+          <div class="project-card-inner">
+            <div class="project-visual" aria-hidden="true">
+              <div class="project-bg bg-2"></div>
+              <div class="project-icon-large">📱</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags" role="list">
+                <span class="tag" role="listitem">Flutter</span>
+                <span class="tag" role="listitem">Dart</span>
+                <span class="tag" role="listitem">Laravel</span>
+              </div>
+              <h3 class="project-title">Mental Health Flutter App</h3>
+              <p class="project-desc">
+                A cross-platform mobile application providing mental wellness tools — including mood tracking, guided exercises, and professional referral pathways. Built with Flutter and Dart on a robust Laravel REST API backend.
+              </p>
+              <ul class="project-highlights" role="list">
+                <li>Cross-platform iOS & Android deployment</li>
+                <li>Laravel REST API with secure authentication</li>
+                <li>Real-time data sync and offline-first capability</li>
+              </ul>
+              <div class="project-actions">
+                <a href="#" class="btn btn-primary btn-sm">View on GitHub</a>
+                <a href="#" class="btn btn-ghost btn-sm">Case Study</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" aria-label="School Website project">
+          <div class="project-card-inner">
+            <div class="project-visual" aria-hidden="true">
+              <div class="project-bg bg-3"></div>
+              <div class="project-icon-large">🏫</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags" role="list">
+                <span class="tag" role="listitem">Web Dev</span>
+                <span class="tag" role="listitem">UI/UX</span>
+                <span class="tag" role="listitem">Community</span>
+              </div>
+              <h3 class="project-title">Institutional School Website</h3>
+              <p class="project-desc">
+                Designed and deployed a modern institutional website during an IT Assistant role, significantly improving the school's digital presence, parent engagement, and student information access. Delivered as a full end-to-end project.
+              </p>
+              <ul class="project-highlights" role="list">
+                <li>Full design-to-deployment ownership</li>
+                <li>Measurable increase in digital engagement</li>
+                <li>Ongoing maintenance and content updates</li>
+              </ul>
+              <div class="project-actions">
+                <a href="#" class="btn btn-primary btn-sm">View Project</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CERTIFICATIONS & ACHIEVEMENTS
+  ============================================================ -->
+  <section id="certifications" class="section" aria-label="Certifications and achievements">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>05 — Certifications</span>
+      </div>
+      <h2 class="section-heading">Validated by<br /><em>industry.</em></h2>
+
+      <div class="certs-grid">
+
+        <div class="cert-card cert-primary" aria-label="Certified Ethical Hacker certification">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge" aria-hidden="true">🛡️</div>
+            <div class="cert-glow" aria-hidden="true"></div>
+          </div>
+          <div class="cert-info">
+            <span class="cert-issuer">EC-Council</span>
+            <h3 class="cert-name">Certified Ethical Hacker</h3>
+            <span class="cert-id">CEH</span>
+          </div>
+          <div class="cert-ribbon" aria-hidden="true">Verified</div>
+        </div>
+
+        <div class="cert-card" aria-label="Microsoft Azure Fundamentals certification">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge" aria-hidden="true">☁️</div>
+          </div>
+          <div class="cert-info">
+            <span class="cert-issuer">Microsoft</span>
+            <h3 class="cert-name">Azure Fundamentals</h3>
+            <span class="cert-id">AZ-900</span>
+          </div>
+          <div class="cert-ribbon" aria-hidden="true">Verified</div>
+        </div>
+
+        <div class="cert-card" aria-label="Google Africa Developers Challenge achievement">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge" aria-hidden="true">🏆</div>
+          </div>
+          <div class="cert-info">
+            <span class="cert-issuer">Google Africa</span>
+            <h3 class="cert-name">Africa Developers Challenge</h3>
+            <span class="cert-id">Mobile Web Specialist — Phase 2</span>
+          </div>
+          <div class="cert-ribbon" aria-hidden="true">Achieved</div>
+        </div>
+
+        <div class="cert-card" aria-label="Google Cloud Scholarship">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge" aria-hidden="true">🎓</div>
+          </div>
+          <div class="cert-info">
+            <span class="cert-issuer">Google</span>
+            <h3 class="cert-name">Cloud Scholarship</h3>
+            <span class="cert-id">Google Cloud Program</span>
+          </div>
+          <div class="cert-ribbon" aria-hidden="true">Recipient</div>
+        </div>
+
+        <div class="cert-card" aria-label="University of East London education">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge" aria-hidden="true">🎓</div>
+          </div>
+          <div class="cert-info">
+            <span class="cert-issuer">University of East London</span>
+            <h3 class="cert-name">Bachelor's Degree</h3>
+            <span class="cert-id">Technology Programme</span>
+          </div>
+          <div class="cert-ribbon" aria-hidden="true">Graduate</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VOLUNTEER
+  ============================================================ -->
+  <section id="volunteer" class="section section-alt" aria-label="Volunteer work">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-line" aria-hidden="true"></span>
+        <span>06 — Community</span>
+      </div>
+      <h2 class="section-heading">Giving back to<br /><em>the ecosystem.</em></h2>
+
+      <div class="volunteer-grid">
+        <div class="vol-card" aria-label="Absa Ready to Work mentorship">
+          <div class="vol-icon" aria-hidden="true">🤝</div>
+          <div class="vol-content">
+            <span class="vol-org">Absa Ready to Work Program</span>
+            <h3 class="vol-role">Mentor</h3>
+            <p class="vol-desc">Mentoring emerging professionals in tech and career readiness, helping bridge the skills gap for young talent across East Africa.</p>
+          </div>
+        </div>
+        <div class="vol-card" aria-label="Pwani University community tech clinic">
+          <div class="vol-icon" aria-hidden="true">💻</div>
+          <div class="vol-content">
+            <span class="vol-org">Pwani University</span>
+            <h3 class="vol-role">IT Support — Community Tech Clinic</h3>
+            <p class="vol-desc">Provided hands-on IT support to community members, democratizing access to technology and digital literacy within the Kilifi community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section id="contact" class="section contact-section" aria-label="Contact Benson">
+    <div class="container">
+      <div class="contact-content">
+        <div class="section-label">
+          <span class="label-line" aria-hidden="true"></span>
+          <span>07 — Contact</span>
+        </div>
+        <h2 class="section-heading">Let's build<br /><em>something great.</em></h2>
+        <p class="contact-sub">
+          Open to senior DevOps, Cloud, and Cybersecurity roles — as well as consulting and collaborative projects. Based in Nairobi; available globally.
+        </p>
+
+        <div class="contact-links" role="list" aria-label="Contact links">
+          <a href="mailto:benson.ndambiri@email.com" class="contact-link" role="listitem" aria-label="Send email to Benson">
+            <div class="cl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="cl-text">
+              <span class="cl-label">Email</span>
+              <span class="cl-value">benson.ndambiri@email.com</span>
+            </div>
+            <span class="cl-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="https://github.com/bensonndambiri" target="_blank" rel="noopener noreferrer" class="contact-link" role="listitem" aria-label="Visit Benson's GitHub profile (opens in new tab)">
+            <div class="cl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div class="cl-text">
+              <span class="cl-label">GitHub</span>
+              <span class="cl-value">github.com/bensonndambiri</span>
+            </div>
+            <span class="cl-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="https://linkedin.com/in/bensonndambiri" target="_blank" rel="noopener noreferrer" class="contact-link" role="listitem" aria-label="Visit Benson's LinkedIn profile (opens in new tab)">
+            <div class="cl-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="cl-text">
+              <span class="cl-label">LinkedIn</span>
+              <span class="cl-value">linkedin.com/in/bensonndambiri</span>
+            </div>
+            <span class="cl-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" aria-label="Back to top"><span class="logo-bracket">&lt;</span>BN<span class="logo-bracket">/&gt;</span></a>
+          <p>DevOps · Cloud · Cybersecurity<br />Nairobi, Kenya 🇰🇪</p>
+        </div>
+        <div class="footer-links" role="list">
+          <a href="#about" role="listitem">About</a>
+          <a href="#skills" role="listitem">Skills</a>
+          <a href="#projects" role="listitem">Projects</a>
+          <a href="#contact" role="listitem">Contact</a>
+        </div>
+        <p class="footer-copy">
+          © <span id="footer-year"></span> Benson Ndambiri. Crafted with precision.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
