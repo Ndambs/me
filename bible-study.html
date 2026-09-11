@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Whole Bible in Daily Sermonettes (NLT) — a complete, self-contained 274-day devotional study guide through Genesis to Revelation, by Benson Ndambiri." />
+<meta name="author" content="Benson Ndambiri" />
+<meta property="og:title" content="The Whole Bible in Daily Sermonettes | Benson Ndambiri" />
+<meta property="og:description" content="A complete, self-contained 274-day devotional study guide — Old Testament and New Testament, Scripture in context with exposition, central truth, church history, application, and prayer." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="robots" content="index, follow" />
+<title>The Whole Bible in Daily Sermonettes | Benson Ndambiri</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bible-study.css" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+</head>
+<body class="bs-body">
+
+<!-- Top bar -->
+<header class="bs-topbar">
+  <button class="bs-icon-btn bs-drawer-toggle" id="bs-drawer-toggle" aria-label="Open study contents">☰</button>
+  <a href="index.html" class="bs-back" aria-label="Back to portfolio">
+    <span class="logo-bracket">&lt;</span>BN<span class="logo-bracket">/&gt;</span>
+    <span>Portfolio</span>
+  </a>
+  <div class="bs-title-block">
+    <b>The Whole Bible in Daily Sermonettes</b>
+    <span>NLT · Old Testament (183 days) + New Testament (91 days)</span>
+  </div>
+  <div class="bs-top-actions">
+    <button class="bs-icon-btn" id="bs-theme-toggle" aria-label="Toggle color theme">◐</button>
+  </div>
+</header>
+<div class="bs-progressline"><div class="bs-progressline-fill" id="bs-progress-fill"></div></div>
+
+<div class="bs-scrim" id="bs-scrim"></div>
+
+<main class="bs-main">
+  <!-- Sidebar -->
+  <aside class="bs-sidebar" id="bs-sidebar" aria-label="Study contents">
+    <div class="bs-sidebar-head">
+      <div class="bs-tracks" role="tablist" aria-label="Choose a testament">
+        <button class="bs-track-btn active" data-track="OT">Old Testament</button>
+        <button class="bs-track-btn" data-track="NT">New Testament</button>
+        <button class="bs-track-btn" data-track="ALL">All</button>
+      </div>
+      <div class="bs-search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" class="bs-search" id="bs-search-input" placeholder="Search by book, day, or title…" aria-label="Search studies" />
+      </div>
+      <div class="bs-progress-summary">
+        <svg class="bs-ring" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="16" fill="none" stroke="var(--bs-border)" stroke-width="4"/>
+          <circle id="bs-ring-fg" cx="20" cy="20" r="16" fill="none" stroke="var(--bs-gold)" stroke-width="4" stroke-linecap="round" transform="rotate(-90 20 20)"/>
+        </svg>
+        <div class="ptxt" id="bs-progress-text"><b>0 / 274</b><br>days completed</div>
+        <button class="bs-continue-btn" id="bs-continue-btn">Continue</button>
+      </div>
+    </div>
+    <nav class="bs-daylist" id="bs-daylist" aria-label="Days list"></nav>
+  </aside>
+
+  <!-- Reader -->
+  <section class="bs-reader-scroll" id="bs-reader-scroll">
+    <div class="bs-reader" id="bs-reader"></div>
+  </section>
+</main>
+
+<script src="js/bible-data.js"></script>
+<script src="js/bible-study.js"></script>
+</body>
+</html>

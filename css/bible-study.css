@@ -1,0 +1,424 @@
+/* ============================================================
+   BIBLE STUDY — stylesheet
+   Extends the portfolio's existing visual language (Fraunces /
+   Plus Jakarta Sans / Fira Code, dark-navy-first theme, blue
+   accent) into a dedicated reading application. Loaded on both
+   index.html (for the homepage promo card) and bible-study.html
+   (for the full reader). Does not redeclare .nav / .btn / .footer —
+   those inherit from css/style.css so the chrome stays identical
+   to the rest of the site.
+   ============================================================ */
+
+:root{
+  --bs-accent:#4f9eff;
+  --bs-accent-dim:rgba(79,158,255,.14);
+  --bs-gold:#d8b16a;
+  --bs-gold-dim:rgba(216,177,106,.16);
+  --bs-serif:'Fraunces',serif;
+  --bs-sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --bs-mono:'Fira Code',monospace;
+  --bs-radius:14px;
+  --bs-radius-sm:8px;
+}
+
+[data-theme="dark"]{
+  --bs-bg:#0b0f16;
+  --bs-bg-raised:#111826;
+  --bs-panel:#141c2b;
+  --bs-panel-2:#0e1420;
+  --bs-border:rgba(255,255,255,.08);
+  --bs-border-strong:rgba(255,255,255,.14);
+  --bs-text:#eef2f8;
+  --bs-text-dim:#9aa7bd;
+  --bs-text-faint:#5f6b81;
+}
+[data-theme="light"]{
+  --bs-bg:#f6f7fb;
+  --bs-bg-raised:#ffffff;
+  --bs-panel:#ffffff;
+  --bs-panel-2:#eef1f7;
+  --bs-border:rgba(15,23,42,.09);
+  --bs-border-strong:rgba(15,23,42,.16);
+  --bs-text:#151a24;
+  --bs-text-dim:#54607a;
+  --bs-text-faint:#8993a8;
+}
+
+/* ---------- Homepage promo section (index.html) ---------- */
+
+.bible-promo{
+  position:relative;
+  border:1px solid var(--bs-border);
+  border-radius:20px;
+  background:
+    radial-gradient(1100px 320px at 12% -10%, var(--bs-accent-dim), transparent 60%),
+    var(--bs-panel);
+  padding:clamp(28px,5vw,56px);
+  overflow:hidden;
+}
+.bible-promo::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:repeating-linear-gradient(180deg, transparent 0 27px, var(--bs-border) 27px 28px);
+  opacity:.35;
+  mask-image:linear-gradient(180deg, black, transparent 70%);
+  pointer-events:none;
+}
+.bible-promo-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:clamp(24px,4vw,48px);
+  align-items:center;
+}
+@media (max-width:860px){
+  .bible-promo-grid{ grid-template-columns:1fr; }
+}
+.bible-promo-eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--bs-mono); font-size:.78rem; letter-spacing:.02em;
+  color:var(--bs-gold);
+  margin-bottom:14px;
+}
+.bible-promo-eyebrow .dot{ width:6px;height:6px;border-radius:50%;background:var(--bs-gold); }
+.bible-promo h3{
+  font-family:var(--bs-serif);
+  font-weight:600;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  line-height:1.15;
+  color:var(--bs-text);
+  margin:0 0 14px;
+}
+.bible-promo h3 em{ font-style:italic; color:var(--bs-accent); }
+.bible-promo p{
+  color:var(--bs-text-dim);
+  font-size:1.02rem;
+  line-height:1.65;
+  max-width:46ch;
+  margin:0 0 22px;
+}
+.bible-promo-stats{
+  display:flex; gap:26px; margin:0 0 26px; flex-wrap:wrap;
+}
+.bible-promo-stats .st{ display:flex; flex-direction:column; }
+.bible-promo-stats .st b{ font-family:var(--bs-serif); font-size:1.5rem; color:var(--bs-text); }
+.bible-promo-stats .st span{ font-size:.8rem; color:var(--bs-text-faint); }
+.bible-promo-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+.bible-promo-card{
+  position:relative;
+  background:var(--bs-panel-2);
+  border:1px solid var(--bs-border);
+  border-radius:16px;
+  padding:22px;
+  font-family:var(--bs-mono);
+  font-size:.82rem;
+  color:var(--bs-text-dim);
+}
+.bible-promo-card .bp-day{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:9px 0; border-bottom:1px dashed var(--bs-border);
+}
+.bible-promo-card .bp-day:last-child{ border-bottom:none; }
+.bible-promo-card .bp-day .tag{
+  color:var(--bs-accent); font-weight:500;
+}
+.bible-promo-card .bp-day .ttl{
+  color:var(--bs-text); font-family:var(--bs-sans); font-size:.86rem; text-align:right;
+}
+
+/* ============================================================
+   STANDALONE READER APP (bible-study.html)
+   ============================================================ */
+
+.bs-body{
+  background:var(--bs-bg);
+  color:var(--bs-text);
+  font-family:var(--bs-sans);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* top bar */
+.bs-topbar{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:16px;
+  padding:14px 22px;
+  background:color-mix(in srgb, var(--bs-bg) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--bs-border);
+}
+.bs-back{
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--bs-mono); font-size:.82rem;
+  color:var(--bs-text-dim); text-decoration:none;
+  padding:7px 12px; border-radius:20px;
+  border:1px solid var(--bs-border);
+  transition:color .15s, border-color .15s;
+  white-space:nowrap;
+}
+.bs-back:hover{ color:var(--bs-accent); border-color:var(--bs-accent); }
+.bs-title-block{ display:flex; flex-direction:column; line-height:1.15; flex:1; min-width:0; }
+.bs-title-block b{
+  font-family:var(--bs-serif); font-size:1.05rem; font-weight:600;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.bs-title-block span{ font-size:.74rem; color:var(--bs-text-faint); font-family:var(--bs-mono); }
+.bs-top-actions{ display:flex; align-items:center; gap:8px; }
+.bs-icon-btn{
+  width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+  border-radius:50%; border:1px solid var(--bs-border); background:transparent;
+  color:var(--bs-text-dim); cursor:pointer; font-size:1rem;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.bs-icon-btn:hover{ color:var(--bs-text); border-color:var(--bs-border-strong); background:var(--bs-panel-2); }
+.bs-drawer-toggle{ display:none; }
+
+/* thin overall progress line under topbar */
+.bs-progressline{ height:3px; background:var(--bs-border); position:sticky; top:65px; z-index:39; }
+.bs-progressline-fill{
+  height:100%;
+  background:linear-gradient(90deg, var(--bs-accent), var(--bs-gold));
+  width:0%;
+  transition:width .4s ease;
+}
+
+/* main layout */
+.bs-main{
+  flex:1;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  min-height:0;
+}
+@media (max-width:920px){
+  .bs-main{ grid-template-columns:1fr; }
+  .bs-drawer-toggle{ display:flex; }
+}
+
+/* ---- sidebar ---- */
+.bs-sidebar{
+  border-right:1px solid var(--bs-border);
+  background:var(--bs-panel-2);
+  display:flex; flex-direction:column;
+  height:calc(100vh - 68px);
+  position:sticky; top:68px;
+}
+@media (max-width:920px){
+  .bs-sidebar{
+    position:fixed; top:0; left:0; height:100vh; width:min(360px,86vw);
+    z-index:60; transform:translateX(-105%);
+    transition:transform .28s ease;
+    box-shadow:24px 0 60px rgba(0,0,0,.4);
+    top:0; padding-top:14px;
+  }
+  .bs-sidebar.open{ transform:translateX(0); }
+}
+.bs-sidebar-head{ padding:16px 16px 10px; }
+.bs-tracks{ display:flex; gap:6px; padding:0 16px 12px; }
+.bs-track-btn{
+  flex:1; padding:8px 0; text-align:center; font-family:var(--bs-mono); font-size:.76rem;
+  border:1px solid var(--bs-border); border-radius:20px; background:transparent;
+  color:var(--bs-text-dim); cursor:pointer; transition:.15s;
+}
+.bs-track-btn.active{ background:var(--bs-accent-dim); border-color:var(--bs-accent); color:var(--bs-accent); }
+
+.bs-search-wrap{ padding:0 16px 12px; position:relative; }
+.bs-search{
+  width:100%; padding:9px 12px 9px 32px; border-radius:10px;
+  border:1px solid var(--bs-border); background:var(--bs-bg-raised);
+  color:var(--bs-text); font-size:.88rem; font-family:var(--bs-sans);
+}
+.bs-search:focus{ outline:none; border-color:var(--bs-accent); }
+.bs-search-wrap svg{ position:absolute; left:28px; top:50%; transform:translateY(-50%); color:var(--bs-text-faint); pointer-events:none; }
+
+.bs-progress-summary{
+  display:flex; align-items:center; gap:12px;
+  padding:0 16px 14px;
+  border-bottom:1px solid var(--bs-border);
+}
+.bs-ring{ width:40px; height:40px; flex:none; }
+.bs-progress-summary .ptxt{ font-size:.78rem; color:var(--bs-text-dim); line-height:1.3; }
+.bs-progress-summary .ptxt b{ color:var(--bs-text); font-family:var(--bs-serif); font-size:.95rem; }
+.bs-continue-btn{
+  margin-left:auto; font-family:var(--bs-mono); font-size:.72rem; color:var(--bs-accent);
+  background:none; border:none; cursor:pointer; text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.bs-daylist{
+  flex:1; overflow-y:auto; padding:8px 8px 24px;
+}
+.bs-book-group{ margin-bottom:4px; }
+.bs-book-header{
+  width:100%; display:flex; align-items:center; gap:8px;
+  padding:9px 10px; border-radius:8px; background:none; border:none;
+  color:var(--bs-text-dim); font-family:var(--bs-sans); font-size:.85rem; font-weight:600;
+  cursor:pointer; text-align:left;
+}
+.bs-book-header:hover{ background:var(--bs-panel); color:var(--bs-text); }
+.bs-book-header .chev{ transition:transform .18s; margin-left:auto; font-size:.7rem; color:var(--bs-text-faint); }
+.bs-book-group.collapsed .chev{ transform:rotate(-90deg); }
+.bs-book-header .count{ font-family:var(--bs-mono); font-size:.68rem; color:var(--bs-text-faint); }
+.bs-book-days{ display:flex; flex-direction:column; }
+.bs-book-group.collapsed .bs-book-days{ display:none; }
+
+.bs-day-row{
+  display:flex; align-items:center; gap:10px;
+  padding:7px 10px 7px 26px; border-radius:8px;
+  color:var(--bs-text-dim); text-decoration:none; font-size:.82rem;
+  cursor:pointer; border:none; background:none; width:100%; text-align:left;
+}
+.bs-day-row:hover{ background:var(--bs-panel); color:var(--bs-text); }
+.bs-day-row.active{ background:var(--bs-accent-dim); color:var(--bs-accent); }
+.bs-day-row .chk{
+  width:15px; height:15px; border-radius:50%; border:1.5px solid var(--bs-border-strong);
+  flex:none; display:flex; align-items:center; justify-content:center; font-size:9px;
+}
+.bs-day-row.read .chk{ background:var(--bs-gold); border-color:var(--bs-gold); color:#1a1406; }
+.bs-day-row .rowtitle{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bs-day-row .rownum{ margin-left:auto; font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint); flex:none; }
+
+.bs-empty-search{ padding:30px 20px; text-align:center; color:var(--bs-text-faint); font-size:.85rem; }
+
+/* ---- reader ---- */
+.bs-reader-scroll{ overflow-y:auto; height:calc(100vh - 68px); }
+.bs-reader{
+  max-width:720px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(20px,5vw,28px) 140px;
+}
+.bs-crumb{
+  font-family:var(--bs-mono); font-size:.78rem; color:var(--bs-text-faint);
+  display:flex; align-items:center; gap:6px; margin-bottom:22px; flex-wrap:wrap;
+}
+.bs-crumb b{ color:var(--bs-accent); font-weight:500; }
+
+.bs-reader-head{ margin-bottom:30px; }
+.bs-ref-badge{
+  display:inline-block; font-family:var(--bs-mono); font-size:.78rem; color:var(--bs-gold);
+  background:var(--bs-gold-dim); padding:4px 10px; border-radius:20px; margin-bottom:14px;
+}
+.bs-reader h1{
+  font-family:var(--bs-serif); font-weight:600; font-style:italic;
+  font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.18; margin:0 0 16px; color:var(--bs-text);
+}
+.bs-lead{
+  font-size:1.08rem; line-height:1.7; color:var(--bs-text-dim);
+  border-left:2px solid var(--bs-accent); padding-left:16px;
+}
+
+.bs-section{ margin:38px 0; }
+.bs-section-label{
+  font-family:var(--bs-mono); font-size:.74rem; color:var(--bs-text-faint);
+  text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.bs-section-label::after{ content:""; flex:1; height:1px; background:var(--bs-border); }
+.bs-section p{ line-height:1.75; color:var(--bs-text); font-size:1rem; }
+
+.bs-passage-list{ display:flex; flex-direction:column; gap:2px; }
+.bs-passage-item{
+  display:grid; grid-template-columns:96px 1fr; gap:16px;
+  padding:14px 0; border-top:1px solid var(--bs-border);
+}
+.bs-passage-item:first-child{ border-top:none; }
+.bs-passage-item .pref{ font-family:var(--bs-serif); font-weight:600; font-style:italic; color:var(--bs-accent); font-size:1rem; }
+.bs-passage-item p{ margin:0; line-height:1.7; color:var(--bs-text); }
+@media (max-width:520px){
+  .bs-passage-item{ grid-template-columns:1fr; gap:4px; }
+}
+
+.bs-truth-card{
+  background:var(--bs-panel); border:1px solid var(--bs-border); border-left:3px solid var(--bs-gold);
+  border-radius:10px; padding:20px 22px;
+}
+.bs-truth-card p{ margin:0 0 10px; line-height:1.7; font-size:1.02rem; }
+.bs-truth-card p:last-child{ margin-bottom:0; }
+.bs-truth-card .extra{ color:var(--bs-text-dim); font-size:.94rem; }
+
+.bs-voice-card{
+  background:var(--bs-panel); border:1px solid var(--bs-border); border-radius:10px;
+  padding:20px 22px; position:relative;
+}
+.bs-voice-card .quote-mark{ font-family:var(--bs-serif); font-size:2.6rem; color:var(--bs-border-strong); line-height:0; display:block; margin-bottom:4px; }
+.bs-voice-card p{ margin:0 0 12px; line-height:1.7; color:var(--bs-text); font-style:italic; }
+.bs-voice-card .attrib{ font-family:var(--bs-mono); font-size:.78rem; color:var(--bs-text-faint); font-style:normal; }
+
+.bs-living-card{
+  background:var(--bs-accent-dim); border:1px solid var(--bs-border); border-radius:10px;
+  padding:20px 22px;
+}
+.bs-living-card p{ margin:0 0 14px; line-height:1.65; font-size:1rem; color:var(--bs-text); }
+.bs-reflect-textarea{
+  width:100%; min-height:90px; resize:vertical; border-radius:8px;
+  border:1px solid var(--bs-border); background:var(--bs-bg-raised); color:var(--bs-text);
+  font-family:var(--bs-sans); font-size:.92rem; padding:10px 12px; line-height:1.5;
+}
+.bs-reflect-textarea:focus{ outline:none; border-color:var(--bs-accent); }
+.bs-reflect-note{ font-family:var(--bs-mono); font-size:.68rem; color:var(--bs-text-faint); margin-top:6px; }
+
+.bs-prayer-card{
+  background:linear-gradient(160deg, var(--bs-gold-dim), transparent);
+  border:1px solid var(--bs-border); border-radius:10px; padding:22px;
+  text-align:center;
+}
+.bs-prayer-card p{
+  margin:0; line-height:1.75; font-size:1.02rem; font-style:italic; color:var(--bs-text);
+  max-width:56ch; margin:0 auto;
+}
+
+.bs-mark-done{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin:34px 0 0; padding:13px 20px; width:100%;
+  border-radius:12px; border:1px solid var(--bs-border-strong);
+  background:var(--bs-panel); color:var(--bs-text); cursor:pointer;
+  font-family:var(--bs-sans); font-size:.95rem; font-weight:600;
+  transition:.18s;
+}
+.bs-mark-done:hover{ border-color:var(--bs-gold); }
+.bs-mark-done.done{ background:var(--bs-gold-dim); border-color:var(--bs-gold); color:var(--bs-gold); }
+
+/* prev/next */
+.bs-pagenav{
+  display:flex; gap:12px; margin-top:34px;
+}
+.bs-pagenav a{
+  flex:1; display:flex; flex-direction:column; gap:2px;
+  padding:14px 16px; border-radius:12px; border:1px solid var(--bs-border);
+  text-decoration:none; color:var(--bs-text); transition:.18s;
+}
+.bs-pagenav a:hover{ border-color:var(--bs-accent); }
+.bs-pagenav a.next{ text-align:right; align-items:flex-end; }
+.bs-pagenav .pn-label{ font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint); }
+.bs-pagenav .pn-title{ font-family:var(--bs-serif); font-weight:600; font-size:.98rem; }
+.bs-pagenav .disabled{ opacity:.35; pointer-events:none; }
+
+.bs-kbd-hint{
+  display:flex; justify-content:center; gap:16px; margin-top:20px;
+  font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint);
+}
+.bs-kbd-hint kbd{
+  border:1px solid var(--bs-border-strong); border-radius:4px; padding:1px 6px; font-family:var(--bs-mono);
+}
+
+/* welcome / landing state inside reader */
+.bs-welcome{ text-align:center; padding:60px 10px; }
+.bs-welcome h1{ font-family:var(--bs-serif); font-style:italic; font-size:clamp(1.9rem,4vw,2.7rem); margin-bottom:14px; }
+.bs-welcome p{ color:var(--bs-text-dim); max-width:52ch; margin:0 auto 26px; line-height:1.7; }
+.bs-welcome-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+.bs-scrim{
+  position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:50; opacity:0;
+  pointer-events:none; transition:opacity .25s;
+}
+.bs-scrim.show{ opacity:1; pointer-events:auto; }
+
+@media print{
+  .bs-topbar, .bs-progressline, .bs-sidebar, .bs-pagenav, .bs-kbd-hint, .bs-mark-done, .bs-drawer-toggle{ display:none !important; }
+  .bs-main{ display:block; }
+  .bs-reader-scroll{ height:auto; overflow:visible; }
+  .bs-body{ background:#fff; color:#000; }
+}
+
+.bs-visually-hidden{
+  position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);
+}
