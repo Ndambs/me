@@ -84,7 +84,101 @@
     }
   }
 
-  // ---------- data indexing ----------
+  // ---------- "voice from history" source links ----------
+  // Three of the guide's most-quoted voices (Spurgeon, Guzik, Matthew Henry) have
+  // complete, real, passage-indexed commentary archives online, so those get a
+  // direct deep link to the exact chapter. Everyone else gets an honest web-search
+  // fallback rather than a guessed/fabricated URL.
+  var AUTHOR_BIBLEHUB = {
+    "DAVID GUZIK": "guzik",
+    "MATTHEW HENRY": "mhc"
+  };
+  var BOOK_SLUGS = {
+    "Genesis": "genesis", "Exodus": "exodus", "Leviticus": "leviticus", "Numbers": "numbers",
+    "Deuteronomy": "deuteronomy", "Joshua": "joshua", "Judges": "judges", "Ruth": "ruth",
+    "1 Samuel": "1_samuel", "2 Samuel": "2_samuel", "1 Kings": "1_kings", "2 Kings": "2_kings",
+    "1 Chronicles": "1_chronicles", "2 Chronicles": "2_chronicles", "Ezra": "ezra", "Nehemiah": "nehemiah",
+    "Esther": "esther", "Job": "job", "Psalms": "psalms", "Proverbs": "proverbs",
+    "Ecclesiastes": "ecclesiastes", "Song of Songs": "songs", "Isaiah": "isaiah", "Jeremiah": "jeremiah",
+    "Lamentations": "lamentations", "Ezekiel": "ezekiel", "Daniel": "daniel", "Hosea": "hosea",
+    "Joel": "joel", "Amos": "amos", "Obadiah": "obadiah", "Jonah": "jonah", "Micah": "micah",
+    "Nahum": "nahum", "Habakkuk": "habakkuk", "Zephaniah": "zephaniah", "Haggai": "haggai",
+    "Zechariah": "zechariah", "Malachi": "malachi", "Matthew": "matthew", "Mark": "mark",
+    "Luke": "luke", "John": "john", "Acts": "acts", "Romans": "romans",
+    "1 Corinthians": "1_corinthians", "2 Corinthians": "2_corinthians", "Galatians": "galatians",
+    "Ephesians": "ephesians", "Philippians": "philippians", "Colossians": "colossians",
+    "1 Thessalonians": "1_thessalonians", "2 Thessalonians": "2_thessalonians",
+    "1 Timothy": "1_timothy", "2 Timothy": "2_timothy", "Titus": "titus", "Philemon": "philemon",
+    "Hebrews": "hebrews", "James": "james", "1 Peter": "1_peter", "2 Peter": "2_peter",
+    "1 John": "1_john", "2 John": "2_john", "3 John": "3_john", "Jude": "jude", "Revelation": "revelation"
+  };
+  function buildVoiceLink(d) {
+    var nameKey = (d.voice_name || "").toUpperCase().trim();
+    var chapterMatch = (d.ref || "").match(/(\d+)/);
+    var chapter = chapterMatch ? chapterMatch[1] : null;
+    var bookSlug = BOOK_SLUGS[d.book];
+
+    // Spurgeon on BibleHub is specifically "The Treasury of David" — his Psalms-only
+    // exposition — not a whole-Bible commentary, so it's only a real, correct link
+    // when the day's passage is actually in Psalms.
+    if (!d.is_review && chapter && bookSlug && nameKey === "CHARLES SPURGEON" && d.book === "Psalms") {
+      return { kind: "direct", site: "BibleHub.com", url: "https://biblehub.com/commentaries/tod/psalms/" + chapter + ".htm" };
+    }
+    var biblehubSlug = AUTHOR_BIBLEHUB[nameKey];
+    if (!d.is_review && chapter && bookSlug && biblehubSlug) {
+      return {
+        kind: "direct",
+        site: "BibleHub.com",
+        url: "https://biblehub.com/commentaries/" + biblehubSlug + "/" + bookSlug + "/" + chapter + ".htm"
+      };
+    }
+    var q = (d.voice_name || "") + " " + (d.ref || "") + " commentary";
+    return { kind: "search", site: "the web", url: "https://www.google.com/search?q=" + encodeURIComponent(q) };
+  }
+
+  // ---------- modal ----------
+  var modalOverlay = document.getElementById("bs-modal-overlay");
+  var modalBody = document.getElementById("bs-modal-body");
+  var modalTitle = document.getElementById("bs-modal-title");
+  var modalCancel = document.getElementById("bs-modal-cancel");
+  var modalConfirm = document.getElementById("bs-modal-confirm");
+  var pendingUrl = null;
+  var lastFocused = null;
+
+  function openVoiceModal(d) {
+    var link = buildVoiceLink(d);
+    pendingUrl = link.url;
+    var niceName = titleCase(d.voice_name);
+    modalTitle.textContent = "Read more from " + niceName + "?";
+    if (link.kind === "direct") {
+      modalBody.innerHTML = "This opens <b>" + escapeHtml(niceName) + "'s</b> own commentary on <b>" +
+        escapeHtml(d.ref || "") + "</b> at " + escapeHtml(link.site) + ", in a new tab.";
+    } else {
+      modalBody.innerHTML = "This guide only paraphrases " + escapeHtml(niceName) + "'s insight, so we don't have a direct link to the original piece. " +
+        "This opens a web search for more of their writing on <b>" + escapeHtml(d.ref || "") + "</b>, in a new tab.";
+    }
+    lastFocused = document.activeElement;
+    modalOverlay.classList.add("show");
+    modalOverlay.setAttribute("aria-hidden", "false");
+    modalConfirm.focus();
+  }
+  function closeVoiceModal() {
+    modalOverlay.classList.remove("show");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    pendingUrl = null;
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+  modalCancel.addEventListener("click", closeVoiceModal);
+  modalOverlay.addEventListener("click", function (e) { if (e.target === modalOverlay) closeVoiceModal(); });
+  modalConfirm.addEventListener("click", function () {
+    if (pendingUrl) window.open(pendingUrl, "_blank", "noopener,noreferrer");
+    closeVoiceModal();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modalOverlay.classList.contains("show")) closeVoiceModal();
+  });
+
+
   var byId = {};
   var order = []; // flattened OT(1..183) then NT(1..91) in reading order
   DATA.forEach(function (d) { byId[d.id] = d; });
@@ -282,8 +376,10 @@
 
     var voiceHtml = "";
     if (d.voice_text) {
-      voiceHtml = '<div class="bs-voice-card"><span class="quote-mark">&ldquo;</span><p>' +
-        escapeHtml(d.voice_text) + '</p><div class="attrib">' + "\u2014 " + escapeHtml(titleCase(d.voice_name)) + "</div></div>";
+      voiceHtml = '<div class="bs-voice-card" id="bs-voice-card" role="button" tabindex="0" aria-label="Open a link to read more from this voice from church history">' +
+        '<span class="quote-mark">&ldquo;</span><p>' +
+        escapeHtml(d.voice_text) + '</p><div class="attrib">' + "\u2014 " + escapeHtml(titleCase(d.voice_name)) + "</div>" +
+        '<div class="ve-hint">Read more \u2197</div></div>';
     }
 
     var livingHtml = "";
@@ -329,6 +425,15 @@
     readerEl.querySelectorAll("[data-nav]").forEach(function (a) {
       a.addEventListener("click", function (e) { e.preventDefault(); navigateTo(a.getAttribute("data-nav")); });
     });
+
+    var voiceCardEl = document.getElementById("bs-voice-card");
+    if (voiceCardEl) {
+      voiceCardEl.addEventListener("click", function () { openVoiceModal(d); });
+      voiceCardEl.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openVoiceModal(d); }
+      });
+    }
+
     var markBtn = document.getElementById("bs-mark-done");
     markBtn.addEventListener("click", function () {
       var map = getRead();

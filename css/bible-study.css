@@ -516,3 +516,46 @@
 .bs-visually-hidden{
   position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);
 }
+
+/* clickable voice card affordance */
+.bs-voice-card{ cursor:pointer; }
+.bs-voice-card:hover{ border-color:var(--bs-voice); }
+.bs-voice-card:focus-visible{ outline:2px solid var(--bs-voice); outline-offset:2px; }
+.bs-voice-card .ve-hint{
+  display:inline-flex; align-items:center; gap:5px; margin-top:2px;
+  font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-voice); opacity:.85;
+}
+
+/* modal */
+.bs-modal-overlay{
+  position:fixed; inset:0; z-index:100;
+  background:rgba(0,0,0,.55);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  opacity:0; visibility:hidden; transition:opacity .2s;
+}
+.bs-modal-overlay.show{ opacity:1; visibility:visible; }
+.bs-modal{
+  background:var(--bs-panel); border:1px solid var(--bs-border-strong); border-radius:16px;
+  max-width:420px; width:100%; padding:28px 26px; text-align:center;
+  transform:translateY(8px) scale(.98); transition:transform .2s;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.bs-modal-overlay.show .bs-modal{ transform:translateY(0) scale(1); }
+.bs-modal-quote{
+  font-family:var(--bs-serif); font-size:2.4rem; color:var(--bs-voice); opacity:.6; line-height:0; margin-bottom:6px;
+}
+.bs-modal-title{
+  font-family:var(--bs-serif); font-weight:600; font-size:1.25rem; color:var(--bs-text); margin:0 0 10px;
+}
+.bs-modal-body{ font-size:.92rem; line-height:1.6; color:var(--bs-text-dim); margin:0 0 22px; }
+.bs-modal-body b{ color:var(--bs-text); font-weight:600; }
+.bs-modal-actions{ display:flex; gap:10px; }
+.bs-modal-btn{
+  flex:1; padding:11px 14px; border-radius:10px; font-family:var(--bs-sans); font-size:.9rem; font-weight:600;
+  cursor:pointer; transition:.15s;
+}
+.bs-modal-cancel{ background:none; border:1px solid var(--bs-border-strong); color:var(--bs-text-dim); }
+.bs-modal-cancel:hover{ color:var(--bs-text); border-color:var(--bs-text-faint); }
+.bs-modal-confirm{ background:var(--bs-voice); border:1px solid var(--bs-voice); color:var(--bs-bg); }
+.bs-modal-confirm:hover{ filter:brightness(1.08); }

@@ -80,6 +80,13 @@ points and copy them into your own file by hand.
   the main site's toggle so it works even though this is a separate page.
   Both themes now use a richer, section-coded palette rather than a single
   blue accent everywhere.
+- **"Read more" on A Voice from Church History** — clicking or tapping that
+  section asks first, then opens a new tab: for Charles Spurgeon on a Psalm,
+  David Guzik, or Matthew Henry, it's a direct link to their real, complete
+  commentary on that exact passage (BibleHub.com hosts all three in full).
+  For every other teacher quoted in the guide, the page is honest that this
+  guide only paraphrases their insight and opens a web search for more of
+  their writing on that passage instead — never a guessed or fabricated URL.
 
 ## Notes / things you may want to tweak
 
