@@ -9,7 +9,8 @@
 
   var DATA = window.BIBLE_DATA || [];
   var LS_READ = "bibleStudy.read.v1";
-  var LS_NOTES = "bibleStudy.notes.v1";
+  var LS_NOTES_V1 = "bibleStudy.notes.v1";   // legacy: { id: "single string" }
+  var LS_NOTES = "bibleStudy.notes.v2";      // current: { id: [{text, ts}, ...] }
   var LS_THEME = "theme";
   var LS_LAST = "bibleStudy.last.v1";
 
@@ -36,10 +37,52 @@
     try { return JSON.parse(localStorage.getItem(LS_READ) || "{}"); } catch (e) { return {}; }
   }
   function setRead(map) { localStorage.setItem(LS_READ, JSON.stringify(map)); }
-  function getNotes() {
-    try { return JSON.parse(localStorage.getItem(LS_NOTES) || "{}"); } catch (e) { return {}; }
+
+  // notes are stored as { dayId: [ {text, ts}, ... ] } — newest entries pushed to the end.
+  // one-time migration from the old single-string-per-day format, if present.
+  function getAllNotes() {
+    var map;
+    try { map = JSON.parse(localStorage.getItem(LS_NOTES) || "{}"); } catch (e) { map = {}; }
+    var legacyRaw = localStorage.getItem(LS_NOTES_V1);
+    if (legacyRaw) {
+      try {
+        var legacy = JSON.parse(legacyRaw);
+        Object.keys(legacy).forEach(function (id) {
+          if (legacy[id] && !map[id]) {
+            map[id] = [{ text: legacy[id], ts: null }];
+          }
+        });
+      } catch (e) { /* ignore malformed legacy data */ }
+      localStorage.removeItem(LS_NOTES_V1);
+      localStorage.setItem(LS_NOTES, JSON.stringify(map));
+    }
+    return map;
   }
-  function setNotes(map) { localStorage.setItem(LS_NOTES, JSON.stringify(map)); }
+  function setAllNotes(map) { localStorage.setItem(LS_NOTES, JSON.stringify(map)); }
+  function getNotesFor(id) {
+    var map = getAllNotes();
+    return Array.isArray(map[id]) ? map[id] : [];
+  }
+  function addNoteFor(id, text) {
+    var map = getAllNotes();
+    if (!Array.isArray(map[id])) map[id] = [];
+    map[id].push({ text: text, ts: Date.now() });
+    setAllNotes(map);
+  }
+  function deleteNoteFor(id, ts) {
+    var map = getAllNotes();
+    if (!Array.isArray(map[id])) return;
+    map[id] = map[id].filter(function (n) { return n.ts !== ts; });
+    setAllNotes(map);
+  }
+  function formatTimestamp(ts) {
+    if (!ts) return "saved previously";
+    try {
+      return new Date(ts).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+    } catch (e) {
+      return new Date(ts).toDateString();
+    }
+  }
 
   // ---------- data indexing ----------
   var byId = {};
@@ -213,8 +256,6 @@
     var truth = splitCentralTruth(d.central_truth);
     var readMap = getRead();
     var isRead = !!readMap[id];
-    var notes = getNotes();
-    var noteVal = notes[id] || "";
 
     var passageHtml = (d.passage || []).map(function (p) {
       var parts = [];
@@ -248,9 +289,13 @@
     var livingHtml = "";
     if (d.living_it_out) {
       livingHtml = '<div class="bs-living-card"><p>' + escapeHtml(d.living_it_out) + "</p>" +
-        '<textarea class="bs-reflect-textarea" id="bs-reflect" placeholder="Write your own answer here \u2014 it stays saved on this device.">' +
-        escapeHtml(noteVal) + "</textarea>" +
-        '<div class="bs-reflect-note">Saved automatically on this device only.</div></div>';
+        '<textarea class="bs-reflect-textarea" id="bs-reflect" placeholder="Write your own answer here\u2026"></textarea>' +
+        '<div class="bs-reflect-row">' +
+        '<span class="bs-reflect-note">Saved on this device only \u2014 write a new answer any time you revisit this day.</span>' +
+        '<button class="bs-save-note-btn" id="bs-save-note" disabled>Save this answer</button>' +
+        "</div>" +
+        '<div class="bs-note-history" id="bs-note-history"></div>' +
+        "</div>";
     }
 
     var prayerHtml = d.prayer ? ('<div class="bs-prayer-card"><p>' + escapeHtml(d.prayer) + "</p></div>") : "";
@@ -269,12 +314,12 @@
     html.push("<h1>" + escapeHtml(d.title || "") + "</h1>");
     html.push(openerHtml);
     html.push("</div>");
-    if (d.setting_scene) html.push(sectionHtml("Setting the scene", "<p>" + escapeHtml(d.setting_scene) + "</p>"));
-    if (passageHtml) html.push(sectionHtml("The passage, opened up", '<div class="bs-passage-list">' + passageHtml + "</div>"));
-    if (truthHtml) html.push(sectionHtml("The central truth", truthHtml));
-    if (voiceHtml) html.push(sectionHtml("A voice from church history", voiceHtml));
-    if (livingHtml) html.push(sectionHtml("Living it out", livingHtml));
-    if (prayerHtml) html.push(sectionHtml("A prayer for today", prayerHtml));
+    if (d.setting_scene) html.push(sectionHtml("Setting the scene", "scene", '<div class="bs-scene-block"><p>' + escapeHtml(d.setting_scene) + "</p></div>"));
+    if (passageHtml) html.push(sectionHtml("The passage, opened up", "passage", '<div class="bs-passage-list">' + passageHtml + "</div>"));
+    if (truthHtml) html.push(sectionHtml("The central truth", "truth", truthHtml));
+    if (voiceHtml) html.push(sectionHtml("A voice from church history", "voice", voiceHtml));
+    if (livingHtml) html.push(sectionHtml("Living it out", "living", livingHtml));
+    if (prayerHtml) html.push(sectionHtml("A prayer for today", "prayer", prayerHtml));
     html.push('<button class="bs-mark-done' + (isRead ? " done" : "") + '" id="bs-mark-done">' + (isRead ? "\u2713 Marked as read" : "Mark today\u2019s study as read") + "</button>");
     html.push('<div class="bs-pagenav">' + prevHtml + nextHtml + "</div>");
     html.push('<div class="bs-kbd-hint"><span><kbd>\u2190</kbd> <kbd>\u2192</kbd> navigate</span><span><kbd>/</kbd> search</span><span><kbd>M</kbd> mark read</span></div>');
@@ -296,12 +341,50 @@
       markBtn.textContent = stillRead ? "✓ Marked as read" : "Mark today's study as read";
     });
     var reflectEl = document.getElementById("bs-reflect");
-    if (reflectEl) {
-      reflectEl.addEventListener("input", debounce(function () {
-        var map = getNotes();
-        map[id] = reflectEl.value;
-        setNotes(map);
-      }, 400));
+    var saveBtn = document.getElementById("bs-save-note");
+    var historyEl = document.getElementById("bs-note-history");
+
+    function renderHistory() {
+      if (!historyEl) return;
+      var entries = getNotesFor(id).slice().reverse(); // newest first
+      if (!entries.length) {
+        historyEl.innerHTML = '<div class="bs-note-empty">No saved answers yet for this day.</div>';
+        return;
+      }
+      historyEl.innerHTML = entries.map(function (n) {
+        return '<div class="bs-note-entry" data-ts="' + n.ts + '">' +
+          '<div class="ne-head"><span class="ne-ts">' + escapeHtml(formatTimestamp(n.ts)) + '</span>' +
+          '<button class="ne-del" data-del-ts="' + n.ts + '">Delete</button></div>' +
+          '<p class="ne-text">' + escapeHtml(n.text) + "</p>" +
+          "</div>";
+      }).join("");
+      historyEl.querySelectorAll("[data-del-ts]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          deleteNoteFor(id, Number(btn.getAttribute("data-del-ts")));
+          renderHistory();
+        });
+      });
+    }
+
+    if (reflectEl && saveBtn) {
+      renderHistory();
+      reflectEl.addEventListener("input", function () {
+        saveBtn.disabled = reflectEl.value.trim().length === 0;
+      });
+      saveBtn.addEventListener("click", function () {
+        var val = reflectEl.value.trim();
+        if (!val) return;
+        addNoteFor(id, val);
+        reflectEl.value = "";
+        saveBtn.disabled = true;
+        saveBtn.classList.add("saved");
+        saveBtn.textContent = "Saved \u2713";
+        setTimeout(function () {
+          saveBtn.classList.remove("saved");
+          saveBtn.textContent = "Save this answer";
+        }, 1400);
+        renderHistory();
+      });
     }
 
     highlightSidebarRow(id);
@@ -310,8 +393,8 @@
     if (scrollParent) scrollParent.scrollTop = 0;
   }
 
-  function sectionHtml(label, inner) {
-    return '<div class="bs-section"><div class="bs-section-label">' + escapeHtml(label) + "</div>" + inner + "</div>";
+  function sectionHtml(label, kind, inner) {
+    return '<div class="bs-section" data-kind="' + kind + '"><div class="bs-section-label"><span class="dot"></span>' + escapeHtml(label) + "</div>" + inner + "</div>";
   }
   function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
   function titleCase(s) {

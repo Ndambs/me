@@ -15,6 +15,18 @@ js/bible-data.js        → NEW — all 274 days of content, generated from your
 js/bible-study.js       → NEW — the reader app (search, progress, notes, nav)
 ```
 
+If you already installed a previous version of this update, you only need
+to overwrite `css/bible-study.css` and `js/bible-study.js` — those are the
+two files that changed for the new color palette and the saved-answers
+history feature. `index.html`, `bible-study.html`, and `js/bible-data.js`
+are unchanged from before.
+
+Note on old saved notes: the previous version of this page (if you already
+tried it) stored a single note per day under a different storage key. On
+first load after this update, any note you'd already saved that way is
+automatically carried over into the new saved-answers log, marked "saved
+previously" instead of a timestamp — nothing is lost.
+
 ## How to install
 
 1. Download this zip and unzip it.
@@ -39,13 +51,24 @@ points and copy them into your own file by hand.
 - **All 274 days**, Genesis to Revelation, parsed straight from your PDF:
   setting the scene, the passage opened up chapter‑by‑chapter, the central
   truth, a voice from church history, living it out, and the closing prayer.
+- **Color-coded sections** — each part of the day (setting the scene,
+  the passage, the central truth, church history, living it out, the
+  prayer) has its own accent color in both dark and light themes, so the
+  page reads as distinct movements rather than one flat block. Day titles
+  render with a warm gradient (ink → gold → blue) instead of a single flat
+  color.
 - **Sidebar navigator** — grouped by book, with a live search box and an
   Old Testament / New Testament / All toggle.
 - **Progress tracking** — mark a day as read; it's saved in the browser
   (`localStorage`), so a returning reader sees "Continue" pick up right
   where they left off. Nothing is sent anywhere — it's local to the device.
-- **Personal reflection notes** — the "Living It Out" question has a text
-  box that autosaves per-day, also local to the device.
+- **Saved reflections with timestamps** — the "Living It Out" box has its
+  own **Save this answer** button. Each save is appended (not overwritten)
+  to a running log shown right below the box, newest first, each stamped
+  with the date and time it was saved — so if someone works through the
+  plan more than once, every pass's answer for that day is kept side by
+  side. Each saved answer has its own Delete link. All of this lives only
+  in the browser's local storage on that device.
 - **Keyboard shortcuts** — `←` / `→` to move between days, `/` to jump to
   search, `M` to mark the current day read.
 - **Deep links** — every day has its own URL hash (e.g.
@@ -55,6 +78,8 @@ points and copy them into your own file by hand.
   a single day.
 - **Theme toggle** on the reader page itself (dark ⇄ light), independent of
   the main site's toggle so it works even though this is a separate page.
+  Both themes now use a richer, section-coded palette rather than a single
+  blue accent everywhere.
 
 ## Notes / things you may want to tweak
 
