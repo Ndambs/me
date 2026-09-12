@@ -21,10 +21,10 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
 </head>
 <body class="bs-body">
+<div class="bs-light-fx" aria-hidden="true"><span class="lb1"></span><span class="lb2"></span><span class="lb3"></span></div>
 
 <!-- Top bar -->
 <header class="bs-topbar" id="bs-topbar">
-  <button class="bs-icon-btn bs-drawer-toggle" id="bs-drawer-toggle" aria-label="Open study contents">☰</button>
   <a href="index.html" class="bs-back" aria-label="Back to portfolio">
     <span class="logo-bracket">&lt;</span>BN<span class="logo-bracket">/&gt;</span>
   </a>
@@ -45,8 +45,15 @@
 <div class="bs-scrim" id="bs-scrim"></div>
 
 <main class="bs-main bs-view active" id="bs-view-study">
-  <!-- Sidebar -->
-  <aside class="bs-sidebar" id="bs-sidebar" aria-label="Study contents">
+  <!-- Always-reachable edge handle, deliberately OUTSIDE the hover area below so
+       hovering it doesn't also trigger the hover-to-peek behavior; it's a pure click toggle. -->
+  <button class="bs-sidebar-handle" id="bs-sidebar-handle" aria-label="Show or hide study contents" aria-expanded="true">
+    <span class="bs-handle-arrow">‹</span>
+  </button>
+
+  <!-- Sidebar + its hover-to-peek zone (desktop only) -->
+  <div class="bs-sidebar-hover-area" id="bs-sidebar-hover-area">
+    <aside class="bs-sidebar" id="bs-sidebar" aria-label="Study contents">
     <div class="bs-sidebar-head">
       <div class="bs-tracks" role="tablist" aria-label="Choose a testament">
         <button class="bs-track-btn active" data-track="OT">Old Testament</button>
@@ -67,7 +74,8 @@
       </div>
     </div>
     <nav class="bs-daylist" id="bs-daylist" aria-label="Days list"></nav>
-  </aside>
+    </aside>
+  </div>
 
   <!-- Reader -->
   <section class="bs-reader-scroll" id="bs-reader-scroll">
@@ -88,19 +96,44 @@ and chapter by chapter, linking out to real, free study resources.
       direct link into every single chapter — the actual text, cross-references, and dozens of
       classic and modern commentaries side by side. Built for whenever you want to go deeper than
       today's sermonette.</p>
+    </div>
+
+    <!-- Step 1: choose a category before any books are shown -->
+    <div class="bs-res-category-prompt" id="bs-res-category-prompt">
+      <button class="bs-res-cat-card" data-cat="OT">
+        <span class="cat-title">Old Testament</span>
+        <span class="cat-sub">39 books · Genesis to Malachi</span>
+      </button>
+      <button class="bs-res-cat-card" data-cat="NT">
+        <span class="cat-title">New Testament</span>
+        <span class="cat-sub">27 books · Matthew to Revelation</span>
+      </button>
+      <button class="bs-res-cat-card" data-cat="ALL">
+        <span class="cat-title">All 66 Books</span>
+        <span class="cat-sub">The whole Bible, in canonical order</span>
+      </button>
+    </div>
+
+    <!-- Step 2: once a category is chosen, a compact switcher + the matching book list -->
+    <div class="bs-res-body" id="bs-res-body" hidden>
+      <div class="bs-res-switcher" role="tablist" aria-label="Switch testament">
+        <button class="bs-res-switch-btn" data-cat="OT">Old Testament</button>
+        <button class="bs-res-switch-btn" data-cat="NT">New Testament</button>
+        <button class="bs-res-switch-btn" data-cat="ALL">All</button>
+      </div>
       <div class="bs-search-wrap bs-res-search-wrap">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="search" class="bs-search" id="bs-res-search" placeholder="Find a book (e.g. Romans, Psalms, Revelation)…" aria-label="Search the resources library" />
       </div>
-    </div>
 
-    <div class="bs-res-testament" id="bs-res-ot">
-      <h3 class="bs-res-testament-title">Old Testament <span>39 books</span></h3>
-      <div class="bs-res-book-list" data-testament="OT"></div>
-    </div>
-    <div class="bs-res-testament" id="bs-res-nt">
-      <h3 class="bs-res-testament-title">New Testament <span>27 books</span></h3>
-      <div class="bs-res-book-list" data-testament="NT"></div>
+      <div class="bs-res-testament" id="bs-res-ot">
+        <h3 class="bs-res-testament-title">Old Testament <span>39 books</span></h3>
+        <div class="bs-res-book-list" data-testament="OT"></div>
+      </div>
+      <div class="bs-res-testament" id="bs-res-nt">
+        <h3 class="bs-res-testament-title">New Testament <span>27 books</span></h3>
+        <div class="bs-res-book-list" data-testament="NT"></div>
+      </div>
     </div>
 
     <p class="bs-res-footnote">

@@ -57,8 +57,8 @@
   --bs-border:rgba(64,44,20,.13);
   --bs-border-strong:rgba(64,44,20,.24);
   --bs-text:#211a12;
-  --bs-text-dim:#5c4f3d;
-  --bs-text-faint:#8a7c65;
+  --bs-text-dim:#4a3f30;
+  --bs-text-faint:#6b5f4c;
 
   --bs-accent:#26538a;
   --bs-accent-dim:rgba(38,83,138,.11);
@@ -192,15 +192,52 @@
   background-repeat:no-repeat;
   background-attachment:fixed;
 }
-[data-theme="dark"]{ --bs-photo-scrim: rgba(8,7,12,.58); }
-[data-theme="light"]{ --bs-photo-scrim: rgba(250,246,236,.68); }
+[data-theme="dark"]{ --bs-photo-scrim: rgba(8,7,12,.58); --bs-panel-alpha:62%; --bs-topbar-alpha:52%; --bs-reader-alpha:58%; }
+[data-theme="light"]{ --bs-photo-scrim: rgba(250,246,236,.32); --bs-panel-alpha:60%; --bs-topbar-alpha:64%; --bs-reader-alpha:56%; }
+
+/* ---- light-mode ambient motion: soft drifting light blobs behind everything.
+   Dark mode stays still/moody on purpose; this is the "spice" for light mode only. ---- */
+.bs-light-fx{ display:none; }
+[data-theme="light"] .bs-light-fx{
+  display:block; position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+}
+.bs-light-fx span{
+  position:absolute; border-radius:50%; filter:blur(60px); opacity:.4; mix-blend-mode:multiply;
+}
+.bs-light-fx .lb1{
+  width:46vw; height:46vw; left:-10vw; top:-14vh; background:radial-gradient(circle, #ffd98f, transparent 70%);
+  animation:bsFloat1 26s ease-in-out infinite;
+}
+.bs-light-fx .lb2{
+  width:40vw; height:40vw; right:-12vw; top:20vh; background:radial-gradient(circle, #9fc2e8, transparent 70%);
+  animation:bsFloat2 32s ease-in-out infinite;
+}
+.bs-light-fx .lb3{
+  width:34vw; height:34vw; left:20vw; bottom:-16vh; background:radial-gradient(circle, #d9a5e0, transparent 70%);
+  animation:bsFloat3 22s ease-in-out infinite;
+}
+@keyframes bsFloat1{
+  0%,100%{ transform:translate(0,0) scale(1); }
+  50%{ transform:translate(6vw,8vh) scale(1.12); }
+}
+@keyframes bsFloat2{
+  0%,100%{ transform:translate(0,0) scale(1); }
+  50%{ transform:translate(-7vw,-6vh) scale(1.08); }
+}
+@keyframes bsFloat3{
+  0%,100%{ transform:translate(0,0) scale(1); }
+  50%{ transform:translate(5vw,-7vh) scale(1.1); }
+}
+@media (prefers-reduced-motion: reduce){
+  .bs-light-fx span{ animation:none !important; }
+}
 
 /* top bar — fixed, slides up and out while scrolling down */
 .bs-topbar{
   position:fixed; top:0; left:0; right:0; z-index:40;
   display:flex; align-items:center; gap:14px;
   padding:14px 22px;
-  background:color-mix(in srgb, var(--bs-bg) 52%, transparent);
+  background:color-mix(in srgb, var(--bs-bg) var(--bs-topbar-alpha), transparent);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--bs-border);
   transition:transform var(--bs-motion-dur) var(--bs-motion-hide);
@@ -248,8 +285,6 @@
   transition:background .15s, color .15s, border-color .15s;
 }
 .bs-icon-btn:hover{ color:var(--bs-text); border-color:var(--bs-border-strong); background:var(--bs-panel-2); }
-.bs-drawer-toggle{ display:none; }
-.bs-view-resources-active .bs-drawer-toggle{ display:none !important; }
 
 /* thin overall progress line, fixed just under the topbar, hides together with it */
 .bs-progressline{
@@ -266,43 +301,75 @@
 
 /* ---- view switching ---- */
 .bs-view{ display:none; padding-top:var(--bs-chrome-h); height:100vh; box-sizing:border-box; }
-.bs-main.active{ display:grid; }
+.bs-main.active{ display:block; position:relative; }
 #bs-view-resources.active{ display:block; overflow-y:auto; }
 
-/* main layout */
-.bs-main{
-  grid-template-columns:320px 1fr;
-  transition:grid-template-columns var(--bs-motion-dur) var(--bs-motion-show);
-}
-@media (max-width:920px){
-  .bs-main{ grid-template-columns:1fr; }
-  .bs-drawer-toggle{ display:flex; }
+/* main layout — reader always spans full width; the sidebar floats over/beside
+   it as its own layer and never participates in a grid, so it can slide fully
+   off to the left independent of anything else. */
+.bs-reader-scroll{ margin-left:0; }
+@media (min-width:921px){
+  .bs-reader-scroll{ margin-left:320px; transition:margin-left var(--bs-motion-dur) var(--bs-motion-show); }
+  body.bs-sidebar-collapsed .bs-reader-scroll{ margin-left:0; }
 }
 
-/* ---- sidebar ---- */
+/* ---- sidebar + its hover/handle wrapper ---- */
+.bs-sidebar-hover-area{ position:relative; }
+@media (min-width:921px){
+  .bs-sidebar-hover-area{
+    position:fixed; top:var(--bs-chrome-h); left:0; width:320px;
+    height:calc(100vh - var(--bs-chrome-h)); z-index:55;
+    transition:top var(--bs-motion-dur) var(--bs-motion-show);
+  }
+  body.bs-chrome-hidden .bs-sidebar-hover-area{ top:0; height:100vh; }
+}
+
 .bs-sidebar{
   border-right:1px solid var(--bs-border);
-  background:color-mix(in srgb, var(--bs-panel-2) 62%, transparent);
+  background:color-mix(in srgb, var(--bs-panel-2) var(--bs-panel-alpha), transparent);
   backdrop-filter:blur(20px);
   display:flex; flex-direction:column;
-  height:calc(100vh - var(--bs-chrome-h));
   min-width:0; overflow:hidden;
-  transition:width var(--bs-motion-dur) var(--bs-motion-show), opacity var(--bs-motion-dur) var(--bs-motion-show), padding var(--bs-motion-dur) var(--bs-motion-show);
 }
 @media (min-width:921px){
-  .bs-chrome-hidden .bs-sidebar{ width:0; opacity:0; border-right-color:transparent; }
-  .bs-chrome-hidden .bs-main{ grid-template-columns:0px 1fr; }
+  .bs-sidebar{
+    position:absolute; inset:0; width:320px; height:100%;
+    transition:transform var(--bs-motion-dur) var(--bs-motion-show);
+  }
+  body.bs-sidebar-collapsed .bs-sidebar{ transform:translateX(-100%); }
 }
 @media (max-width:920px){
   .bs-sidebar{
     position:fixed; top:0; left:0; height:100vh; width:min(360px,86vw);
     z-index:60; transform:translateX(-105%);
-    transition:transform .28s var(--bs-motion-show);
+    transition:transform .3s var(--bs-motion-show);
     box-shadow:24px 0 60px rgba(0,0,0,.4);
-    padding-top:14px; opacity:1 !important;
+    padding-top:14px;
   }
-  .bs-sidebar.open{ transform:translateX(0); }
+  body:not(.bs-sidebar-collapsed) .bs-sidebar{ transform:translateX(0); }
 }
+
+/* the little tab that's always reachable at the left edge, in both states */
+.bs-sidebar-handle{
+  position:fixed; top:50%; left:0; transform:translateY(-50%);
+  width:24px; height:64px; z-index:70;
+  border:1px solid var(--bs-border); border-left:none;
+  border-radius:0 14px 14px 0;
+  background:color-mix(in srgb, var(--bs-panel-2) 88%, transparent);
+  backdrop-filter:blur(16px);
+  color:var(--bs-text-dim); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:left var(--bs-motion-dur) var(--bs-motion-show), background .15s, color .15s;
+}
+.bs-sidebar-handle:hover{ color:var(--bs-text); background:var(--bs-panel-2); }
+.bs-handle-arrow{ display:inline-block; transition:transform var(--bs-motion-dur) var(--bs-motion-show); font-size:.9rem; }
+body.bs-sidebar-collapsed .bs-handle-arrow{ transform:rotate(180deg); }
+/* only relevant in the Study view */
+body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
+@media (min-width:921px){
+  body.bs-chrome-hidden .bs-sidebar-handle{ top:calc(50% - var(--bs-chrome-h)/2); }
+}
+
 .bs-sidebar-head{ padding:16px 16px 10px; }
 .bs-tracks{ display:flex; gap:6px; padding:0 16px 12px; }
 .bs-track-btn{
@@ -376,7 +443,7 @@
   background:
     radial-gradient(1000px 480px at 12% -8%, var(--bs-accent-dim), transparent 60%),
     radial-gradient(800px 420px at 100% 15%, var(--bs-gold-dim), transparent 55%),
-    color-mix(in srgb, var(--bs-bg) 58%, transparent);
+    color-mix(in srgb, var(--bs-bg) var(--bs-reader-alpha), transparent);
 }
 .bs-reader{
   max-width:720px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(20px,5vw,28px) 140px;
@@ -562,7 +629,7 @@
 .bs-scrim.show{ opacity:1; pointer-events:auto; }
 
 @media print{
-  .bs-topbar, .bs-progressline, .bs-sidebar, .bs-pagenav, .bs-kbd-hint, .bs-mark-done, .bs-drawer-toggle{ display:none !important; }
+  .bs-topbar, .bs-progressline, .bs-sidebar-hover-area, .bs-pagenav, .bs-kbd-hint, .bs-mark-done{ display:none !important; }
   .bs-main{ display:block; padding-top:0; height:auto; }
   .bs-reader-scroll{ height:auto; overflow:visible; background:#fff; }
   .bs-body{ background:#fff; color:#000; }
@@ -578,7 +645,7 @@
 .bs-resources{
   background:
     radial-gradient(1000px 500px at 85% 0%, var(--bs-passage-dim), transparent 60%),
-    color-mix(in srgb, var(--bs-panel-2) 60%, transparent);
+    color-mix(in srgb, var(--bs-panel-2) var(--bs-panel-alpha), transparent);
   border-top:1px solid var(--bs-border);
   padding:calc(var(--bs-chrome-h) + clamp(40px,6vw,80px)) clamp(20px,5vw,28px) clamp(60px,8vw,100px);
 }
@@ -596,6 +663,30 @@
   max-width:60ch; margin:0 auto 24px;
 }
 .bs-res-search-wrap{ max-width:420px; margin:0 auto; position:relative; }
+
+/* Step 1: category prompt */
+.bs-res-category-prompt{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+  max-width:760px; margin:0 auto 20px;
+}
+@media (max-width:700px){ .bs-res-category-prompt{ grid-template-columns:1fr; } }
+.bs-res-cat-card{
+  border:1px solid var(--bs-border); border-radius:14px; background:var(--bs-panel);
+  padding:26px 20px; text-align:center; cursor:pointer; transition:.18s;
+  display:flex; flex-direction:column; gap:6px;
+}
+.bs-res-cat-card:hover{ border-color:var(--bs-passage); transform:translateY(-2px); }
+.bs-res-cat-card .cat-title{ font-family:var(--bs-serif); font-weight:600; font-size:1.15rem; color:var(--bs-text); }
+.bs-res-cat-card .cat-sub{ font-family:var(--bs-mono); font-size:.74rem; color:var(--bs-text-faint); }
+
+/* Step 2: switcher, shown once a category is picked */
+.bs-res-switcher{ display:flex; gap:6px; justify-content:center; margin-bottom:20px; }
+.bs-res-switch-btn{
+  padding:8px 18px; border-radius:20px; font-family:var(--bs-sans); font-size:.86rem; font-weight:600;
+  border:1px solid var(--bs-border); background:var(--bs-panel); color:var(--bs-text-dim); cursor:pointer; transition:.15s;
+}
+.bs-res-switch-btn.active{ background:var(--bs-passage); border-color:var(--bs-passage); color:var(--bs-bg); }
+.bs-res-switch-btn:not(.active):hover{ color:var(--bs-text); }
 
 .bs-res-testament{ margin-top:40px; }
 .bs-res-testament-title{

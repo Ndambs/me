@@ -527,21 +527,75 @@
     renderDay(id);
   }
 
-  // ---------- sidebar drawer (mobile) ----------
+  // ---------- sidebar: unified collapsed/expanded state ----------
+  // One class on <body> drives both mobile (off-canvas drawer) and desktop
+  // (floating panel) presentations; CSS media queries handle the visual
+  // difference. Default: open on desktop, closed on mobile.
+  var bodyEl = document.body;
   var sidebarEl = document.getElementById("bs-sidebar");
   var scrimEl = document.getElementById("bs-scrim");
-  function openSidebarMobile() { sidebarEl.classList.add("open"); scrimEl.classList.add("show"); }
-  function closeSidebarMobile() { sidebarEl.classList.remove("open"); scrimEl.classList.remove("show"); }
+  var handleEl = document.getElementById("bs-sidebar-handle");
+  var hoverAreaEl = document.getElementById("bs-sidebar-hover-area");
+  var isDesktop = function () { return window.innerWidth >= 921; };
 
-  var drawerToggle = document.getElementById("bs-drawer-toggle");
-  if (drawerToggle) drawerToggle.addEventListener("click", openSidebarMobile);
-  if (scrimEl) scrimEl.addEventListener("click", closeSidebarMobile);
+  function setSidebarCollapsed(collapsed) {
+    bodyEl.classList.toggle("bs-sidebar-collapsed", collapsed);
+    if (handleEl) handleEl.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    if (scrimEl) scrimEl.classList.toggle("show", !collapsed && !isDesktop());
+  }
+  function toggleSidebar() { setSidebarCollapsed(!bodyEl.classList.contains("bs-sidebar-collapsed")); }
+  // kept for compatibility with existing call sites below
+  function openSidebarMobile() { setSidebarCollapsed(false); }
+  function closeSidebarMobile() { setSidebarCollapsed(true); }
+
+  if (handleEl) handleEl.addEventListener("click", toggleSidebar);
+  if (scrimEl) scrimEl.addEventListener("click", function () { setSidebarCollapsed(true); });
+
+  // Clicking anywhere in the actual reading content collapses the sidebar —
+  // on desktop this is a deliberate "get it out of my way" gesture; on
+  // mobile the scrim already handles taps outside the drawer, so this only
+  // matters there if the drawer happens to be closed already (a no-op).
+  var readerScrollEl = document.getElementById("bs-reader-scroll");
+  if (readerScrollEl) {
+    readerScrollEl.addEventListener("click", function () {
+      if (isDesktop()) setSidebarCollapsed(true);
+    });
+  }
+
+  // Hover near the left edge (desktop only) peeks the sidebar back out;
+  // moving away closes it again after a brief pause, like an auto-hiding dock.
+  var hoverCollapseTimer = null;
+  if (hoverAreaEl) {
+    hoverAreaEl.addEventListener("mouseenter", function () {
+      if (!isDesktop()) return;
+      clearTimeout(hoverCollapseTimer);
+      setSidebarCollapsed(false);
+    });
+    hoverAreaEl.addEventListener("mouseleave", function () {
+      if (!isDesktop()) return;
+      hoverCollapseTimer = setTimeout(function () { setSidebarCollapsed(true); }, 450);
+    });
+  }
+
+  // Initialize: open on desktop, closed on mobile.
+  setSidebarCollapsed(!isDesktop());
+
+  // If the viewport crosses the desktop/mobile breakpoint (e.g. resizing the
+  // browser window, or rotating a tablet), reset to that mode's sensible
+  // default rather than carrying over a stale collapsed/expanded state.
+  var wasDesktop = isDesktop();
+  window.addEventListener("resize", function () {
+    var nowDesktop = isDesktop();
+    if (nowDesktop !== wasDesktop) {
+      wasDesktop = nowDesktop;
+      setSidebarCollapsed(!nowDesktop);
+    }
+  });
 
   // ---------- tabs (Study / Library) ----------
   var tabBtns = document.querySelectorAll(".bs-tab-btn");
   var viewStudy = document.getElementById("bs-view-study");
   var viewResources = document.getElementById("bs-view-resources");
-  var bodyEl = document.body;
 
   function switchView(view) {
     tabBtns.forEach(function (b) {
@@ -552,17 +606,21 @@
     viewStudy.classList.toggle("active", view === "study");
     viewResources.classList.toggle("active", view === "resources");
     bodyEl.classList.toggle("bs-view-resources-active", view === "resources");
-    bodyEl.classList.remove("bs-chrome-hidden"); // always show chrome right after switching tabs
-    closeSidebarMobile();
+    bodyEl.classList.remove("bs-chrome-hidden"); // always show the top bar right after switching tabs
+    if (view === "resources") setSidebarCollapsed(true);
+    else setSidebarCollapsed(!isDesktop());
   }
   tabBtns.forEach(function (btn) {
     btn.addEventListener("click", function () { switchView(btn.getAttribute("data-view")); });
   });
 
-  // ---------- auto-hide chrome (topbar + sidebar) while scrolling down ----------
-  // Applied to whichever pane is currently scrolling. Shows immediately on scroll-up
-  // or when near the top; hides after a small threshold of continuous downward scroll.
-  // Respects prefers-reduced-motion via the CSS transition-duration override above.
+  // ---------- auto-hide the top bar while scrolling down ----------
+  // Applied to whichever pane is currently scrolling. Shows immediately on
+  // scroll-up or when near the top; hides after a small threshold of
+  // continuous downward scroll. Respects prefers-reduced-motion via the CSS
+  // transition-duration override above. The sidebar is intentionally NOT
+  // tied to this anymore — it only responds to its own click/hover/handle
+  // triggers, wired separately above.
   function wireScrollHide(el) {
     if (!el) return;
     var lastTop = 0;
@@ -585,7 +643,7 @@
       });
     }, { passive: true });
   }
-  wireScrollHide(document.getElementById("bs-reader-scroll"));
+  wireScrollHide(readerScrollEl);
   wireScrollHide(viewResources);
 
   // ---------- measure real chrome height (topbar + progressline) ----------
@@ -684,22 +742,44 @@
       });
     });
 
-    var searchEl = document.getElementById("bs-res-search");
-    if (searchEl) {
-      searchEl.addEventListener("input", function () {
-        var q = searchEl.value.trim().toLowerCase();
-        var anyOt = false, anyNt = false;
-        document.querySelectorAll(".bs-res-book").forEach(function (row) {
-          var name = row.querySelector(".bname").textContent.toLowerCase();
-          var match = !q || name.indexOf(q) !== -1;
-          row.style.display = match ? "" : "none";
-          if (match) row.classList.toggle("open", !!q);
-          var list = row.closest(".bs-res-book-list");
-          if (match && list) { if (list.getAttribute("data-testament") === "OT") anyOt = true; else anyNt = true; }
-        });
-        document.getElementById("bs-res-ot").style.display = anyOt || !q ? "" : "none";
-        document.getElementById("bs-res-nt").style.display = anyNt || !q ? "" : "none";
+    // ---- category gate: Old Testament / New Testament / All ----
+    var promptEl = document.getElementById("bs-res-category-prompt");
+    var bodyBlockEl = document.getElementById("bs-res-body");
+    var otSection = document.getElementById("bs-res-ot");
+    var ntSection = document.getElementById("bs-res-nt");
+    var switchBtns = document.querySelectorAll(".bs-res-switch-btn");
+    var currentCat = null;
+
+    function applyCategory(cat) {
+      currentCat = cat;
+      otSection.style.display = (cat === "OT" || cat === "ALL") ? "" : "none";
+      ntSection.style.display = (cat === "NT" || cat === "ALL") ? "" : "none";
+      switchBtns.forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-cat") === cat); });
+      promptEl.style.display = "none";
+      bodyBlockEl.hidden = false;
+      // re-apply any live search text against the newly-visible category
+      if (searchResEl && searchResEl.value.trim()) filterResourceRows(searchResEl.value);
+    }
+
+    document.querySelectorAll(".bs-res-cat-card").forEach(function (card) {
+      card.addEventListener("click", function () { applyCategory(card.getAttribute("data-cat")); });
+    });
+    switchBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () { applyCategory(btn.getAttribute("data-cat")); });
+    });
+
+    var searchResEl = document.getElementById("bs-res-search");
+    function filterResourceRows(qRaw) {
+      var q = (qRaw || "").trim().toLowerCase();
+      document.querySelectorAll(".bs-res-book").forEach(function (row) {
+        var name = row.querySelector(".bname").textContent.toLowerCase();
+        var match = !q || name.indexOf(q) !== -1;
+        row.style.display = match ? "" : "none";
+        if (match) row.classList.toggle("open", !!q);
       });
+    }
+    if (searchResEl) {
+      searchResEl.addEventListener("input", function () { filterResourceRows(searchResEl.value); });
     }
   }
 
