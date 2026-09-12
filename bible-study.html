@@ -23,12 +23,15 @@
 <body class="bs-body">
 
 <!-- Top bar -->
-<header class="bs-topbar">
+<header class="bs-topbar" id="bs-topbar">
   <button class="bs-icon-btn bs-drawer-toggle" id="bs-drawer-toggle" aria-label="Open study contents">☰</button>
   <a href="index.html" class="bs-back" aria-label="Back to portfolio">
     <span class="logo-bracket">&lt;</span>BN<span class="logo-bracket">/&gt;</span>
-    <span>Portfolio</span>
   </a>
+  <div class="bs-tabs" role="tablist" aria-label="Choose a view">
+    <button class="bs-tab-btn active" data-view="study" role="tab" aria-selected="true">Study</button>
+    <button class="bs-tab-btn" data-view="resources" role="tab" aria-selected="false">Library</button>
+  </div>
   <div class="bs-title-block">
     <b>The Whole Bible in Daily Sermonettes</b>
     <span>NLT · Old Testament (183 days) + New Testament (91 days)</span>
@@ -37,11 +40,11 @@
     <button class="bs-icon-btn" id="bs-theme-toggle" aria-label="Toggle color theme">◐</button>
   </div>
 </header>
-<div class="bs-progressline"><div class="bs-progressline-fill" id="bs-progress-fill"></div></div>
+<div class="bs-progressline" id="bs-progressline"><div class="bs-progressline-fill" id="bs-progress-fill"></div></div>
 
 <div class="bs-scrim" id="bs-scrim"></div>
 
-<main class="bs-main">
+<main class="bs-main bs-view active" id="bs-view-study">
   <!-- Sidebar -->
   <aside class="bs-sidebar" id="bs-sidebar" aria-label="Study contents">
     <div class="bs-sidebar-head">
@@ -76,7 +79,7 @@
 RESOURCES LIBRARY — a catalogue of the whole Bible, book by book
 and chapter by chapter, linking out to real, free study resources.
 ============================================================ -->
-<section class="bs-resources" id="bs-resources" aria-label="Bible resources library">
+<section class="bs-resources bs-view" id="bs-view-resources" aria-label="Bible resources library">
   <div class="bs-resources-inner">
     <div class="bs-resources-head">
       <div class="bs-ref-badge">66 books · 1,189 chapters</div>

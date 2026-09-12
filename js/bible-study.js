@@ -537,6 +537,73 @@
   if (drawerToggle) drawerToggle.addEventListener("click", openSidebarMobile);
   if (scrimEl) scrimEl.addEventListener("click", closeSidebarMobile);
 
+  // ---------- tabs (Study / Library) ----------
+  var tabBtns = document.querySelectorAll(".bs-tab-btn");
+  var viewStudy = document.getElementById("bs-view-study");
+  var viewResources = document.getElementById("bs-view-resources");
+  var bodyEl = document.body;
+
+  function switchView(view) {
+    tabBtns.forEach(function (b) {
+      var on = b.getAttribute("data-view") === view;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    viewStudy.classList.toggle("active", view === "study");
+    viewResources.classList.toggle("active", view === "resources");
+    bodyEl.classList.toggle("bs-view-resources-active", view === "resources");
+    bodyEl.classList.remove("bs-chrome-hidden"); // always show chrome right after switching tabs
+    closeSidebarMobile();
+  }
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () { switchView(btn.getAttribute("data-view")); });
+  });
+
+  // ---------- auto-hide chrome (topbar + sidebar) while scrolling down ----------
+  // Applied to whichever pane is currently scrolling. Shows immediately on scroll-up
+  // or when near the top; hides after a small threshold of continuous downward scroll.
+  // Respects prefers-reduced-motion via the CSS transition-duration override above.
+  function wireScrollHide(el) {
+    if (!el) return;
+    var lastTop = 0;
+    var ticking = false;
+    el.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var top = el.scrollTop;
+        var delta = top - lastTop;
+        if (top < 40) {
+          bodyEl.classList.remove("bs-chrome-hidden");
+        } else if (delta > 6) {
+          bodyEl.classList.add("bs-chrome-hidden");
+        } else if (delta < -6) {
+          bodyEl.classList.remove("bs-chrome-hidden");
+        }
+        lastTop = top;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+  wireScrollHide(document.getElementById("bs-reader-scroll"));
+  wireScrollHide(viewResources);
+
+  // ---------- measure real chrome height (topbar + progressline) ----------
+  // Keeps the panes' top offset correct even if the header wraps to a second
+  // line on a narrow viewport, rather than assuming a fixed pixel value.
+  function measureChromeHeight() {
+    var topbar = document.getElementById("bs-topbar");
+    var pline = document.getElementById("bs-progressline");
+    if (!topbar) return;
+    var h = topbar.getBoundingClientRect().height + (pline ? pline.getBoundingClientRect().height : 0);
+    if (h > 0) document.documentElement.style.setProperty("--bs-chrome-h", h + "px");
+  }
+  measureChromeHeight();
+  window.addEventListener("resize", measureChromeHeight);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(measureChromeHeight).catch(function () {});
+  }
+
   // ---------- wire up controls ----------
   trackBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
