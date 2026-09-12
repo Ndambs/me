@@ -72,6 +72,43 @@
   </section>
 </main>
 
+<!-- ============================================================
+RESOURCES LIBRARY — a catalogue of the whole Bible, book by book
+and chapter by chapter, linking out to real, free study resources.
+============================================================ -->
+<section class="bs-resources" id="bs-resources" aria-label="Bible resources library">
+  <div class="bs-resources-inner">
+    <div class="bs-resources-head">
+      <div class="bs-ref-badge">66 books · 1,189 chapters</div>
+      <h2>The Resources Library</h2>
+      <p>Every book of the Bible, Genesis to Revelation, with a plain-English overview and a
+      direct link into every single chapter — the actual text, cross-references, and dozens of
+      classic and modern commentaries side by side. Built for whenever you want to go deeper than
+      today's sermonette.</p>
+      <div class="bs-search-wrap bs-res-search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" class="bs-search" id="bs-res-search" placeholder="Find a book (e.g. Romans, Psalms, Revelation)…" aria-label="Search the resources library" />
+      </div>
+    </div>
+
+    <div class="bs-res-testament" id="bs-res-ot">
+      <h3 class="bs-res-testament-title">Old Testament <span>39 books</span></h3>
+      <div class="bs-res-book-list" data-testament="OT"></div>
+    </div>
+    <div class="bs-res-testament" id="bs-res-nt">
+      <h3 class="bs-res-testament-title">New Testament <span>27 books</span></h3>
+      <div class="bs-res-book-list" data-testament="NT"></div>
+    </div>
+
+    <p class="bs-res-footnote">
+      Overviews link to GotQuestions.org. Chapter links open BibleHub.com, which itself gives you
+      the passage in dozens of translations plus commentaries including Matthew Henry, Spurgeon,
+      Guzik, Calvin, Barnes, the Cambridge and Pulpit commentaries, and more — all on one page.
+      "Read" links open the passage on BibleGateway in the NLT, matching this guide's translation.
+    </p>
+  </div>
+</section>
+
 <!-- Voice-from-history "open source" confirmation modal -->
 <div class="bs-modal-overlay" id="bs-modal-overlay" aria-hidden="true">
   <div class="bs-modal" role="dialog" aria-modal="true" aria-labelledby="bs-modal-title">
@@ -86,6 +123,7 @@
 </div>
 
 <script src="js/bible-data.js"></script>
+<script src="js/resources-data.js"></script>
 <script src="js/bible-study.js"></script>
 </body>
 </html>

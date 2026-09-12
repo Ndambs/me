@@ -580,10 +580,67 @@
     if (e.key === "Escape") closeSidebarMobile();
   });
 
-  // ---------- init ----------
+  // ---------- Resources Library (66-book catalogue) ----------
+  var BOOKS = window.BIBLE_BOOKS || [];
+  function renderResourcesLibrary() {
+    var otList = document.querySelector('.bs-res-book-list[data-testament="OT"]');
+    var ntList = document.querySelector('.bs-res-book-list[data-testament="NT"]');
+    if (!otList || !ntList) return;
+
+    function bookRowHtml(b) {
+      var chapters = [];
+      for (var c = 1; c <= b.chapters; c++) {
+        chapters.push('<a class="bs-res-chap-link" href="https://biblehub.com/' + b.slug + '/' + c + '.htm" target="_blank" rel="noopener noreferrer">' + c + '</a>');
+      }
+      var readUrl = "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(b.name + " 1") + "&version=NLT";
+      var overviewUrl = "https://www.gotquestions.org/" + b.gq + ".html";
+      return (
+        '<div class="bs-res-book">' +
+          '<button class="bs-res-book-head" data-toggle="1">' +
+            '<span class="bname">' + escapeHtml(b.name) + '</span>' +
+            '<span class="bcount">' + b.chapters + (b.chapters === 1 ? " chapter" : " chapters") + '</span>' +
+            '<a class="boverview" href="' + readUrl + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read ↗</a>' +
+            '<a class="boverview" href="' + overviewUrl + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Overview ↗</a>' +
+            '<span class="bchev">▾</span>' +
+          '</button>' +
+          '<div class="bs-res-chapters">' + chapters.join("") + '</div>' +
+        '</div>'
+      );
+    }
+
+    otList.innerHTML = BOOKS.filter(function (b) { return b.testament === "OT"; }).map(bookRowHtml).join("");
+    ntList.innerHTML = BOOKS.filter(function (b) { return b.testament === "NT"; }).map(bookRowHtml).join("");
+
+    document.querySelectorAll(".bs-res-book-head").forEach(function (head) {
+      head.addEventListener("click", function () {
+        head.closest(".bs-res-book").classList.toggle("open");
+      });
+    });
+
+    var searchEl = document.getElementById("bs-res-search");
+    if (searchEl) {
+      searchEl.addEventListener("input", function () {
+        var q = searchEl.value.trim().toLowerCase();
+        var anyOt = false, anyNt = false;
+        document.querySelectorAll(".bs-res-book").forEach(function (row) {
+          var name = row.querySelector(".bname").textContent.toLowerCase();
+          var match = !q || name.indexOf(q) !== -1;
+          row.style.display = match ? "" : "none";
+          if (match) row.classList.toggle("open", !!q);
+          var list = row.closest(".bs-res-book-list");
+          if (match && list) { if (list.getAttribute("data-testament") === "OT") anyOt = true; else anyNt = true; }
+        });
+        document.getElementById("bs-res-ot").style.display = anyOt || !q ? "" : "none";
+        document.getElementById("bs-res-nt").style.display = anyNt || !q ? "" : "none";
+      });
+    }
+  }
+
+
   initTheme();
   renderSidebar();
   updateProgressUI();
+  renderResourcesLibrary();
 
   var initialId = (location.hash || "").replace("#", "");
   if (initialId && byId[initialId]) {
