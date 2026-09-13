@@ -778,8 +778,10 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-modal-btn{
   flex:1; padding:11px 14px; border-radius:10px; font-family:var(--bs-sans); font-size:.9rem; font-weight:600;
   cursor:pointer; transition:.15s;
+  display:flex; align-items:center; justify-content:center; text-decoration:none;
 }
 .bs-modal-cancel{ background:none; border:1px solid var(--bs-border-strong); color:var(--bs-text-dim); }
 .bs-modal-cancel:hover{ color:var(--bs-text); border-color:var(--bs-text-faint); }
 .bs-modal-confirm{ background:var(--bs-voice); border:1px solid var(--bs-voice); color:var(--bs-bg); }
 .bs-modal-confirm:hover{ filter:brightness(1.08); }
+.bs-modal-confirm.disabled{ opacity:.5; pointer-events:none; }

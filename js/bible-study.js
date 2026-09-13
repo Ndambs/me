@@ -139,16 +139,19 @@
   // ---------- generic "open externally?" confirmation modal ----------
   // Shared by the "voice from church history" links and the passage chapter
   // links below — one modal, filled in differently per use case.
+  // The confirm control is a real <a href target="_blank">, not a JS-driven
+  // window.open() — mobile browsers (Safari in particular) are far more
+  // reliable about letting an actual link open a new tab than a script call,
+  // even one triggered by a genuine tap.
   var modalOverlay = document.getElementById("bs-modal-overlay");
   var modalBody = document.getElementById("bs-modal-body");
   var modalTitle = document.getElementById("bs-modal-title");
   var modalCancel = document.getElementById("bs-modal-cancel");
   var modalConfirm = document.getElementById("bs-modal-confirm");
-  var pendingUrl = null;
   var lastFocused = null;
 
   function showConfirmModal(titleText, bodyHtml, url) {
-    pendingUrl = url;
+    modalConfirm.setAttribute("href", url);
     modalTitle.textContent = titleText;
     modalBody.innerHTML = bodyHtml;
     lastFocused = document.activeElement;
@@ -159,13 +162,13 @@
   function closeVoiceModal() {
     modalOverlay.classList.remove("show");
     modalOverlay.setAttribute("aria-hidden", "true");
-    pendingUrl = null;
     if (lastFocused && lastFocused.focus) lastFocused.focus();
   }
   modalCancel.addEventListener("click", closeVoiceModal);
   modalOverlay.addEventListener("click", function (e) { if (e.target === modalOverlay) closeVoiceModal(); });
   modalConfirm.addEventListener("click", function () {
-    if (pendingUrl) window.open(pendingUrl, "_blank", "noopener,noreferrer");
+    // let the browser's native anchor navigation proceed (opens the new tab);
+    // just close our modal in this tab afterward.
     closeVoiceModal();
   });
   document.addEventListener("keydown", function (e) {
