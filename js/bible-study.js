@@ -219,7 +219,10 @@
     if (!fullName) return null;
     var url = "https://www.biblegateway.com/passage/?search=" +
       encodeURIComponent(fullName + " " + chapterPart) + "&version=NLT";
-    return { fullName: fullName, chapterPart: chapterPart, url: url };
+    var slug = BOOK_SLUGS[fullName];
+    var firstChMatch = chapterPart.match(/[0-9]+/);
+    var firstChapter = firstChMatch ? parseInt(firstChMatch[0], 10) : null;
+    return { fullName: fullName, chapterPart: chapterPart, url: url, slug: slug, firstChapter: firstChapter };
   }
   function openPassageModal(refString) {
     var link = buildPassageLink(refString);
@@ -228,6 +231,83 @@
     var body = "This opens <b>" + escapeHtml(label) + "</b> on BibleGateway, in the <b>NLT</b> " +
       "(the same translation this guide uses) — in a new tab.";
     showConfirmModal("Open " + label + "?", body, link.url);
+  }
+
+  // ---------- chapter expositions ----------
+  var EXPOSITIONS = window.CHAPTER_EXPOSITIONS || {};
+  function findExposition(refString) {
+    var link = buildPassageLink(refString);
+    if (!link || !link.slug || !link.firstChapter) return null;
+    var key = link.slug + "-" + link.firstChapter;
+    return EXPOSITIONS[key] ? { key: key, slug: link.slug, chapter: link.firstChapter, data: EXPOSITIONS[key] } : null;
+  }
+  var expReturnView = "study"; // remembers which tab to go back to
+  var expReturnHash = "";
+
+  function renderExposition(slug, chapter) {
+    var key = slug + "-" + chapter;
+    var exp = EXPOSITIONS[key];
+    var contentEl = document.getElementById("bs-exp-content");
+    var bookMeta = BOOKS.filter(function (b) { return b.slug === slug; })[0];
+    var bookName = bookMeta ? bookMeta.name : (exp ? exp.book : slug);
+    var totalChapters = bookMeta ? bookMeta.chapters : null;
+
+    if (!exp) {
+      contentEl.innerHTML =
+        '<div class="bs-exp-crumb">' + escapeHtml(bookName) + " &rsaquo; Chapter " + chapter + "</div>" +
+        '<h1 class="bs-exp-title">Exposition coming soon</h1>' +
+        '<p class="bs-exp-scene">This chapter\u2019s full breakdown hasn\u2019t been written yet \u2014 this is a ' +
+        "growing library, added to a chunk at a time so each one stays thorough rather than rushed. " +
+        'In the meantime, <a href="https://biblehub.com/' + encodeURIComponent(slug) + "/" + chapter +
+        '.htm" target="_blank" rel="noopener noreferrer" style="color:var(--bs-gold)">read ' +
+        escapeHtml(bookName) + " " + chapter + ' on BibleHub</a> for the full text alongside classic commentaries.</p>';
+      return;
+    }
+
+    var sectionsHtml = exp.sections.map(function (s) {
+      return '<div class="bs-exp-section">' +
+        '<div class="bs-exp-section-head"><h4>' + escapeHtml(s.heading) + '</h4><span class="bs-exp-range">' + escapeHtml(s.range) + "</span></div>" +
+        "<p>" + escapeHtml(s.text) + "</p>" +
+        "</div>";
+    }).join("");
+
+    var prevCh = chapter > 1 ? chapter - 1 : null;
+    var nextCh = totalChapters && chapter < totalChapters ? chapter + 1 : null;
+    var prevHtml = prevCh ? navLinkHtml(slug, prevCh, bookName, "\u2190 Previous chapter") : '<span class="soon" style="flex:1"></span>';
+    var nextHtml = nextCh ? navLinkHtml(slug, nextCh, bookName, "Next chapter \u2192") : '<span class="soon" style="flex:1"></span>';
+
+    contentEl.innerHTML =
+      '<div class="bs-exp-crumb">' + escapeHtml(bookName) + " &rsaquo; <b>Chapter " + chapter + "</b></div>" +
+      '<h1 class="bs-exp-title">' + escapeHtml(exp.title) + "</h1>" +
+      '<p class="bs-exp-scene">' + escapeHtml(exp.scene) + "</p>" +
+      sectionsHtml +
+      '<div class="bs-exp-pagenav">' + prevHtml + nextHtml + "</div>" +
+      '<div class="bs-exp-progress-note">This library of chapter expositions is being written a section at a time, ' +
+      "starting from Genesis 1 and moving forward \u2014 so more chapters will keep appearing here over time.</div>";
+
+    contentEl.querySelectorAll("[data-exp-nav]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var parts = a.getAttribute("data-exp-nav").split("|");
+        openExposition(parts[0], parseInt(parts[1], 10));
+      });
+    });
+  }
+  function navLinkHtml(slug, chapter, bookName, label) {
+    var exists = !!EXPOSITIONS[slug + "-" + chapter];
+    return '<a href="#" data-exp-nav="' + slug + "|" + chapter + '" class="' + (exists ? "" : "soon") + '">' +
+      '<span class="pn-label">' + label + '</span>' +
+      '<span class="pn-title">' + escapeHtml(bookName) + " " + chapter + (exists ? "" : " (coming soon)") + "</span>" +
+      "</a>";
+  }
+  function openExposition(slug, chapter, fromView) {
+    if (fromView) expReturnView = fromView;
+    expReturnHash = location.hash;
+    renderExposition(slug, chapter);
+    location.hash = "exp-" + slug + "-" + chapter;
+    switchView("exposition");
+    var scrollEl = document.getElementById("bs-view-exposition");
+    if (scrollEl) scrollEl.scrollTop = 0;
   }
 
 
@@ -405,11 +485,15 @@
 
     var passageHtml = (d.passage || []).map(function (p) {
       var hasLink = !!buildPassageLink(p.ref);
+      var exp = findExposition(p.ref);
       var parts = [];
       parts.push('<div class="bs-passage-item' + (hasLink ? " clickable" : "") + '"' +
         (hasLink ? ' data-passage-ref="' + escapeHtml(p.ref) + '" role="button" tabindex="0" aria-label="Open ' + escapeHtml(p.ref) + ' online"' : "") + ">");
       parts.push('<div class="pref">' + escapeHtml(p.ref || "") + (hasLink ? ' <span class="pref-hint">↗</span>' : "") + "</div>");
       parts.push("<p>" + escapeHtml(p.text || "") + "</p>");
+      if (exp) {
+        parts.push('<button class="bs-exp-link" data-exp-slug="' + exp.slug + '" data-exp-chapter="' + exp.chapter + '">Full exposition of this chapter \u2192</button>');
+      }
       parts.push("</div>");
       return parts.join("");
     }).join("");
@@ -493,6 +577,13 @@
       item.addEventListener("click", function () { openPassageModal(ref); });
       item.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPassageModal(ref); }
+      });
+    });
+
+    readerEl.querySelectorAll(".bs-exp-link").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        openExposition(btn.getAttribute("data-exp-slug"), parseInt(btn.getAttribute("data-exp-chapter"), 10), "study");
       });
     });
 
@@ -658,6 +749,7 @@
   var tabBtns = document.querySelectorAll(".bs-tab-btn");
   var viewStudy = document.getElementById("bs-view-study");
   var viewResources = document.getElementById("bs-view-resources");
+  var viewExposition = document.getElementById("bs-view-exposition");
 
   function switchView(view) {
     tabBtns.forEach(function (b) {
@@ -667,14 +759,23 @@
     });
     viewStudy.classList.toggle("active", view === "study");
     viewResources.classList.toggle("active", view === "resources");
-    bodyEl.classList.toggle("bs-view-resources-active", view === "resources");
+    viewExposition.classList.toggle("active", view === "exposition");
+    bodyEl.classList.toggle("bs-view-resources-active", view !== "study");
     bodyEl.classList.remove("bs-chrome-hidden"); // always show the top bar right after switching tabs
-    if (view === "resources") setSidebarCollapsed(true);
-    else setSidebarCollapsed(!isDesktop());
+    if (view === "study") setSidebarCollapsed(!isDesktop());
+    else setSidebarCollapsed(true);
   }
   tabBtns.forEach(function (btn) {
     btn.addEventListener("click", function () { switchView(btn.getAttribute("data-view")); });
   });
+
+  var expBackBtn = document.getElementById("bs-exp-back");
+  if (expBackBtn) {
+    expBackBtn.addEventListener("click", function () {
+      switchView(expReturnView);
+      if (expReturnHash) { location.hash = expReturnHash; }
+    });
+  }
 
   // ---------- auto-hide the top bar while scrolling down ----------
   // Applied to whichever pane is currently scrolling. Shows immediately on
@@ -707,6 +808,7 @@
   }
   wireScrollHide(readerScrollEl);
   wireScrollHide(viewResources);
+  wireScrollHide(viewExposition);
 
   // ---------- measure real chrome height (topbar + progressline) ----------
   // Keeps the panes' top offset correct even if the header wraps to a second
@@ -776,8 +878,15 @@
 
     function bookRowHtml(b) {
       var chapters = [];
+      var expCount = 0;
       for (var c = 1; c <= b.chapters; c++) {
-        chapters.push('<a class="bs-res-chap-link" href="https://biblehub.com/' + b.slug + '/' + c + '.htm" target="_blank" rel="noopener noreferrer">' + c + '</a>');
+        var hasExp = !!EXPOSITIONS[b.slug + "-" + c];
+        if (hasExp) {
+          expCount++;
+          chapters.push('<button class="bs-res-chap-link has-exp" data-exp-slug="' + b.slug + '" data-exp-chapter="' + c + '" title="Full exposition available">' + c + '</button>');
+        } else {
+          chapters.push('<a class="bs-res-chap-link" href="https://biblehub.com/' + b.slug + '/' + c + '.htm" target="_blank" rel="noopener noreferrer">' + c + '</a>');
+        }
       }
       var readUrl = "https://www.biblegateway.com/passage/?search=" + encodeURIComponent(b.name + " 1") + "&version=NLT";
       var overviewUrl = "https://www.gotquestions.org/" + b.gq + ".html";
@@ -785,7 +894,7 @@
         '<div class="bs-res-book">' +
           '<button class="bs-res-book-head" data-toggle="1">' +
             '<span class="bname">' + escapeHtml(b.name) + '</span>' +
-            '<span class="bcount">' + b.chapters + (b.chapters === 1 ? " chapter" : " chapters") + '</span>' +
+            '<span class="bcount">' + b.chapters + (b.chapters === 1 ? " chapter" : " chapters") + (expCount ? " \u00b7 " + expCount + " with full exposition" : "") + '</span>' +
             '<a class="boverview" href="' + readUrl + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Read ↗</a>' +
             '<a class="boverview" href="' + overviewUrl + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Overview ↗</a>' +
             '<span class="bchev">▾</span>' +
@@ -801,6 +910,12 @@
     document.querySelectorAll(".bs-res-book-head").forEach(function (head) {
       head.addEventListener("click", function () {
         head.closest(".bs-res-book").classList.toggle("open");
+      });
+    });
+
+    document.querySelectorAll(".bs-res-chap-link.has-exp").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        openExposition(btn.getAttribute("data-exp-slug"), parseInt(btn.getAttribute("data-exp-chapter"), 10), "resources");
       });
     });
 
@@ -852,7 +967,11 @@
   renderResourcesLibrary();
 
   var initialId = (location.hash || "").replace("#", "");
-  if (initialId && byId[initialId]) {
+  var expMatch = initialId.match(/^exp-(.+)-([0-9]+)$/);
+  if (expMatch) {
+    renderExposition(expMatch[1], parseInt(expMatch[2], 10));
+    switchView("exposition");
+  } else if (initialId && byId[initialId]) {
     renderDay(initialId);
   } else {
     var last = localStorage.getItem(LS_LAST);
@@ -861,6 +980,13 @@
 
   window.addEventListener("hashchange", function () {
     var id = (location.hash || "").replace("#", "");
-    if (id && byId[id]) renderDay(id);
+    var m = id.match(/^exp-(.+)-([0-9]+)$/);
+    if (m) {
+      renderExposition(m[1], parseInt(m[2], 10));
+      switchView("exposition");
+    } else if (id && byId[id]) {
+      renderDay(id);
+      if (!viewStudy.classList.contains("active")) switchView("study");
+    }
   });
 })();

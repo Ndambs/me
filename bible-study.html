@@ -145,6 +145,19 @@ and chapter by chapter, linking out to real, free study resources.
   </div>
 </section>
 
+<!-- ============================================================
+CHAPTER EXPOSITION — a deep-dive breakdown of one chapter, reached
+from either the Library's chapter grid or a day's "Passage, Opened
+Up" section. Not a persistent tab — it's a destination you arrive
+at and can leave from.
+============================================================ -->
+<section class="bs-exposition bs-view" id="bs-view-exposition" aria-label="Chapter exposition">
+  <div class="bs-exposition-inner">
+    <button class="bs-exp-back" id="bs-exp-back">&larr; Back</button>
+    <div id="bs-exp-content"></div>
+  </div>
+</section>
+
 <!-- Voice-from-history "open source" confirmation modal -->
 <div class="bs-modal-overlay" id="bs-modal-overlay" aria-hidden="true">
   <div class="bs-modal" role="dialog" aria-modal="true" aria-labelledby="bs-modal-title">
@@ -160,6 +173,7 @@ and chapter by chapter, linking out to real, free study resources.
 
 <script src="js/bible-data.js"></script>
 <script src="js/resources-data.js"></script>
+<script src="js/exposition-data.js"></script>
 <script src="js/bible-study.js"></script>
 </body>
 </html>

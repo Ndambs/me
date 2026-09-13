@@ -303,6 +303,7 @@
 .bs-view{ display:none; padding-top:var(--bs-chrome-h); height:100vh; box-sizing:border-box; }
 .bs-main.active{ display:block; position:relative; }
 #bs-view-resources.active{ display:block; overflow-y:auto; }
+#bs-view-exposition.active{ display:block; overflow-y:auto; }
 
 /* main layout — reader always spans full width; the sidebar floats over/beside
    it as its own layer and never participates in a grid, so it can slide fully
@@ -512,6 +513,12 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-passage-item.clickable:first-child{ border-top:none; }
 .bs-passage-item.clickable:hover, .bs-passage-item.clickable:focus-visible{ background:var(--bs-passage-dim); outline:none; }
 .pref-hint{ font-size:.8rem; opacity:.7; }
+.bs-exp-link{
+  display:block; grid-column:1 / -1; margin-top:10px; font-family:var(--bs-mono); font-size:.76rem;
+  color:var(--bs-gold); background:none; border:none; padding:0; cursor:pointer;
+  text-decoration:underline; text-underline-offset:3px; text-align:left;
+}
+.bs-exp-link:hover{ opacity:.8; }
 @media (max-width:520px){
   .bs-passage-item{ grid-template-columns:1fr; gap:4px; }
 }
@@ -739,6 +746,77 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-res-footnote{
   margin-top:40px; text-align:center; font-size:.8rem; line-height:1.7; color:var(--bs-text-faint);
   max-width:64ch; margin-left:auto; margin-right:auto;
+}
+
+/* chapter chip: has an in-app exposition available */
+.bs-res-chap-link.has-exp{
+  border-color:var(--bs-gold); color:var(--bs-gold); position:relative;
+}
+.bs-res-chap-link.has-exp::after{
+  content:"\2726"; font-size:.6rem; position:absolute; top:-5px; right:-3px; color:var(--bs-gold);
+}
+.bs-res-chap-link.has-exp:hover{ background:var(--bs-gold); border-color:var(--bs-gold); color:var(--bs-bg); }
+.bs-res-exp-key{
+  text-align:center; font-family:var(--bs-mono); font-size:.72rem; color:var(--bs-text-faint);
+  margin:14px 0 0;
+}
+.bs-res-exp-key .k{ color:var(--bs-gold); }
+
+/* ============================================================
+   CHAPTER EXPOSITION VIEW
+   ============================================================ */
+.bs-exposition{
+  overflow-y:auto;
+  background:
+    radial-gradient(1000px 500px at 15% 0%, var(--bs-gold-dim), transparent 60%),
+    color-mix(in srgb, var(--bs-bg) var(--bs-reader-alpha), transparent);
+}
+.bs-exposition-inner{ max-width:720px; margin:0 auto; padding:0 clamp(20px,5vw,28px) 100px; }
+.bs-exp-back{
+  margin:20px 0 10px; font-family:var(--bs-mono); font-size:.82rem; color:var(--bs-text-dim);
+  background:none; border:1px solid var(--bs-border); border-radius:20px; padding:7px 14px; cursor:pointer;
+  transition:.15s;
+}
+.bs-exp-back:hover{ color:var(--bs-text); border-color:var(--bs-text-faint); }
+.bs-exp-crumb{
+  font-family:var(--bs-mono); font-size:.78rem; color:var(--bs-text-faint); margin:22px 0 14px;
+}
+.bs-exp-crumb b{ color:var(--bs-gold); font-weight:500; }
+.bs-exp-title{
+  font-family:var(--bs-serif); font-weight:700; font-style:italic;
+  font-size:clamp(1.7rem,4vw,2.4rem); line-height:1.2; margin:0 0 18px;
+  background:linear-gradient(100deg, var(--bs-text) 30%, var(--bs-gold) 70%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.bs-exp-scene{
+  font-size:1.02rem; line-height:1.75; color:var(--bs-text-dim);
+  border-left:2px solid var(--bs-gold); padding-left:18px; margin-bottom:38px;
+}
+.bs-exp-section{ margin:30px 0; }
+.bs-exp-section-head{
+  display:flex; align-items:baseline; gap:10px; margin-bottom:10px; flex-wrap:wrap;
+}
+.bs-exp-section-head h4{
+  font-family:var(--bs-serif); font-weight:600; font-size:1.15rem; color:var(--bs-text); margin:0;
+}
+.bs-exp-range{ font-family:var(--bs-mono); font-size:.76rem; color:var(--bs-gold); }
+.bs-exp-section p{ margin:0; line-height:1.8; font-size:1rem; color:var(--bs-text); }
+
+.bs-exp-pagenav{ display:flex; gap:12px; margin-top:46px; }
+.bs-exp-pagenav a, .bs-exp-pagenav span{
+  flex:1; display:flex; flex-direction:column; gap:2px;
+  padding:14px 16px; border-radius:12px; border:1px solid var(--bs-border);
+  text-decoration:none; color:var(--bs-text); transition:.18s;
+}
+.bs-exp-pagenav a:hover{ border-color:var(--bs-gold); }
+.bs-exp-pagenav .next{ text-align:right; align-items:flex-end; }
+.bs-exp-pagenav .pn-label{ font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint); }
+.bs-exp-pagenav .pn-title{ font-family:var(--bs-serif); font-weight:600; font-size:.98rem; }
+.bs-exp-pagenav .soon{ opacity:.45; }
+
+.bs-exp-progress-note{
+  margin-top:20px; padding:14px 18px; border-radius:10px; background:var(--bs-gold-dim);
+  border:1px solid var(--bs-border); font-size:.85rem; line-height:1.6; color:var(--bs-text-dim);
 }
 
 /* clickable voice card affordance */
