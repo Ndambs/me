@@ -237,7 +237,9 @@
   position:fixed; top:0; left:0; right:0; z-index:40;
   display:flex; align-items:center; gap:14px;
   padding:14px 22px;
+  background:var(--bs-bg);
   background:color-mix(in srgb, var(--bs-bg) var(--bs-topbar-alpha), transparent);
+  -webkit-backdrop-filter:blur(20px);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--bs-border);
   transition:transform var(--bs-motion-dur) var(--bs-motion-hide);
@@ -327,7 +329,9 @@
 
 .bs-sidebar{
   border-right:1px solid var(--bs-border);
+  background:var(--bs-panel-2);
   background:color-mix(in srgb, var(--bs-panel-2) var(--bs-panel-alpha), transparent);
+  -webkit-backdrop-filter:blur(20px);
   backdrop-filter:blur(20px);
   display:flex; flex-direction:column;
   min-width:0; overflow:hidden;
@@ -356,7 +360,9 @@
   width:24px; height:64px; z-index:70;
   border:1px solid var(--bs-border); border-left:none;
   border-radius:0 14px 14px 0;
+  background:var(--bs-panel-2);
   background:color-mix(in srgb, var(--bs-panel-2) 88%, transparent);
+  -webkit-backdrop-filter:blur(16px);
   backdrop-filter:blur(16px);
   color:var(--bs-text-dim); cursor:pointer;
   display:flex; align-items:center; justify-content:center;
