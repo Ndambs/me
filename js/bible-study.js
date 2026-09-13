@@ -136,7 +136,9 @@
     return { kind: "search", site: "the web", url: "https://www.google.com/search?q=" + encodeURIComponent(q) };
   }
 
-  // ---------- modal ----------
+  // ---------- generic "open externally?" confirmation modal ----------
+  // Shared by the "voice from church history" links and the passage chapter
+  // links below — one modal, filled in differently per use case.
   var modalOverlay = document.getElementById("bs-modal-overlay");
   var modalBody = document.getElementById("bs-modal-body");
   var modalTitle = document.getElementById("bs-modal-title");
@@ -145,18 +147,10 @@
   var pendingUrl = null;
   var lastFocused = null;
 
-  function openVoiceModal(d) {
-    var link = buildVoiceLink(d);
-    pendingUrl = link.url;
-    var niceName = titleCase(d.voice_name);
-    modalTitle.textContent = "Read more from " + niceName + "?";
-    if (link.kind === "direct") {
-      modalBody.innerHTML = "This opens <b>" + escapeHtml(niceName) + "'s</b> own commentary on <b>" +
-        escapeHtml(d.ref || "") + "</b> at " + escapeHtml(link.site) + ", in a new tab.";
-    } else {
-      modalBody.innerHTML = "This guide only paraphrases " + escapeHtml(niceName) + "'s insight, so we don't have a direct link to the original piece. " +
-        "This opens a web search for more of their writing on <b>" + escapeHtml(d.ref || "") + "</b>, in a new tab.";
-    }
+  function showConfirmModal(titleText, bodyHtml, url) {
+    pendingUrl = url;
+    modalTitle.textContent = titleText;
+    modalBody.innerHTML = bodyHtml;
     lastFocused = document.activeElement;
     modalOverlay.classList.add("show");
     modalOverlay.setAttribute("aria-hidden", "false");
@@ -177,6 +171,61 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && modalOverlay.classList.contains("show")) closeVoiceModal();
   });
+
+  function openVoiceModal(d) {
+    var link = buildVoiceLink(d);
+    var niceName = titleCase(d.voice_name);
+    var body;
+    if (link.kind === "direct") {
+      body = "This opens <b>" + escapeHtml(niceName) + "'s</b> own commentary on <b>" +
+        escapeHtml(d.ref || "") + "</b> at " + escapeHtml(link.site) + ", in a new tab.";
+    } else {
+      body = "This guide only paraphrases " + escapeHtml(niceName) + "'s insight, so we don't have a direct link to the original piece. " +
+        "This opens a web search for more of their writing on <b>" + escapeHtml(d.ref || "") + "</b>, in a new tab.";
+    }
+    showConfirmModal("Read more from " + niceName + "?", body, link.url);
+  }
+
+  // ---------- passage chapter links (The Passage, Opened Up) ----------
+  // Maps the guide's book abbreviations (e.g. "Gen", "1 Cor") to the full
+  // book names BibleGateway expects, so a click can jump straight to that
+  // exact chapter in the NLT — the same translation used throughout, and
+  // the same mapping the Resources Library's "Read" buttons use.
+  var PASSAGE_BOOK_MAP = {
+    "Gen":"Genesis","Ex":"Exodus","Lev":"Leviticus","Num":"Numbers","Deut":"Deuteronomy",
+    "Josh":"Joshua","Judg":"Judges","Ruth":"Ruth","1 Sam":"1 Samuel","2 Sam":"2 Samuel",
+    "1 Ki":"1 Kings","2 Ki":"2 Kings","1 Chr":"1 Chronicles","2 Chr":"2 Chronicles",
+    "Ezra":"Ezra","Neh":"Nehemiah","Esth":"Esther","Job":"Job","Ps":"Psalms",
+    "Prov":"Proverbs","Eccl":"Ecclesiastes","Song":"Song of Solomon","Isa":"Isaiah",
+    "Jer":"Jeremiah","Lam":"Lamentations","Ezek":"Ezekiel","Dan":"Daniel","Hos":"Hosea",
+    "Joel":"Joel","Amos":"Amos","Obad":"Obadiah","Jonah":"Jonah","Micah":"Micah",
+    "Nahum":"Nahum","Hab":"Habakkuk","Zeph":"Zephaniah","Hag":"Haggai","Zech":"Zechariah",
+    "Mal":"Malachi","Matt":"Matthew","Mark":"Mark","Luke":"Luke","John":"John","Acts":"Acts",
+    "Rom":"Romans","1 Cor":"1 Corinthians","2 Cor":"2 Corinthians","Gal":"Galatians",
+    "Eph":"Ephesians","Phil":"Philippians","Col":"Colossians","1 Thess":"1 Thessalonians",
+    "2 Thess":"2 Thessalonians","1 Tim":"1 Timothy","2 Tim":"2 Timothy","Titus":"Titus",
+    "Phlm":"Philemon","Heb":"Hebrews","James":"James","1 Pet":"1 Peter","2 Pet":"2 Peter",
+    "1 John":"1 John","2 John":"2 John","3 John":"3 John","Jude":"Jude","Rev":"Revelation"
+  };
+  function buildPassageLink(refString) {
+    var m = (refString || "").trim().match(/^([1-3]?\s?[A-Za-z.]+)\s*([0-9].*)$/);
+    if (!m) return null;
+    var abbrev = m[1].trim();
+    var chapterPart = m[2].trim();
+    var fullName = PASSAGE_BOOK_MAP[abbrev];
+    if (!fullName) return null;
+    var url = "https://www.biblegateway.com/passage/?search=" +
+      encodeURIComponent(fullName + " " + chapterPart) + "&version=NLT";
+    return { fullName: fullName, chapterPart: chapterPart, url: url };
+  }
+  function openPassageModal(refString) {
+    var link = buildPassageLink(refString);
+    if (!link) return;
+    var label = link.fullName + " " + link.chapterPart;
+    var body = "This opens <b>" + escapeHtml(label) + "</b> on BibleGateway, in the <b>NLT</b> " +
+      "(the same translation this guide uses) — in a new tab.";
+    showConfirmModal("Open " + label + "?", body, link.url);
+  }
 
 
   var byId = {};
@@ -352,9 +401,11 @@
     var isRead = !!readMap[id];
 
     var passageHtml = (d.passage || []).map(function (p) {
+      var hasLink = !!buildPassageLink(p.ref);
       var parts = [];
-      parts.push('<div class="bs-passage-item">');
-      parts.push('<div class="pref">' + escapeHtml(p.ref || "") + "</div>");
+      parts.push('<div class="bs-passage-item' + (hasLink ? " clickable" : "") + '"' +
+        (hasLink ? ' data-passage-ref="' + escapeHtml(p.ref) + '" role="button" tabindex="0" aria-label="Open ' + escapeHtml(p.ref) + ' online"' : "") + ">");
+      parts.push('<div class="pref">' + escapeHtml(p.ref || "") + (hasLink ? ' <span class="pref-hint">↗</span>' : "") + "</div>");
       parts.push("<p>" + escapeHtml(p.text || "") + "</p>");
       parts.push("</div>");
       return parts.join("");
@@ -433,6 +484,14 @@
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openVoiceModal(d); }
       });
     }
+
+    readerEl.querySelectorAll(".bs-passage-item.clickable").forEach(function (item) {
+      var ref = item.getAttribute("data-passage-ref");
+      item.addEventListener("click", function () { openPassageModal(ref); });
+      item.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPassageModal(ref); }
+      });
+    });
 
     var markBtn = document.getElementById("bs-mark-done");
     markBtn.addEventListener("click", function () {

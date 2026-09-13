@@ -508,6 +508,10 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-passage-item:first-child{ border-top:none; }
 .bs-passage-item .pref{ font-family:var(--bs-serif); font-weight:600; font-style:italic; color:var(--bs-passage); font-size:1rem; }
 .bs-passage-item p{ margin:0; line-height:1.7; color:var(--bs-text); }
+.bs-passage-item.clickable{ cursor:pointer; border-radius:8px; margin:0 -10px; padding:14px 10px; transition:background .15s; }
+.bs-passage-item.clickable:first-child{ border-top:none; }
+.bs-passage-item.clickable:hover, .bs-passage-item.clickable:focus-visible{ background:var(--bs-passage-dim); outline:none; }
+.pref-hint{ font-size:.8rem; opacity:.7; }
 @media (max-width:520px){
   .bs-passage-item{ grid-template-columns:1fr; gap:4px; }
 }
