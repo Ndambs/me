@@ -445,7 +445,7 @@
     readerEl.innerHTML =
       '<div class="bs-welcome">' +
         '<div class="bs-ref-badge">299 pages · 274 days · Genesis to Revelation</div>' +
-        '<h1>The Whole Bible, one sermonette at a time.</h1>' +
+        '<h1>The Whole Bible, one study at a time.</h1>' +
         '<p>Every day stands complete on its own: the passage in context, a woven exposition, the ' +
         "central truth named plainly, a voice from church history, honest application, and a closing " +
         "prayer. Pick up where you left off, or start at Genesis&nbsp;1.</p>" +
