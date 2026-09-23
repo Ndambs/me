@@ -229,7 +229,7 @@
     if (!link) return;
     var label = link.fullName + " " + link.chapterPart;
     var body = "This opens <b>" + escapeHtml(label) + "</b> on BibleGateway, in the <b>NLT</b> " +
-      "(the same translation this guide uses) — in a new tab.";
+      "(the same translation this guide uses) - in a new tab.";
     showConfirmModal("Open " + label + "?", body, link.url);
   }
 
@@ -256,7 +256,7 @@
       contentEl.innerHTML =
         '<div class="bs-exp-crumb">' + escapeHtml(bookName) + " &rsaquo; Chapter " + chapter + "</div>" +
         '<h1 class="bs-exp-title">Exposition coming soon</h1>' +
-        '<p class="bs-exp-scene">This chapter\u2019s full breakdown hasn\u2019t been written yet \u2014 this is a ' +
+        '<p class="bs-exp-scene">This chapter\u2019s full breakdown hasn\u2019t been written yet - this is a ' +
         "growing library, added to a chunk at a time so each one stays thorough rather than rushed. " +
         'In the meantime, <a href="https://biblehub.com/' + encodeURIComponent(slug) + "/" + chapter +
         '.htm" target="_blank" rel="noopener noreferrer" style="color:var(--bs-gold)">read ' +
@@ -283,7 +283,7 @@
       sectionsHtml +
       '<div class="bs-exp-pagenav">' + prevHtml + nextHtml + "</div>" +
       '<div class="bs-exp-progress-note">This library of chapter expositions is being written a section at a time, ' +
-      "starting from Genesis 1 and moving forward \u2014 so more chapters will keep appearing here over time.</div>";
+      "starting from Genesis 1 and moving forward - so more chapters will keep appearing here over time.</div>";
 
     contentEl.querySelectorAll("[data-exp-nav]").forEach(function (a) {
       a.addEventListener("click", function (e) {
@@ -516,7 +516,7 @@
     if (d.voice_text) {
       voiceHtml = '<div class="bs-voice-card" id="bs-voice-card" role="button" tabindex="0" aria-label="Open a link to read more from this voice from church history">' +
         '<span class="quote-mark">&ldquo;</span><p>' +
-        escapeHtml(d.voice_text) + '</p><div class="attrib">' + "\u2014 " + escapeHtml(titleCase(d.voice_name)) + "</div>" +
+        escapeHtml(d.voice_text) + '</p><div class="attrib">' + "- " + escapeHtml(titleCase(d.voice_name)) + "</div>" +
         '<div class="ve-hint">Read more \u2197</div></div>';
     }
 
@@ -525,7 +525,7 @@
       livingHtml = '<div class="bs-living-card"><p>' + escapeHtml(d.living_it_out) + "</p>" +
         '<textarea class="bs-reflect-textarea" id="bs-reflect" placeholder="Write your own answer here\u2026"></textarea>' +
         '<div class="bs-reflect-row">' +
-        '<span class="bs-reflect-note">Saved on this device only \u2014 write a new answer any time you revisit this day.</span>' +
+        '<span class="bs-reflect-note">Saved on this device only - write a new answer any time you revisit this day.</span>' +
         '<button class="bs-save-note-btn" id="bs-save-note" disabled>Save this answer</button>' +
         "</div>" +
         '<div class="bs-note-history" id="bs-note-history"></div>' +
