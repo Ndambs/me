@@ -282,8 +282,8 @@
       '<p class="bs-exp-scene">' + escapeHtml(exp.scene) + "</p>" +
       sectionsHtml +
       '<div class="bs-exp-pagenav">' + prevHtml + nextHtml + "</div>" +
-      '<div class="bs-exp-progress-note">This library of chapter expositions is being written a section at a time, ' +
-      "starting from Genesis 1 and moving forward - so more chapters will keep appearing here over time.</div>";
+      '<div class="bs-exp-progress-note">This library of chapter expositions is being reviewed and revised a section at a time, ' +
+      "starting from Genesis 1 and moving forward, so more content and changes will keep appearing over time.</div>";
 
     contentEl.querySelectorAll("[data-exp-nav]").forEach(function (a) {
       a.addEventListener("click", function (e) {
