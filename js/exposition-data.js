@@ -1,20 +1,21 @@
 /* ============================================================
-   CHAPTER EXPOSITIONS — deep-dive breakdowns of individual Bible
-   chapters, organized by their natural narrative/thematic sections
-   (similar to the paragraph headings found in most study Bibles).
+   CHAPTER EXPOSITIONS — complete deep-dive breakdowns of every
+   Bible chapter, organized by their natural narrative/thematic
+   sections (similar to the paragraph headings found in most study
+   Bibles).
 
-   Combined data file: merges three source sets into one
+   Combined data file: merges four source sets into one
    window.CHAPTER_EXPOSITIONS store used by bible-study.js and
-   resources-data.js's slug map. Currently complete:
+   resources-data.js's slug map. All 66 books, all 1,189 chapters:
      - Genesis → 2 Chronicles (Pentateuch + historical books)
+     - Ezra → Song of Solomon (Writings / Wisdom & Poetry)
      - Isaiah → Malachi (all Major & Minor Prophets)
      - Matthew → Revelation (complete New Testament)
-   Not yet included (to be added later): Ezra, Nehemiah, Esther,
-   Job, Psalms, Proverbs, Ecclesiastes, Song of Solomon.
 
    Keyed by "<biblehub-book-slug>-<chapter>", matching the slugs
    in resources-data.js / bible-study.js's BOOK_SLUGS map (numbered
-   books use an underscore, e.g. "1_corinthians-13", "2_john-1").
+   books use an underscore, e.g. "1_corinthians-13", "2_john-1";
+   Song of Solomon uses "songs", matching BOOK_SLUGS).
    ============================================================ */
 
 /* ============================================================
@@ -3494,6 +3495,3676 @@ window.CHAPTER_EXPOSITIONS = {
   ]
 }
 
+};
+
+/* ============================================================
+   CHAPTER EXPOSITIONS — EZRA THROUGH SONG OF SONGS
+   8 books, 276 chapters: Ezra, Nehemiah, Esther, Job, Proverbs,
+   Ecclesiastes, Song of Solomon (Song of Songs), Psalms.
+
+   Single combined data object. To merge into an existing
+   CHAPTER_EXPOSITIONS store (alongside the New Testament file and
+   the Isaiah-Malachi Prophets file already loaded), run:
+     Object.assign(window.CHAPTER_EXPOSITIONS, window.CHAPTER_EXPOSITIONS_WRITINGS);
+   Otherwise, use window.CHAPTER_EXPOSITIONS_WRITINGS directly.
+
+   To combine with the other two collections already built
+   (window.CHAPTER_EXPOSITIONS_NT and window.CHAPTER_EXPOSITIONS_PROPHETS),
+   simply merge all three into one master object:
+     window.CHAPTER_EXPOSITIONS = Object.assign({},
+       window.CHAPTER_EXPOSITIONS_NT,
+       window.CHAPTER_EXPOSITIONS_PROPHETS,
+       window.CHAPTER_EXPOSITIONS_WRITINGS
+     );
+
+   Keys follow the pattern <biblehub-book-slug>-<chapter>, e.g.
+   'job-38', 'psalms-23', 'proverbs-31', 'songofsolomon-8'.
+   ============================================================ */
+
+window.CHAPTER_EXPOSITIONS_WRITINGS = {
+  "ezra-1": {
+    "book": "Ezra",
+    "chapter": 1,
+    "title": "Cyrus Frees the Jewish Exiles",
+    "scene": "The book of Ezra opens exactly where 2 Chronicles closes, picking up the biblical narrative after the Babylonian exile with the Persian king Cyrus's remarkable decree permitting the Jewish people to return home and rebuild the Jerusalem temple — a direct, historically documented fulfillment of Isaiah's prophecy naming Cyrus by name roughly a century and a half in advance.",
+    "sections": [
+      {
+        "heading": "Cyrus Frees the Jewish Exiles",
+        "range": "1:1-11",
+        "text": "The book's opening statement — that God “moved the heart of Cyrus king of Persia to make a proclamation”, explicitly “in order to fulfill the word of the Lord spoken by Jeremiah” — frames this entire pivotal historical moment as direct divine fulfillment of specific, earlier prophecy (both Jeremiah's seventy-year exile prophecy and Isaiah's remarkable, much earlier prediction naming Cyrus specifically as God's chosen instrument, Isaiah 44:28-45:1). Cyrus's decree, corroborated by the archaeologically discovered Cyrus Cylinder documenting this Persian king's broader, genuinely historical policy of permitting various displaced peoples to return home and restore their local religious practices, shows God's sovereign purposes accomplished through the entirely secular, pragmatic political and religious policy of a pagan king who likely had no personal, exclusive devotion to Israel's God — God working through, not merely despite, ordinary historical and political processes. The chapter's detailed inventory of temple articles returned to the exiles, originally looted by Nebuchadnezzar, demonstrates meticulous, careful continuity between the pre-exilic and post-exilic worship community, ensuring the restored temple's genuine, verifiable connection to Solomon's original sanctuary rather than representing an entirely novel, disconnected religious undertaking."
+      }
+    ]
+  },
+  "ezra-2": {
+    "book": "Ezra",
+    "chapter": 2,
+    "title": "The Exiles Return Home",
+    "scene": "This chapter provides a detailed, carefully documented census of the returning exiles, organized by family and clan — a passage whose extensive, seemingly tedious genealogical detail actually serves crucial practical and theological purposes for the restored community's legal, social, and religious reorganization.",
+    "sections": [
+      {
+        "heading": "The Exiles Return Home",
+        "range": "2:1-70",
+        "text": "This chapter's extensive genealogical listing, while easily skimmed by modern readers, served genuinely vital practical functions for the returning community: establishing legitimate land inheritance claims, confirming legitimate priestly lineage (with the chapter noting some priestly claimants “searched for their family records, but they could not find them and so were excluded from the priesthood as unclean,” illustrating the genuinely serious practical consequences attached to maintaining accurate genealogical documentation for religious office), and providing an accurate historical record of exactly who had returned and from where. The total number of returnees — just over 42,000, a relatively modest figure compared to the exile's original scale — illustrates that this restoration, while genuinely significant, represented the return of a faithful remnant rather than the exiled community's entire population, many of whom had evidently, understandably, established new lives in Babylon and elsewhere and chose not to return to a homeland requiring considerable rebuilding and adjustment."
+      }
+    ]
+  },
+  "ezra-3": {
+    "book": "Ezra",
+    "chapter": 3,
+    "title": "Rebuilding the Altar",
+    "scene": "The returned exiles begin their restoration work by first rebuilding the sacrificial altar and resuming regular worship, even before the temple's own foundation was laid, before that foundation-laying ceremony itself produces a genuinely mixed, emotionally complex response from a community containing both those too young to remember the original temple and those old enough to grieve its lost former glory.",
+    "sections": [
+      {
+        "heading": "Rebuilding the Altar",
+        "range": "3:1-13",
+        "text": "The community's decision to rebuild the sacrificial altar and resume regular worship “despite their fear of the peoples around them”, even before addressing the temple building itself, demonstrates appropriately ordered priorities: restored relationship with God through proper worship took precedence over even the practically urgent task of physical reconstruction. The chapter's genuinely moving description of the foundation-laying ceremony's mixed emotional response — “many of the older priests and Levites and family heads, who had seen the former temple, wept aloud when they saw the foundation of this temple being laid, while many others shouted for joy”, so that “no one could distinguish the sound of the shouts of joy from the sound of weeping” — captures with genuine emotional honesty how the very same historical moment can simultaneously represent legitimate cause for both celebration and grief, depending on one's own particular vantage point and memory: younger community members, knowing only exile, could celebrate this new beginning wholeheartedly, while older members, remembering Solomon's original, considerably more magnificent temple, couldn't help grieving this humbler replacement's genuine, visible limitations even while participating in legitimate celebration."
+      }
+    ]
+  },
+  "ezra-4": {
+    "book": "Ezra",
+    "chapter": 4,
+    "title": "Opposition to the Rebuilding",
+    "scene": "The returned community's reconstruction efforts encounter immediate, sustained opposition from surrounding peoples, who first attempt infiltration through offers of cooperative assistance, then, when rebuffed, resort to organized political intimidation and legal manipulation — opposition so effective that temple construction stalls for well over a decade.",
+    "sections": [
+      {
+        "heading": "Opposition to the Rebuilding",
+        "range": "4:1-24",
+        "text": "The surrounding peoples' initial offer to “help you build because, like you, we seek your God”, though superficially appealing, is firmly declined by the Jewish leadership — “you have no part with us in building a temple to our God” — recognizing that this offered assistance came from a religiously syncretistic population (established generations earlier when Assyria had resettled the northern kingdom's territory with foreign peoples who had adopted a mixed, compromised form of Israelite worship) whose genuine participation would compromise rather than assist authentic covenant worship. The rebuffed peoples' subsequent shift toward active, organized opposition — discouraging the builders, hiring counselors to frustrate their plans, and eventually successfully petitioning Persian authorities through politically manipulative, exaggerated legal accusations — resulted in an official cessation order that halted temple construction for well over a decade, illustrating that faithful obedience to God's calling doesn't guarantee smooth, unopposed progress, and that genuine spiritual work often provokes correspondingly serious, sustained, and strategically sophisticated opposition."
+      }
+    ]
+  },
+  "ezra-5": {
+    "book": "Ezra",
+    "chapter": 5,
+    "title": "The Temple Work Resumes",
+    "scene": "Following the prophetic encouragement of Haggai and Zechariah, construction resumes despite the community's continued lack of official, updated royal authorization, prompting a fresh round of official inquiry from regional Persian authorities — handled, notably, through proper, respectful legal channels rather than further attempts at forceful obstruction.",
+    "sections": [
+      {
+        "heading": "The Temple Work Resumes",
+        "range": "5:1-17",
+        "text": "The prophets Haggai and Zechariah's direct encouragement — “prophesied to the Jews in Judah and Jerusalem in the name of the God of Israel, who was over them” — prompts the community's leaders, Zerubbabel and Joshua, to resume construction despite lacking clear, updated royal authorization, illustrating genuine, courageous faith responding to prophetic encouragement even amid continued political uncertainty and risk. The regional governor Tattenai's resulting inquiry, conducted through proper, respectful official channels (requesting the builders' own explanation and forwarding a formal, accurate report to the Persian king for verification, rather than attempting further direct obstruction), illustrates a marked improvement over the more overtly hostile opposition described in the previous chapter, while the Jewish elders' own confident response — tracing their authority directly back to Cyrus's original decree — shows appropriate, respectful engagement with legitimate governmental authority and process."
+      }
+    ]
+  },
+  "ezra-6": {
+    "book": "Ezra",
+    "chapter": 6,
+    "title": "The Temple Is Completed",
+    "scene": "King Darius's official search of the royal archives confirms Cyrus's original decree, resulting in the Persian government's own active support and funding for the temple's completion, culminating in a joyful dedication ceremony and Passover celebration that brings this extended narrative section to its triumphant, satisfying conclusion.",
+    "sections": [
+      {
+        "heading": "The Temple Is Completed",
+        "range": "6:1-22",
+        "text": "King Darius's discovery of Cyrus's original decree, preserved in the Persian royal archives, and his resulting order not merely permitting but actively funding and supporting the temple's completion “out of the royal revenue”, along with severe penalties threatened against anyone who might interfere, represents a remarkable reversal from the earlier, hostile opposition, again illustrating God's sovereign ability to direct even a powerful pagan empire's official governmental resources toward supporting his own people's restoration. The temple's completion “according to the command of the God of Israel and the decrees of Cyrus, Darius and Artaxerxes”, and the resulting joyful dedication and Passover celebration — “with joy, because the Lord had filled them with joy by changing the attitude of the king of Assyria” (a somewhat anachronistic reference to the Persian king using the older, more familiar imperial title, or possibly reflecting the community's continued historical memory of the various empires that had ruled over them) — brings this extended narrative section to a genuinely triumphant, satisfying conclusion, demonstrating that persistent faithfulness, even through significant delay and opposition, ultimately produces its intended, God-honoring result."
+      }
+    ]
+  },
+  "ezra-7": {
+    "book": "Ezra",
+    "chapter": 7,
+    "title": "Ezra Comes to Jerusalem",
+    "scene": "The book's narrative jumps forward roughly six decades to introduce its titular figure, Ezra, a skilled priest and scribe “well versed in the Law of Moses,” whose own journey to Jerusalem, authorized and generously funded by King Artaxerxes, marks a new phase of the restoration focused specifically on spiritual and legal reform rather than physical reconstruction alone.",
+    "sections": [
+      {
+        "heading": "Ezra Comes to Jerusalem",
+        "range": "7:1-28",
+        "text": "The narrative's introduction of Ezra himself — a priest descended from Aaron's own line, and specifically described as “a teacher well versed in the Law of Moses… for Ezra had devoted himself to the study and observance of the Law of the Lord, and to teaching its decrees and laws in Israel” — establishes his particular qualification and calling for this narrative's next major phase: not physical temple reconstruction (already completed decades earlier), but spiritual, legal, and moral reformation of a community that had, evidently, drifted from consistent covenant faithfulness in the intervening decades. King Artaxerxes's remarkably generous authorization — providing extensive royal funding, permission for further voluntary emigration, and explicit authority for Ezra to appoint judges and teach God's law, “whoever will not obey the law of your God and the law of the king must surely be punished” — again demonstrates God's continued ability to direct pagan political authority toward supporting his own people's genuine spiritual welfare, prompting Ezra's own grateful acknowledgment: “praise be to the Lord, the God of our ancestors, who has put it into the king's heart to bring honor to the house of the Lord.”"
+      }
+    ]
+  },
+  "ezra-8": {
+    "book": "Ezra",
+    "chapter": 8,
+    "title": "Exiles Return with Ezra",
+    "scene": "Ezra organizes and leads a second significant group of returning exiles from Babylon to Jerusalem, notably choosing to travel without requesting a military escort despite the genuinely dangerous journey, trusting instead in fervent, deliberate prayer and fasting for God's own protective care.",
+    "sections": [
+      {
+        "heading": "Exiles Return with Ezra",
+        "range": "8:1-36",
+        "text": "Ezra's account of gathering this second wave of returning exiles, including his careful attention to ensuring adequate Levitical representation (initially finding none among the assembled group, and specifically, deliberately recruiting additional Levites before departure, illustrating attentive concern for properly staffing the restored temple's ongoing worship needs), sets up the chapter's central, notable decision: Ezra's deliberate choice not to request a military escort for this dangerous journey through hostile territory, “because we had told the king, 'The gracious hand of our God is on everyone who looks to him, but his great anger is against all who forsake him'” — having made this confident public declaration regarding God's protective care, Ezra apparently felt it would be inconsistent, even hypocritical, to then request additional human military protection as though that stated confidence weren't genuinely sufficient. The resulting fast “that we might humble ourselves before our God and ask him for a safe journey,” and the journey's successful, safe completion — “our God was gracious to us” — illustrates genuine, tested faith placed into deliberate, costly practice rather than remaining merely theoretical or rhetorical."
+      }
+    ]
+  },
+  "ezra-9": {
+    "book": "Ezra",
+    "chapter": 9,
+    "title": "Ezra's Prayer about Intermarriage",
+    "scene": "Upon arriving in Jerusalem, Ezra discovers a serious, widespread problem of intermarriage between the Jewish community and surrounding pagan peoples, provoking his own dramatic, physical expression of grief and one of Scripture's most extended, humble prayers of corporate confession on behalf of a sin he himself hadn't personally committed.",
+    "sections": [
+      {
+        "heading": "Ezra's Prayer about Intermarriage",
+        "range": "9:1-15",
+        "text": "Ezra's discovery of widespread intermarriage between the restored Jewish community and surrounding pagan peoples — a practice the Mosaic law had specifically prohibited, not primarily on ethnic or racial grounds, but specifically due to the genuine spiritual danger of resulting religious syncretism and idolatrous compromise (as Deuteronomy 7:3-4 itself explicitly explains the prohibition's underlying rationale) — provokes his own visceral, physical response: tearing his clothes and hair, sitting appalled “until the evening sacrifice.” Ezra's extended prayer of corporate confession — “I am too ashamed and disgraced, my God, to lift up my face to you” — models genuine, humble intercessory leadership: though Ezra himself hadn't personally committed this specific sin, he identifies fully and completely with his community's collective guilt (“our guilt has reached to the heavens”), refusing to distance himself as an innocent outside observer merely condemning others' failure, but instead grieving genuinely alongside and on behalf of his entire covenant community's shared, collective responsibility and need for repentance."
+      }
+    ]
+  },
+  "ezra-10": {
+    "book": "Ezra",
+    "chapter": 10,
+    "title": "The People Confess Their Sin",
+    "scene": "The book of Ezra closes with the community's own genuine, collective response to Ezra's prayer — public confession and the difficult, costly commitment to formally separate from these prohibited foreign marriages — concluding with a detailed listing of those specifically involved, a sobering, unresolved ending that resists a tidier, more comfortable narrative conclusion.",
+    "sections": [
+      {
+        "heading": "The People Confess Their Sin",
+        "range": "10:1-44",
+        "text": "The community's response to Ezra's prayer and grief — “a very large crowd of Israelites—men, women and children—gathered around him. They too wept bitterly,” and their own proposed solution, “let us make a covenant before our God to send away all these women and their children” — demonstrates genuine, communal repentance moving beyond mere emotional response into concrete, costly action. This chapter's resolution, while achieving its intended goal of restoring covenant purity, remains genuinely difficult for modern readers to process without discomfort: the formal dissolution of these marriages, whatever their problematic covenant implications, still involved genuine human relationships and, particularly troubling, the fate of children from these unions, about which the text itself remains notably silent regarding their specific arrangements or ultimate wellbeing. This difficult, unresolved ending — the book closing with a detailed list of those specifically involved in these dissolved marriages, rather than a more emotionally satisfying, triumphant conclusion — reflects Scripture's characteristic willingness to record genuinely difficult historical decisions honestly, without either fully endorsing every specific detail of their execution as an unambiguous moral model or editorially condemning the underlying, genuine concern for covenant purity that motivated this costly, communal action in the first place; readers today rightly wrestle with how to appropriately weigh the passage's evident concern for spiritual fidelity against its considerable human cost, without the text itself fully resolving that tension for us."
+      }
+    ]
+  },
+  "nehemiah-1": {
+    "book": "Nehemiah",
+    "chapter": 1,
+    "title": "Nehemiah's Prayer for Jerusalem",
+    "scene": "Nehemiah, a Jewish exile serving in the trusted, influential position of cupbearer to the Persian king Artaxerxes, receives devastating news regarding Jerusalem's continued physical vulnerability — its walls still broken down decades after the exiles' initial return — provoking days of genuine mourning and an extended, carefully structured prayer that models thoughtful, biblically grounded intercession.",
+    "sections": [
+      {
+        "heading": "Nehemiah's Prayer for Jerusalem",
+        "range": "1:1-11",
+        "text": "Nehemiah's devastated response to news that “the wall of Jerusalem is broken down, and its gates have been burned with fire” — sitting down and weeping, mourning, fasting, and praying “for some days” — shows genuine, sustained emotional processing before any practical response was attempted, modeling appropriate lament rather than immediately rushing toward action without proper reflection and prayer. Nehemiah's extended prayer, carefully structured around God's own covenant character (“Lord, the God of heaven, the great and awesome God, who keeps his covenant of love”), honest confession of Israel's collective sin, and specific appeal to God's own prior promises regarding both judgment and eventual restoration (drawing directly on language found in Deuteronomy 30's covenant blessings and curses), models thoughtful, biblically literate intercessory prayer grounded in careful, specific appeal to God's own revealed character and promises rather than vague, generic petition alone."
+      }
+    ]
+  },
+  "nehemiah-2": {
+    "book": "Nehemiah",
+    "chapter": 2,
+    "title": "Nehemiah Goes to Jerusalem",
+    "scene": "Nehemiah's visible grief eventually draws the Persian king's own concerned attention, resulting in royal permission and support for Nehemiah's mission to rebuild Jerusalem's walls, followed by his careful, quietly conducted nighttime inspection of the damaged walls before publicly announcing this ambitious rebuilding project to the local Jewish community.",
+    "sections": [
+      {
+        "heading": "Nehemiah Goes to Jerusalem",
+        "range": "2:1-20",
+        "text": "Nehemiah's brief, urgent “arrow prayer” — “then I prayed to the God of heaven”, offered in the very moment the king directly asked what he wanted, before Nehemiah's own carefully prepared, specific response — illustrates the value of both extended, sustained prayer (chapter 1) and spontaneous, immediate prayer offered in a critical moment requiring quick response, showing these two forms of prayer as complementary rather than competing spiritual disciplines. Nehemiah's careful, deliberately private nighttime inspection of Jerusalem's damaged walls — “I hadn't told anyone what my God had put in my heart to do for Jerusalem” — before publicly announcing his rebuilding plan demonstrates prudent, thorough preparation and careful assessment preceding public commitment and action, a pattern of wise, deliberate leadership avoiding both premature action based on insufficient information and excessive, paralyzing caution once sufficient information and genuine calling had actually been confirmed."
+      }
+    ]
+  },
+  "nehemiah-3": {
+    "book": "Nehemiah",
+    "chapter": 3,
+    "title": "The Builders",
+    "scene": "This chapter provides a detailed, carefully documented account of the wall-building project's actual organization, listing by name the various individuals, families, and groups responsible for specific sections — material whose seemingly tedious detail actually conveys a remarkable, genuinely inspiring picture of comprehensive, cooperative community mobilization.",
+    "sections": [
+      {
+        "heading": "The Builders",
+        "range": "3:1-32",
+        "text": "This chapter's extensive listing of specific builders and their assigned wall sections — including priests, goldsmiths, perfume-makers, local district rulers, and even “the daughters of Shallum” participating alongside male workers — conveys a genuinely remarkable, inspiring picture of comprehensive community mobilization across virtually every social class, occupation, and, notably, gender, working cooperatively toward a shared, urgent goal. The chapter's specific note that some nobles “would not put their shoulders to the work under their supervisors” provides an honest, non-idealized acknowledgment that even this remarkably successful cooperative undertaking still encountered some measure of privileged reluctance and incomplete participation, without this exception undermining the broader, genuinely impressive pattern of widespread, sacrificial communal effort the chapter otherwise documents in such careful, memorable detail."
+      }
+    ]
+  },
+  "nehemiah-4": {
+    "book": "Nehemiah",
+    "chapter": 4,
+    "title": "Opposition to the Rebuilding",
+    "scene": "The wall-building project encounters increasingly serious, organized opposition and ridicule from surrounding hostile peoples, escalating from mere mockery toward an actual planned military attack — met by Nehemiah's practical, faith-grounded response of combining continued prayer with genuinely prudent, tangible defensive preparation.",
+    "sections": [
+      {
+        "heading": "Opposition to the Rebuilding",
+        "range": "4:1-23",
+        "text": "The escalating hostility from Sanballat and Tobiah — moving from mocking ridicule (“what are those feeble Jews doing?… even a fox climbing up on it would break down their wall of stones!”) toward an actual, coordinated plot for military attack — is met by Nehemiah's notably balanced, practical response, memorably summarized in his own words: “we prayed to our God and posted a guard day and night to meet this threat.” This deliberate combination of fervent prayer and genuinely prudent, practical defensive preparation — having half the workforce continue building while the other half stood armed guard, with even the builders themselves working “with one hand and held a weapon in the other” — offers an enduring model for facing genuine external opposition and threat: neither presumptuous faith that neglects appropriate practical precaution, nor anxious, purely practical self-reliance that neglects genuine, ongoing dependence on God through prayer, but a wise, faithful combination of both."
+      }
+    ]
+  },
+  "nehemiah-5": {
+    "book": "Nehemiah",
+    "chapter": 5,
+    "title": "Nehemiah Helps the Poor",
+    "scene": "Amid the external pressure of continued wall construction, Nehemiah discovers and directly confronts a serious internal crisis: wealthy Jewish nobles exploiting their own poorer countrymen through predatory lending and debt-slavery practices, resulting in Nehemiah's own remarkable, personally sacrificial example of refusing to exploit his official governing position for personal financial gain.",
+    "sections": [
+      {
+        "heading": "Nehemiah Helps the Poor",
+        "range": "5:1-19",
+        "text": "The poor community members' desperate complaint — forced to mortgage their fields and even sell their own children into debt-slavery simply to survive famine conditions while wealthy fellow Jews charged predatory interest, directly violating Mosaic law's explicit prohibitions against such exploitation of fellow Israelites — provokes Nehemiah's genuine anger and direct, public confrontation of the responsible nobles and officials, successfully securing their agreement to cancel these debts and return seized property. Nehemiah's own personal example — voluntarily forgoing the substantial governor's food allowance and other privileges his position legitimately entitled him to, unlike his own predecessors, specifically “out of reverence for God” and genuine concern for the people's already heavy economic burden — models costly, personally sacrificial leadership that practices the same generous, self-denying standard being demanded of others, rather than merely issuing directives from a position of continued personal comfort and privilege."
+      }
+    ]
+  },
+  "nehemiah-6": {
+    "book": "Nehemiah",
+    "chapter": 6,
+    "title": "Nehemiah Continues the Work",
+    "scene": "As the wall's construction nears completion, opposition intensifies into increasingly sophisticated attempts at personal manipulation — including repeated invitations to seemingly reasonable meetings actually designed for assassination, false accusations of treasonous rebellion, and attempted spiritual intimidation through a bribed false prophet — all firmly, wisely resisted by Nehemiah's continued focus and discernment.",
+    "sections": [
+      {
+        "heading": "Nehemiah Continues the Work",
+        "range": "6:1-19",
+        "text": "The escalating sophistication of opposition tactics — repeated invitations to seemingly innocuous meetings actually intended for assassination, an open, unsealed letter making false public accusations of planned rebellion against Persian authority, and finally, a bribed prophet named Shemaiah attempting to manipulate Nehemiah into a fear-driven, compromising act of religious impropriety (entering the temple's restricted inner sanctuary, which as a layperson he had no legal right to enter) — is consistently met by Nehemiah's clear-eyed discernment and unwavering focus, memorably summarized in his repeated refusal: “I am carrying on a great project and cannot go down. Why should the work stop while I leave it and go down to you?” This chapter models sustained focus and appropriate discernment when facing increasingly personalized, psychologically sophisticated opposition designed specifically to distract, discredit, or compromise a leader through means other than direct, obvious confrontation, illustrating that genuine spiritual discernment sometimes requires recognizing manipulation disguised as reasonable, even seemingly pious, invitation or counsel."
+      }
+    ]
+  },
+  "nehemiah-7": {
+    "book": "Nehemiah",
+    "chapter": 7,
+    "title": "Registration of Returned Exiles",
+    "scene": "Following the wall's successful completion, Nehemiah appoints trustworthy gatekeepers and organizes the sparsely populated city's defense, before recording a genealogical census closely paralleling Ezra's earlier listing — careful administrative follow-through ensuring the physical rebuilding's genuine, lasting practical benefit for the community's actual security and organization.",
+    "sections": [
+      {
+        "heading": "Registration of Returned Exiles",
+        "range": "7:1-73",
+        "text": "Nehemiah's careful appointment of trustworthy gatekeepers, singers, and Levites, and his specific criteria for choosing gate-closing personnel (“they are God-fearing men”), demonstrates that physical security ultimately depends on trustworthy, character-qualified personnel, not merely adequate physical fortification alone. The chapter's genealogical census, substantially overlapping with the similar listing found in Ezra 2, serves this narrative's own particular purpose: establishing an accurate, verified population record for the now-completed, but still sparsely inhabited, walled city (“the city was large and spacious, but there were few people in it, and none of the houses had been rebuilt”), setting up the following chapters' account of further community reorganization and the eventual, deliberate repopulation effort the walls' completion now made both necessary and genuinely possible."
+      }
+    ]
+  },
+  "nehemiah-8": {
+    "book": "Nehemiah",
+    "chapter": 8,
+    "title": "Ezra Reads the Law",
+    "scene": "In one of Scripture's most moving accounts of corporate spiritual renewal, the reunited community gathers for a public reading and careful explanation of God's law, resulting in genuine understanding, appropriate initial grief, and, at Ezra's own gentle redirection, a shift toward joyful celebration grounded in that same law's genuine comprehension.",
+    "sections": [
+      {
+        "heading": "Ezra Reads the Law",
+        "range": "8:1-18",
+        "text": "This chapter's account of Ezra reading God's law publicly “from daybreak till noon” before “all the men and women and others who could understand,” while Levites moved among the crowd, “making it clear and giving the meaning so that the people understood what was being read,” models the vital combination of accurate proclamation and genuinely accessible, careful explanation — mere public reading alone, without ensured comprehension, wouldn't have accomplished this passage's evident goal of genuine spiritual renewal and understanding. The people's initial response — weeping as they genuinely grasped the law's searching demands — is notably redirected by Nehemiah, Ezra, and the Levites: “this day is holy to the Lord your God. Do not mourn or weep… go and enjoy choice food and sweet drinks… do not grieve, for the joy of the Lord is your strength.” This deliberate redirection from appropriate initial conviction toward genuine, celebratory joy illustrates an important pastoral principle: while honest conviction of sin and genuine understanding of God's demanding standards remains valuable and appropriate, dwelling excessively in that conviction without moving toward grateful, joyful response to God's grace and provision represents an incomplete, ultimately unhealthy spiritual posture — “the joy of the Lord,” not merely sober conviction alone, constitutes genuine spiritual “strength.”"
+      }
+    ]
+  },
+  "nehemiah-9": {
+    "book": "Nehemiah",
+    "chapter": 9,
+    "title": "The People Confess Their Sins",
+    "scene": "Following the joyful celebration of chapter 8, the community gathers again for an extended, comprehensive corporate confession, reviewing Israel's entire covenant history from creation through the present moment as a structured framework for genuine, historically grounded repentance and renewed covenant commitment.",
+    "sections": [
+      {
+        "heading": "The People Confess Their Sins",
+        "range": "9:1-38",
+        "text": "This chapter's extended prayer of corporate confession — systematically reviewing God's faithfulness from creation through Abraham's calling, the Exodus, wilderness wandering, conquest, and the entire subsequent cycle of blessing, rebellion, judgment, and restoration — provides a genuinely comprehensive theological and historical framework for the community's own present repentance, grounding their specific, contemporary confession within this much larger, consistent pattern of God's persistent covenant faithfulness contrasted with Israel's own persistent, recurring unfaithfulness throughout that same extended history. The prayer's honest acknowledgment — “in all that has happened to us, you have remained righteous; you have acted faithfully, while we did wrong” — refuses to blame God or circumstance for the community's difficulties, instead maintaining consistent, appropriate moral clarity regarding genuine human responsibility throughout this extended historical review, while the prayer's concluding resolution to make “a binding agreement,” formally documented and sealed, transitions this extended confession into the concrete, practical covenant renewal the following chapter will detail."
+      }
+    ]
+  },
+  "nehemiah-10": {
+    "book": "Nehemiah",
+    "chapter": 10,
+    "title": "The People's Agreement",
+    "scene": "Following the extended corporate confession, the community's leaders formalize their renewed covenant commitment through a written, sealed document, with specific, practical commitments addressing several particular areas of prior covenant failure — translating the preceding chapter's more abstract confession into concrete, actionable community policy.",
+    "sections": [
+      {
+        "heading": "The People's Agreement",
+        "range": "10:1-39",
+        "text": "This chapter's detailed listing of specific, practical commitments — avoiding intermarriage with surrounding pagan peoples, honoring Sabbath rest and commercial restrictions, observing sabbatical year land rest and debt cancellation, and committing to specific, regular financial support for temple maintenance and worship (including a formal commitment to bring the “firstfruits” and various required offerings) — translates the preceding chapter's extended historical and theological confession into concrete, specific, actionable community policy, illustrating that genuine repentance appropriately moves beyond emotional or verbal acknowledgment alone toward specific, practical, and measurable commitments addressing the actual, particular areas of previously demonstrated covenant failure."
+      }
+    ]
+  },
+  "nehemiah-11": {
+    "book": "Nehemiah",
+    "chapter": 11,
+    "title": "People to Repopulate Jerusalem",
+    "scene": "With the walls completed and covenant renewed, the community addresses the practical challenge of Jerusalem's continued sparse population by implementing a deliberate, sacrificial resettlement plan — including a notable, voluntary casting of lots system to fairly distribute the genuine, ongoing cost this civic relocation would require of some families.",
+    "sections": [
+      {
+        "heading": "People to Repopulate Jerusalem",
+        "range": "11:1-36",
+        "text": "The community's practical solution to Jerusalem's continued sparse population — casting lots to select “one out of every ten” families to relocate permanently to the city itself, while the remaining nine-tenths continued residing in their existing towns — fairly distributed the genuine, real cost and inconvenience this necessary civic repopulation actually required, while the chapter's specific commendation of those who “volunteered to live in Jerusalem” beyond this required lottery selection highlights additional voluntary sacrifice exceeding the community's own established minimum requirement, illustrating the value of both fair, structured systems distributing necessary communal burden and genuine, voluntary sacrifice exceeding that established minimum requirement."
+      }
+    ]
+  },
+  "nehemiah-12": {
+    "book": "Nehemiah",
+    "chapter": 12,
+    "title": "Priests and Levites Who Returned",
+    "scene": "This chapter documents the priestly and Levitical families serving across this restoration period, before describing the wall's joyful, musically elaborate formal dedication ceremony — two massive choirs processing in opposite directions around the completed walls before converging at the temple in unified, celebratory worship.",
+    "sections": [
+      {
+        "heading": "Priests and Levites Who Returned",
+        "range": "12:1-47",
+        "text": "Following further genealogical documentation of priestly and Levitical service across this restoration period, this chapter's account of the wall's formal dedication — two large choirs, accompanied by musical instruments, processing in opposite directions along the completed wall's full circuit before converging together at the temple — celebrates this building project's successful completion through elaborate, joyful, and specifically musical communal worship, with the resulting celebratory noise, the text notes, “heard far away,” appropriately marking this significant achievement's proper, public, joy-filled conclusion after the extended period of both external opposition and challenging internal reform this restoration process had required."
+      }
+    ]
+  },
+  "nehemiah-13": {
+    "book": "Nehemiah",
+    "chapter": 13,
+    "title": "Nehemiah's Further Reforms",
+    "scene": "The book of Nehemiah closes not with the tidy, permanent resolution readers might expect following such an extensive reform effort, but with the sobering, realistic account of Nehemiah's return visit revealing significant covenant backsliding already underway, requiring his own renewed, vigorous confrontation of specific abuses — an honest, unresolved ending underscoring genuine spiritual reform's persistently difficult, ongoing character.",
+    "sections": [
+      {
+        "heading": "Nehemiah's Further Reforms",
+        "range": "13:1-31",
+        "text": "Nehemiah's account of returning to Jerusalem after a period away, only to discover significant covenant backsliding already underway — the priest Eliashib had provided Tobiah, one of the project's earlier chief opponents, with a room within the temple complex itself; Levites had been neglected and forced to abandon temple service for ordinary farm labor due to insufficient financial support; Sabbath commerce had resumed; and intermarriage with surrounding pagan peoples had again become widespread — provides a genuinely sobering, realistic conclusion to this extended narrative of reform. Nehemiah's own vigorous, even physically confrontational response to these renewed abuses — personally throwing Tobiah's belongings out of the temple room, physically confronting and even striking some involved in the resumed intermarriage practice, pulling out their hair — reflects genuine, righteous anger at seeing hard-won reforms so quickly abandoned, even while modern readers might reasonably question the specific methods employed. This book's deliberately unresolved, non-triumphant ending — closing not with permanent, secured victory but with Nehemiah's own urgent prayer, “remember me with favor, my God,” amid continued, ongoing struggle against persistent human tendency toward spiritual complacency and compromise — offers an honest, realistic final word regarding genuine spiritual reform's actual character: rarely a single, permanently secured achievement, but rather an ongoing, continually renewed struggle requiring sustained vigilance and repeated, renewed commitment across successive generations and circumstances."
+      }
+    ]
+  },
+  "esther-1": {
+    "book": "Esther",
+    "chapter": 1,
+    "title": "Queen Vashti Deposed",
+    "scene": "The book of Esther opens in the opulent Persian royal court under King Xerxes (Ahasuerus), where Queen Vashti's refusal to display herself before the king's drunken banquet guests results in her deposal — setting the stage for the succession process that will eventually place Esther, an unlikely Jewish orphan, in the position of queen.",
+    "sections": [
+      {
+        "heading": "Queen Vashti Deposed",
+        "range": "1:1-22",
+        "text": "The lavish, extended description of Xerxes's wealth and power — a 180-day royal display of “the vast wealth of his kingdom,” followed by a further seven-day banquet — establishes the story's setting within genuine, documented Persian imperial splendor and excess. Queen Vashti's refusal to appear before the king's drunken guests — her specific reasons left unstated by the narrative, though many interpreters suggest reasonable modesty given the almost certainly compromising nature of the request, made “when the king was in high spirits from wine” — results in her permanent deposal, driven partly by the king's own wounded pride and partly by his advisors' exaggerated concern that her example might inspire broader wifely disobedience throughout the empire (“this deed of the queen will become known to all the women, and it will put contempt in the eyes of their husbands”). This opening chapter, notably free of any explicit religious or theological content (consistent with the entire book of Esther's genuinely unique distinction as the only biblical book never explicitly mentioning God's name), nonetheless sets in motion, through purely secular political and personal court intrigue, the exact sequence of events that would eventually place a Jewish orphan in a position of decisive influence — an early hint of this book's central, recurring theme: God's providential sovereignty operating powerfully behind seemingly ordinary, entirely secular historical and political circumstances, even without any explicit, visible divine intervention or direct textual mention."
+      }
+    ]
+  },
+  "esther-2": {
+    "book": "Esther",
+    "chapter": 2,
+    "title": "Esther Made Queen",
+    "scene": "Following an empire-wide search for Vashti's replacement, Esther — a Jewish orphan raised by her older cousin Mordecai, concealing her ethnic and religious identity at his instruction — is selected as the new queen, while Mordecai's discovery and reporting of an assassination plot against the king is recorded, seemingly insignificantly, in the royal chronicles.",
+    "sections": [
+      {
+        "heading": "Esther Made Queen",
+        "range": "2:1-23",
+        "text": "Esther's introduction as a Jewish orphan raised by her cousin Mordecai “as his own daughter,” and her participation in the empire-wide selection process for Vashti's royal replacement, results in her eventual selection as queen — though notably, her concealment of her Jewish identity, undertaken specifically at Mordecai's continued instruction, reflects a genuinely difficult, morally complex situation for both Esther and Mordecai: navigating survival and eventual influence within a foreign, potentially hostile political system through necessary discretion rather than open, immediate religious identification, a tension this book doesn't resolve through simple moral commentary but presents as the actual, complicated reality these particular circumstances required. Mordecai's discovery and reporting of an assassination plot against King Xerxes, duly “written in the book of the annals” yet seemingly forgotten and unrewarded at the time, plants a seemingly minor, easily overlooked narrative detail that the book's later chapters will reveal as providentially, precisely significant — an early instance of this book's characteristic literary technique: apparently incidental details that later prove crucial to the story's ultimate, dramatic resolution."
+      }
+    ]
+  },
+  "esther-3": {
+    "book": "Esther",
+    "chapter": 3,
+    "title": "Haman's Plot to Destroy the Jews",
+    "scene": "Haman, an arrogant court official elevated to a position of significant authority, becomes consumed with murderous rage when Mordecai alone refuses to bow before him, resulting in Haman's securing official royal authorization for a comprehensive, empire-wide genocide targeting the entire Jewish population — not merely Mordecai's own personal punishment.",
+    "sections": [
+      {
+        "heading": "Haman's Plot to Destroy the Jews",
+        "range": "3:1-15",
+        "text": "Mordecai's refusal to bow before the newly elevated Haman — whether motivated by specifically religious conviction (Haman being identified as “the Agagite,” connecting him to the ancient, hereditary conflict between Israel and the Amalekites, King Agag's own people, dating back to Saul's incomplete conquest described in 1 Samuel 15) or more general personal principle — provokes Haman's genuinely disproportionate, murderous response: rather than seeking punishment against Mordecai individually, Haman resolves “to destroy all Jews, the people of Mordecai, throughout the whole kingdom of Xerxes,” securing official royal authorization for this comprehensive, empire-wide genocide through calculated appeal to the king's own vanity and greed (offering an enormous bribe, and characterizing the Jewish people through vague, unspecified accusations regarding their customs being “different from those of all other people” and their supposed failure to “obey the king's laws”). This chapter's chilling, historically informed depiction of how ethnic hatred, official political authorization, and bureaucratic efficiency can combine to threaten an entire people's existence provides an early, sobering biblical illustration of a pattern that would tragically recur throughout subsequent Jewish history, while the specific detail of casting “pur” (lots) to determine the timing of this planned genocide — the very origin of the book's eventual Purim festival name — introduces an element of apparent random chance that the book's unfolding narrative will reveal as anything but genuinely random or beyond God's own providential, if unstated, control."
+      }
+    ]
+  },
+  "esther-4": {
+    "book": "Esther",
+    "chapter": 4,
+    "title": "Mordecai Persuades Esther to Help",
+    "scene": "News of Haman's genocidal decree provokes widespread, desperate mourning among the empire's Jewish population, and Mordecai's urgent appeal for Esther to intervene with the king on her people's behalf results in one of Scripture's most quoted statements regarding providence and purposeful timing, and Esther's own courageous decision to risk her life for this cause.",
+    "sections": [
+      {
+        "heading": "Mordecai Persuades Esther to Help",
+        "range": "4:1-17",
+        "text": "Mordecai's urgent appeal to Esther, initially reluctant given the genuine, serious risk involved in approaching the king uninvited (a capital offense unless the king specifically extended mercy), includes this book's most theologically significant and frequently quoted statement: “if you remain silent at this time, relief and deliverance for the Jews will arise from another place, but you and your father's family will perish. And who knows but that you have come to your royal position for such a time as this?” This statement, despite the book's characteristic avoidance of explicit divine reference, carries clear, unmistakable providential implications: Mordecai's confident assumption that deliverance would come “from another place” even without Esther's specific cooperation reflects genuine confidence in God's certain, ongoing faithfulness to his covenant people regardless of any single individual's response, while his simultaneous suggestion that Esther's own specific, seemingly fortunate royal position might carry genuine providential purpose — “for such a time as this” — offers one of Scripture's most memorable, frequently applied statements regarding the potential providential significance embedded within a person's own particular, seemingly circumstantial life situation and opportunities. Esther's courageous response — requesting a coordinated three-day community fast before her dangerous approach to the king, and her own resolved declaration, “if I perish, I perish” — models genuine courage grounded not in confident certainty of a favorable personal outcome, but in willing, sacrificial commitment to a cause and community larger than her own individual safety and comfort."
+      }
+    ]
+  },
+  "esther-5": {
+    "book": "Esther",
+    "chapter": 5,
+    "title": "Esther's Request to the King",
+    "scene": "Esther's carefully calculated approach to the king proves successful, though rather than immediately presenting her actual request, she strategically invites the king and Haman to a private banquet, further delaying her true purpose — while Haman's own continued obsession with Mordecai's persistent refusal to bow leads him toward constructing an enormous gallows specifically intended for his enemy's execution.",
+    "sections": [
+      {
+        "heading": "Esther's Request to the King",
+        "range": "5:1-14",
+        "text": "Esther's successful, favorably received approach to the king, followed by her strategic decision to delay her actual request through an initial private banquet invitation extended to both the king and, notably, Haman himself, demonstrates careful, patient strategic timing rather than immediate, potentially premature disclosure of her actual purpose — whether motivated by continued caution, careful relationship-building, or simply prudent, unhurried wisdom regarding the optimal moment for her ultimate request, the narrative doesn't explicitly clarify, though the resulting delay proves providentially significant for the story's unfolding resolution. Haman's own continued, consuming obsession with Mordecai — unable to enjoy even this remarkable, exclusive royal banquet invitation due to persistent irritation at Mordecai's ongoing refusal to show him proper deference — leads him, at his wife and friends' suggestion, to construct an enormous, specifically oversized gallows intended for Mordecai's coming execution, illustrating how consuming personal resentment and wounded pride can distort even objectively remarkable good fortune into continued, disproportionate dissatisfaction and destructive obsession."
+      }
+    ]
+  },
+  "esther-6": {
+    "book": "Esther",
+    "chapter": 6,
+    "title": "Mordecai Is Honored",
+    "scene": "In this book's most dramatically ironic chapter, a sleepless King Xerxes's chance decision to review the royal chronicles reminds him of Mordecai's previously unrewarded loyal service, leading to the supremely ironic spectacle of Haman himself being forced to publicly honor his own hated enemy — a reversal setting up his own approaching downfall.",
+    "sections": [
+      {
+        "heading": "Mordecai Is Honored",
+        "range": "6:1-14",
+        "text": "This chapter's dramatic irony centers on a sequence of seemingly coincidental events that the book's careful narrative structure invites readers to recognize as anything but genuinely random: the king's own sleeplessness on this particular night, his chance decision to have the royal chronicles read to him, landing specifically on the previously forgotten, unrewarded account of Mordecai's earlier loyal service in reporting the assassination plot, and Haman's own precisely timed arrival at the palace, coming specifically to request Mordecai's execution, occurring at exactly the moment the king was seeking advice on how best to honor this very same Mordecai. The resulting scene — Haman, assuming the king's described honors were intended for himself, elaborately proposing an extravagant public honor, only to then be forced to personally execute that exact honor on behalf of his own hated enemy Mordecai — provides one of Scripture's most dramatically ironic reversals, and Haman's own wife and advisors' ominous, prophetic warning — “since Mordecai, before whom your downfall has started, is of Jewish origin, you cannot stand against him—you will surely come to ruin!” — anticipates the book's coming, final resolution even before it fully unfolds in the chapters immediately following."
+      }
+    ]
+  },
+  "esther-7": {
+    "book": "Esther",
+    "chapter": 7,
+    "title": "Haman Is Executed",
+    "scene": "At her second banquet, Esther finally reveals her true identity as a Jew and exposes Haman's genocidal plot directly to the king, resulting in Haman's swift, decisive downfall and execution — fittingly, on the very gallows he had personally constructed for Mordecai's own intended execution.",
+    "sections": [
+      {
+        "heading": "Haman Is Executed",
+        "range": "7:1-10",
+        "text": "Esther's dramatic revelation at her second banquet — finally disclosing both her own Jewish identity and Haman's specific genocidal plot directly targeting her and her people — provokes the king's furious, immediate response, resulting in Haman's swift execution on the very gallows he had personally, elaborately constructed for his intended victim Mordecai. This poetic, precisely fitting reversal — the schemer destroyed by his own carefully prepared instrument of destruction — provides a satisfying, dramatically appropriate resolution to Haman's own escalating, disproportionate obsession and cruelty, while the chapter's underlying theological implication, again conveyed entirely without explicit divine reference, remains unmistakably clear: those who scheme destruction against God's covenant people ultimately, consistently find that same destruction returning upon their own heads instead."
+      }
+    ]
+  },
+  "esther-8": {
+    "book": "Esther",
+    "chapter": 8,
+    "title": "The King's Edict for the Jews",
+    "scene": "With Haman's own execution complete, Esther and Mordecai secure a further royal decree — since the original genocidal edict, under Persian law, couldn't simply be revoked — explicitly authorizing the Jewish population's right to self-defense against the very attack Haman's original decree had authorized against them.",
+    "sections": [
+      {
+        "heading": "The King's Edict for the Jews",
+        "range": "8:1-17",
+        "text": "The chapter's practical, legally necessary solution to an otherwise seemingly intractable problem — Persian royal decrees, once formally issued, couldn't simply be revoked or canceled outright, even by the king's own subsequent wish — required instead a counter-decree explicitly authorizing the empire's Jewish population “to assemble and protect themselves; to destroy, kill and annihilate the armed men of any nationality or province who might attack them and their women and children,” effectively neutralizing the original genocidal decree's practical force through legally sanctioned self-defense rather than its formal cancellation. Mordecai's own elevation to Haman's former position of significant political authority and honor, and the resulting widespread celebration — “many people of other nationalities became Jews because fear of the Jews had seized them” — illustrates this dramatic reversal's genuinely public, far-reaching political and social impact throughout the empire."
+      }
+    ]
+  },
+  "esther-9": {
+    "book": "Esther",
+    "chapter": 9,
+    "title": "The Jews Destroy Their Enemies",
+    "scene": "On the very day originally designated for the Jewish population's destruction, the tables are decisively turned as Jews throughout the empire successfully defend themselves against their attackers, leading directly to the establishment of the ongoing festival of Purim, commemorating this remarkable historical reversal for all future generations.",
+    "sections": [
+      {
+        "heading": "The Jews Destroy Their Enemies",
+        "range": "9:1-32",
+        "text": "This chapter's account of the Jewish population's successful, authorized self-defense on the very day originally designated for their intended destruction — “the day on which the enemies of the Jews had hoped to overpower them… was turned around” — completes this book's central, dramatic narrative reversal, with the notable detail that the Jewish defenders specifically “did not lay their hands on the plunder,” despite having legal authorization to do so, suggesting deliberate restraint distinguishing their defensive action from mere vengeful opportunism or personal enrichment. The chapter's establishment of the ongoing festival of Purim — named directly after the very “pur” (lot) Haman had originally cast to determine the timing of his intended genocide, deliberately memorializing how what appeared to be blind, impersonal chance had actually, ultimately served God's own providential purposes of deliverance rather than the destruction it had originally, seemingly guaranteed — establishes a permanent, annually celebrated commemoration ensuring this remarkable historical deliverance would continue being remembered, retold, and celebrated by Jewish communities across subsequent generations, a celebration that continues, in fact, to be observed by Jewish communities worldwide to the present day."
+      }
+    ]
+  },
+  "esther-10": {
+    "book": "Esther",
+    "chapter": 10,
+    "title": "The Greatness of Mordecai",
+    "scene": "The book of Esther closes with a brief, concluding summary of King Xerxes's continued reign and Mordecai's own lasting prominence and positive influence within the Persian court, providing a satisfying, stable conclusion following this book's dramatic sequence of crisis, reversal, and deliverance.",
+    "sections": [
+      {
+        "heading": "The Greatness of Mordecai",
+        "range": "10:1-3",
+        "text": "This brief closing chapter's summary of Mordecai's lasting greatness and influence — “second in rank to King Xerxes, preeminent among the Jews, and held in high esteem by his many fellow Jews, because he worked for the good of his people and spoke up for the welfare of all the Jews” — provides a satisfying, stable conclusion to this book's dramatic narrative arc, while its explicit reference to “the book of the annals of the kings of Media and Persia” for further historical detail grounds this entire remarkable, providentially significant story within genuine, verifiable historical record-keeping rather than presenting it as merely legendary or purely literary invention. This book's overall, sustained achievement — conveying such a clear, unmistakable, and theologically rich message of God's providential care and faithfulness toward his covenant people, accomplished entirely without a single explicit mention of God's own name throughout its ten chapters — stands as a distinctive, deliberate literary and theological achievement within the biblical canon, powerfully demonstrating that God's genuine, active sovereignty operates reliably and decisively even through, and specifically within, the seemingly ordinary, secular course of everyday political events, personal decisions, and apparently random historical circumstance and chance, without requiring constant explicit invocation or visible, direct miraculous intervention to remain genuinely, powerfully, and comprehensively at work."
+      }
+    ]
+  },
+  "job-1": {
+    "book": "Job",
+    "chapter": 1,
+    "title": "Job's Faith and Family",
+    "scene": "The book of Job, likely one of the oldest books in the biblical canon (its exact dating and authorship remain genuinely uncertain), opens with a striking, unusual scene set in the heavenly court, introducing Job as a genuinely, exemplary righteous man before Satan proposes a direct test of whether Job's faithfulness would survive the loss of all his blessings.",
+    "sections": [
+      {
+        "heading": "Job's Faith and Family",
+        "range": "1:1-5",
+        "text": "The narrator's opening description of Job as “blameless and upright; he feared God and shunned evil,” confirmed later by God's own direct affirmation to Satan (“have you considered my servant Job? There is no one on earth like him”), establishes from the outset that Job's coming suffering will not, contrary to a common but mistaken assumption readers should resist throughout this book, result from any hidden personal sin or moral failure requiring exposure or correction — this crucial narrative framing, given directly to the reader though never to Job himself throughout the entire book, is essential for understanding the theological argument the rest of this extended, difficult book will actually develop."
+      },
+      {
+        "heading": "Satan Attacks Job's Character",
+        "range": "1:6-22",
+        "text": "The heavenly court scene — “the sons of God” presenting themselves, including “Satan” (literally “the accuser” or “adversary,” functioning here in a role somewhat distinct from, though clearly related to, the fuller New Testament revelation of Satan's character) — reveals Satan's specific challenge: that Job's righteousness was merely self-interested, transactional piety, maintained only because God had “put a hedge around him and his household and everything he has,” and that Job would inevitably “curse you to your face” if that protective blessing were removed. God's permission for Satan to test Job, while specifically limiting the initial scope of that testing (“do not lay a finger on the man himself”), reveals a genuine, though carefully bounded, divine permission for Satan's activity — Satan operates only within limits God himself sovereignly establishes and maintains, never with unlimited, independent authority of his own. Job's response to the sudden, catastrophic loss of virtually everything — his wealth, and most devastatingly, all ten of his children in a single day — provides one of Scripture's most remarkable examples of grief-stricken yet genuine worship: “then Job got up and tore his robe and shaved his head. Then he fell to the ground in worship and said: 'Naked I came from my mother's womb, and naked I will depart… the Lord gave and the Lord has taken away; may the name of the Lord be praised.' In all this, Job did not sin by charging God with wrongdoing.”"
+      }
+    ]
+  },
+  "job-2": {
+    "book": "Job",
+    "chapter": 2,
+    "title": "Job's Second Test",
+    "scene": "Following Job's initial, faithful response to catastrophic loss, Satan proposes an intensified second test involving Job's own physical health, resulting in painful, disfiguring illness, before Job's three friends arrive to offer their initial, genuinely commendable support through silent, sustained presence.",
+    "sections": [
+      {
+        "heading": "Job's Second Test",
+        "range": "2:1-13",
+        "text": "Satan's escalated challenge — “skin for skin! A man will give all he has for his own life. But now stretch out your hand and strike his flesh and bones, and he will surely curse you to your face” — results in God's permission for a further, more intense test targeting Job's physical body directly, though again within carefully bounded limits (“spare his life”). Job's affliction with “painful sores from the soles of his feet to the crown of his head,” and his wife's own despairing counsel — “are you still maintaining your integrity? Curse God and die!” — sets up Job's continued, remarkable faithfulness: “should we accept good from God, and not trouble?” Notably, this chapter's closing description of Job's three friends — Eliphaz, Bildad, and Zophar — arriving specifically “to sympathize with him and comfort him,” and their initial response of sitting with him in complete, sustained silence for seven days and nights, “because they saw how great his suffering was,” models genuinely appropriate, compassionate presence with a suffering person: their subsequent extended speeches throughout the rest of the book, by contrast, will prove considerably less helpful and appropriate than this initial, wordless, simply present companionship."
+      }
+    ]
+  },
+  "job-3": {
+    "book": "Job",
+    "chapter": 3,
+    "title": "Job Speaks: Life Has No Meaning",
+    "scene": "Job breaks his own extended silence with a raw, anguished lament cursing the day of his birth — not cursing God directly, as Satan had predicted, but voicing genuine, unfiltered despair regarding his own continued existence, opening the book's extended poetic dialogue section that will occupy most of its remaining chapters.",
+    "sections": [
+      {
+        "heading": "Job Speaks: Life Has No Meaning",
+        "range": "3:1-26",
+        "text": "Job's opening lament — “may the day of my birth perish… why did I not perish at birth?… why is light given to those in misery, and life to the bitter of soul?” — represents raw, unfiltered anguish and despair regarding his own continued existence, notably distinct from actually cursing God directly, as Satan had specifically predicted would occur. This chapter, and the book's willingness to record such intensely honest, even despairing lament as legitimate, canonical Scripture without editorial condemnation, offers important permission for genuine, unfiltered honesty in processing severe suffering and grief — wishing one had never been born, while certainly an expression of profound despair, is presented here as a genuine, even understandable human response to overwhelming suffering, not itself constituting the sinful “cursing of God” the book's opening chapters had specifically anticipated and, ultimately, refuted as Job's actual response."
+      }
+    ]
+  },
+  "job-4": {
+    "book": "Job",
+    "chapter": 4,
+    "title": "Eliphaz Speaks: Job Must Be Wicked",
+    "scene": "Eliphaz, apparently the eldest and most senior of Job's three friends, opens the book's extended cycle of dialogue with a relatively gentle initial response, grounded partly in his own claimed mystical night vision, that nonetheless introduces the friends' persistent, deeply flawed theological assumption: that suffering always results directly from personal sin.",
+    "sections": [
+      {
+        "heading": "Eliphaz Speaks: Job Must Be Wicked",
+        "range": "4:1-21",
+        "text": "Eliphaz's opening question — “consider now: Who, being innocent, has ever perished? Where were the upright ever destroyed?” — introduces what becomes the friends' persistent, central theological argument throughout the book's extended dialogue section: a rigid, mechanical retribution theology assuming suffering always directly, proportionally corresponds to personal sin, and blessing always directly corresponds to righteousness. Eliphaz's account of a mysterious, unsettling night vision — a spirit passing before him, provoking a message that “can a mortal be more righteous than God?” — introduces personal, subjective spiritual experience as claimed theological authority, a form of evidence the book's own narrative framework (readers already knowing, unlike Eliphaz, that Job's suffering specifically doesn't result from personal sin) invites readers to view with appropriate skepticism despite its impressive, seemingly authoritative spiritual presentation."
+      }
+    ]
+  },
+  "job-5": {
+    "book": "Job",
+    "chapter": 5,
+    "title": "Eliphaz Continues His Case",
+    "scene": "Eliphaz continues his initial speech, urging Job to accept his suffering as beneficial divine discipline and appeal directly to God for restoration, offering theologically accurate general principles that nonetheless prove genuinely inappropriate and even harmful when specifically, forcefully applied to Job's own actual situation.",
+    "sections": [
+      {
+        "heading": "Eliphaz Continues His Case",
+        "range": "5:1-27",
+        "text": "Eliphaz's counsel that Job “seek God” and recognize that “blessed is the one whom God corrects; so do not despise the discipline of the Almighty” contains genuinely accurate general theological principles — God's discipline of those he loves is a legitimate biblical theme, developed further elsewhere in Scripture (Hebrews 12:5-11) — yet becomes genuinely harmful and inappropriate precisely because Eliphaz insists on specifically, forcefully applying this general principle to Job's own particular situation, where, as readers already know from the book's opening chapters, it simply doesn't actually apply. This illustrates an important, enduring pastoral caution: theologically accurate general principles can become genuinely harmful when applied with confident, insistent specificity to situations the counselor doesn't, and often cannot, actually fully understand or accurately diagnose, however sincere and well-intentioned that counselor's underlying theological convictions might genuinely be."
+      }
+    ]
+  },
+  "job-6": {
+    "book": "Job",
+    "chapter": 6,
+    "title": "Job Replies to Eliphaz",
+    "scene": "Job responds to Eliphaz's initial speech with continued raw honesty about the genuine weight of his suffering, while pointedly criticizing his friends for their disappointing failure to provide the genuine, loyal support and comfort he had legitimately expected from them during this crisis.",
+    "sections": [
+      {
+        "heading": "Job Replies to Eliphaz",
+        "range": "6:1-30",
+        "text": "Job's response — “if only my anguish could be weighed and all my misery be placed on the scales! It would surely outweigh the sand of the seas” — insists on the genuine, undiminished weight of his suffering, refusing Eliphaz's implicit minimization or easy theological resolution of it. Job's pointed criticism of his friends' disappointing failure to provide genuine support — comparing them to a wadi (a seasonal desert streambed) that appears to promise water but proves “treacherous,” dry precisely when actually needed — exposes an important, recurring dynamic in this extended dialogue: rather than offering the genuine comfort and loyal presence Job had legitimately hoped for, his friends had instead pivoted toward accusatory theological argumentation, disappointing Job precisely when he most needed steady, faithful companionship rather than confident theological correction."
+      }
+    ]
+  },
+  "job-7": {
+    "book": "Job",
+    "chapter": 7,
+    "title": "Job Continues His Reply",
+    "scene": "Job continues his response, turning from addressing his friends toward direct address of God himself, voicing genuine confusion and even accusation regarding why God would seem to target him so intensely, while employing striking imagery of human life's brief, difficult character.",
+    "sections": [
+      {
+        "heading": "Job Continues His Reply",
+        "range": "7:1-21",
+        "text": "Job's shift toward directly addressing God — “am I the sea, or the monster of the deep, that you put me under guard? … what is mankind that you make so much of them, that you give them so much attention” (a striking, deliberately ironic inversion of Psalm 8's similar question, there expressing wonder at God's gracious attention, here expressing something closer to exhausted, bewildered complaint at what feels like excessive, unwelcome divine scrutiny) — models the legitimacy of direct, even confrontational prayer and honest questioning addressed to God himself amid genuine confusion and suffering, rather than merely discussing theological questions about God in the third person alone."
+      }
+    ]
+  },
+  "job-8": {
+    "book": "Job",
+    "chapter": 8,
+    "title": "Bildad Speaks: Job Should Repent",
+    "scene": "Bildad, the second of Job's three friends, offers his own initial speech, presenting essentially the same rigid retribution theology as Eliphaz but grounded more explicitly in appeal to traditional wisdom and historical precedent, along with vivid botanical imagery illustrating the supposedly inevitable, visible collapse of the wicked.",
+    "sections": [
+      {
+        "heading": "Bildad Speaks: Job Should Repent",
+        "range": "8:1-22",
+        "text": "Bildad's blunt opening — “does God pervert justice? Does the Almighty pervert what is right? When your children sinned against him, he gave them over to the penalty of their sin” — shockingly, callously suggests Job's own children's recent deaths resulted directly from their own personal sin, illustrating this speech cycle's increasingly harsh, insensitive application of rigid retribution theology even to circumstances involving obviously innocent victims like Job's own deceased children. Bildad's appeal to “ancient” accumulated wisdom and his vivid botanical imagery — the wicked compared to a papyrus plant that withers quickly without adequate water, or a spider's fragile web that cannot actually provide genuine security — presents confident, traditional wisdom as though it settled the question definitively, without any apparent awareness or consideration that such traditional wisdom, however generally valid, might not actually, accurately apply to every specific individual case, including Job's own genuinely exceptional circumstance."
+      }
+    ]
+  },
+  "job-9": {
+    "book": "Job",
+    "chapter": 9,
+    "title": "Job Replies to Bildad",
+    "scene": "Job responds to Bildad by acknowledging God's genuinely overwhelming, incomparable power while expressing profound frustration at the apparent impossibility of bringing his own case before such an overwhelming God on anything resembling fair, equal legal terms — introducing the book's recurring, poignant longing for a qualified mediator.",
+    "sections": [
+      {
+        "heading": "Job Replies to Bildad",
+        "range": "9:1-35",
+        "text": "Job's extended acknowledgment of God's overwhelming, incomparable cosmic power — moving mountains, shaking the earth, commanding the sun — leads to his own genuine frustration regarding the apparent practical impossibility of bringing his case before such an overwhelming, incomparably powerful God on anything resembling equal, fair legal footing: “how then can I dispute with him? How can I find words to argue with him? Though I were innocent, I could not answer him; I could only plead with my Judge for mercy.” Job's poignant, longing wish — “if only there were someone to mediate between us, someone to bring us together, someone to remove God's rod from me, so that his terror would frighten me no more” — introduces one of this book's most theologically significant recurring themes, anticipating, in this ancient text, the New Testament's ultimate revelation of Christ himself as exactly this longed-for mediator between God and humanity (1 Timothy 2:5), resolving through the incarnation the very access and representation problem Job here articulates with such genuine, understandable anguish."
+      }
+    ]
+  },
+  "job-10": {
+    "book": "Job",
+    "chapter": 10,
+    "title": "Job Continues His Reply",
+    "scene": "Job continues addressing God directly, employing tender imagery of God's own careful, attentive craftsmanship in forming him before birth, even while expressing genuine bewilderment regarding why that same careful, personal Creator would now seem to be treating him with such apparent, incomprehensible hostility.",
+    "sections": [
+      {
+        "heading": "Job Continues His Reply",
+        "range": "10:1-22",
+        "text": "Job's tender recollection of God's own careful, personal craftsmanship in forming him — “your hands shaped me and made me… did you not pour me out like milk and curdle me like cheese, clothe me with skin and flesh and knit me together with bones and sinews?” — provides genuinely beautiful, intimate imagery of divine care in creation and gestation, made all the more poignant and genuinely bewildering by Job's simultaneous, honest confusion regarding why this same careful, personally attentive Creator now seemed to be treating him with such apparent hostility and destructive intent, illustrating this book's persistent, unresolved tension between deeply held, genuine theological conviction regarding God's demonstrated care and creative attentiveness, and honest, unresolved confusion regarding present, actually experienced circumstance and suffering."
+      }
+    ]
+  },
+  "job-11": {
+    "book": "Job",
+    "chapter": 11,
+    "title": "Zophar Speaks: Job Is Foolish",
+    "scene": "Zophar, the third and generally considered harshest of Job's friends, delivers the cycle's most blunt, accusatory speech, essentially suggesting Job deserves even worse punishment than he's currently experiencing, while offering, somewhat ironically given his own overconfident tone, genuine reflection on the incomprehensible vastness of God's own wisdom.",
+    "sections": [
+      {
+        "heading": "Zophar Speaks: Job Is Foolish",
+        "range": "11:1-20",
+        "text": "Zophar's blunt, harsh opening — “should your idle talk reduce others to silence? Should your mockery go unrebuked?… know this: God has even forgotten some of your sin” — suggests, remarkably and cruelly, that Job's actual punishment fell short of what his presumed hidden sin genuinely deserved, representing this speech cycle's harshest, most directly accusatory statement yet. Zophar's genuinely eloquent reflection on the vast incomprehensibility of God's wisdom — “can you fathom the mysteries of God? Can you probe the limits of the Almighty? They are higher than the heavens above—what can you do? They are deeper than the depths below—what can you know?” — ironically anticipates, in its own general content, themes God himself will eventually develop at far greater length in his climactic speeches toward the book's conclusion (chapters 38-41), even while Zophar's own overconfident, accusatory application of this genuinely accurate principle specifically against Job proves, as the book's ending will make explicit, itself mistaken and inappropriate."
+      }
+    ]
+  },
+  "job-12": {
+    "book": "Job",
+    "chapter": 12,
+    "title": "Job Replies to Zophar",
+    "scene": "Job responds to Zophar with pointed, even sarcastic pushback against his friends' presumed monopoly on wisdom, insisting he possesses genuine understanding of his own regarding God's sovereign power, while beginning to develop his own more searching, honest observations regarding God's often inscrutable, seemingly disorderly governance of the world.",
+    "sections": [
+      {
+        "heading": "Job Replies to Zophar",
+        "range": "12:1-25",
+        "text": "Job's sarcastic opening — “doubtless you are the only people who matter, and wisdom will die with you! But I have a mind as well as you” — pushes back firmly against his friends' presumed monopoly on genuine wisdom and understanding, insisting that his own suffering hadn't actually deprived him of legitimate theological insight or understanding, however much his friends seemed to assume otherwise. Job's extended reflection on God's sovereign, often inscrutable governance — removing wisdom from counselors, sending kings away stripped and humiliated, making nations great only to later destroy them — begins developing this book's more searching, honest theological observation: God's actual governance of the world often appears considerably less orderly, predictable, and mechanically fair than his friends' confident, rigid retribution theology had consistently assumed and insisted upon throughout their respective speeches."
+      }
+    ]
+  },
+  "job-13": {
+    "book": "Job",
+    "chapter": 13,
+    "title": "Job Continues His Reply",
+    "scene": "Job continues confronting his friends' inadequate counsel directly, accusing them of essentially lying on God's behalf through their confident but mistaken theological assertions, before pivoting once more to address God directly with continued honest questioning and a striking, memorable statement of trust maintained even amid profound uncertainty.",
+    "sections": [
+      {
+        "heading": "Job Continues His Reply",
+        "range": "13:1-28",
+        "text": "Job's remarkably direct accusation against his friends — “you, however, smear me with lies; you are worthless physicians, all of you! If only you would be altogether silent! For you, that would be wisdom” — identifies their confident theological certainty, however sincerely held, as functioning essentially as falsehood, precisely because it claimed more certain knowledge of God's specific reasons and intentions than they, or arguably anyone besides God himself, could actually genuinely possess. Job's celebrated declaration — “though he slay me, yet will I hope in him; I will surely defend my ways to his face” (or, in an alternative textual and translational tradition also reflected in some versions, “I have no hope”—the Hebrew text itself contains a genuine textual ambiguity here) — conveys, in either reading, a genuinely remarkable, resilient posture of continued engagement with God, whether expressed as persistent hope or as honest, continued willingness to argue his case directly before God despite profound uncertainty regarding the eventual outcome."
+      }
+    ]
+  },
+  "job-14": {
+    "book": "Job",
+    "chapter": 14,
+    "title": "Job Reflects on Life's Brevity",
+    "scene": "Job closes this first round of dialogue with an extended, poignant meditation on human mortality's brief, difficult character, comparing human life unfavorably to trees (which can regenerate after being cut down) before voicing a striking, tentative hope for some form of restoration or renewal beyond death itself.",
+    "sections": [
+      {
+        "heading": "Job Reflects on Life's Brevity",
+        "range": "14:1-22",
+        "text": "Job's meditation on human mortality — “mortals, born of woman, are of few days and full of trouble. They spring up like flowers and wither away” — employs the striking comparison of a cut-down tree, which “there is hope… it will sprout again,” contrasted unfavorably with human death, which appears considerably more final and irreversible: “but a man dies and is laid low; he breathes his last and is no more.” Yet even within this predominantly bleak reflection, Job voices a genuinely striking, tentative hope — “if someone dies, will they live again? All the days of my hard service I will wait for my renewal to come” — representing one of the Old Testament's earlier, more hesitant gestures toward resurrection hope, genuinely uncertain and tentatively expressed here, yet nonetheless present even within this book's otherwise predominantly difficult, unresolved wrestling with mortality and suffering's ultimate meaning."
+      }
+    ]
+  },
+  "job-15": {
+    "book": "Job",
+    "chapter": 15,
+    "title": "Eliphaz Speaks Again",
+    "scene": "The dialogue's second cycle begins as Eliphaz, growing visibly more impatient and hostile, accuses Job of arrogant, presumptuous speech and undermining genuine piety, before delivering an extended, almost gleeful description of the wicked person's supposedly inevitable, terrifying downfall.",
+    "sections": [
+      {
+        "heading": "Eliphaz Speaks Again",
+        "range": "15:1-35",
+        "text": "Eliphaz's noticeably harsher, more impatient second speech — accusing Job of speech that “undermines piety and hinders devotion to God,” and pointedly asking, “are you the first man ever born? Were you brought forth before the hills?” — reflects the dialogue's increasing hostility and breakdown as the friends' confident theological framework continues encountering Job's persistent, unresolved counter-testimony and refusal to simply accept their diagnosis. Eliphaz's extended, almost gleefully detailed description of the wicked person's inevitable terror and downfall — “all his days the wicked man suffers torment… distressing sounds fill his ears… he wanders about for food… anguish and distress fill him” — continues applying this generalized theological pattern with increasing, pointed specificity clearly intended to apply directly to Job's own actual situation and suffering."
+      }
+    ]
+  },
+  "job-16": {
+    "book": "Job",
+    "chapter": 16,
+    "title": "Job Replies to Eliphaz",
+    "scene": "Job responds to Eliphaz's renewed accusations by continuing to describe his friends as unhelpful “miserable comforters,” while offering a genuinely remarkable statement of confidence that some form of heavenly witness or advocate exists who could vouch for his actual innocence, even amid his friends' persistent condemnation.",
+    "sections": [
+      {
+        "heading": "Job Replies to Eliphaz",
+        "range": "16:1-22",
+        "text": "Job's continued frustration with his friends — “I have heard many things like these; you are miserable comforters, all of you!” — is paired with his genuinely remarkable statement of confident hope: “even now my witness is in heaven; my advocate is on high. My intercessor is my friend as my eyes pour out tears to God; on behalf of a man he pleads with God as one pleads for a friend.” This passage, like Job's earlier longing for a mediator in chapter 9, continues developing this book's recurring theme of hoped-for heavenly advocacy and representation, anticipating, however dimly and uncertainly within Job's own limited theological framework, the New Testament's fuller revelation of both Christ's own priestly intercession and the Holy Spirit's advocacy on believers' behalf."
+      }
+    ]
+  },
+  "job-17": {
+    "book": "Job",
+    "chapter": 17,
+    "title": "Job Continues His Reply",
+    "scene": "Job continues his response, expressing genuine despair at his friends' persistent misunderstanding and lack of comfort, while his hope for vindication remains genuinely uncertain and fragile, mixed with continued honest acknowledgment of his approaching death.",
+    "sections": [
+      {
+        "heading": "Job Continues His Reply",
+        "range": "17:1-16",
+        "text": "Job's continued lament — “my spirit is broken, my days are cut short, the grave awaits me” — conveys genuine, honest despair mixed uneasily with the fragile hope expressed in the previous chapter, illustrating this book's characteristic refusal to present Job's faith journey as a smooth, steadily improving trajectory; instead, hope and despair coexist and alternate throughout these extended speeches in a manner many readers experiencing genuine, prolonged suffering will find authentically, recognizably realistic rather than artificially, unrealistically resolved."
+      }
+    ]
+  },
+  "job-18": {
+    "book": "Job",
+    "chapter": 18,
+    "title": "Bildad Speaks Again",
+    "scene": "Bildad delivers his own second speech, similarly frustrated with Job's continued resistance to his friends' theological framework, offering an extended, vivid poetic description of the wicked person's terrifying downfall that continues this dialogue cycle's escalating, pointed hostility.",
+    "sections": [
+      {
+        "heading": "Bildad Speaks Again",
+        "range": "18:1-21",
+        "text": "Bildad's irritated opening — “when will you end these speeches? Be sensible, and then we can talk” — and his extended, vivid poetic catalogue of the wicked person's inevitable ruin — caught in a trap, pursued by terrors, their strength sapped by disease, their memory perishing from the earth — continues this dialogue cycle's escalating pattern of increasingly pointed, hostile application of rigid retribution theology, with Bildad seemingly growing more, rather than less, confident in his diagnosis despite Job's persistent, sustained resistance and counter-testimony throughout the preceding chapters."
+      }
+    ]
+  },
+  "job-19": {
+    "book": "Job",
+    "chapter": 19,
+    "title": "Job Replies to Bildad",
+    "scene": "Job responds to Bildad's renewed accusations with genuine anguish over his total isolation — abandoned by family, friends, and even his own household servants — before delivering one of Scripture's most celebrated, theologically significant declarations of confident hope in a living Redeemer and future bodily vindication.",
+    "sections": [
+      {
+        "heading": "Job Replies to Bildad",
+        "range": "19:1-29",
+        "text": "Job's catalogue of total, devastating isolation — abandoned by relatives, forgotten by close friends, even his own household servants and young children now treating him “like a foreigner” and mocking him — conveys the genuinely comprehensive social devastation accompanying his physical suffering, illustrating how severe suffering often compounds itself through resulting social isolation and rejection, not merely the original physical or circumstantial affliction alone. Amid this profound isolation, Job delivers one of Scripture's most celebrated, theologically rich declarations: “I know that my redeemer lives, and that in the end he will stand on the earth. And after my skin has been destroyed, yet in my flesh I will see God; I myself will see him with my own eyes—I, and not another. How my heart yearns within me!” This passage, made famous partly through its inclusion in Handel's Messiah, represents a genuinely remarkable, climactic statement of hope for bodily resurrection and eventual, direct vindication before God — whatever the precise nuances of its original Hebrew meaning and Job's own full theological understanding at this point (a matter of some ongoing scholarly discussion regarding exactly how much Job himself understood by this statement), its canonical placement and subsequent Christian interpretation have consistently understood it as a genuine, remarkable Old Testament anticipation of ultimate bodily resurrection and direct, personal encounter with God, achieved through a “Redeemer” (go'el, a Hebrew legal term for a kinsman who acts to vindicate or rescue a family member) whose identity Job himself couldn't have fully, explicitly understood as pointing toward Christ, yet whose function this book's placement within the broader biblical canon retrospectively illuminates with genuine, meaningful christological significance."
+      }
+    ]
+  },
+  "job-20": {
+    "book": "Job",
+    "chapter": 20,
+    "title": "Zophar Speaks Again",
+    "scene": "Zophar delivers his own second and final speech, offended by Job's continued resistance, providing yet another extended, vivid description of the wicked person's inevitable, often gruesome downfall — continuing this dialogue's persistent pattern without introducing any genuinely new theological argument or insight.",
+    "sections": [
+      {
+        "heading": "Zophar Speaks Again",
+        "range": "20:1-29",
+        "text": "Zophar's offended response — “my troubled thoughts prompt me to answer because I am greatly disturbed” — introduces another extended, vivid, and increasingly graphic description of the wicked person's downfall, including memorable imagery of ill-gotten wealth being violently “vomited” back up and the wicked person's own house being “swept away by a flood” — continuing this dialogue's now well-established, repetitive pattern without introducing genuinely new theological argument, insight, or nuance beyond what Zophar's own earlier speech, and his friends' respective speeches, had already extensively covered."
+      }
+    ]
+  },
+  "job-21": {
+    "book": "Job",
+    "chapter": 21,
+    "title": "Job Replies to Zophar",
+    "scene": "Job responds to Zophar with perhaps his most direct, empirically grounded challenge yet to his friends' theological framework, pointing to the observable, undeniable reality that many genuinely wicked people actually do prosper and live comfortable, untroubled lives right up until their peaceful deaths — directly contradicting his friends' confident, consistent claims.",
+    "sections": [
+      {
+        "heading": "Job Replies to Zophar",
+        "range": "21:1-34",
+        "text": "Job's pointed, empirically grounded challenge — “why do the wicked live on, growing old and increasing in power? They see their children established around them… their houses are safe and free from fear” — directly confronts his friends' theological framework with straightforward, observable reality: contrary to their confident, repeated assertions, genuinely wicked people often do prosper, live comfortable lives, and even die peacefully, “in full vigor, completely secure and at ease.” This chapter represents Job's most direct, sustained empirical challenge to his friends' rigid retribution theology, anticipating similar honest observations found elsewhere in Scripture (notably Psalm 73 and Ecclesiastes), and reinforcing this book's larger theological point: reality simply doesn't consistently, mechanically conform to the tidy moral formula Job's friends had so confidently, repeatedly insisted upon throughout their speeches."
+      }
+    ]
+  },
+  "job-22": {
+    "book": "Job",
+    "chapter": 22,
+    "title": "Eliphaz Speaks a Third Time",
+    "scene": "Eliphaz delivers his final, most severe speech, now moving beyond general theological principle toward specific, entirely fabricated accusations of concrete sins he simply assumes Job must have committed — illustrating how confident theological presumption, when persistently unchecked by actual evidence, can deteriorate into outright false accusation.",
+    "sections": [
+      {
+        "heading": "Eliphaz Speaks a Third Time",
+        "range": "22:1-30",
+        "text": "Eliphaz's final speech takes a notably more severe, specific turn: rather than continuing with general theological principle alone, he now fabricates specific, entirely invented accusations — that Job had stripped clothing from the needy, withheld water from the weary, sent widows away empty-handed, and oppressed orphans — accusations with no actual textual or narrative basis whatsoever within the book itself, and directly contradicted by Job's own earlier, extensive self-description of consistent generosity and care for the vulnerable (developed further in chapter 31). This escalation illustrates a sobering, important pattern: confident theological presumption, when persistently unchallenged by genuine evidence and continually needing to explain away inconvenient, contrary reality, can ultimately deteriorate into outright fabrication and false accusation, a serious warning against allowing theological system and preconceived conclusion to override honest, evidence-based assessment of actual, specific individual circumstances and character."
+      }
+    ]
+  },
+  "job-23": {
+    "book": "Job",
+    "chapter": 23,
+    "title": "Job Replies to Eliphaz",
+    "scene": "Job responds to Eliphaz's severe, unfounded accusations not with anger but with continued, genuine longing to present his actual case directly before God, expressing confident hope that such a direct hearing would fully vindicate him, even while honestly acknowledging his continued inability to actually locate or access God's presence.",
+    "sections": [
+      {
+        "heading": "Job Replies to Eliphaz",
+        "range": "23:1-17",
+        "text": "Job's continued, genuine longing — “if only I knew where to find him; if only I could go to his dwelling!… there the upright can establish their innocence before him” — expresses confident hope that a genuine, direct hearing before God would fully vindicate his actual innocence, contrasted sharply with his friends' persistent, unfounded accusations. Job's honest acknowledgment that he cannot actually locate or access God's presence despite this genuine desire — “if I go to the east, he is not there; if I go to the west, I do not find him” — conveys the genuine, painful experience of God's apparent absence or silence even amid earnest, sincere seeking, a form of spiritual experience many believers facing prolonged suffering or unanswered prayer will find authentically, recognizably familiar."
+      }
+    ]
+  },
+  "job-24": {
+    "book": "Job",
+    "chapter": 24,
+    "title": "Job Continues His Reply",
+    "scene": "Job continues developing his observations regarding the world's apparent moral disorder, cataloguing specific examples of injustice and oppression that frequently go entirely unpunished, further reinforcing his sustained challenge to his friends' confident, mechanical theology of consistent, visible divine retribution.",
+    "sections": [
+      {
+        "heading": "Job Continues His Reply",
+        "range": "24:1-25",
+        "text": "Job's extended catalogue of observable injustice — the poor driven from their land, orphans' donkeys seized, widows' oxen taken as security for debt, the needy forced to glean like animals just to survive — continues developing his sustained empirical challenge to his friends' confident theology, cataloguing specific, concrete examples of genuine, severe injustice that frequently, observably goes entirely unpunished and unaddressed within ordinary, everyday human experience and history, directly contradicting his friends' persistent, confident insistence that such wickedness inevitably, visibly receives its deserved, proportional punishment within this present earthly life."
+      }
+    ]
+  },
+  "job-25": {
+    "book": "Job",
+    "chapter": 25,
+    "title": "Bildad Speaks a Third Time",
+    "scene": "In the dialogue cycle's briefest, final contribution, Bildad offers only a short reflection on human insignificance and impurity before God's overwhelming majesty — a marked retreat from the friends' earlier, more confident and specific accusatory arguments, suggesting their theological position had grown genuinely exhausted.",
+    "sections": [
+      {
+        "heading": "Bildad Speaks a Third Time",
+        "range": "25:1-6",
+        "text": "Bildad's remarkably brief final speech — simply reflecting on God's overwhelming, incomparable majesty and questioning “how then can a mortal be righteous before God? How can one born of woman be pure?” — represents a notable retreat from the friends' earlier, more confident and specific accusatory arguments, its brevity and generalized content suggesting their entire theological position had grown genuinely exhausted, unable to sustain further specific, substantive argument against Job's persistent, unyielding resistance and counter-testimony throughout the preceding extensive dialogue."
+      }
+    ]
+  },
+  "job-26": {
+    "book": "Job",
+    "chapter": 26,
+    "title": "Job Speaks: God's Incomparable Power",
+    "scene": "Job responds to Bildad's brief final speech with pointed sarcasm regarding its unhelpfulness, before offering his own genuinely reverent, awe-filled reflection on God's incomparable cosmic power — demonstrating that Job's ongoing complaint had never actually stemmed from any deficiency in his own genuine theological understanding or reverence.",
+    "sections": [
+      {
+        "heading": "Job Speaks: God's Incomparable Power",
+        "range": "26:1-14",
+        "text": "Job's sarcastic response to Bildad's brief, unhelpful speech — “how you have helped the powerless! How you have saved the arm that is feeble!” — gives way to Job's own genuinely reverent, extended reflection on God's incomparable cosmic power over creation, the underworld, and the created order generally, concluding with the honest, humble acknowledgment that “these are but the outer fringe of his works; how faint the whisper we hear of him! Who then can understand the thunder of his power?” This passage demonstrates that Job's persistent complaint throughout this extended dialogue had never actually stemmed from any deficiency in his own genuine theological understanding, reverence, or appreciation of God's incomparable greatness — his friends' repeated, condescending assumption that Job simply needed correction regarding basic theological principles he already, evidently, understood and affirmed at least as well as they did, proves, through passages like this one, to have been genuinely misguided from the outset."
+      }
+    ]
+  },
+  "job-27": {
+    "book": "Job",
+    "chapter": 27,
+    "title": "Job's Final Word to His Friends",
+    "scene": "Job delivers his climactic, concluding response to his three friends, maintaining his steadfast refusal to falsely confess sin he hasn't actually committed, even while acknowledging, somewhat surprisingly, elements of the very retribution theology his friends had insisted upon — though applied specifically to genuinely wicked people rather than to his own particular, actual situation.",
+    "sections": [
+      {
+        "heading": "Job's Final Word to His Friends",
+        "range": "27:1-23",
+        "text": "Job's resolute declaration — “as long as I have life within me, the breath of God in my nostrils, my lips will not speak wickedness, and my tongue will utter no deceit… till I die, I will not deny my integrity. I will maintain my innocence and never let go of it” — confirms his steadfast, unwavering refusal to falsely confess sin merely to achieve theological resolution or end his friends' persistent accusations, prioritizing genuine truthfulness and integrity over convenient, socially expected capitulation. Somewhat surprisingly, Job then offers his own extended description of the wicked person's ultimate downfall, closely paralleling his friends' earlier arguments — suggesting Job never actually rejected the general principle that persistent, unrepentant wickedness does typically produce eventual negative consequence, but specifically, consistently rejected his friends' mistaken, forced application of that general principle to his own particular, actual circumstance and situation, where it simply, demonstrably didn't apply."
+      }
+    ]
+  },
+  "job-28": {
+    "book": "Job",
+    "chapter": 28,
+    "title": "Job Speaks: In Praise of Wisdom",
+    "scene": "In a striking, reflective interlude that many scholars regard as either Job's own concluding meditation or an editorial pause inserted by the book's narrator, this chapter offers an extended, beautiful meditation on wisdom's surpassing value and genuine inaccessibility to human effort alone, before locating true wisdom's actual source specifically in reverent fear of the Lord.",
+    "sections": [
+      {
+        "heading": "Job Speaks: In Praise of Wisdom",
+        "range": "28:1-28",
+        "text": "This chapter's extended meditation on wisdom — comparing human mining technology's impressive ability to extract precious metals and gems from the earth's depths with wisdom's genuine inaccessibility through any comparable human effort or ingenuity (“but where can wisdom be found? Where does understanding dwell? No mortal comprehends its worth… it cannot be bought with the finest gold”) — provides a beautiful, reflective interlude whose precise narrative function (whether Job's own words, or an inserted editorial reflection) remains somewhat debated among scholars, though its central theological conclusion proves unmistakably clear and significant: “the fear of the Lord—that is wisdom, and to shun evil is understanding.” This declaration, closely paralleling similar statements found throughout Proverbs (particularly Proverbs 9:10) and elsewhere in Israel's broader wisdom tradition, suggests that genuine wisdom regarding life's most difficult, seemingly unanswerable questions — precisely the kind of questions this entire extended, difficult book has been wrestling with — ultimately rests not in successfully, comprehensively answering every such question through confident, mechanical human theological reasoning (as Job's friends had repeatedly, mistakenly attempted), but in humble, reverent submission and relationship with God himself, even amid genuine, honestly acknowledged human inability to fully comprehend his ways."
+      }
+    ]
+  },
+  "job-29": {
+    "book": "Job",
+    "chapter": 29,
+    "title": "Job Reviews His Former Life",
+    "scene": "Job begins his own final, extended monologue (chapters 29-31) with a wistful, detailed recollection of his former life's genuine blessing and social honor, providing a vivid, concrete picture of exactly what kind of consistently just, generous, and respected life he had actually lived before his sudden, catastrophic reversal.",
+    "sections": [
+      {
+        "heading": "Job Reviews His Former Life",
+        "range": "29:1-25",
+        "text": "Job's extended, wistful recollection of his former blessed life — God's own “intimate friendship” and “lamp” shining over his household, his role as a genuinely respected community leader and judge — provides concrete, specific detail regarding Job's actual, consistent character and conduct: “I rescued the poor who cried for help, and the fatherless who had none to assist them… I made the widow's heart sing… I was eyes to the blind and feet to the lame; I was a father to the needy.” This detailed, specific self-description directly, decisively refutes Eliphaz's earlier fabricated accusations (chapter 22), providing readers with Job's own concrete testimony regarding his genuinely consistent, admirable pattern of practical justice, generosity, and care for society's most vulnerable members throughout his prior, blessed life."
+      }
+    ]
+  },
+  "job-30": {
+    "book": "Job",
+    "chapter": 30,
+    "title": "Job's Life Has Changed",
+    "scene": "Job continues his final monologue by describing, in painful, stark contrast to the previous chapter's blessed recollection, his current devastating reversal — mocked even by society's lowest outcasts, physically afflicted, and feeling genuinely, painfully abandoned by God himself.",
+    "sections": [
+      {
+        "heading": "Job's Life Has Changed",
+        "range": "30:1-31",
+        "text": "Job's stark description of his current devastating reversal — mocked and scorned by “younger men… fathers I would have disdained to put with my sheep dogs,” themselves social outcasts too degraded even for legitimate society, now treating the once-honored Job with open contempt — conveys the genuine depth of Job's social humiliation alongside his continued physical suffering. Job's painful, honest accusation — “I cry out to you, God, but you do not answer; I stand up, but you merely look at me… you have turned on me ruthlessly” — gives voice to genuine feelings of divine abandonment and even apparent hostility, experiences this book's honest, unflinching inclusion normalizes as legitimate, even if ultimately incomplete or mistaken, responses to severe, prolonged, and seemingly inexplicable suffering."
+      }
+    ]
+  },
+  "job-31": {
+    "book": "Job",
+    "chapter": 31,
+    "title": "Job Makes His Final Case",
+    "scene": "Job concludes his final monologue and the entire extended dialogue section with a remarkable, comprehensive series of self-imprecatory oaths — systematically denying an extensive range of specific potential sins, each accompanied by an invited curse should the denial prove false — constituting one of history's most searching moral self-examinations.",
+    "sections": [
+      {
+        "heading": "Job Makes His Final Case",
+        "range": "31:1-40",
+        "text": "Job's extended, systematic series of self-imprecatory oaths — denying sexual immorality, deceit, adultery, mistreatment of servants, neglect of the poor and needy, trust in wealth, idolatry, secret gloating over an enemy's misfortune, inhospitality toward strangers, hidden sin, and exploitative land practices, each denial accompanied by an invited specific curse should it prove false (“if I have done any of these things, let briers come up instead of wheat and stinkweed instead of barley”) — represents one of history's most comprehensive, searching moral self-examinations recorded in any ancient literature, covering virtually every category of significant personal, social, and religious sin. This extended, courageous declaration — essentially inviting divine judgment should any of these denials prove false — provides Job's own final, comprehensive legal defense before concluding his extended speech and awaiting whatever response might follow, whether from his human friends or, as he had persistently, genuinely hoped throughout this entire extended dialogue, directly from God himself."
+      }
+    ]
+  },
+  "job-32": {
+    "book": "Job",
+    "chapter": 32,
+    "title": "Elihu's First Speech",
+    "scene": "A previously unmentioned younger man named Elihu, who had apparently been listening to this entire extended dialogue in respectful silence out of deference to his elders, now steps forward with his own extended series of speeches (chapters 32-37), expressing frustration at both Job's friends' failed arguments and Job's own continued self-justification.",
+    "sections": [
+      {
+        "heading": "Elihu's First Speech",
+        "range": "32:1-22",
+        "text": "Elihu's introduction — explaining his prior respectful silence “because they were older” than himself, yet now compelled to speak given both “Job’s” continued self-justification “rather than God” and the three friends' own evident failure to actually, adequately answer Job's arguments despite their confident, repeated attempts — introduces this book's fourth significant human voice, whose extended contribution occupies six full chapters yet whose precise relationship to and evaluation within the book's overall theological argument remains genuinely, somewhat debated among careful interpreters (Elihu, notably, is neither explicitly condemned alongside the three friends in the book's later resolution, nor explicitly commended in the way Job himself eventually is, leaving his own status and contribution's ultimate value deliberately, somewhat ambiguous)."
+      }
+    ]
+  },
+  "job-33": {
+    "book": "Job",
+    "chapter": 33,
+    "title": "Elihu Speaks to Job",
+    "scene": "Elihu continues his response, directly addressing Job himself for the first time, and introducing a genuinely novel argument largely absent from the three friends' earlier speeches: that suffering can function as God's own gracious, preventive form of discipline and warning, not merely retribution for sin already committed.",
+    "sections": [
+      {
+        "heading": "Elihu Speaks to Job",
+        "range": "33:1-33",
+        "text": "Elihu's direct address to Job introduces a genuinely novel theological argument distinct from the three friends' consistent retribution theology: that suffering can function not merely as punishment for sin already committed, but as God's own gracious, preventive discipline — “people are chastened on a bed of pain… to preserve them from the pit, their lives from perishing by the sword.” This represents a genuinely more nuanced theological contribution than the three friends had offered throughout their own extended speeches, correctly identifying that suffering can serve legitimate divine purposes beyond simple retributive punishment for specific, identifiable sin — though Elihu, like the friends before him, continues assuming with perhaps excessive confidence that he himself possesses clear insight into God's specific purposes in Job's own particular situation."
+      }
+    ]
+  },
+  "job-34": {
+    "book": "Job",
+    "chapter": 34,
+    "title": "Elihu Affirms God's Justice",
+    "scene": "Elihu continues his extended response, defending God's fundamental justice and sovereign fairness against what he perceives as Job's excessive, inappropriate complaint, arguing that God's incomparable power and knowledge inherently guarantee his consistently just governance of the world.",
+    "sections": [
+      {
+        "heading": "Elihu Affirms God's Justice",
+        "range": "34:1-37",
+        "text": "Elihu's extended defense of God's fundamental justice — “it is unthinkable that God would do wrong, that the Almighty would pervert justice… he repays everyone for what they have done” — pushes back against what he perceives as inappropriate elements within Job's own extended complaint, arguing that God's incomparable power and comprehensive knowledge of all things inherently, logically guarantees his consistently just governance and treatment of all people, since a truly all-powerful, all-knowing being would have no genuine motive or need to act unjustly toward any of his creatures."
+      }
+    ]
+  },
+  "job-35": {
+    "book": "Job",
+    "chapter": 35,
+    "title": "Elihu Contradicts Job",
+    "scene": "Elihu continues his response, arguing that God's genuine transcendence means human righteousness or wickedness doesn't actually, directly affect God's own being or benefit him personally, while suggesting Job's own unanswered complaints might partly result from insufficiently genuine, humble waiting on God's response.",
+    "sections": [
+      {
+        "heading": "Elihu Contradicts Job",
+        "range": "35:1-16",
+        "text": "Elihu's argument regarding God's genuine transcendence — “if you sin, how does that affect him?… if you are righteous, what do you give to him, or what does he receive from your hand?” — makes the accurate theological point that human moral conduct, whatever its genuine significance for human relationships and consequences, doesn't actually add to or diminish God's own independent, self-sufficient being or glory, while his suggestion that Job's unanswered complaints might partly stem from insufficiently patient, humble waiting introduces a further critique alongside his earlier arguments, continuing this extended, multi-chapter speech's developing case."
+      }
+    ]
+  },
+  "job-36": {
+    "book": "Job",
+    "chapter": 36,
+    "title": "Elihu Extols God's Greatness",
+    "scene": "Elihu continues developing his argument, describing suffering's genuine potential to redirect and instruct those experiencing it, while beginning to transition toward an extended, awe-filled description of God's overwhelming power displayed through nature — material that anticipates and prepares readers for God's own climactic speeches in the chapters immediately following.",
+    "sections": [
+      {
+        "heading": "Elihu Extols God's Greatness",
+        "range": "36:1-33",
+        "text": "Elihu's continued reflection on suffering's potentially redemptive, instructive function — “those who suffer he delivers in their suffering; he speaks to them in their affliction” — transitions into an extended, increasingly awe-filled description of God's overwhelming power displayed specifically through observable natural phenomena — rain, thunder, lightning — beginning to shift this extended dialogue's tone and focus toward the kind of overwhelming natural, cosmic imagery that will dominate God's own climactic speeches in the chapters immediately following, suggesting Elihu's speeches may function, at least partly, as a deliberate literary and theological bridge preparing readers for that climactic divine response."
+      }
+    ]
+  },
+  "job-37": {
+    "book": "Job",
+    "chapter": 37,
+    "title": "Elihu's Speech Continues",
+    "scene": "Elihu concludes his extended series of speeches with a continued, increasingly reverent description of God's power displayed through weather phenomena — thunder, snow, ice, and storm clouds — closing with the appropriately humble suggestion that Job, and by extension all humanity, should approach such an incomprehensibly powerful God with genuine reverent fear rather than continued argumentative complaint.",
+    "sections": [
+      {
+        "heading": "Elihu's Speech Continues",
+        "range": "37:1-24",
+        "text": "Elihu's continued, vivid description of God's power displayed through various weather phenomena — thunder's “majestic voice,” snow and ice formed at God's own command, storm clouds directed “to punish men, or to water his earth and show his love” — builds toward his closing counsel: since humans cannot even fully comprehend or explain ordinary, observable natural phenomena, how much less could they presume to fully understand or successfully argue with God's own far greater, incomprehensible wisdom and purposes. This closing appeal for appropriate humility and reverent fear before God's genuine incomprehensibility effectively prepares readers for the book's climactic turn: God's own direct speeches, beginning immediately in the following chapter, which will develop this exact same theme — overwhelming natural and cosmic evidence of divine power and wisdom exceeding human comprehension — at even greater length and with considerably more decisive, climactic authority."
+      }
+    ]
+  },
+  "job-38": {
+    "book": "Job",
+    "chapter": 38,
+    "title": "The Lord Speaks",
+    "scene": "In the book's dramatic climax, God himself finally speaks directly to Job — not with the explanation or justification Job had persistently sought, but with an overwhelming, extended series of rhetorical questions regarding creation's vast, intricate wonders, none of which Job could actually answer, fundamentally reframing the entire preceding debate's terms.",
+    "sections": [
+      {
+        "heading": "The Lord Speaks",
+        "range": "38:1-41",
+        "text": "God's dramatic response — speaking “out of the storm,” and opening not with explanation or justification for Job's suffering, but with his own extended series of overwhelming rhetorical questions: “where were you when I laid the earth's foundation?… who marked off its dimensions?… have you ever given orders to the morning, or shown the dawn its place?… do you know the laws of the heavens?” — fundamentally, deliberately reframes the entire preceding debate's terms. Rather than directly answering Job's persistent question of “why,” God instead demonstrates, through this extended catalogue of creation's vast, intricate wonders (covering cosmology, meteorology, and the behavior of numerous wild animals), the simple but genuinely humbling reality that Job, and by clear implication all humanity, lacks the comprehensive knowledge and creative power that would actually be required to properly judge or fully evaluate God's own governance of a universe this vast, complex, and, in crucial respects, genuinely beyond complete human comprehension. This divine response doesn't directly explain or justify Job's specific suffering — notably, God never actually mentions the heavenly wager with Satan described in the book's opening chapters, information Job himself never receives even at this climactic point — but instead redirects the entire conversation toward appropriate epistemic humility: genuine trust in God's demonstrated wisdom and power, even amid unresolved, specific unanswered questions, rather than a fully satisfying, comprehensive theological explanation covering every aspect of Job's particular situation and suffering."
+      }
+    ]
+  },
+  "job-39": {
+    "book": "Job",
+    "chapter": 39,
+    "title": "The Lord Speaks Again",
+    "scene": "God's overwhelming speech continues with an extended, detailed catalogue of various wild animals' behavior — mountain goats, wild donkeys, ostriches, horses, hawks — each illustrating aspects of creation's wild, untamed wisdom and vitality that exist genuinely, deliberately beyond human control, domestication, or full comprehension.",
+    "sections": [
+      {
+        "heading": "The Lord Speaks Again",
+        "range": "39:1-30",
+        "text": "God's continued catalogue of wild creatures — mountain goats giving birth in remote, inaccessible places, the untamed wild donkey who “scorns the commotion of the town” and “ranges the hills for its pasture,” the genuinely strange, seemingly foolish ostrich whose Creator nonetheless “did not endow her with wisdom or give her a share of good sense” yet who “when she spreads her feathers to run, she laughs at horse and rider”, the powerful warhorse, and the soaring hawk and eagle — continues demonstrating creation's vast, wild diversity and vitality existing genuinely, deliberately beyond human control, full understanding, or domestication. This extended catalogue implicitly challenges any human assumption of comprehensive mastery or complete understanding even of the observable, created world, let alone the far greater mystery of God's own comprehensive governance and purposes — if humans cannot fully explain or control even these observable wild creatures' behavior, how much less could they presume genuine comprehensive understanding of God's own far more complex, comprehensive governance of the entire moral and physical universe."
+      }
+    ]
+  },
+  "job-40": {
+    "book": "Job",
+    "chapter": 40,
+    "title": "Job Responds to the Lord",
+    "scene": "God pauses this overwhelming speech to directly challenge Job's willingness to actually contend with him, provoking Job's first, brief response of humbled silence, before God resumes with a description of two additional, genuinely mysterious and powerful creatures — Behemoth and, in the following chapter, Leviathan.",
+    "sections": [
+      {
+        "heading": "Job Responds to the Lord",
+        "range": "40:1-24",
+        "text": "God's direct challenge — “will the one who contends with the Almighty correct him? Let him who accuses God answer him!” — provokes Job's genuinely humbled response: “I am unworthy—how can I reply to you? I put my hand over my mouth. I spoke once, but I have no answer—twice, but I will say no more.” This brief exchange marks a significant turning point: Job, having previously insisted throughout his extended speeches that he would confidently present his case before God, now, confronted with God's actual overwhelming presence and questioning, chooses humbled silence rather than continued argumentative defense. God's resumed speech, introducing the genuinely mysterious creature Behemoth (variously identified by different interpreters as a hippopotamus, an extinct dinosaur-like creature, or a more purely symbolic representation of primordial chaos and untamed power), continues this extended demonstration of creation's genuine mystery and power exceeding human comprehension or control."
+      }
+    ]
+  },
+  "job-41": {
+    "book": "Job",
+    "chapter": 41,
+    "title": "The Lord Describes Leviathan",
+    "scene": "God's climactic speech concludes with an extended, awe-filled description of Leviathan, an even more powerful, fearsome, and genuinely uncontrollable creature (variously identified as a crocodile or a more symbolic representation of chaotic evil) — a creature no human could possibly capture, tame, or successfully confront, driving home this speech's central point regarding the vast gulf between human and divine power.",
+    "sections": [
+      {
+        "heading": "The Lord Describes Leviathan",
+        "range": "41:1-34",
+        "text": "God's extended, vivid description of Leviathan — a creature so powerful and fearsome that “no one is fierce enough to rouse it,” whose “rows of shields” and fire-breathing appearance render it genuinely uncontrollable and untameable by any human effort or technology — concludes this climactic divine speech with its most powerful, extended illustration of overwhelming, uncontrollable power existing entirely beyond human capacity to master or even safely approach. Whether Leviathan represents a genuine, literal ancient creature (crocodile imagery fits much of the specific description) or functions more symbolically as a representation of chaotic evil and untamed cosmic power (similar imagery of a sea-monster or dragon appears elsewhere in ancient Near Eastern literature and in other biblical passages, such as Isaiah 27:1 and Psalm 74:14), the passage's rhetorical function remains clear and consistent: if Job cannot even successfully confront or control this powerful earthly creature, how could he possibly presume to successfully judge, correct, or fully comprehend the incomparably greater power and wisdom of Leviathan's own Creator."
+      }
+    ]
+  },
+  "job-42": {
+    "book": "Job",
+    "chapter": 42,
+    "title": "Job's Response to the Lord",
+    "scene": "The book of Job closes with Job's genuine, humbled repentance and confession of his own limited understanding, followed by God's surprising vindication of Job's honest speech over his friends' confident but mistaken theological arguments, and a final restoration of Job's fortunes — doubled, though not simply erasing or explaining away the genuine, profound suffering that preceded it.",
+    "sections": [
+      {
+        "heading": "Job's Response to the Lord",
+        "range": "42:1-6",
+        "text": "Job's final response to God — “I know that you can do all things; no purpose of yours can be thwarted… surely I spoke of things I did not understand, things too wonderful for me to know… my ears had heard of you but now my eyes have seen you. Therefore I despise myself and repent in dust and ashes” — represents genuine, humbled acknowledgment of his own limited understanding and inappropriate presumption in some of his more extreme statements throughout the preceding dialogue, though this repentance notably doesn't involve confessing the specific sins his friends had persistently, wrongly accused him of — Job repents specifically of presumptuously speaking beyond his actual understanding and questioning God's governance without adequate knowledge, not of any fabricated moral failing his friends had mistakenly, repeatedly alleged."
+      },
+      {
+        "heading": "The Lord Blesses Job",
+        "range": "42:7-17",
+        "text": "God's surprising, explicit vindication of Job over his three friends — “I am angry with you and your two friends, because you have not spoken the truth about me, as my servant Job has” — confirms that Job's honest, even confrontational engagement with God throughout his extended suffering, however imperfect and occasionally excessive in its specific statements, proved genuinely more acceptable and accurate than his friends' confident, theologically tidy, but ultimately mistaken and inappropriate application of rigid retribution theology; God's specific requirement that the friends offer sacrifices with Job himself interceding on their behalf further confirms this reversal, restoring Job to his original position of respected intercessor rather than accused, condemned sinner. The book's closing restoration of Job's fortunes — doubled wealth, ten new children, remarkable longevity witnessing four generations of descendants — provides a genuinely satisfying, though carefully qualified, conclusion: this restoration doesn't erase or fully explain away Job's earlier, genuine suffering and profound loss (his original ten children, after all, remain genuinely dead, not somehow retroactively unharmed by this new blessing), nor does the book ultimately provide Job, or its readers, with the complete, comprehensive theological explanation for suffering that both Job and his friends had persistently sought throughout this extended, difficult book. Instead, this ancient, remarkably sophisticated book offers something arguably more valuable and enduringly applicable: an honest, unflinching acknowledgment that suffering often remains genuinely mysterious and inadequately explained even by our best theological frameworks, while still affirming, through its overall narrative arc and eventual resolution, that God remains genuinely good, powerful, and ultimately trustworthy even when his specific purposes and governance remain substantially, honestly beyond full human comprehension and explanation."
+      }
+    ]
+  },
+  "proverbs-1": {
+    "book": "Proverbs",
+    "chapter": 1,
+    "title": "The Purpose of Proverbs",
+    "scene": "The book of Proverbs, compiled primarily by Solomon along with later contributions from other wise teachers, opens by stating its explicit educational purpose before launching into an extended, urgent parental appeal warning against the seductive lure of criminal violence, and personifying Wisdom herself as a passionate street preacher whose message the foolish persistently, tragically ignore.",
+    "sections": [
+      {
+        "heading": "The Purpose of Proverbs",
+        "range": "1:1-7",
+        "text": "The book's stated purpose — “for gaining wisdom and instruction; for understanding words of insight… for doing what is right and just and fair… for giving prudence to those who are simple” — establishes Proverbs as fundamentally a practical, applied wisdom literature concerned with skillful, godly living in the ordinary details of everyday life, not primarily abstract philosophical or theological speculation. The book's foundational declaration — “the fear of the Lord is the beginning of knowledge, but fools despise wisdom and instruction” — establishes that genuine wisdom is inseparably grounded in reverent relationship with God, not merely accumulated information or clever technique divorced from that foundational, humble posture toward the Creator."
+      },
+      {
+        "heading": "A Warning against Bad Company",
+        "range": "1:8-19",
+        "text": "The father's urgent warning against joining violent criminals who “waylay the innocent without cause” for profit exposes the self-destructive logic of exploitative greed: “such are the paths of all who go after ill-gotten gain; it takes away the life of those who get it,” illustrating this book's recurring theme that sinful shortcuts, however immediately appealing, ultimately consume and destroy those who pursue them."
+      },
+      {
+        "heading": "Wisdom Calls",
+        "range": "1:20-33",
+        "text": "The personification of Wisdom as a passionate street preacher — “wisdom calls aloud in the street, she raises her voice in the public square” — crying out publicly, urgently, and repeatedly, only to be persistently ignored by “simple ones” and “mockers,” establishes wisdom's genuine, urgent availability and her corresponding, sobering warning that persistent refusal to heed her call eventually results in a kind of ironic reversal: “they will call to me but I will not answer”, since “complacency kills the simple, and the ease of fools destroys them,” while “whoever listens to me will live in safety and be at ease, without fear of harm.”"
+      }
+    ]
+  },
+  "proverbs-2": {
+    "book": "Proverbs",
+    "chapter": 2,
+    "title": "Wisdom Will Protect You",
+    "scene": "The father continues his extended appeal, describing wisdom's acquisition as requiring genuine, effortful pursuit — like searching for hidden treasure — before cataloguing wisdom's practical, protective benefits against both destructive companions and sexually immoral relationships.",
+    "sections": [
+      {
+        "heading": "Wisdom Will Protect You",
+        "range": "2:1-22",
+        "text": "The chapter's description of wisdom's acquisition requiring genuine, active effort — “if you call out for insight and cry aloud for understanding… if you look for it as for silver and search for it as for hidden treasure” — counters any assumption that wisdom simply arrives automatically or passively, insisting instead that genuine wisdom requires deliberate, sustained, valued pursuit comparable to searching for genuinely precious, hard-to-find treasure. The chapter's promise that wisdom will “save you from the ways of wicked men” and “from the adulterous woman” establishes two specific, recurring dangers this book will address repeatedly throughout its opening chapters: destructive companionship leading toward violence and exploitation, and sexual immorality's genuinely destructive, life-altering consequences."
+      }
+    ]
+  },
+  "proverbs-3": {
+    "book": "Proverbs",
+    "chapter": 3,
+    "title": "Trust in the Lord",
+    "scene": "The father delivers some of the book's most celebrated, frequently memorized counsel — trusting God wholeheartedly rather than relying merely on human understanding, honoring God with material resources, and properly understanding both the genuine value and the appropriate limits of divine discipline.",
+    "sections": [
+      {
+        "heading": "Trust in the Lord",
+        "range": "3:1-12",
+        "text": "This chapter's celebrated declaration — “trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight” — provides one of Scripture's most frequently quoted statements regarding comprehensive, wholehearted trust in God's guidance rather than exclusive reliance on limited human reasoning and self-directed planning alone, without this necessarily meaning human reasoning and careful planning are themselves illegitimate, so much as insisting they remain properly subordinated to genuine, submitted trust in God's own greater wisdom and guidance. The chapter's instruction to “honor the Lord with your wealth, with the firstfruits of all your crops,” promising resulting abundance, functions similarly to comparable passages elsewhere in Scripture regarding generous giving — as a general wisdom principle regarding generous, first-priority giving rather than a mechanical, unconditional guarantee applicable identically to every individual circumstance. The chapter's teaching on divine discipline — “my son, do not despise the Lord's discipline and do not resent his rebuke, because the Lord disciplines those he loves, as a father the son he delights in” (directly quoted in Hebrews 12:5-6) — reframes hardship and correction as evidence of genuine, loving relationship rather than divine rejection or abandonment."
+      },
+      {
+        "heading": "Wisdom Brings Happiness",
+        "range": "3:13-35",
+        "text": "The chapter's celebration of wisdom's surpassing value — “she is more profitable than silver and yields better returns than gold… nothing you desire can compare with her” — and its practical instructions regarding neighborly conduct (“do not withhold good from those to whom it is due, when it is in your power to act… do not plan harm against your neighbor, who lives trustfully near you”) together demonstrate this book's characteristic integration of exalted, poetic praise for wisdom's abstract value with entirely concrete, practical, everyday ethical instruction regarding how to actually treat other people well."
+      }
+    ]
+  },
+  "proverbs-4": {
+    "book": "Proverbs",
+    "chapter": 4,
+    "title": "The Value of Wisdom",
+    "scene": "The father continues appealing to his son through his own recollected childhood instruction from his own father, before delivering the memorable image of two starkly contrasted paths — the way of the wicked and the way of the righteous — and closing with a striking metaphor regarding the heart's central importance as the genuine wellspring of one's entire life.",
+    "sections": [
+      {
+        "heading": "The Value of Wisdom",
+        "range": "4:1-27",
+        "text": "The father's recollection of his own childhood instruction — “when I was a boy in my father's house… he taught me and said, 'Take hold of my words with all your heart… get wisdom, get understanding… wisdom is supreme; therefore get wisdom'” — models the intergenerational transmission of wisdom this entire book both describes and exemplifies. The chapter's contrast between “the path of the righteous,” compared to “the first gleam of dawn, shining ever brighter till the full light of day,” and “the way of the wicked,” compared to “deep darkness” in which “they stumble” without even understanding the actual cause of their own downfall, provides a memorable, vivid illustration of these two paths' genuinely different trajectories and ultimate destinations. The chapter's closing instruction — “above all else, guard your heart, for everything you do flows from it” — identifies the heart (in Hebrew thought, encompassing the whole inner person's thoughts, will, and affections, not merely emotion alone) as the genuine source and wellspring determining the entire direction and quality of one's life, making its careful, vigilant guarding a matter of paramount practical and spiritual importance."
+      }
+    ]
+  },
+  "proverbs-5": {
+    "book": "Proverbs",
+    "chapter": 5,
+    "title": "A Warning against Adultery",
+    "scene": "The father delivers the first of several extended warnings against sexual immorality specifically, using the vivid image of the seductive “adulterous woman” whose initially sweet, appealing words lead ultimately to bitter, destructive consequences, before contrasting this destructive path with the genuine, celebrated joy and satisfaction available within committed, faithful marriage.",
+    "sections": [
+      {
+        "heading": "A Warning against Adultery",
+        "range": "5:1-23",
+        "text": "The father's vivid warning — the adulterous woman's “lips drip honey… but in the end she is bitter as gall, sharp as a double-edged sword. Her feet go down to death” — exposes the genuinely deceptive nature of sexual temptation's initial appeal, contrasted sharply with its ultimate, severe consequences: “do not go near the door of her house, lest you lose your honor to others… strangers will feast on your wealth.” This chapter's celebrated, positive counter-vision — “may your fountain be blessed, and may you rejoice with the wife of your youth… may you ever be intoxicated with her love” — refuses to leave sexual desire and satisfaction entirely negative or suppressed, instead redirecting it appropriately, joyfully, and exclusively toward committed, faithful marriage, illustrating this book's characteristic pattern of not merely prohibiting destructive behavior but positively celebrating and commending its legitimate, satisfying alternative."
+      }
+    ]
+  },
+  "proverbs-6": {
+    "book": "Proverbs",
+    "chapter": 6,
+    "title": "Further Warnings",
+    "scene": "The father delivers a series of shorter, varied warnings — against reckless financial cosigning, laziness (illustrated through the memorable example of the industrious ant), and troublemaking — before returning to an extended, particularly severe warning against adultery specifically, cataloguing its uniquely devastating and irreversible practical consequences.",
+    "sections": [
+      {
+        "heading": "Further Warnings",
+        "range": "6:1-19",
+        "text": "The chapter's brief warning against reckless financial cosigning for others (“if you have struck hands in pledge for another… go and humble yourself… free yourself”) reflects practical, sound financial wisdom regarding the genuine risk of guaranteeing others' debts. The father's memorable counsel to “go to the ant, you sluggard; consider its ways and be wise! It has no commander, no overseer or ruler, yet it stores its provisions in summer and gathers its food at harvest” provides an enduring, widely quoted illustration of diligent, self-motivated industry requiring no external supervision or enforcement, contrasted with the sluggard's characteristic “a little sleep, a little slumber, a little folding of the hands to rest” leading inevitably toward poverty."
+      },
+      {
+        "heading": "A Warning against Adultery",
+        "range": "6:20-35",
+        "text": "This chapter's return to warning against adultery emphasizes its uniquely severe, distinct consequences compared to other forms of theft — while a thief caught stealing due to genuine hunger might be regarded with some sympathy and required merely to repay what was stolen, the adulterer faces consequences of an entirely different, more severe category: “whoever commits adultery has no sense; whoever does so destroys himself… wounds and dishonor will befall him, and his disgrace will never be wiped away.” This distinction highlights adultery's uniquely destructive character specifically because it violates not merely property but the deepest, most intimate covenant trust and relationship between spouses, producing consequences considerably more severe and lasting than ordinary theft or property crime."
+      }
+    ]
+  },
+  "proverbs-7": {
+    "book": "Proverbs",
+    "chapter": 7,
+    "title": "The Immoral Woman Is a Deadly Trap",
+    "scene": "The father provides his most extended, narratively detailed warning against sexual immorality yet, describing a specific, vividly rendered encounter between a naive young man and a predatory, deceptive seductress — functioning almost as a short story illustrating exactly how such destructive encounters typically, predictably unfold.",
+    "sections": [
+      {
+        "heading": "The Immoral Woman Is a Deadly Trap",
+        "range": "7:1-27",
+        "text": "This chapter's extended, narratively vivid account — a “youth who had no sense,” observed walking near the seductress's house “at twilight, as the day was fading, as the dark of night set in”, encountering a woman “dressed like a prostitute and with crafty intent” who deploys elaborate, calculated seduction, including the specific detail of having made religious sacrifice offerings that day, providing a false, convenient pretext of leisure time and even superficial religious respectability to mask her actual predatory intent — functions almost as a cautionary short story, illustrating with concrete, memorable narrative detail exactly how such destructive encounters typically, predictably develop and unfold. The chapter's closing comparison — the naive young man following her “like an ox going to the slaughter… little knowing it will cost him his life” — conveys the genuine severity of consequence awaiting those who fail to recognize and actively resist this kind of calculated, predatory temptation, however initially appealing or seemingly harmless it might present itself."
+      }
+    ]
+  },
+  "proverbs-8": {
+    "book": "Proverbs",
+    "chapter": 8,
+    "title": "Wisdom Calls Out",
+    "scene": "In one of the book's most theologically significant and beautiful chapters, Wisdom herself delivers an extended, first-person speech celebrating her own supreme value and her remarkable role as God's own companion present at creation itself — language that has generated substantial Christian theological reflection regarding its relationship to Christ's own role in creation.",
+    "sections": [
+      {
+        "heading": "Wisdom Calls Out",
+        "range": "8:1-36",
+        "text": "Wisdom's extended, celebrated first-person speech — “the Lord brought me forth as the first of his works, before his deeds of old… before the mountains were settled in place, before the hills, I was given birth… I was there when he set the heavens in place… I was the artisan at his side. I was filled with delight day after day, rejoicing always in his presence” — presents wisdom as God's own eternal companion present and active at creation itself, providing this book's most theologically exalted passage. This passage's language has generated substantial Christian theological reflection and discussion regarding its relationship to the New Testament's own presentation of Christ as God's eternal Word and Wisdom, active in creation (John 1:1-3, Colossians 1:15-17, 1 Corinthians 1:24, which explicitly identifies Christ as “the wisdom of God”); while this Proverbs passage most directly, primarily functions as poetic personification of an abstract divine attribute (wisdom itself) rather than as a direct, explicit prophecy of the Son's own distinct personal identity, many careful Christian interpreters throughout history have recognized here a genuine, meaningful typological resonance and connection, given wisdom's striking, personified, and eternally pre-existent companionship with God at creation — a theme the New Testament's own fuller revelation regarding Christ's identical role and relationship illuminates with additional, legitimate theological significance, even while careful interpreters should distinguish between this passage's own original poetic function and later, though genuinely meaningful, developed Christological application."
+      }
+    ]
+  },
+  "proverbs-9": {
+    "book": "Proverbs",
+    "chapter": 9,
+    "title": "Invitations from Two Women",
+    "scene": "The book's extended introductory section (chapters 1-9) closes with a striking, deliberate contrast: Lady Wisdom's genuine, generous invitation to her carefully prepared feast, versus Lady Folly's competing, deceptive invitation offering only illusory, ultimately fatal pleasure — crystallizing this entire opening section's central choice before the collections of individual proverbs begin in chapter 10.",
+    "sections": [
+      {
+        "heading": "Invitations from Two Women",
+        "range": "9:1-18",
+        "text": "This chapter's deliberate structural parallel — Lady Wisdom, having “built her house… set her table” and “sent out her servants” with a genuine invitation extending life and understanding to “whoever is simple” willing to accept her genuine hospitality, contrasted directly with Lady Folly, described as “losd, undisciplined and without knowledge,” whose competing invitation to “stolen water” and “food eaten in secret” offers only illusory, momentarily appealing pleasure while her unwitting guests remain entirely unaware that “the dead are there, that her guests are deep in the realm of the dead” — provides a fitting, climactic conclusion to this book's extended introductory section, crystallizing its central recurring choice (between genuine wisdom and destructive folly, each personified as a woman extending a competing invitation) before the remaining chapters shift toward the collections of shorter, individual proverbs that will comprise most of the book's remaining content."
+      }
+    ]
+  },
+  "proverbs-10": {
+    "book": "Proverbs",
+    "chapter": 10,
+    "title": "The Proverbs of Solomon",
+    "scene": "The book transitions into its main collection of Solomon's individual, often paired proverbs, predominantly structured as antithetical parallelism — contrasting the wise and the foolish, the righteous and the wicked, across a wide range of everyday practical and moral concerns including speech, work, and wealth.",
+    "sections": [
+      {
+        "heading": "The Proverbs of Solomon Begin",
+        "range": "10:1-32",
+        "text": "This chapter's characteristic structure — predominantly antithetical parallelism, contrasting a positive and negative outcome within each individual two-line proverb — establishes the pattern that will continue throughout most of the book's remaining chapters (10-29). Recurring themes introduced here include speech's genuine power for both good and harm (“the tongue of the righteous is choice silver, but the heart of the wicked is of little value”; “when words are many, sin is not absent, but the one who holds their tongue is wise”), diligent versus lazy work habits (“lazy hands make for poverty, but diligent hands bring wealth”), and the genuinely different ultimate trajectories of righteous versus wicked living (“the wicked man's income leads to sin, but the wages of the righteous bring them reward”), themes this book's remaining chapters will continue developing and illustrating from numerous additional angles and specific applications."
+      }
+    ]
+  },
+  "proverbs-11": {
+    "book": "Proverbs",
+    "chapter": 11,
+    "title": "More of Solomon's Proverbs",
+    "scene": "The collection continues, addressing honest business dealing, humility versus pride, generosity's genuine reward, and the significant, far-reaching influence — whether beneficial or destructive — that individual character and conduct exercises within a broader community.",
+    "sections": [
+      {
+        "heading": "More of Solomon's Proverbs",
+        "range": "11:1-31",
+        "text": "This chapter's recurring themes include commercial honesty (“the Lord detests dishonest scales, but accurate weights find favor with him”), the relationship between humility and genuine wisdom (“when pride comes, then comes disgrace, but with humility comes wisdom”), and generosity's counterintuitive reward — “one person gives freely, yet gains even more; another withholds unduly, but comes to poverty. A generous person will prosper; whoever refreshes others will be refreshed.” The chapter's observation that “when the righteous prosper, the city rejoices; when the wicked perish, there are shouts of joy” illustrates this book's consistent awareness that individual character and conduct carry genuine social consequence extending well beyond merely private, personal outcome alone."
+      }
+    ]
+  },
+  "proverbs-12": {
+    "book": "Proverbs",
+    "chapter": 12,
+    "title": "Wisdom for Living",
+    "scene": "The collection continues addressing the value of receiving correction and discipline, the genuine worth of honest labor, the destructive power of deceptive or careless speech contrasted with truthful, healing words, and the ultimate security and stability characterizing genuinely righteous living.",
+    "sections": [
+      {
+        "heading": "Wisdom for Living",
+        "range": "12:1-28",
+        "text": "This chapter's teaching that “whoever loves discipline loves knowledge, but whoever hates correction is stupid” reinforces this book's consistent emphasis on humble receptivity to correction as essential to genuine wisdom, while its observation that “reckless words pierce like a sword, but the tongue of the wise brings healing” again highlights speech's genuine, significant power for either harm or genuine benefit. The chapter's memorable declaration that “the righteous care for the needs of their animals, but the kindest acts of the wicked are cruel” extends this book's ethical concern even to appropriate treatment of animals, while its closing affirmation that “in the way of righteousness there is life; along that path is immortality” connects consistent, righteous living to genuine, lasting security and flourishing."
+      }
+    ]
+  },
+  "proverbs-13": {
+    "book": "Proverbs",
+    "chapter": 13,
+    "title": "More Proverbs of Solomon",
+    "scene": "The collection continues addressing wise versus foolish responses to correction, the relationship between diligent effort and genuine reward, the appropriate stewardship of accumulated wealth, and the genuine, though sometimes counterintuitive, value of properly administered parental discipline.",
+    "sections": [
+      {
+        "heading": "More Proverbs of Solomon",
+        "range": "13:1-25",
+        "text": "This chapter's observation that “hope deferred makes the heart sick, but a longing fulfilled is a tree of life” offers genuine, empathetic acknowledgment of the real psychological toll extended, unmet longing and disappointment can produce, a notably honest, emotionally attuned observation within this predominantly practical wisdom collection. The chapter's teaching regarding parental discipline — “whoever spares the rod hates their children, but the one who loves their children is careful to discipline them” — addresses appropriate parental correction as a genuine expression of love rather than its opposite, though this and similar proverbs regarding physical discipline throughout the book should be understood within their broader ancient Near Eastern cultural context and alongside this book's own repeated, overriding emphasis on wisdom, gentleness, and relationship-preserving correction rather than harsh, punitive severity for its own sake — the underlying principle (genuine parental love requires active, engaged correction rather than permissive neglect) remains the passage's clearer, more transferable point than any specific prescribed method of discipline."
+      }
+    ]
+  },
+  "proverbs-14": {
+    "book": "Proverbs",
+    "chapter": 14,
+    "title": "Further Proverbs of Solomon",
+    "scene": "The collection continues addressing the genuine, practical difference wisdom makes in building versus destroying one's own household, appropriate versus foolish anger, the danger of misplaced confidence, and this book's recurring theme regarding the genuine relationship between righteousness and a nation's overall health and honor.",
+    "sections": [
+      {
+        "heading": "Further Proverbs of Solomon",
+        "range": "14:1-35",
+        "text": "This chapter's observation that “the wise woman builds her house, but with her own hands the foolish one tears hers down” applies this book's wisdom-versus-folly contrast specifically to household management and family building, while its warning that “there is a way that appears to be right, but in the end it leads to death” (repeated nearly identically in 16:25) offers an important, sobering caution against overconfident reliance on subjective moral intuition alone, without genuine, careful examination against objective, revealed wisdom. The chapter's memorable declaration that “righteousness exalts a nation, but sin condemns any people” extends this book's individual-focused wisdom teaching to encompass corporate, national character and its genuine, significant consequences as well."
+      }
+    ]
+  },
+  "proverbs-15": {
+    "book": "Proverbs",
+    "chapter": 15,
+    "title": "Wise Sayings of Solomon",
+    "scene": "The collection continues, offering some of the book's most memorable teaching regarding the power of gentle versus harsh speech in de-escalating or inflaming conflict, the genuine value of honest, humble counsel over flattery, and the surpassing worth of simple contentment and peace over anxious accumulation of wealth and status.",
+    "sections": [
+      {
+        "heading": "Wise Sayings of Solomon",
+        "range": "15:1-33",
+        "text": "This chapter's celebrated opening declaration — “a gentle answer turns away wrath, but a harsh word stirs up anger” — provides one of Scripture's most practically useful, frequently applied statements regarding conflict de-escalation through deliberately measured, gentle speech rather than matching or escalating another person's hostility and anger. The chapter's memorable comparison — “better a small serving of vegetables with love than a fattened calf with hatred” — prioritizes genuine relational peace and love over material abundance accompanied by conflict and hostility, while its teaching that “the eyes of the Lord are everywhere, keeping watch on the wicked and the good” affirms God's comprehensive, attentive awareness of all human conduct, both encouraging genuine integrity even in seemingly unobserved circumstances and offering reassurance that no injustice ultimately escapes his notice."
+      }
+    ]
+  },
+  "proverbs-16": {
+    "book": "Proverbs",
+    "chapter": 16,
+    "title": "More of Solomon's Wise Sayings",
+    "scene": "The collection continues, offering important theological reflection on the relationship between human planning and God's ultimate sovereignty over all outcomes, the genuine superiority of wisdom and righteousness over mere material wealth, and the recurring principle that pride inevitably precedes downfall.",
+    "sections": [
+      {
+        "heading": "More of Solomon's Wise Sayings",
+        "range": "16:1-33",
+        "text": "This chapter's important theological reflection — “in their hearts humans plan their course, but the Lord establishes their steps”, and “many are the plans in a person's heart, but it is the Lord's purpose that prevails” — addresses the genuine relationship between legitimate human planning and effort, and God's ultimate, overriding sovereignty over actual outcomes, encouraging both diligent, thoughtful human effort and humble, submitted trust that final results remain properly within God's own sovereign control rather than human planning alone. The chapter's celebrated warning — “pride goes before destruction, a haughty spirit before a fall” — provides one of Scripture's most frequently quoted statements regarding pride's inherently self-destructive trajectory, a theme this book returns to repeatedly across numerous individual proverbs."
+      }
+    ]
+  },
+  "proverbs-17": {
+    "book": "Proverbs",
+    "chapter": 17,
+    "title": "Additional Proverbs of Solomon",
+    "scene": "The collection continues, addressing the genuine value of loyal friendship that endures through adversity, the appropriate restraint of foolish or contentious speech, and the significant emotional and even physical toll that ongoing family conflict and a persistently troubled spirit can produce.",
+    "sections": [
+      {
+        "heading": "Additional Proverbs of Solomon",
+        "range": "17:1-28",
+        "text": "This chapter's teaching that “a friend loves at all times, and a brother is born for a time of adversity” distinguishes genuine, tested friendship from more superficial, fair-weather relationship, while its memorable observation that “even fools are thought wise if they keep silent, and discerning if they hold their tongues” offers practical wisdom regarding the genuine value of appropriate restraint in speech, particularly amid uncertainty or limited actual knowledge. The chapter's observation that “a cheerful heart is good medicine, but a crushed spirit dries up the bones” acknowledges the genuine connection between emotional and even physical wellbeing, a holistic understanding of human health consistent with this book's broader, comprehensive concern for whole-person flourishing rather than merely narrow, isolated moral instruction alone."
+      }
+    ]
+  },
+  "proverbs-18": {
+    "book": "Proverbs",
+    "chapter": 18,
+    "title": "More Proverbs of Solomon",
+    "scene": "The collection continues, offering important teaching on the genuine danger of premature judgment and the necessity of hearing both sides of any dispute before rendering conclusions, the significant power of words for either genuine life or genuine destruction, and God's name functioning as a genuine, reliable refuge for those who turn to it.",
+    "sections": [
+      {
+        "heading": "More Proverbs of Solomon",
+        "range": "18:1-24",
+        "text": "This chapter's important caution — “the one who states his case first seems right, until the other comes and cross-examines him” — warns against premature judgment based on hearing only a single, initial perspective, insisting on genuine, patient investigation of all relevant sides before rendering confident conclusions regarding any dispute or accusation. The chapter's declaration that “the tongue has the power of life and death, and those who love it will eat its fruit” reinforces this book's recurring, serious emphasis on speech's genuine, significant power and consequence, while its image of the “name of the Lord” functioning as “a fortified tower; the righteous run to it and are safe” offers genuine reassurance regarding God's reliable protective care for those who genuinely turn to him amid trouble or danger."
+      }
+    ]
+  },
+  "proverbs-19": {
+    "book": "Proverbs",
+    "chapter": 19,
+    "title": "Additional Wise Sayings",
+    "scene": "The collection continues, addressing the genuine relationship between integrity and material poverty (correcting any assumption that poverty automatically indicates moral failure), appropriate patience and self-control regarding anger, and the enduring value of receiving wise counsel and discipline throughout one's entire life, not merely during youth alone.",
+    "sections": [
+      {
+        "heading": "Additional Wise Sayings",
+        "range": "19:1-29",
+        "text": "This chapter's observation that “better the poor whose walk is blameless than a fool whose lips are perverse” directly counters any simplistic assumption that material poverty automatically indicates moral failure or divine disfavor, insisting instead on genuine integrity's surpassing value regardless of one's material circumstances — an important corrective balancing this book's frequent, general association between diligent wisdom and material prosperity, since that general pattern, as this and similar proverbs make clear, admits genuine, significant exceptions and shouldn't be mechanically, uniformly applied to every specific individual case. The chapter's counsel that “a person's wisdom yields patience; it is to one's glory to overlook an offense” commends appropriate patience and gracious forbearance regarding minor offenses, while its instruction to “listen to advice and accept discipline, and at the end you will be counted among the wise” reinforces this book's consistent emphasis on humble, ongoing teachability throughout one's entire life, not merely during formal childhood instruction alone."
+      }
+    ]
+  },
+  "proverbs-20": {
+    "book": "Proverbs",
+    "chapter": 20,
+    "title": "More of Solomon's Proverbs",
+    "scene": "The collection continues, warning against the genuine dangers of alcohol abuse, commending diligent investigation and appropriate skepticism regarding easy, unverified claims, and offering important reflection on human self-knowledge's genuine, significant limitations even regarding one's own heart and motives.",
+    "sections": [
+      {
+        "heading": "More of Solomon's Proverbs",
+        "range": "20:1-30",
+        "text": "This chapter's warning that “wine is a mocker and beer a brawler; whoever is led astray by them is not wise” cautions against alcohol's genuinely dangerous, judgment-impairing effects when consumed without appropriate restraint and moderation. The chapter's important epistemological humility — “who can say, 'I have kept my heart pure; I am clean and without sin'?” — acknowledges genuine, significant limitations even in accurate self-assessment and self-knowledge, while its observation that “all a person's ways seem pure to them, but motives are weighed by the Lord” reinforces the genuine, ongoing need for humble submission to God's own more accurate, comprehensive evaluation rather than confident, exclusive reliance on one's own subjective self-perception and self-justification alone."
+      }
+    ]
+  },
+  "proverbs-21": {
+    "book": "Proverbs",
+    "chapter": 21,
+    "title": "Additional Proverbs of Solomon",
+    "scene": "The collection continues, offering important reflection on God's own sovereignty even over powerful human rulers, the genuine, surpassing value of practicing righteousness and justice over mere ritual religious sacrifice, and the destructive, ultimately self-defeating consequences of a quarrelsome, contentious temperament.",
+    "sections": [
+      {
+        "heading": "Additional Proverbs of Solomon",
+        "range": "21:1-31",
+        "text": "This chapter's striking declaration — “the king's heart is in the hand of the Lord; he directs it like a watercourse wherever he pleases” — affirms God's genuine sovereignty even over the world's most powerful human political rulers, offering reassurance regarding God's ultimate control extending even to circumstances that might otherwise appear entirely governed by unrestrained human political power alone. The chapter's declaration that “to do what is right and just is more acceptable to the Lord than sacrifice” reinforces this book's consistent alignment with the broader prophetic tradition's emphasis on genuine, practical righteousness over mere external ritual observance, while its observation that “better to live on a corner of the roof than share a house with a quarrelsome wife” (and its close parallel elsewhere regarding a quarrelsome spouse generally) illustrates, through deliberately exaggerated, memorable imagery, the genuinely significant toll persistent domestic conflict and contentiousness exacts on daily life and wellbeing."
+      }
+    ]
+  },
+  "proverbs-22": {
+    "book": "Proverbs",
+    "chapter": 22,
+    "title": "More Proverbs of Solomon",
+    "scene": "The main collection of Solomon's proverbs closes with reflection on a good reputation's genuine value exceeding material wealth, the celebrated instruction regarding training children in their proper way, and the chapter's transition into a new section explicitly introduced as “thirty sayings” from additional, otherwise unnamed wise teachers.",
+    "sections": [
+      {
+        "heading": "More Proverbs of Solomon",
+        "range": "22:1-16",
+        "text": "This chapter's declaration that “a good name is more desirable than great riches; to be esteemed is better than silver or gold” prioritizes genuine character and reputation over mere material accumulation, while its celebrated, frequently cited instruction — “start children off on the way they should go, and even when they are old they will not turn from it” — offers hopeful, though not absolutely, mechanically guaranteed (as this book's own broader wisdom-versus-outcome tension elsewhere suggests) encouragement regarding faithful, intentional childhood instruction's genuine, lasting positive influence."
+      },
+      {
+        "heading": "Sayings of the Wise",
+        "range": "22:17-29",
+        "text": "This section's explicit introduction of “thirty sayings of counsel and knowledge” from additional wise teachers (this particular collection showing some notable structural and thematic parallel to an ancient Egyptian wisdom text called the Instruction of Amenemope, a genuine literary connection most scholars view as reflecting the broader ancient Near Eastern wisdom tradition's shared cultural context and mutual influence, rather than raising any concern regarding this material's genuine, divinely inspired canonical authority) signals a deliberate transition within the book's overall structure, introducing additional wisdom material beyond Solomon's own specific, individually attributed proverbs."
+      }
+    ]
+  },
+  "proverbs-23": {
+    "book": "Proverbs",
+    "chapter": 23,
+    "title": "Sayings of the Wise",
+    "scene": "This collection of additional wise sayings continues, offering practical counsel regarding appropriate dining etiquette with powerful figures, cautioning against both the exhausting pursuit of quick wealth and the genuine dangers of alcohol abuse, and closing with a vivid, cautionary description of a drunkard's degraded, disoriented condition.",
+    "sections": [
+      {
+        "heading": "Sayings of the Wise",
+        "range": "23:1-35",
+        "text": "This chapter's practical counsel regarding dining with a ruler — “put a knife to your throat if you are given to gluttony”, essentially counseling careful self-restraint and appropriate caution when dining in socially significant, potentially compromising situations — addresses specific, concrete social wisdom alongside broader ethical instruction. The chapter's warning against exhausting oneself “to gain wealth”, since riches “can sprout wings and fly off to the sky like an eagle,” cautions against placing excessive confidence in inherently unstable, unreliable material accumulation, while its extended, vividly described warning against alcohol abuse — concluding with the drunkard's own pathetic, self-defeating declaration, “they hit me… but I didn't feel it! When will I wake up so I can find another drink?” — provides one of Scripture's most memorable, unflinching cautionary portraits of addiction's genuinely degrading, self-destructive progression."
+      }
+    ]
+  },
+  "proverbs-24": {
+    "book": "Proverbs",
+    "chapter": 24,
+    "title": "More Sayings of the Wise",
+    "scene": "This section of additional wise sayings continues, offering counsel regarding appropriate responses to observed adversity or the temporary success of the wicked, before the collection closes with a brief, additional section explicitly attributed to further wise teachers, including a memorable, cautionary observation drawn from direct field observation of a neglected, overgrown vineyard.",
+    "sections": [
+      {
+        "heading": "More Sayings of the Wise",
+        "range": "24:1-34",
+        "text": "This chapter's counsel against envying the wicked, since “the evildoer has no future hope,” and its instruction against rejoicing when “your enemy falls”, since such reaction might itself displease God, together address appropriate emotional and moral response to observing others' circumstances, whether positive or negative. The chapter's memorable illustration — the wise teacher's own direct observation of “the field of the sluggard… covered with thorns… its stone wall was in ruins,” drawing the explicit lesson, “a little sleep, a little slumber, a little folding of the hands to rest—and poverty will come on you like a thief” — uses concrete, personally witnessed agricultural observation to reinforce this book's recurring warning against laziness's genuinely destructive, if often gradual and initially imperceptible, consequences."
+      }
+    ]
+  },
+  "proverbs-25": {
+    "book": "Proverbs",
+    "chapter": 25,
+    "title": "More Proverbs of Solomon",
+    "scene": "A further collection of Solomon's proverbs begins, notably introduced as having been “copied by the men of Hezekiah,” providing valuable historical evidence regarding this material's careful preservation and transmission across centuries, opening with counsel regarding appropriate conduct before kings and continuing with vivid, memorable natural and domestic imagery illustrating various wisdom principles.",
+    "sections": [
+      {
+        "heading": "More Proverbs of Solomon",
+        "range": "25:1-28",
+        "text": "This chapter's explicit historical note — “these are more proverbs of Solomon, copied by the men of Hezekiah king of Judah” — provides valuable, genuine historical evidence regarding this material's careful, deliberate preservation and compilation across several centuries between Solomon's original composition and this later royal scribal collection effort, demonstrating ongoing, sustained community value placed on faithfully preserving this inherited wisdom tradition. The chapter's memorable illustration — “like a gold ring in a pig's snout is a beautiful woman who shows no discretion” — uses deliberately jarring, incongruous imagery to convey how genuine external beauty or impressive qualities, lacking accompanying wisdom and discretion, actually appear genuinely absurd and inappropriate rather than genuinely appealing, while the chapter's counsel regarding an enemy — “if your enemy is hungry, give him food to eat; if he is thirsty, give him water to drink… in doing this, you will heap burning coals on his head” (quoted directly by Paul in Romans 12:20) — commends genuine, practical kindness toward enemies as both ethically appropriate and, potentially, genuinely transformative for the relationship itself."
+      }
+    ]
+  },
+  "proverbs-26": {
+    "book": "Proverbs",
+    "chapter": 26,
+    "title": "More Sayings of Solomon",
+    "scene": "The collection continues with extended, pointed reflection specifically on foolishness and laziness, including the memorable warning against answering a fool according to his folly (paired, seemingly paradoxically, with the immediately following instruction to sometimes do exactly that), before an extended, vivid treatment of the gossip and troublemaker's genuinely destructive social influence.",
+    "sections": [
+      {
+        "heading": "More Sayings of Solomon",
+        "range": "26:1-28",
+        "text": "This chapter's seemingly paradoxical pairing — “do not answer a fool according to his folly, or you yourself will be just like him”, immediately followed by “answer a fool according to his folly, or he will be wise in his own eyes” — actually illustrates an important wisdom principle central to this entire book's character: genuine wisdom requires careful, situational discernment rather than mechanical, universal rule-application, since the appropriate response to foolishness genuinely varies depending on specific circumstance and purpose (avoiding pointless, self-degrading argument in one situation, while sometimes requiring direct, exposing correction in another). The chapter's extended treatment of gossip and troublemaking — “without wood a fire goes out; without a gossip a quarrel dies down… the words of a gossip are like choice morsels; they go down to the inmost parts” — exposes gossip's genuinely destructive social influence, memorably comparing it to appealing but ultimately harmful “choice morsels” that seem innocuous or even enjoyable while actually causing lasting relational damage."
+      }
+    ]
+  },
+  "proverbs-27": {
+    "book": "Proverbs",
+    "chapter": 27,
+    "title": "More of Solomon's Proverbs",
+    "scene": "The collection continues, addressing appropriate humility regarding self-praise and uncertain future planning, the genuine, sometimes uncomfortable but ultimately more valuable nature of honest friendship compared to flattery, and practical wisdom regarding diligent oversight of one's own household resources and responsibilities.",
+    "sections": [
+      {
+        "heading": "More of Solomon's Proverbs",
+        "range": "27:1-27",
+        "text": "This chapter's counsel — “do not boast about tomorrow, for you do not know what a day may bring” — encourages appropriate humility regarding uncertain future planning, a theme James later develops further (James 4:13-16). The chapter's memorable observation regarding genuine friendship — “wounds from a friend can be trusted, but an enemy multiplies kisses”, and “as iron sharpens iron, so one person sharpens another” — commends honest, even occasionally uncomfortable friendship that genuinely challenges and improves character over merely comfortable, flattering companionship that avoids necessary, beneficial correction. The chapter's practical counsel to “be sure you know the condition of your flocks, give careful attention to your herds,” since material wealth and even royal crowns “do not endure forever,” commends diligent, ongoing personal attention and oversight over one's own resources and responsibilities rather than passive, inattentive assumption of continued prosperity."
+      }
+    ]
+  },
+  "proverbs-28": {
+    "book": "Proverbs",
+    "chapter": 28,
+    "title": "Additional Proverbs of Solomon",
+    "scene": "The collection continues, offering important reflection on the genuine relationship between righteous and wicked governance and a nation's overall wellbeing, the value of honest confession over concealed sin, and this book's consistent, recurring concern for economic justice toward the poor and vulnerable.",
+    "sections": [
+      {
+        "heading": "Additional Proverbs of Solomon",
+        "range": "28:1-28",
+        "text": "This chapter's observation that “when the righteous thrive, the people rejoice; when the wicked rule, the people groan” reinforces this book's recurring concern for governance's significant, tangible impact on a broader population's wellbeing, not merely abstract political theory alone. The chapter's counsel that “whoever conceals their sins does not prosper, but the one who confesses and renounces them finds mercy” commends honest confession over concealment as the genuinely wiser, more beneficial path, while its warning that “whoever oppresses the poor to increase his wealth… will come to poverty” continues this book's sustained, consistent ethical concern for economic justice and appropriate treatment of society's most vulnerable members."
+      }
+    ]
+  },
+  "proverbs-29": {
+    "book": "Proverbs",
+    "chapter": 29,
+    "title": "More Proverbs of Solomon",
+    "scene": "This chapter closes the main collection of Solomon's individually attributed proverbs with continued reflection on appropriate versus inappropriate exercise of authority, the genuine danger of ignoring necessary correction, and the significant relationship between a nation's spiritual condition (specifically, the availability of genuine prophetic revelation) and its overall social order and discipline.",
+    "sections": [
+      {
+        "heading": "More Proverbs of Solomon",
+        "range": "29:1-27",
+        "text": "This chapter's warning that “whoever remains stiff-necked after many rebukes will suddenly be destroyed—without remedy” reinforces this book's consistent emphasis on humble receptivity to correction as essential for avoiding otherwise preventable ruin, while its celebrated declaration that “where there is no revelation, people cast off restraint” (sometimes rendered “without vision, the people perish”) connects a society's spiritual and moral order directly to genuine access to and reverence for authentic divine revelation and guidance. The chapter's observation regarding the relationship between righteous rule and social wellbeing, and its practical wisdom regarding measured, appropriate anger (“a fool gives full vent to their rage, but the wise bring calm in the end”), continue this book's consistent, integrated concern for both personal character and its genuine, significant broader social consequences."
+      }
+    ]
+  },
+  "proverbs-30": {
+    "book": "Proverbs",
+    "chapter": 30,
+    "title": "The Sayings of Agur",
+    "scene": "The book's collections shift toward material attributed to an otherwise unknown wise teacher named Agur, opening with an unusually humble, even self-deprecating acknowledgment of human epistemological limitation before God's incomparable wisdom, and continuing with a series of memorable numerical proverbs cataloguing various natural and social phenomena that share particular, illuminating characteristics.",
+    "sections": [
+      {
+        "heading": "The Sayings of Agur",
+        "range": "30:1-33",
+        "text": "Agur's unusual, humble opening — “surely I am only a brute, not a man; I do not have human understanding… who has ascended to heaven and come down? Whose hands have gathered up the wind?” — models genuine epistemological humility regarding the vast, ultimately incomprehensible scope of God's own wisdom compared to even the most learned human understanding, echoing themes similarly developed in Job's climactic divine speeches. Agur's memorable request for “neither poverty nor riches… give me only my daily bread,” fearing that excessive wealth might tempt him toward self-sufficient disowning of God, while excessive poverty might tempt him toward dishonest theft, models genuinely wise, balanced contentment regarding material circumstances. The chapter's series of numerical proverbs — cataloguing various sets of “three things… four that I cannot understand”, from the mysterious paths of eagles, snakes, and ships, to small but remarkably wise creatures like ants and rock badgers — employs this distinctive ancient wisdom literary form to convey memorable, illuminating observations regarding shared characteristics across seemingly disparate natural and social phenomena."
+      }
+    ]
+  },
+  "proverbs-31": {
+    "book": "Proverbs",
+    "chapter": 31,
+    "title": "The Sayings of King Lemuel",
+    "scene": "The book of Proverbs closes with two distinct sections: royal wisdom attributed to King Lemuel's mother, warning specifically against the genuine dangers alcohol poses to rulers' judgment, and the book's celebrated, extended acrostic poem describing “the wife of noble character” — among the most influential and sometimes misunderstood passages in the entire book regarding women's genuine capability and worth.",
+    "sections": [
+      {
+        "heading": "The Sayings of King Lemuel",
+        "range": "31:1-9",
+        "text": "King Lemuel's mother's counsel — warning her son against both sexual excess (“do not spend your strength on women”) and alcohol abuse specifically for rulers, since “it is not for kings… to drink wine… lest they drink and forget what has been decreed, and deprive all the oppressed of their rights” — addresses the genuinely serious, practical danger impaired judgment poses specifically for those exercising significant governing authority and responsibility over others, while her instruction to “speak up for those who cannot speak for themselves… defend the rights of the poor and needy” reinforces this entire book's consistent, recurring concern for justice toward society's most vulnerable members."
+      },
+      {
+        "heading": "The Wife of Noble Character",
+        "range": "31:10-31",
+        "text": "This book's celebrated closing poem — structured as a Hebrew acrostic, each verse beginning with a successive letter of the Hebrew alphabet — describes “a wife of noble character” whose comprehensive capability spans business acumen (buying and evaluating a field, engaging profitably in trade), practical domestic skill (providing food and clothing for her household), genuine compassion (extending her hands “to the poor and reaching out to the needy”), and wise, kind speech, while receiving open, appreciative praise from both her husband and her own children. This passage has sometimes been misapplied as establishing an exhaustive, rigid checklist every woman must precisely replicate, or, conversely, dismissed as reflecting merely a distant, culturally limited ancient ideal without contemporary relevance; more accurately understood, this poem celebrates genuine, comprehensive female capability, wisdom, and industry across a remarkably wide range of domains (economic, domestic, social, and spiritual) at a time when such comprehensive capability might not have been uniformly assumed or celebrated, closing this entire book of practical wisdom with a portrait of wisdom genuinely, concretely embodied and lived out, rather than remaining merely abstract theoretical instruction — fittingly returning, in this closing celebration of embodied wisdom, to the book's opening personification of Wisdom herself, and reinforcing the closing verse's own explicit, values-clarifying conclusion: “charm is deceptive, and beauty is fleeting; but a woman who fears the Lord is to be praised.”"
+      }
+    ]
+  },
+  "ecclesiastes-1": {
+    "book": "Ecclesiastes",
+    "chapter": 1,
+    "title": "Life Is Useless",
+    "scene": "Ecclesiastes, presenting itself as the reflections of “the Teacher” (traditionally identified with Solomon, given his described unparalleled wisdom and resources, though the book's precise authorship remains genuinely debated among scholars), opens with its famous, stark thematic declaration regarding life's apparent futility, before beginning an extensive personal investigation into whether genuine, lasting meaning can actually be found anywhere “under the sun.”",
+    "sections": [
+      {
+        "heading": "Life Is Useless",
+        "range": "1:1-11",
+        "text": "The book's opening declaration — “meaningless! Meaningless!” says the Teacher. “Utterly meaningless! Everything is meaningless” — employs the Hebrew term hevel (literally “vapor” or “breath,” variously translated as “meaningless,” “futile,” or “fleeting/temporary”), a term whose precise nuance matters considerably for understanding this entire book's argument: hevel conveys not necessarily complete, absolute nihilistic meaninglessness, but something more like transience, insubstantiality, and ultimate ungraspability — like trying to grasp vapor or a passing breath, things that are genuinely real and present yet impossible to hold onto permanently or fully control and comprehend. This chapter's observation of nature's endless, repetitive cycles — the sun rising and setting, rivers flowing continuously to the sea without ever filling it, generations coming and going — establishes this book's characteristic, unflinching examination of life's repetitive, seemingly directionless patterns “under the sun” (a recurring phrase throughout the book specifically limiting its perspective to purely earthly, empirical observation, without yet incorporating the fuller, eternal perspective the book's final chapter will eventually, decisively introduce)."
+      }
+    ]
+  },
+  "ecclesiastes-2": {
+    "book": "Ecclesiastes",
+    "chapter": 2,
+    "title": "Solomon's Search for Meaning",
+    "scene": "The Teacher recounts his own extensive, well-resourced personal investigation into various potential sources of ultimate meaning and satisfaction — pleasure, achievement, wealth, and wisdom itself — finding each, despite genuine attainment and enjoyment, ultimately, honestly unable to provide the lasting, comprehensive fulfillment he had genuinely sought.",
+    "sections": [
+      {
+        "heading": "Solomon's Search for Meaning",
+        "range": "2:1-26",
+        "text": "The Teacher's systematic personal investigation — testing pleasure, laughter, wine, and elaborate building projects, gardens, and accumulated wealth, all pursued with genuinely unparalleled resources and “without holding back from my heart any pleasure” — concludes with his own honest, disappointed assessment: “yet when I surveyed all that my hands had done and what I had toiled to achieve, everything was meaningless, a chasing after the wind; nothing was gained under the sun.” This honest report of genuine, comprehensive attempt and genuine, honest disappointment provides valuable, authentic testimony regarding the actual, tested inadequacy of pleasure, achievement, and accumulated wealth alone to provide lasting, ultimate meaning and satisfaction — testimony carrying particular weight and credibility precisely because it comes from someone who had genuinely, comprehensively possessed the resources to test these various potential sources of meaning as thoroughly as anyone plausibly could. Even wisdom itself, though genuinely “better than folly, just as light is better than darkness,” ultimately provides no lasting exemption from death's common, shared fate — “the wise, like the fool, will not be long remembered” — leading the Teacher toward his own honest, sobering conclusion that even wisdom, valuable as it genuinely is, cannot alone provide complete, ultimate answers to life's deepest questions regarding meaning and legacy."
+      }
+    ]
+  },
+  "ecclesiastes-3": {
+    "book": "Ecclesiastes",
+    "chapter": 3,
+    "title": "A Time for Everything",
+    "scene": "The Teacher presents one of Scripture's most beloved and culturally influential passages — a poetic catalogue of life's various appointed seasons and times — before reflecting on both the genuine, mysterious beauty God has embedded within his ordered timing and humanity's own persistent, frustrating inability to fully grasp or control that same timing.",
+    "sections": [
+      {
+        "heading": "A Time for Everything",
+        "range": "3:1-22",
+        "text": "This chapter's celebrated poem — “there is a time for everything, and a season for every activity under the heavens: a time to be born and a time to die, a time to plant and a time to uproot…” — has become one of Scripture's most widely recognized and culturally influential passages (further popularized through Pete Seeger's and The Byrds' musical adaptation “Turn! Turn! Turn!”), conveying life's genuine, comprehensive range of appropriate seasons and activities, including both evidently positive experiences and genuinely difficult ones, without attempting to rank or hierarchically order them. The Teacher's follow-up reflection — that God “has made everything beautiful in its time,” yet has also “set eternity in the human heart, yet no one can fathom what God has done from beginning to end” — captures this book's characteristic, honest tension: genuine appreciation for God's mysterious, purposeful ordering of time and circumstance, combined with honest acknowledgment of humanity's persistent, frustrating inability to fully grasp, predict, or control that same ordering, despite an innate, God-given sense (“eternity in the human heart”) that there ought to be, and indeed genuinely is, comprehensive meaning and purpose behind it all, even when that meaning remains substantially, honestly beyond full human comprehension."
+      }
+    ]
+  },
+  "ecclesiastes-4": {
+    "book": "Ecclesiastes",
+    "chapter": 4,
+    "title": "Life Is Not Fair",
+    "scene": "The Teacher continues his honest investigation by observing several specific, troubling social realities — oppression's genuine severity, competitive envy's hollow motivation, isolated loneliness's genuine cost, and, more positively, companionship's genuine practical and emotional value — offering the celebrated observation that “a cord of three strands is not quickly broken.”",
+    "sections": [
+      {
+        "heading": "Life Is Not Fair",
+        "range": "4:1-16",
+        "text": "The Teacher's honest observation of oppression's genuine severity — “I saw the tears of the oppressed—and they have no comforter; power was on the side of their oppressors—and they have no comforter” — leads to his own genuinely startling, despairing conclusion that “the dead, who had already died, are happier than the living, who are still alive,” illustrating this book's characteristic willingness to voice genuine despair without artificially softening or minimizing observed injustice's actual severity. The chapter's celebrated, more hopeful reflection on companionship's genuine value — “two are better than one, because they have a good return for their labor… though one may be overpowered, two can defend themselves. A cord of three strands is not quickly broken” — offers genuine, practical wisdom regarding human interdependence and mutual support's real, tangible benefit, standing in deliberate contrast to this same chapter's earlier observation regarding the genuinely hollow, ultimately unsatisfying nature of purely competitive, comparison-driven achievement pursued in isolation (“all toil and all achievement spring from one person's envy of another”)."
+      }
+    ]
+  },
+  "ecclesiastes-5": {
+    "book": "Ecclesiastes",
+    "chapter": 5,
+    "title": "Fear God",
+    "scene": "The Teacher offers practical counsel regarding appropriate reverence in worship and careful integrity regarding vows made to God, before returning to his sustained reflection on wealth's genuine limitations — observing that increased material accumulation typically produces increased anxiety and consumption rather than the lasting satisfaction it seems to promise.",
+    "sections": [
+      {
+        "heading": "Fear God",
+        "range": "5:1-7",
+        "text": "The Teacher's counsel regarding appropriate worship — “guard your steps when you go to the house of God… do not be quick with your mouth… God is in heaven and you are on earth, so let your words be few” — commends genuine reverence and thoughtful restraint in approaching God, while his warning against making vows carelessly, since “it is better not to vow than to make a vow and not fulfill it,” counsels genuine integrity and careful consideration before making religious commitments one might later fail to honor."
+      },
+      {
+        "heading": "The Futility of Wealth",
+        "range": "5:8-20",
+        "text": "The Teacher's continued reflection on wealth's genuine limitations — “whoever loves money never has enough; whoever loves wealth is never satisfied with their income… as goods increase, so do those who consume them” — provides honest, empirically grounded observation regarding wealth's persistent inability to produce lasting satisfaction, since increased accumulation typically produces correspondingly increased consumption, dependents, and anxiety rather than a stable, satisfied contentment. The chapter's more positive, balanced concluding counsel — that finding genuine enjoyment in one's work and material provision, recognized explicitly as “a gift of God,” represents legitimate, appropriate satisfaction — introduces this book's recurring, important counterbalancing theme: while ultimate, comprehensive meaning cannot be found in wealth, work, or pleasure pursued as ends in themselves, genuine, God-given enjoyment of these same ordinary blessings, received gratefully as gifts rather than grasped anxiously as ultimate goals, remains entirely legitimate and appropriate."
+      }
+    ]
+  },
+  "ecclesiastes-6": {
+    "book": "Ecclesiastes",
+    "chapter": 6,
+    "title": "Wealth Is Meaningless",
+    "scene": "The Teacher continues examining wealth's genuine limitations through several specific, troubling scenarios — a wealthy person unable to actually enjoy their own accumulated resources, and a stillborn child's arguably preferable fate compared to a long, unsatisfying life — before closing with honest acknowledgment of humanity's genuine, persistent inability to fully know or predict what actually constitutes a good, worthwhile life.",
+    "sections": [
+      {
+        "heading": "Wealth Is Meaningless",
+        "range": "6:1-12",
+        "text": "The Teacher's troubling scenario — a person granted “wealth, possessions and honor, so that they lack nothing their hearts desire, but God does not grant them the ability to enjoy them” — identifies a genuine, observable tragedy distinct from simple material lack: the capacity for genuine enjoyment itself, this passage insists, represents a distinct, additional gift from God, not something automatically guaranteed merely by possessing sufficient material resources alone. The chapter's startling comparison — that a miscarried, stillborn child “has more rest than” someone who lives a long life yet “does not enjoy his prosperity,” whatever length of years that life might actually encompass — conveys, through deliberately shocking comparison, this book's genuine, sustained concern that mere quantity of years or material accumulation, without genuine capacity for satisfaction and enjoyment, represents no real improvement or advantage whatsoever."
+      }
+    ]
+  },
+  "ecclesiastes-7": {
+    "book": "Ecclesiastes",
+    "chapter": 7,
+    "title": "Wisdom",
+    "scene": "The Teacher offers a series of paradoxical, counterintuitive wisdom observations — commending mourning over feasting, patience over pride, and appropriately moderate expectation over excessive extremes of both righteousness and wickedness — while honestly acknowledging genuine, persistent limits to achievable human wisdom and moral perfection.",
+    "sections": [
+      {
+        "heading": "Wisdom",
+        "range": "7:1-29",
+        "text": "The Teacher's counterintuitive counsel — “it is better to go to a house of mourning than to go to a house of feasting… sorrow is better than laughter, because a sad face is good for the heart” — commends the genuine, often overlooked value of honest reflection on mortality and genuine grief over merely comfortable, distraction-filled celebration, suggesting that confronting life's genuine difficulties and limitations honestly, rather than perpetually avoiding them through pleasant diversion, ultimately produces greater, more substantial wisdom and genuine character. The chapter's caution against excessive extremes — “do not be over-righteous, neither be overwise—why destroy yourself? Do not be over-wicked, and do not be a fool—why die before your time?” — counsels appropriate, humble moderation regarding one's own moral and intellectual self-assessment, while its honest acknowledgment that “there is not a righteous man on earth who does what is right and never sins” anticipates, centuries in advance, the New Testament's own fuller doctrine of universal human sinfulness (Romans 3:23), demonstrating this ancient wisdom book's genuine theological continuity with Scripture's broader, consistent teaching regarding humanity's universal moral condition and need."
+      }
+    ]
+  },
+  "ecclesiastes-8": {
+    "book": "Ecclesiastes",
+    "chapter": 8,
+    "title": "Obey Those in Authority",
+    "scene": "The Teacher offers counsel regarding appropriate respect for governing authority, while continuing his honest wrestling with a persistent, troubling observation: that life's actual outcomes frequently fail to correspond reliably to individual moral merit, with the wicked sometimes prospering and the righteous sometimes suffering, regardless of the traditional wisdom tradition's general, expected pattern.",
+    "sections": [
+      {
+        "heading": "Obey Those in Authority",
+        "range": "8:1-17",
+        "text": "The Teacher's counsel regarding appropriate submission to governing authority — “obey the king's command… do not be in a hurry to leave the king's presence” — addresses practical political wisdom for navigating life under governmental authority, though this counsel is balanced by this chapter's continued, honest wrestling with observed moral disorder: “there is something else meaningless that occurs on earth: the righteous who get what the wicked deserve, and the wicked who get what the righteous deserve.” This honest acknowledgment — that life's actual, observable outcomes frequently fail to correspond reliably or mechanically to individual moral merit, directly contrary to the more optimistic general expectation found throughout much of Proverbs — provides an important, honest counterbalance within Scripture's own broader wisdom tradition, demonstrating this tradition's genuine, comprehensive honesty regarding life's actual observed complexity and apparent unfairness, rather than presenting an artificially tidy, uniformly optimistic picture inconsistent with genuine, honest human experience and observation."
+      }
+    ]
+  },
+  "ecclesiastes-9": {
+    "book": "Ecclesiastes",
+    "chapter": 9,
+    "title": "A Common Destiny",
+    "scene": "The Teacher confronts death's genuinely universal, indiscriminate reach across every category of person regardless of moral character, before offering his own resulting practical counsel: genuine, grateful enjoyment of life's ordinary pleasures and vigorous engagement with one's present work and relationships, precisely because death's ultimate, common certainty makes such present engagement all the more valuable and urgent.",
+    "sections": [
+      {
+        "heading": "A Common Destiny",
+        "range": "9:1-18",
+        "text": "The Teacher's sobering observation regarding death's genuinely universal, indiscriminate reach — “all share a common destiny—the righteous and the wicked, the good and the bad… the same destiny overtakes all” — confronts mortality's ultimate, shared certainty without regard to moral character or achievement, a genuinely sobering reality this book refuses to soften or explain away. Yet this very observation leads the Teacher toward his own genuinely constructive, life-affirming counsel: “go, eat your food with gladness, and drink your wine with a joyful heart, for it is now that God favors what you do… whatever your hand finds to do, do it with all your might.” This counsel — embracing genuine, grateful enjoyment of ordinary daily life and vigorous, wholehearted engagement with present work and relationships — represents this book's characteristic, carefully earned resolution: not despairing nihilism in the face of death's universal certainty, but genuine, grateful, energetic engagement with present life's ordinary, God-given gifts and opportunities, precisely because their temporary, limited nature makes fully engaging and appreciating them all the more valuable and urgent, not less."
+      }
+    ]
+  },
+  "ecclesiastes-10": {
+    "book": "Ecclesiastes",
+    "chapter": 10,
+    "title": "Wisdom and Folly",
+    "scene": "The Teacher offers a series of practical, somewhat miscellaneous wisdom observations regarding the genuine, sometimes disproportionate impact of even small foolish actions, the importance of competent leadership and appropriate speech, and the genuine, sometimes frustrating unpredictability of who actually ends up occupying positions of significant social status and authority.",
+    "sections": [
+      {
+        "heading": "Wisdom and Folly",
+        "range": "10:1-20",
+        "text": "The chapter's memorable observation — “as dead flies give perfume a bad smell, so a little folly outweighs wisdom and honor” — illustrates how even relatively small foolish actions or failures can disproportionately damage an otherwise carefully cultivated reputation for wisdom and good character, cautioning against complacency regarding seemingly minor lapses in judgment or conduct. The chapter's continued reflection on leadership, speech, and social order — including the observation that “woe to the land whose king was a servant and whose princes feast in the morning,” contrasted with the blessing of stable, appropriate leadership — continues this book's practical concern for governance's genuine, significant impact on broader social wellbeing and order."
+      }
+    ]
+  },
+  "ecclesiastes-11": {
+    "book": "Ecclesiastes",
+    "chapter": 11,
+    "title": "Take a Risk",
+    "scene": "The Teacher offers practical counsel regarding wise investment and diligent activity despite genuine, unavoidable uncertainty about future outcomes, before addressing younger readers directly with counsel to genuinely enjoy their youth while it lasts, tempered by sober awareness of eventual accountability before God.",
+    "sections": [
+      {
+        "heading": "Take a Risk",
+        "range": "11:1-10",
+        "text": "The Teacher's counsel regarding wise, diversified investment amid genuine uncertainty — “ship your grain across the sea… invest in seven ventures, yes, in eight… sow your seed in the morning, and at evening let your hands not be idle, for you do not know which will succeed” — commends diligent, appropriately diversified effort and activity despite genuine, unavoidable uncertainty regarding specific future outcomes, rather than either reckless, undiversified risk-taking or paralyzed, anxious inactivity due to that same uncertainty. The chapter's direct address to “you who are young” — “be happy, young man, while you are young… follow the ways of your heart and whatever your eyes see, but know that for all these things God will bring you into judgment” — encourages genuine, appropriate enjoyment of youth's particular vitality and opportunities, while tempering that encouragement with sober, appropriate awareness of eventual moral accountability before God, avoiding both joyless, premature severity and reckless, consequence-free self-indulgence."
+      }
+    ]
+  },
+  "ecclesiastes-12": {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "title": "Remember Your Creator",
+    "scene": "The book of Ecclesiastes closes with one of Scripture's most beautiful, poignant poetic descriptions of aging and eventual death, before delivering its climactic, decisive theological resolution: after this extended, honest investigation of life's apparent futility “under the sun,” genuine meaning and purpose is finally, definitively located in reverent fear of God and faithful obedience to his commands.",
+    "sections": [
+      {
+        "heading": "Remember Your Creator",
+        "range": "12:1-8",
+        "text": "This chapter's extended, deliberately poetic description of aging and eventual death — employing an elaborate, evocative extended metaphor (variously interpreted as describing either a decaying household or the aging human body itself, with “the keepers of the house” representing trembling hands, “those looking through the windows” representing dimming eyesight, and other similarly poetic correspondences) — provides one of world literature's most beautiful, poignant treatments of human mortality and physical decline, urging readers to “remember your Creator in the days of your youth, before the days of trouble come,” recognizing that genuine wisdom regarding mortality is most valuably embraced and internalized well before, rather than only during, life's actual final, declining stages."
+      },
+      {
+        "heading": "Conclusion of the Matter",
+        "range": "12:9-14",
+        "text": "The book's climactic, decisive theological conclusion — “now all has been heard; here is the conclusion of the matter: fear God and keep his commandments, for this is the duty of all mankind. For God will bring every deed into judgment, including every hidden thing, whether it is good or evil” — provides this extended, honest investigation's ultimate, resolving answer. After the Teacher's comprehensive, unflinching examination of pleasure, wealth, achievement, and wisdom itself, each found genuinely, honestly insufficient to provide complete, lasting meaning “under the sun” (that is, considered from a purely earthly, empirical perspective alone), the book's actual, final resolution locates genuine, lasting meaning specifically in reverent relationship with and obedience to God, combined with confident assurance of his ultimate, comprehensive future judgment and accountability — a perspective that necessarily transcends the book's own self-imposed “under the sun” empirical limitation, introducing, in these climactic final verses, the fuller, eternal perspective that alone can actually resolve the genuine, honest tension and apparent futility this entire remarkable book has so extensively, unflinchingly documented and explored throughout its preceding chapters."
+      }
+    ]
+  },
+  "songs-1": {
+    "book": "Song of Solomon",
+    "chapter": 1,
+    "title": "The Beloved's Longing",
+    "scene": "The Song of Songs, traditionally attributed to Solomon and unique within the biblical canon as an extended, unabashedly romantic and sensual love poem between a bridegroom and his bride, opens with the woman's own passionate voice expressing genuine, mutual longing and admiration — introducing this book's sustained, celebratory treatment of romantic and sexual love within the context of a committed, exclusive relationship.",
+    "sections": [
+      {
+        "heading": "The Beloved's Longing",
+        "range": "1:1-17",
+        "text": "This book's opening declaration — “let him kiss me with the kisses of his mouth—for your love is more delightful than wine” — immediately establishes the Song's distinctive character within the biblical canon: unlike any other book, it consists almost entirely of romantic, often sensual dialogue between two lovers, without extended narrative framework, explicit moral commentary, or direct theological instruction, celebrating instead romantic and physical love's genuine, God-given goodness through vivid, unashamed poetic expression. This book's interpretation has generated substantial discussion across Jewish and Christian tradition: some interpreters (particularly historically common within both traditions) read the book primarily or exclusively as an extended allegory representing God's love for Israel or Christ's love for the church, largely bypassing or minimizing its more direct, literal celebration of human romantic and sexual love; other interpreters, increasingly common in more recent scholarship, read the book primarily, straightforwardly as a celebration of genuine human marital love and sexuality in its own right, without requiring extensive allegorical reinterpretation to justify its canonical inclusion or perceived spiritual value; still others hold both readings together, understanding the book as primarily, directly celebrating human love and sexuality's genuine goodness within marriage, while also legitimately supporting, by broader canonical and typological extension, reflection on the deeper intimacy and delight God intends within his own relationship with his people, given marriage's own consistent use elsewhere in Scripture as a meaningful metaphor for that same divine relationship. This exposition will primarily engage the book's direct, literal celebration of human romantic love while noting, where relevant, its broader resonance within Scripture's marital covenant imagery. The woman's confident self-description — “dark am I, yet lovely” — models healthy, secure self-acceptance regarding her own appearance, notably including a candid acknowledgment of features (sun-darkened skin from outdoor labor) that might have been considered less conventionally fashionable within her own cultural context, without this diminishing her genuine, confident sense of her own attractiveness and worth."
+      }
+    ]
+  },
+  "songs-2": {
+    "book": "Song of Solomon",
+    "chapter": 2,
+    "title": "Springtime of Love",
+    "scene": "The lovers continue their mutual, alternating expressions of admiration and longing, employing vivid springtime and garden imagery to convey love's genuine flourishing, before the woman's celebrated instruction regarding appropriate timing — not to “arouse or awaken love” prematurely — introduces an important theme of patient restraint this book will return to repeatedly.",
+    "sections": [
+      {
+        "heading": "Springtime of Love",
+        "range": "2:1-17",
+        "text": "The lovers' extended, mutual exchange of poetic admiration — comparing each other to flowers, fruit trees, and gazelles amid the vivid, sensory imagery of springtime's arrival (“the winter is past; the rains are over and gone. Flowers appear on the earth; the season of singing has come”) — conveys romantic love's genuine vitality and joy through richly sensory, nature-drawn poetic imagery characteristic of this entire book's distinctive literary style. This chapter's refrain, repeated at strategic points throughout the book — “daughters of Jerusalem, I charge you… do not arouse or awaken love until it so desires” — introduces an important recurring theme of patient, appropriately timed restraint regarding romantic and sexual intimacy, cautioning against prematurely forcing or rushing love's genuine development before its proper, natural time, a counsel of wisdom and appropriate self-control that complements, rather than contradicts, this book's simultaneous, enthusiastic celebration of love's genuine goodness once that appropriate time has actually, genuinely arrived."
+      }
+    ]
+  },
+  "songs-3": {
+    "book": "Song of Solomon",
+    "chapter": 3,
+    "title": "A Dream of Love",
+    "scene": "The woman recounts an anxious dream (or possibly an actual nighttime search) involving temporary separation from her beloved and the relief of eventually finding him, before the chapter shifts toward a description of Solomon's own elaborate approaching wedding procession, conveying the genuine significance and celebratory pageantry befitting this covenant union.",
+    "sections": [
+      {
+        "heading": "A Dream of Love",
+        "range": "3:1-5",
+        "text": "The woman's account of anxiously searching for her beloved through the city streets at night, finally finding him and refusing to let him go — “I held him and would not let him go till I had brought him to my mother's house” — conveys, whether recounting an actual experience or a symbolic dream, the genuine anxiety separation from a beloved can produce, and the corresponding relief and secure joy of reunion."
+      },
+      {
+        "heading": "Solomon's Wedding Procession",
+        "range": "3:6-11",
+        "text": "The chapter's shift toward describing an elaborate royal wedding procession — Solomon's own carriage, surrounded by sixty armed warrior escorts, constructed with costly materials, and “the day of his wedding, the day his heart rejoiced” — conveys the genuine dignity, significance, and appropriate public celebration befitting a covenant marriage union, treating this romantic relationship's culmination as an event worthy of substantial, joyful public ceremony and celebration, not merely private, unmarked personal experience alone."
+      }
+    ]
+  },
+  "songs-4": {
+    "book": "Song of Solomon",
+    "chapter": 4,
+    "title": "The Beloved's Beauty",
+    "scene": "The bridegroom delivers an extended, admiring description of his bride's physical beauty, employing a distinctive ancient Near Eastern poetic form (a wasf, cataloguing physical features through elaborate comparative imagery) before celebrating her as his “locked garden” — language conveying both genuine desire and appropriate, exclusive commitment.",
+    "sections": [
+      {
+        "heading": "The Beloved's Beauty",
+        "range": "4:1-16",
+        "text": "The bridegroom's extended, admiring physical description of his bride — comparing her eyes to doves, her hair to a flock of goats, her teeth to shorn sheep, and continuing through numerous additional physical features — employs a distinctive ancient Near Eastern poetic convention (sometimes called a wasf) that can seem unusual or even faintly comedic to modern readers unfamiliar with this particular poetic tradition and its intended, genuinely admiring effect within its own original cultural and literary context; understood within that context, this extended catalogue conveys genuine, comprehensive admiration and delight in the beloved's physical appearance, celebrated openly and specifically rather than remaining vague or generalized. The chapter's image of the bride as a “locked garden… a sealed fountain” conveys both genuine, celebrated desire and appropriate, exclusive commitment — her beauty and intimacy reserved specifically, exclusively for her covenant partner, not available indiscriminately, with the chapter's closing invitation, “awake, north wind… blow on my garden, that its fragrance may spread abroad. Let my beloved come into his garden,” conveying the bride's own genuine, mutual, and active desire and invitation, not merely passive reception of her partner's desire alone."
+      }
+    ]
+  },
+  "songs-5": {
+    "book": "Song of Solomon",
+    "chapter": 5,
+    "title": "A Dream of Losing Love",
+    "scene": "Following the chapter's brief, celebratory consummation imagery, the woman recounts a troubling, anxious dream involving her own hesitation and her beloved's departure, resulting in a painful, difficult period of searching and even mistreatment from city watchmen, before she offers her own extended, admiring physical description of her beloved in response to other women's curious inquiry.",
+    "sections": [
+      {
+        "heading": "A Dream of Losing Love",
+        "range": "5:1-16",
+        "text": "The chapter's opening celebratory consummation imagery — “I have come into my garden… eat, friends, and drink; drink your fill of love” — conveys genuine, uninhibited celebration of the couple's physical intimacy within their now-consummated marriage relationship. The woman's troubling account of a difficult dream — her own hesitation to immediately rise and open the door for her beloved, his subsequent departure, and her painful, anxious search through the city, culminating in mistreatment by the city watchmen who “beat me, they bruised me” — conveys genuine relational anxiety and the real, sometimes painful vulnerability inherent in committed romantic love, even within an otherwise loving, secure relationship, while her own extended, admiring physical description of her beloved in response to the curious “daughters of Jerusalem” — “my beloved is radiant and ruddy, outstanding among ten thousand” — mirrors and reciprocates the earlier admiring description he had given of her in the preceding chapter, demonstrating this book's consistent pattern of genuinely mutual admiration and desire, flowing actively in both directions rather than remaining one-sided."
+      }
+    ]
+  },
+  "songs-6": {
+    "book": "Song of Solomon",
+    "chapter": 6,
+    "title": "The Beloved's Uniqueness",
+    "scene": "Following her search and eventual reunion, the woman describes her renewed, secure sense of mutual belonging with her beloved, while he continues expressing his own genuine, comprehensive admiration for her, explicitly distinguishing her unique, incomparable status among all other women he might otherwise have considered.",
+    "sections": [
+      {
+        "heading": "The Beloved's Uniqueness",
+        "range": "6:1-13",
+        "text": "The woman's confident declaration of renewed, secure mutual belonging — “I am my beloved's and my beloved is mine” (echoing and slightly varying similar declarations found elsewhere in the book) — conveys the genuine, settled security appropriate covenant commitment provides, even following the anxiety and temporary separation described in the preceding chapter. The bridegroom's continued praise, explicitly distinguishing his beloved's unique, incomparable status — “Sixty queens there may be, and eighty concubines, and virgins beyond number; but my dove, my perfect one, is unique” — conveys genuine, exclusive devotion and preference, his beloved's value understood not merely as generally attractive or desirable in the abstract, but as specifically, uniquely irreplaceable and unmatched to him personally, regardless of whatever numerous other potential comparisons or alternatives might theoretically exist."
+      }
+    ]
+  },
+  "songs-7": {
+    "book": "Song of Solomon",
+    "chapter": 7,
+    "title": "The Beloved's Love",
+    "scene": "The bridegroom offers a further extended, admiring physical description of his beloved, before the woman responds with her own confident, mutual expression of desire, inviting continued intimacy together — this chapter's sustained, celebratory treatment of physical desire reinforcing this book's consistent affirmation of embodied romantic and sexual love's genuine goodness.",
+    "sections": [
+      {
+        "heading": "The Beloved's Love",
+        "range": "7:1-13",
+        "text": "The bridegroom's continued extended admiration — again employing the wasf poetic convention to catalogue his beloved's physical features through elaborate comparative imagery — conveys sustained, undiminished desire and appreciation continuing well into their established relationship, rather than romantic and physical attraction diminishing or fading over time, as sometimes mistakenly assumed occurs naturally and inevitably within long-term committed relationships. The woman's own confident, mutual response — “I belong to my beloved, and his desire is for me. Come, my beloved, let us go to the countryside… there I will give you my love” — conveys genuine, actively expressed mutual desire and initiative, this book consistently depicting romantic and sexual desire as legitimately, healthily flowing in both directions within committed marital relationship, rather than being appropriately expressed or initiated by only one partner alone."
+      }
+    ]
+  },
+  "songs-8": {
+    "book": "Song of Solomon",
+    "chapter": 8,
+    "title": "The Power of Love",
+    "scene": "The Song of Songs closes with its most explicitly theological, memorable statement regarding love's genuine power and value — comparing love's strength to death itself and its passion to an unquenchable flame — before returning to imagery of protective, exclusive commitment that fittingly closes this extended, celebratory exploration of covenant romantic love.",
+    "sections": [
+      {
+        "heading": "The Power of Love",
+        "range": "8:1-14",
+        "text": "This chapter's celebrated, climactic declaration — “place me like a seal over your heart, like a seal on your arm; for love is as strong as death, its jealousy unyielding as the grave. It burns like blazing fire, like a mighty flame. Many waters cannot quench love; rivers cannot wash it away” — provides this entire book's most explicitly theological and philosophically weighty statement, elevating genuine, committed romantic love to a place of extraordinary, even cosmic significance and power, comparable in intensity and permanence to death itself, the most inescapable and powerful force within ordinary human experience. This passage's insistence that genuine love “cannot be bought”, that “if one were to give all the wealth of one's house for love, it would be utterly scorned,” reinforces genuine covenant love's irreducible, priceless value, unable to be purchased, manufactured, or adequately substituted through any amount of mere material wealth or possession. The book's closing verses, returning to imagery of protective walls and doors (echoing earlier garden imagery) and the woman's own confident, closing invitation for her beloved to “come away”, provide a fitting, open-ended conclusion to this extended celebration of covenant romantic love — a book that, throughout its eight chapters, has offered Scripture's most sustained, direct, and unapologetically celebratory treatment of human romantic and physical love's genuine, God-given goodness, dignity, and delight within the committed, exclusive context of covenant marriage, standing as an important, deliberate canonical counterbalance against any tendency toward viewing physical desire and romantic love as inherently suspect, merely utilitarian, or somehow less spiritually significant than more overtly religious or theological biblical content."
+      }
+    ]
+  },
+  "psalms-1": {
+    "book": "Psalms",
+    "chapter": 1,
+    "title": "The Two Ways",
+    "scene": "The book of Psalms, Israel's inspired hymnbook and prayer book compiled across many centuries and attributed to numerous authors (chiefly David, though also Asaph, the sons of Korah, Solomon, Moses, and others), opens with a deliberately placed introductory psalm establishing the entire collection's foundational framework: two fundamentally different life paths, one flourishing and one perishing.",
+    "sections": [
+      {
+        "heading": "The Two Ways",
+        "range": "1:1-6",
+        "text": "This psalm's opening beatitude — “blessed is the one who does not walk in step with the wicked or stand in the way that sinners take or sit in the company of mockers” — traces a subtle, escalating progression (walking, standing, sitting) illustrating how gradual, seemingly minor compromise with harmful influence can progressively deepen into settled, comfortable identification with it. The psalm's central image — comparing the righteous person, whose “delight is in the law of the Lord,” to “a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither” — versus the wicked, who “are like chaff that the wind blows away,” establishes the entire Psalter's foundational, recurring contrast between two fundamentally different life trajectories and their corresponding outcomes, deliberately positioned as this collection's introductory, framing statement before the remaining 149 psalms' extended, varied exploration of what it actually looks like to live out this contrast amid life's genuine complexity, struggle, and uncertainty."
+      }
+    ]
+  },
+  "psalms-2": {
+    "book": "Psalms",
+    "chapter": 2,
+    "title": "The Coming Messiah's Reign",
+    "scene": "This psalm, traditionally understood as royal and messianic in character, depicts the nations' futile rebellion against God's anointed king, before God's own decisive response establishing that king's certain, universal authority — material the New Testament applies directly and repeatedly to Jesus Christ.",
+    "sections": [
+      {
+        "heading": "The Coming Messiah's Reign",
+        "range": "2:1-12",
+        "text": "This psalm's opening scene — “why do the nations conspire and the peoples plot in vain? The kings of the earth take their stand and the rulers gather together against the Lord and against his anointed” — depicts humanity's persistent, ultimately futile rebellion against God's appointed rule, met with God's own confident, even mocking response: “the One enthroned in heaven laughs; the Lord scoffs at them.” This psalm's declaration — “you are my son; today I have become your father… ask me, and I will make the nations your inheritance, the ends of the earth your possession” — is directly quoted and applied to Jesus throughout the New Testament (Acts 13:33, Hebrews 1:5, 5:5) as a foundational messianic prophecy regarding Christ's unique sonship and universal, inherited authority, while the psalm's closing invitation and warning — “kiss his son, or he will be angry… blessed are all who take refuge in him” — offers genuine grace and refuge alongside serious warning, establishing this psalm's enduring relevance to every subsequent generation's own choice regarding submission to or rebellion against God's appointed king."
+      }
+    ]
+  },
+  "psalms-3": {
+    "book": "Psalms",
+    "chapter": 3,
+    "title": "Confidence in Troubled Times",
+    "scene": "This psalm, historically attributed to David's flight from his own son Absalom's rebellion, models confident, undisturbed trust in God's protection even amid genuinely severe personal danger, betrayal, and overwhelming numerical opposition.",
+    "sections": [
+      {
+        "heading": "Confidence in Troubled Times",
+        "range": "3:1-8",
+        "text": "David's honest acknowledgment of his enemies' overwhelming numbers — “Lord, how many are my foes! How many rise up against me!” — combined with his confident declaration, “but you, Lord, are a shield around me, my glory, the One who lifts my head high,” and his remarkable testimony that he “lay down and slept” even amid this genuine, severe danger, “I wake again, because the Lord sustains me,” models the genuine psychological and spiritual peace available even amid life-threatening crisis, grounded specifically in confident trust in God's protective care rather than in any assessment of the actual, objective military or circumstantial odds involved."
+      }
+    ]
+  },
+  "psalms-4": {
+    "book": "Psalms",
+    "chapter": 4,
+    "title": "Evening Prayer for Help",
+    "scene": "This evening prayer, likely intended as a companion piece to the preceding morning psalm, encourages honest self-examination and trust in God's provision, closing with a celebrated statement of peaceful, secure sleep grounded entirely in God's reliable protective care.",
+    "sections": [
+      {
+        "heading": "Evening Prayer for Help",
+        "range": "4:1-8",
+        "text": "David's counsel to “tremble and do not sin; when you are on your beds, search your hearts and be silent” encourages honest, reflective self-examination during quiet evening hours rather than allowing unprocessed anger or anxiety to fester unaddressed. This psalm's beloved closing declaration — “in peace I will lie down and sleep, for you alone, Lord, make me dwell in safety” — provides one of Scripture's most treasured statements regarding genuine, trust-grounded peace sufficient for restful sleep even amid ongoing difficulty or uncertainty, a fitting evening companion to Psalm 3's similar morning testimony."
+      }
+    ]
+  },
+  "psalms-5": {
+    "book": "Psalms",
+    "chapter": 5,
+    "title": "A Prayer for Protection",
+    "scene": "David offers a morning prayer contrasting God's holy character, which cannot delight in wickedness, with his own confident approach to worship, while requesting God's guidance and protection against deceitful, hostile enemies.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection",
+        "range": "5:1-12",
+        "text": "David's confident declaration — “in the morning, Lord, you hear my voice; in the morning I lay my requests before you and wait expectantly” — models disciplined, regular morning prayer as a spiritual priority, while his honest acknowledgment that God “take[s] no pleasure in evil” and that “the arrogant cannot stand in your presence” grounds his request for protection and guidance in God's own holy, consistent character rather than in any presumed personal merit of his own."
+      }
+    ]
+  },
+  "psalms-6": {
+    "book": "Psalms",
+    "chapter": 6,
+    "title": "A Prayer for Mercy",
+    "scene": "This psalm, traditionally classified as the first of seven “penitential psalms” within Christian liturgical tradition, gives voice to profound physical and emotional anguish, likely connected to serious illness, while modeling honest lament that gradually transitions toward renewed confidence in God's hearing and response.",
+    "sections": [
+      {
+        "heading": "A Prayer for Mercy",
+        "range": "6:1-10",
+        "text": "David's anguished plea — “my soul is in deep anguish. How long, Lord, how long?… I am worn out from my groaning. All night long I flood my bed with weeping” — gives voice to genuine, severe physical and emotional distress without minimization or false cheerfulness, while the psalm's notable shift in tone toward its conclusion — “the Lord has heard my weeping… the Lord accepts my prayer” — models an authentic pattern many psalms of lament share: honest, extended expression of genuine distress giving way, often without full resolution of the actual circumstances, to renewed confidence grounded in God's proven faithfulness to hear and respond to sincere prayer."
+      }
+    ]
+  },
+  "psalms-7": {
+    "book": "Psalms",
+    "chapter": 7,
+    "title": "A Prayer for Justice",
+    "scene": "David appeals to God as righteous judge, defending his own innocence against a specific, serious accusation while trusting God's just character to ultimately distinguish between genuine guilt and false accusation, using vivid imagery of a digger falling into his own prepared pit.",
+    "sections": [
+      {
+        "heading": "A Prayer for Justice",
+        "range": "7:1-17",
+        "text": "David's unusual, specific self-imprecatory oath — inviting God's judgment against himself “if I have done this and there is guilt on my hands… if I have repaid my ally with evil” — models confident appeal to God's own perfect justice when facing false accusation, trusting that genuine innocence, properly examined, would ultimately be vindicated. The psalm's memorable image — “whoever digs a hole and scoops it out falls into the pit they have made. The trouble they cause recoils on them; their violence comes down on their own heads” — illustrates a recurring biblical principle regarding the self-defeating, ultimately self-destructive nature of schemes intended to harm others unjustly."
+      }
+    ]
+  },
+  "psalms-8": {
+    "book": "Psalms",
+    "chapter": 8,
+    "title": "The Majesty of God's Name",
+    "scene": "David offers a celebrated hymn of praise contemplating both God's cosmic majesty displayed through the heavens and humanity's simultaneously humble yet remarkably exalted place within that same magnificent created order — material the New Testament applies directly to Christ's own incarnation and ultimate authority.",
+    "sections": [
+      {
+        "heading": "The Majesty of God's Name",
+        "range": "8:1-9",
+        "text": "David's wondering question — “when I consider your heavens, the work of your fingers, the moon and the stars, which you have set in place, what is mankind that you are mindful of them, human beings that you care for them?” — captures genuine, appropriate awe at humanity's paradoxical position: cosmically small and insignificant compared to the vast created universe, yet remarkably, specifically crowned by God “with glory and honor” and granted meaningful dominion and responsibility over the rest of creation. This psalm's language is directly applied to Christ in Hebrews 2:6-9, understood as ultimately, perfectly fulfilling humanity's intended dominion and glory, while Jesus himself quotes this psalm's praise “from the lips of children and infants” (Matthew 21:16) in response to children's worship during his own triumphal entry, affirming that genuine, appropriate praise isn't limited to sophisticated theological articulation alone."
+      }
+    ]
+  },
+  "psalms-9": {
+    "book": "Psalms",
+    "chapter": 9,
+    "title": "Praise to God for His Justice",
+    "scene": "David offers extended praise for God's righteous judgment against wicked nations and individuals, celebrating God as a genuine refuge for the oppressed while affirming confident hope that ultimate justice, however currently delayed, remains certain and reliable.",
+    "sections": [
+      {
+        "heading": "Praise to God for His Justice",
+        "range": "9:1-20",
+        "text": "David's confident declaration — “the Lord is a refuge for the oppressed, a stronghold in times of trouble” — grounds this psalm's extended praise in God's demonstrated, reliable character as defender of the vulnerable and judge of genuine wickedness, while its closing petition, “arise, Lord, do not let mortals triumph; let the nations be judged in your presence,” models appropriate prayer for God's ultimate justice to prevail even when current circumstances might suggest otherwise."
+      }
+    ]
+  },
+  "psalms-10": {
+    "book": "Psalms",
+    "chapter": 10,
+    "title": "A Prayer for Justice",
+    "scene": "This psalm, likely originally paired with Psalm 9 as a single acrostic composition, gives voice to honest complaint regarding the wicked's apparent prosperity and God's seemingly troubling silence, before concluding with renewed confidence that God genuinely does see and will ultimately act on behalf of the oppressed.",
+    "sections": [
+      {
+        "heading": "A Prayer for Justice",
+        "range": "10:1-18",
+        "text": "The psalm's opening complaint — “why, Lord, do you stand far off? Why do you hide yourself in times of trouble?” — gives honest voice to the genuine, difficult experience of God's apparent silence or absence precisely when the wicked's arrogant oppression of the helpless seems most unchecked and successful. The psalm's resolution — “but you, God, see the trouble of the afflicted; you consider their grief and take it in hand… you are the helper of the fatherless” — moves from honest complaint toward renewed confidence that God's apparent silence doesn't actually reflect genuine indifference or absence, but rather patient timing that will, in due course, result in real, decisive action on behalf of the genuinely oppressed and vulnerable."
+      }
+    ]
+  },
+  "psalms-11": {
+    "book": "Psalms",
+    "chapter": 11,
+    "title": "Confidence in God's Righteousness",
+    "scene": "David responds to advice suggesting he flee to safety like a startled bird, instead affirming confident, settled trust in God's own sovereign, watchful oversight of both the righteous and the wicked from his secure heavenly throne.",
+    "sections": [
+      {
+        "heading": "Confidence in God's Righteousness",
+        "range": "11:1-7",
+        "text": "David's rejection of well-meaning but faith-diminishing counsel to “flee like a bird to your mountain” — “in the Lord I take refuge. How then can you say to me: 'Flee like a bird to your mountain'?” — affirms settled confidence in God's sovereign oversight from his “holy temple… heavenly throne,” from which “he observes everyone on earth; his eyes examine them,” grounding genuine courage in God's comprehensive, attentive awareness of both righteous and wicked conduct rather than in mere circumstantial safety or escape alone."
+      }
+    ]
+  },
+  "psalms-12": {
+    "book": "Psalms",
+    "chapter": 12,
+    "title": "A Prayer for Help",
+    "scene": "David laments a society characterized by pervasive deceit and flattering, unreliable speech, contrasting human words' inherent untrustworthiness with the proven, tested purity and reliability of God's own promises.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "12:1-8",
+        "text": "David's lament over pervasive social deceit — “the faithful have vanished from among the children of man… everyone utters lies to his neighbor; with flattering lips and a double heart they speak” — is answered by this psalm's celebrated contrast: “the words of the Lord are flawless, like silver purified in a crucible, like gold refined seven times.” This vivid metallurgical imagery of repeated, thorough purification conveys God's word's proven, tested reliability compared to the inherently untrustworthy, self-serving quality of typical fallen human speech and promises."
+      }
+    ]
+  },
+  "psalms-13": {
+    "book": "Psalms",
+    "chapter": 13,
+    "title": "A Prayer for Help",
+    "scene": "In one of the Psalter's shortest and most concentrated laments, David voices raw impatience at God's apparent prolonged delay through the fourfold repetition of “how long,” before this brief psalm's remarkably swift turn toward renewed trust and even joyful anticipation.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "13:1-6",
+        "text": "David's fourfold repeated lament — “how long, Lord? Will you forget me forever? How long will you hide your face from me? How long must I wrestle with my thoughts and day after day have sorrow in my heart?” — concentrates this psalm's honest impatience and genuine anguish into its opening two verses, before an equally swift, remarkable pivot: “but I trust in your unfailing love; my heart rejoices in your salvation. I will sing the Lord's praise, for he has been good to me.” This psalm's compressed structure — moving from raw complaint to confident praise within just six brief verses — models genuine faith's capacity to hold honest lament and settled trust together, even without full resolution of the underlying circumstances that provoked the original complaint."
+      }
+    ]
+  },
+  "psalms-14": {
+    "book": "Psalms",
+    "chapter": 14,
+    "title": "A Portrait of Rebellion",
+    "scene": "David offers a sobering assessment of pervasive human moral corruption, opening with the declaration that “the fool has said in his heart, 'There is no God'” — material Paul directly cites in Romans regarding universal human sinfulness, while closing with genuine hope for eventual restoration.",
+    "sections": [
+      {
+        "heading": "A Portrait of Rebellion",
+        "range": "14:1-7",
+        "text": "David's opening declaration — “the fool says in his heart, 'There is no God.' They are corrupt, their deeds are vile; there is no one who does good” — identifies practical, functional atheism (denying God not necessarily through formal intellectual argument, but through living as though he doesn't genuinely exist or matter) as fundamentally foolish rather than merely intellectually mistaken, tracing directly from this denial to comprehensive moral corruption. This psalm's extended indictment — “all have turned away, all have become corrupt; there is no one who does good, not even one” — is quoted extensively by Paul in Romans 3:10-12 as foundational scriptural support for his doctrine of universal human sinfulness, demonstrating this psalm's enduring theological significance for the New Testament's own gospel argument regarding humanity's comprehensive need for grace."
+      }
+    ]
+  },
+  "psalms-15": {
+    "book": "Psalms",
+    "chapter": 15,
+    "title": "The Character of God's People",
+    "scene": "This brief psalm poses a probing question regarding who may genuinely dwell in God's presence, answered through a concise, practical catalogue of character qualities emphasizing consistent integrity, truthful speech, and just treatment of others over mere ritual observance.",
+    "sections": [
+      {
+        "heading": "The Character of God's People",
+        "range": "15:1-5",
+        "text": "The psalm's opening question — “Lord, who may dwell in your sacred tent? Who may live on your holy mountain?” — is answered through a concise catalogue of practical character qualities: walking blamelessly, speaking truth from the heart, refusing slander, honoring commitments even when costly (“who keeps an oath even when it hurts, and does not change their mind”), and avoiding both financial exploitation through usury and susceptibility to bribery. This psalm's consistent emphasis on practical, ethical integrity as the genuine qualification for approaching God's presence, rather than ritual performance or social status alone, reinforces a theme found consistently throughout both the Psalms and the prophetic literature."
+      }
+    ]
+  },
+  "psalms-16": {
+    "book": "Psalms",
+    "chapter": 16,
+    "title": "The Joy of God's Presence",
+    "scene": "David expresses confident trust and contentment in God as his sole, sufficient source of security and blessing, closing with a celebrated declaration of hope regarding God's protection from death's ultimate corruption — language Peter and Paul both apply directly to Christ's own resurrection.",
+    "sections": [
+      {
+        "heading": "The Joy of God's Presence",
+        "range": "16:1-11",
+        "text": "David's contented declaration — “Lord, you alone are my portion and my cup; you make my lot secure. The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance” — conveys genuine satisfaction and security grounded specifically in relationship with God rather than in external circumstance or possession alone. This psalm's closing declaration — “you will not abandon me to the realm of the dead, nor will you let your faithful one see decay… you will fill me with joy in your presence” — is directly quoted by both Peter (Acts 2:25-31) and Paul (Acts 13:35-37) as a specific, historically verifiable messianic prophecy of Christ's bodily resurrection, since David himself, they both point out, did experience bodily decay and remained buried, meaning this promise's fullest, most literal fulfillment required a greater descendant of David — namely, Jesus Christ, whose resurrection uniquely, literally fulfilled this ancient prophetic hope."
+      }
+    ]
+  },
+  "psalms-17": {
+    "book": "Psalms",
+    "chapter": 17,
+    "title": "A Prayer for Protection",
+    "scene": "David appeals to God for vindication and protection, confidently affirming his own genuine integrity while requesting to be kept safe “as the apple of your eye” and “in the shadow of your wings” — tender, protective imagery expressing intimate trust in God's watchful care.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection",
+        "range": "17:1-15",
+        "text": "David's confident appeal for vindication — “my steps have held to your paths; my feet have not stumbled… I call on you, my God, for you will answer me” — combines genuine confidence in his own integrity with humble dependence on God's protective response. This psalm's tender, memorable imagery — “keep me as the apple of your eye; hide me in the shadow of your wings” — conveys intimate, trusting confidence in God's careful, attentive protective care, comparable to how one instinctively protects one's own eye or how a mother bird shelters her vulnerable young beneath her wings."
+      }
+    ]
+  },
+  "psalms-18": {
+    "book": "Psalms",
+    "chapter": 18,
+    "title": "Praise for God's Deliverance",
+    "scene": "In one of the Psalter's longest individual psalms (closely paralleling David's own extended victory song recorded in 2 Samuel 22), David offers extended, dramatic praise for God's deliverance from Saul's persecution, employing vivid cosmic and military imagery throughout this celebratory royal hymn.",
+    "sections": [
+      {
+        "heading": "Praise for God's Deliverance",
+        "range": "18:1-50",
+        "text": "David's extended, dramatic description of God's rescue — employing vivid, almost apocalyptic imagery of God descending amid smoke, fire, thick darkness, and thunder, riding on the wings of the wind to personally intervene on David's behalf — conveys the genuine, overwhelming scale of divine intervention David had experienced, deliberately drawing on imagery associated elsewhere with God's appearance at Sinai to convey comparable majesty and power. This psalm's opening declaration — “I love you, Lord, my strength. The Lord is my rock, my fortress and my deliverer” — and its closing, confident affirmation that God “gives his king great victories; he shows unfailing love to his anointed, to David and his descendants forever” together frame this extended royal psalm as both deeply personal testimony and, given its final reference to David's “descendants forever,” carrying legitimate messianic resonance regarding God's ultimate, climactic faithfulness to his covenant promises regarding David's royal line."
+      }
+    ]
+  },
+  "psalms-19": {
+    "book": "Psalms",
+    "chapter": 19,
+    "title": "God's Glory in Creation and the Law",
+    "scene": "David offers a celebrated meditation connecting two distinct forms of divine revelation — general revelation through the observable created order, and special revelation through God's specifically given law — before closing with a personal, searching prayer for cleansing from both obvious and hidden sin.",
+    "sections": [
+      {
+        "heading": "God's Glory in Creation and the Law",
+        "range": "19:1-14",
+        "text": "The psalm's opening celebration of creation's silent but eloquent testimony — “the heavens declare the glory of God; the skies proclaim the work of his hands… they have no speech, they use no words; no sound is heard from them. Yet their voice goes out into all the earth” — provides Scripture's classic statement of general revelation: creation itself genuinely, universally testifies to God's glory and existence, available to all humanity regardless of specific access to verbal, written revelation. The psalm's deliberate transition toward celebrating God's law — “the law of the Lord is perfect, refreshing the soul… the precepts of the Lord are right, giving joy to the heart” — connects this general, universal revelation through creation to the more specific, detailed special revelation given through God's written law, together providing comprehensive testimony to God's character and will. This psalm's closing, deeply personal prayer — “who can discern their own errors? Forgive my hidden faults… may these words of my mouth and this meditation of my heart be pleasing in your sight” — models appropriate humility regarding even unrecognized, unintentional sin, closing this psalm's exalted cosmic and theological reflection with genuinely personal, applied prayer."
+      }
+    ]
+  },
+  "psalms-20": {
+    "book": "Psalms",
+    "chapter": 20,
+    "title": "A Prayer for Victory",
+    "scene": "This royal psalm, likely composed for use before a king's military campaign, expresses the people's collective prayer for God's protection and success on their monarch's behalf, memorably contrasting reliance on chariots and horses with genuine trust in God's own name.",
+    "sections": [
+      {
+        "heading": "A Prayer for Victory",
+        "range": "20:1-9",
+        "text": "This psalm's communal prayer for royal military success — “may the Lord answer you when you are in distress… may he send you help from the sanctuary and grant you support from Zion” — reflects ancient Israel's practice of communal prayer specifically for their king's protection and success, particularly before military engagement. This psalm's celebrated declaration — “some trust in chariots and some in horses, but we trust in the name of the Lord our God” — memorably distinguishes reliance on conventional military resources and technology from genuine, ultimate trust in God's own character and power, a principle with enduring relevance well beyond its original specific military context."
+      }
+    ]
+  },
+  "psalms-21": {
+    "book": "Psalms",
+    "chapter": 21,
+    "title": "Praise for Victory",
+    "scene": "This companion psalm to Psalm 20 shifts from prayer before battle to grateful praise following God's granted victory, celebrating the king's God-given strength and blessing while affirming confident trust in continued divine protection against future enemies.",
+    "sections": [
+      {
+        "heading": "Praise for Victory",
+        "range": "21:1-13",
+        "text": "This psalm's grateful celebration — “Lord, the king rejoices in your strength. How great is his joy in the victories you give!… you have granted him his heart's desire and have not withheld the request of his lips” — provides the fulfilled counterpart to Psalm 20's earlier prayer for victory, modeling appropriate gratitude and public acknowledgment that genuine military and political success ultimately flows from God's own gracious provision, not merely human strategy or strength alone."
+      }
+    ]
+  },
+  "psalms-22": {
+    "book": "Psalms",
+    "chapter": 22,
+    "title": "A Cry of Anguish and a Song of Praise",
+    "scene": "In one of the most theologically significant psalms in the entire Psalter, David voices profound anguish and abandonment through language that would find its most complete, literal fulfillment centuries later in Christ's own crucifixion — the psalm's remarkable, specific correspondence to details of that event making it among the most frequently cited Old Testament passages regarding the cross.",
+    "sections": [
+      {
+        "heading": "A Cry of Anguish and a Song of Praise",
+        "range": "22:1-31",
+        "text": "This psalm's opening cry — “my God, my God, why have you forsaken me? Why are you so far from saving me, so far from my cries of anguish?” — is quoted directly by Jesus from the cross (Matthew 27:46, Mark 15:34), and the psalm's remaining verses contain a series of remarkably specific details that find striking, literal correspondence in the actual, historical events of the crucifixion: mockers who “hurl insults, shaking their heads,” saying “he trusts in the Lord… let the Lord rescue him,” hands and feet described as “pierced” (a detail remarkable given crucifixion wasn't even practiced as a common Jewish execution method when this psalm was originally composed centuries earlier), bones described as “out of joint” and clearly countable (consistent with the physical effects of crucifixion), and soldiers who “divide my clothes among them and cast lots for my garment” (directly fulfilled, as John 19:23-24 explicitly notes). Whatever David's own original, immediate historical circumstance in composing this psalm (likely reflecting his own severe personal suffering and sense of abandonment, described through poetic, sometimes hyperbolic imagery common to ancient Near Eastern lament literature), its precise, cumulative correspondence to Christ's own actual crucifixion experience centuries later represents one of Scripture's most striking examples of prophetic foreshadowing, whether understood as direct predictive prophecy, profound typological correspondence, or some combination of both. Crucially, this psalm doesn't end in despair: its remarkable, dramatic shift beginning around verse 22 — “I will declare your name to my people; in the assembly I will praise you… all the ends of the earth will remember and turn to the Lord” — moves from anguished abandonment toward confident, universal praise and proclamation, mirroring the resurrection's own decisive reversal of the cross's apparent defeat, and explaining why Jesus's quotation of this psalm's opening verse from the cross likely invoked, for those familiar with the entire psalm, its full ultimate trajectory toward vindication and praise, not merely its opening expression of anguish alone."
+      }
+    ]
+  },
+  "psalms-23": {
+    "book": "Psalms",
+    "chapter": 23,
+    "title": "The Lord Is My Shepherd",
+    "scene": "In what may be Scripture's single most beloved and widely memorized passage, David presents God as a personal, attentive shepherd providing comprehensive care through both peaceful provision and genuine danger, culminating in confident hope for permanent dwelling in God's presence.",
+    "sections": [
+      {
+        "heading": "The Lord Is My Shepherd",
+        "range": "23:1-6",
+        "text": "This psalm's opening declaration — “the Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul” — employs deliberately intimate, personal shepherding imagery (drawing on David's own early experience as an actual shepherd) to convey God's comprehensive, attentive care extending through both restful provision and active guidance. The psalm's justly celebrated central verse — “even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me” — doesn't promise exemption from genuine danger or difficulty (“the darkest valley,” sometimes translated “the valley of the shadow of death,” assumes real, serious threat), but rather God's genuine, comforting presence through such difficulty, symbolized by the shepherd's rod (for protection against predators) and staff (for guiding and rescuing wandering sheep). The psalm's closing shift toward banquet imagery — “you prepare a table before me in the presence of my enemies… surely your goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever” — extends this shepherding care into confident hope for both present provision, even amid ongoing hostility, and permanent, ultimate fellowship with God, making this brief psalm a comprehensive, treasured statement of trust addressing life's entire span, from present provision through ultimate destiny."
+      }
+    ]
+  },
+  "psalms-24": {
+    "book": "Psalms",
+    "chapter": 24,
+    "title": "The King of Glory",
+    "scene": "This psalm, likely composed for a liturgical procession welcoming the ark of the covenant into Jerusalem, celebrates God's ownership of the entire earth, poses the same probing question found in Psalm 15 regarding worthy worshipers, and closes with a dramatic, ceremonial call for the gates themselves to welcome the approaching King of glory.",
+    "sections": [
+      {
+        "heading": "The King of Glory",
+        "range": "24:1-10",
+        "text": "This psalm's opening affirmation — “the earth is the Lord's, and everything in it, the world, and all who live in it” — grounds comprehensive divine ownership and sovereignty in God's role as Creator, while its repeated question, “who may ascend the mountain of the Lord? Who may stand in his holy place?”, echoing Psalm 15's similar inquiry, is again answered through emphasis on genuine moral integrity (“the one who has clean hands and a pure heart”) rather than ritual qualification alone. This psalm's dramatic, ceremonial closing dialogue — “lift up your heads, you gates; be lifted up, you ancient doors, that the King of glory may come in!… who is he, this King of glory? The Lord Almighty—he is the King of glory” — likely reflects an actual antiphonal liturgical exchange used during ceremonial processions welcoming the ark into Jerusalem, and has been understood by many subsequent interpreters as carrying additional typological resonance regarding Christ's own triumphant entry and ultimate cosmic enthronement."
+      }
+    ]
+  },
+  "psalms-25": {
+    "book": "Psalms",
+    "chapter": 25,
+    "title": "A Prayer for Guidance and Protection",
+    "scene": "In this acrostic psalm (each verse beginning with a successive letter of the Hebrew alphabet), David combines humble petition for guidance and forgiveness with confident affirmation of God's covenant faithfulness toward those who genuinely fear him.",
+    "sections": [
+      {
+        "heading": "A Prayer for Guidance and Protection",
+        "range": "25:1-22",
+        "text": "David's humble petition — “show me your ways, Lord, teach me your paths… do not remember the sins of my youth and my rebellious ways; according to your love remember me” — combines genuine desire for divine guidance with honest acknowledgment of past failure, appealing specifically to God's covenant love rather than personal merit as the basis for forgiveness. The psalm's affirmation that “all the ways of the Lord are loving and faithful toward those who keep the demands of his covenant” and that “the Lord confides in those who fear him” establishes genuine, intimate relationship and guidance as available specifically to those maintaining appropriate reverent relationship with God."
+      }
+    ]
+  },
+  "psalms-26": {
+    "book": "Psalms",
+    "chapter": 26,
+    "title": "A Prayer of Innocence",
+    "scene": "David appeals to God for vindication based on his consistent, examined integrity and his deliberate avoidance of wicked, deceitful company, expressing genuine love for corporate worship and God's dwelling place.",
+    "sections": [
+      {
+        "heading": "A Prayer of Innocence",
+        "range": "26:1-12",
+        "text": "David's confident invitation for God's own examination — “test me, Lord, and try me, examine my heart and my mind” — reflects genuine confidence grounded in consistent, examined integrity rather than presumptuous self-righteousness, while his stated love for “the house where you live, the place where your glory dwells” expresses genuine delight in corporate worship as a meaningful, valued spiritual practice, not merely dutiful obligation."
+      }
+    ]
+  },
+  "psalms-27": {
+    "book": "Psalms",
+    "chapter": 27,
+    "title": "Confident Faith",
+    "scene": "David expresses remarkable, settled confidence in God's protection even amid siege and hostile attack, articulating his single greatest desire as simply dwelling in God's presence, before the psalm's tone shifts toward more urgent petition, ultimately resolving in patient waiting on the Lord.",
+    "sections": [
+      {
+        "heading": "Confident Faith",
+        "range": "27:1-14",
+        "text": "David's confident declaration — “the Lord is my light and my salvation—whom shall I fear? The Lord is the stronghold of my life—of whom shall I be afraid?” — grounds courage explicitly in God's own character rather than favorable circumstance, while his singular, focused request — “one thing I ask from the Lord, this only do I seek: that I may dwell in the house of the Lord all the days of my life, to gaze on the beauty of the Lord” — identifies genuine, sustained fellowship with God as life's single most valuable, worthy pursuit, exceeding even legitimate concern for safety or vindication. The psalm's closing counsel — “wait for the Lord; be strong and take heart and wait for the Lord” — offers practical, honest encouragement for sustaining faith through genuinely difficult, unresolved seasons requiring patient endurance rather than immediate resolution."
+      }
+    ]
+  },
+  "psalms-28": {
+    "book": "Psalms",
+    "chapter": 28,
+    "title": "A Prayer for Help",
+    "scene": "David pleads urgently for God's attentive hearing, distinguishing himself from the wicked whose deceitful words mask genuinely hostile intent, before this psalm's characteristic shift toward confident praise and a closing prayer extending blessing to God's entire people.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "28:1-9",
+        "text": "David's urgent plea — “to you, Lord, I call; you are my Rock, do not turn a deaf ear to me” — gives way, following this psalm's characteristic pattern, to confident praise: “praise be to the Lord, for he has heard my cry for mercy. The Lord is my strength and my shield.” The psalm's closing extension of this personal confidence into corporate blessing — “save your people and bless your inheritance; be their shepherd and carry them forever” — models appropriately moving from individual prayer toward genuine concern and intercession for the broader covenant community's wellbeing."
+      }
+    ]
+  },
+  "psalms-29": {
+    "book": "Psalms",
+    "chapter": 29,
+    "title": "The Voice of the Lord in a Storm",
+    "scene": "David offers a magnificent hymn celebrating God's overwhelming power displayed through a violent thunderstorm, using the repeated phrase “the voice of the Lord” to convey divine sovereignty over creation's most dramatic, awe-inspiring natural forces.",
+    "sections": [
+      {
+        "heading": "The Voice of the Lord in a Storm",
+        "range": "29:1-11",
+        "text": "This psalm's sevenfold repetition of “the voice of the Lord” — breaking cedars, striking with lightning flashes, shaking the wilderness, stripping forests bare — conveys God's comprehensive, overwhelming sovereignty over creation's most dramatic and powerful natural phenomena through the memorable, unifying image of a violent storm sweeping through the region. This psalm's closing declaration — “the Lord sits enthroned over the flood; the Lord is enthroned as King forever. The Lord gives strength to his people; the Lord blesses his people with peace” — moves from this overwhelming display of raw cosmic power toward genuine reassurance: the same God who commands nature's most violent forces is also the source of his people's genuine strength and peace."
+      }
+    ]
+  },
+  "psalms-30": {
+    "book": "Psalms",
+    "chapter": 30,
+    "title": "Praise for Recovery from Illness",
+    "scene": "David offers grateful praise for recovery from serious illness or crisis, reflecting honestly on how comfortable prosperity had bred complacent overconfidence before genuine hardship restored appropriate dependence on God, closing with the celebrated declaration that weeping's genuine sorrow gives way to morning's genuine joy.",
+    "sections": [
+      {
+        "heading": "Praise for Recovery from Illness",
+        "range": "30:1-12",
+        "text": "David's honest self-reflection — “when I felt secure, I said, 'I will never be shaken.'… then you, Lord, hid your face, and I was dismayed” — candidly acknowledges how comfortable prosperity had produced complacent, presumptuous overconfidence, until genuine hardship restored appropriate humility and dependence. This psalm's beloved, frequently quoted declaration — “weeping may stay for the night, but rejoicing comes in the morning” — offers genuine, hard-won comfort grounded in actual, lived experience of hardship transformed into praise, closing with David's own grateful testimony: “you turned my wailing into dancing… that my heart may sing your praises and not be silent.”"
+      }
+    ]
+  },
+  "psalms-31": {
+    "book": "Psalms",
+    "chapter": 31,
+    "title": "A Prayer of Trust in Troubled Times",
+    "scene": "David appeals to God as a secure refuge amid genuine betrayal and distress, expressing his complete trust through the same words Jesus himself would later speak from the cross, while honestly cataloguing the physical and emotional toll of prolonged suffering.",
+    "sections": [
+      {
+        "heading": "A Prayer of Trust in Troubled Times",
+        "range": "31:1-24",
+        "text": "This psalm's declaration — “into your hands I commit my spirit; deliver me, Lord, my faithful God” — is directly quoted by Jesus as his own final words from the cross (Luke 23:46), demonstrating that even in his own extreme suffering, Jesus drew on Israel's inherited prayer tradition to express genuine, complete trust and self-commitment to the Father even amid death itself. David's honest description of prolonged suffering's genuine physical and emotional toll — “my life is consumed by anguish and my years by groaning; my strength fails because of my affliction, and my bones grow weak” — provides authentic acknowledgment of suffering's real, comprehensive impact, while the psalm's closing exhortation, “be strong and take heart, all you who hope in the Lord,” encourages others facing similar trials toward the same trust David himself had modeled throughout this psalm."
+      }
+    ]
+  },
+  "psalms-32": {
+    "book": "Psalms",
+    "chapter": 32,
+    "title": "Joy of Forgiveness",
+    "scene": "David offers one of Scripture's most personally revealing psalms, describing the genuine physical and emotional toll of unconfessed sin before celebrating the immense relief and joy genuine confession and forgiveness provides — material Paul later cites directly regarding justification by faith.",
+    "sections": [
+      {
+        "heading": "Joy of Forgiveness",
+        "range": "32:1-11",
+        "text": "David's opening beatitude — “blessed is the one whose transgressions are forgiven, whose sins are covered. Blessed is the one whose sin the Lord does not count against them” — is directly quoted by Paul in Romans 4:6-8 as Old Testament support for justification by grace through faith, apart from works. David's remarkably honest, personal description of unconfessed sin's genuine physical and psychological toll — “when I kept silent, my bones wasted away through my groaning all day long… my strength was sapped as in the heat of summer” — provides authentic testimony regarding guilt's genuine, holistic cost when left unaddressed, contrasted sharply with the immediate relief following honest confession: “then I acknowledged my sin to you and did not cover up my iniquity… and you forgave the guilt of my sin.” This psalm's closing counsel — “do not be like the horse or the mule, which have no understanding but must be controlled by bit and bridle” — encourages voluntary, willing responsiveness to God's guidance rather than requiring forceful, coercive correction only after resistant, stubborn delay."
+      }
+    ]
+  },
+  "psalms-33": {
+    "book": "Psalms",
+    "chapter": 33,
+    "title": "Praise to the Creator",
+    "scene": "This anonymous hymn calls God's people to joyful, musical praise, celebrating both God's creative power (bringing the entire universe into being through his mere spoken word) and his sovereign oversight of human history and nations.",
+    "sections": [
+      {
+        "heading": "Praise to the Creator",
+        "range": "33:1-22",
+        "text": "This psalm's celebration of creation through divine speech — “by the word of the Lord the heavens were made, their starry host by the breath of his mouth… for he spoke, and it came to be; he commanded, and it stood firm” — affirms creation's origin in God's own effortless, authoritative spoken word, directly consistent with Genesis 1's own repeated “and God said.” This psalm's declaration that “no king is saved by the size of his army; no warrior escapes by his great strength” reinforces this book's recurring theme that genuine security rests in God's own character and provision rather than in impressive human military resources or strength."
+      }
+    ]
+  },
+  "psalms-34": {
+    "book": "Psalms",
+    "chapter": 34,
+    "title": "Praise for God's Protection",
+    "scene": "This acrostic psalm, composed following David's own experience of feigning madness to escape a dangerous situation before a Philistine king, offers extended, practical wisdom regarding God's faithful protection of those who genuinely seek and fear him, including the famous invitation to “taste and see that the Lord is good.”",
+    "sections": [
+      {
+        "heading": "Praise for God's Protection",
+        "range": "34:1-22",
+        "text": "This psalm's celebrated invitation — “taste and see that the Lord is good; blessed is the one who takes refuge in him” — encourages genuine, personal, experiential discovery of God's goodness rather than merely secondhand or theoretical knowledge alone. The psalm's practical wisdom counsel — “whoever of you loves life and desires to see many good days, keep your tongue from evil and your lips from telling lies… turn from evil and do good; seek peace and pursue it” — is directly quoted by Peter (1 Peter 3:10-12) as practical guidance for Christian conduct amid suffering and persecution. The psalm's assurance that “the Lord is close to the brokenhearted and saves those who are crushed in spirit” and that “not one of his bones will be broken” (quoted directly in John 19:36 regarding Jesus's crucifixion, where his legs, unlike the other crucified men, were notably not broken) provides genuine comfort while carrying additional, striking typological and prophetic significance regarding Christ's own experience."
+      }
+    ]
+  },
+  "psalms-35": {
+    "book": "Psalms",
+    "chapter": 35,
+    "title": "A Prayer for Rescue from Enemies",
+    "scene": "David appeals urgently for God's direct intervention against enemies who had repaid his own genuine kindness and intercession with betrayal and false accusation, employing vivid military and legal imagery throughout this extended imprecatory prayer.",
+    "sections": [
+      {
+        "heading": "A Prayer for Rescue from Enemies",
+        "range": "35:1-28",
+        "text": "David's urgent appeal for God to “contend, Lord, with those who contend with me; fight against those who fight against me” employs vivid military imagery requesting God's direct, active intervention as both warrior and legal advocate on his behalf. David's genuine anguish at his enemies' betrayal, having previously “mourned as though for my friend or brother” when they themselves faced trouble, only to have that same kindness repaid with malicious hostility and false accusation, illustrates the particular pain of betrayal from those one had genuinely, previously supported and cared for."
+      }
+    ]
+  },
+  "psalms-36": {
+    "book": "Psalms",
+    "chapter": 36,
+    "title": "Human Wickedness and God's Love",
+    "scene": "David contrasts the wicked person's self-deceived, arrogant disregard for God with an extended, beautiful celebration of God's own reliable, comprehensive love, faithfulness, and righteousness — imagery of taking refuge “in the shadow of your wings” and drinking from God's own “river of delights.”",
+    "sections": [
+      {
+        "heading": "Human Wickedness and God's Love",
+        "range": "36:1-12",
+        "text": "David's diagnosis of wickedness's psychological root — “there is no fear of God before their eyes… they flatter themselves too much to detect or hate their sin” — identifies self-deception and the absence of genuine reverence as wickedness's underlying cause, contrasted with this psalm's beautiful, extended celebration of God's character: “your love, Lord, reaches to the heavens, your faithfulness to the skies… how priceless is your unfailing love! Both high and low among men find refuge in the shadow of your wings.” The psalm's imagery of feasting “on the abundance of your house” and drinking “from your river of delights,” since “with you is the fountain of life,” conveys genuine, comprehensive spiritual satisfaction and joy available through relationship with God."
+      }
+    ]
+  },
+  "psalms-37": {
+    "book": "Psalms",
+    "chapter": 37,
+    "title": "Trust in the Lord",
+    "scene": "In this extended acrostic psalm of wisdom teaching, David offers sustained, practical counsel against envying the wicked's apparent temporary prosperity, repeatedly encouraging patient trust that God's justice, though sometimes delayed, remains genuinely certain and reliable.",
+    "sections": [
+      {
+        "heading": "Trust in the Lord",
+        "range": "37:1-40",
+        "text": "This psalm's repeated counsel — “do not fret because of those who are evil or be envious of those who do wrong, for like the grass they will soon wither, like green plants they will soon die away” — addresses a recurring temptation this book's wisdom tradition consistently confronts: envying wickedness's apparent, temporary success. The psalm's celebrated promise — “take delight in the Lord, and he will give you the desires of your heart” — is properly understood within this psalm's larger context of genuine, transformed delight in God himself reshaping one's actual desires, not a formula guaranteeing whatever a person might currently, independently want. This psalm's sustained encouragement toward patient trust — “be still before the Lord and wait patiently for him… a little while, and the wicked will be no more… but the meek will inherit the land and enjoy peace and prosperity” (language Jesus directly echoes in his own Beatitude, Matthew 5:5) — provides extended, practical wisdom for sustaining faithful patience through genuinely difficult, prolonged seasons of apparent injustice."
+      }
+    ]
+  },
+  "psalms-38": {
+    "book": "Psalms",
+    "chapter": 38,
+    "title": "A Prayer of Repentance",
+    "scene": "In another of the traditional seven penitential psalms, David offers a raw, unflinching description of both physical suffering and psychological anguish resulting from unconfessed sin, combined with genuine grief over abandonment by friends and continued threat from enemies.",
+    "sections": [
+      {
+        "heading": "A Prayer of Repentance",
+        "range": "38:1-22",
+        "text": "David's extended, unflinching description of suffering — “my wounds fester and are loathsome because of my sinful folly. I am bowed down and brought very low; all day long I go about mourning” — conveys the genuine, comprehensive physical and psychological toll unaddressed sin and guilt can produce, while his honest acknowledgment that “my friends and companions avoid me because of my wounds; my neighbors stay far away” adds genuine social isolation to this already severe suffering, modeling comprehensive, unflinching honesty regarding sin's genuinely far-reaching consequences."
+      }
+    ]
+  },
+  "psalms-39": {
+    "book": "Psalms",
+    "chapter": 39,
+    "title": "The Prayer of a Troubled Man",
+    "scene": "David reflects honestly on human mortality's brief, fleeting character, wrestling with appropriate restraint in speech during suffering while ultimately voicing genuine complaint and petition regarding life's transient, seemingly insubstantial nature.",
+    "sections": [
+      {
+        "heading": "The Prayer of a Troubled Man",
+        "range": "39:1-13",
+        "text": "David's initial resolve toward restrained silence — “I said, 'I will watch my ways and keep my tongue from sin… I will put a muzzle on my mouth while in the presence of the wicked'” — eventually gives way to honest, direct address to God regarding life's genuinely fleeting, insubstantial character: “show me, Lord, my life's end… let me know how fleeting my life is… each man's life is but a breath.” This honest wrestling with mortality's brevity, while genuinely difficult and unresolved within this particular psalm, anticipates similar themes more extensively developed in Ecclesiastes."
+      }
+    ]
+  },
+  "psalms-40": {
+    "book": "Psalms",
+    "chapter": 40,
+    "title": "Praise for God's Deliverance",
+    "scene": "David offers grateful testimony for God's past deliverance from a genuinely desperate situation, celebrating that God desires genuine obedience over mere ritual sacrifice — language the New Testament applies directly to Christ's own incarnation and obedient submission to the Father's will.",
+    "sections": [
+      {
+        "heading": "Praise for God's Deliverance",
+        "range": "40:1-17",
+        "text": "David's testimony of God's deliverance — “I waited patiently for the Lord; he turned to me and heard my cry. He lifted me out of the slimy pit, out of the mud and mire; he set my feet on a rock and gave me a firm place to stand” — provides vivid, memorable imagery of rescue from genuinely desperate, hopeless circumstances. This psalm's declaration — “sacrifice and offering you did not desire… burnt offerings and sin offerings you did not require. Then I said, 'Here I am, I have come—it is written about me in the scroll—I desire to do your will, my God'” — is directly quoted and applied to Christ's own incarnation in Hebrews 10:5-7, understood as Christ's own voice speaking these words upon entering the world, expressing his complete, obedient submission to the Father's redemptive will and purpose, which would ultimately replace the entire Old Testament sacrificial system through his own perfect, once-for-all obedience and sacrifice."
+      }
+    ]
+  },
+  "psalms-41": {
+    "book": "Psalms",
+    "chapter": 41,
+    "title": "Praise to God Who Preserves Us",
+    "scene": "David closes Book One of the Psalter (Psalms 1-41) with reflection on the genuine blessing of caring for the weak, honest lament over betrayal by a trusted, close companion, and a concluding doxology marking this collection's first major structural division.",
+    "sections": [
+      {
+        "heading": "Praise to God Who Preserves Us",
+        "range": "41:1-13",
+        "text": "This psalm's opening beatitude — “blessed are those who have regard for the weak; the Lord delivers them in times of trouble” — connects genuine compassion toward the vulnerable with God's own reciprocal care and protection. David's painful acknowledgment of betrayal — “even my close friend, someone I trusted, one who shared my bread, has turned against me” — is directly applied by Jesus to Judas's own betrayal (John 13:18), demonstrating this psalm's typological connection to Christ's own experience of intimate betrayal. This psalm's closing doxology — “praise be to the Lord, the God of Israel, from everlasting to everlasting. Amen and Amen” — marks the formal conclusion of the Psalter's first of five major structural divisions (Books One through Five, likely deliberately paralleling the Torah's own five books), each concluding with a similar doxological formula."
+      }
+    ]
+  },
+  "psalms-42": {
+    "book": "Psalms",
+    "chapter": 42,
+    "title": "Longing for God",
+    "scene": "Book Two of the Psalter opens with this deeply personal psalm from the sons of Korah, expressing genuine spiritual thirst and depression through the memorable image of a deer panting for water, while modeling the practice of honest self-address and deliberate self-encouragement amid genuine spiritual struggle.",
+    "sections": [
+      {
+        "heading": "Longing for God",
+        "range": "42:1-11",
+        "text": "This psalm's celebrated opening image — “as the deer pants for streams of water, so my soul pants for you, my God” — conveys genuine, urgent spiritual thirst and longing for God's presence, particularly poignant given the psalmist's apparent physical separation from the temple and corporate worship he clearly treasures. This psalm's remarkable, repeated pattern of self-address — “why, my soul, are you downcast? Why so disturbed within me? Put your hope in God, for I will yet praise him, my Savior and my God” — models a healthy, active spiritual practice: rather than simply, passively experiencing discouragement, the psalmist deliberately, actively addresses and counsels his own soul, refusing to let genuine sadness have the final, uncontested word without active, intentional resistance and redirection toward renewed hope."
+      }
+    ]
+  },
+  "psalms-43": {
+    "book": "Psalms",
+    "chapter": 43,
+    "title": "A Prayer for Deliverance",
+    "scene": "This brief psalm, closely connected to and likely originally forming a single composition with the preceding Psalm 42 (sharing an identical refrain), continues its plea for vindication and restoration to corporate worship, repeating the same practice of deliberate self-address and encouragement.",
+    "sections": [
+      {
+        "heading": "A Prayer for Deliverance",
+        "range": "43:1-5",
+        "text": "This psalm's plea — “send me your light and your faithful care, let them lead me; let them bring me to your holy mountain, to the place where you dwell” — continues the preceding psalm's genuine longing for restored access to corporate worship, while its identical repeated refrain — “why, my soul, are you downcast?… put your hope in God” — reinforces this practice of active, deliberate self-encouragement amid ongoing, unresolved spiritual struggle and genuine longing."
+      }
+    ]
+  },
+  "psalms-44": {
+    "book": "Psalms",
+    "chapter": 44,
+    "title": "A Prayer for Deliverance from Enemies",
+    "scene": "The sons of Korah offer a genuinely difficult communal lament, honestly protesting apparent, unexplained national defeat despite the community's own sincere covenant faithfulness — a psalm the New Testament directly quotes regarding suffering endured specifically for righteousness's sake.",
+    "sections": [
+      {
+        "heading": "A Prayer for Deliverance from Enemies",
+        "range": "44:1-26",
+        "text": "This psalm's honest, difficult protest — “all this came upon us, though we had not forgotten you; we had not been false to your covenant… yet for your sake we face death all day long; we are considered as sheep to be slaughtered” (directly quoted by Paul in Romans 8:36 regarding believers' suffering for Christ's sake) — gives voice to genuinely difficult communal suffering that doesn't correspond to any acknowledged, specific covenant unfaithfulness, directly challenging any simplistic, mechanical assumption that national or communal suffering always, automatically indicates prior, specific communal sin. This psalm's honest, unresolved plea — “awake, Lord! Why do you sleep? Rouse yourself! Do not reject us forever” — provides important, canonical permission for honest, even confrontational communal lament when suffering genuinely appears disproportionate to any identifiable communal failure, without the psalm itself fully resolving this genuine theological tension."
+      }
+    ]
+  },
+  "psalms-45": {
+    "book": "Psalms",
+    "chapter": 45,
+    "title": "A Wedding Song for the King",
+    "scene": "The sons of Korah offer a royal wedding psalm celebrating an Israelite king's marriage, employing language of such exalted, extraordinary praise for this human king that the New Testament applies it directly and explicitly to Christ's own divine kingship.",
+    "sections": [
+      {
+        "heading": "A Wedding Song for the King",
+        "range": "45:1-17",
+        "text": "This psalm's extraordinary address to the king — “your throne, O God, will last for ever and ever… God, your God, has set you above your companions by anointing you with the oil of joy” — is directly quoted in Hebrews 1:8-9 as a description of Christ himself, applying language originally addressed to a human Davidic king in terms carrying full, explicit divine significance, providing important New Testament scriptural support for Christ's genuine deity. This psalm's celebration of the king's beauty, splendor, and righteous rule, alongside its address to the approaching bride — “forget your people and your father's house… the king is enthralled by your beauty” — celebrates this royal marriage with genuine delight and honor, while its typological application to Christ suggests further resonance with the New Testament's own marital imagery describing the church as Christ's own beloved bride."
+      }
+    ]
+  },
+  "psalms-46": {
+    "book": "Psalms",
+    "chapter": 46,
+    "title": "God Is Our Protection",
+    "scene": "The sons of Korah offer one of the Psalter's most celebrated declarations of confident trust amid even cosmic-scale upheaval and crisis — famously inspiring Martin Luther's hymn “A Mighty Fortress Is Our God” — centered on the memorable instruction to “be still, and know that I am God.”",
+    "sections": [
+      {
+        "heading": "God Is Our Protection",
+        "range": "46:1-11",
+        "text": "This psalm's opening declaration — “God is our refuge and strength, an ever-present help in trouble. Therefore we will not fear, though the earth give way and the mountains fall into the heart of the sea” — conveys confident security even amid deliberately hyperbolic, cosmic-scale imagery of complete creation upheaval, directly inspiring Martin Luther's celebrated Reformation hymn and providing enduring comfort through history's most turbulent periods and crises. This psalm's celebrated instruction — “be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth” — counsels deliberate, active cessation of anxious striving and self-reliant effort in favor of confident, trusting recognition of God's own sovereign, ultimately unshakeable control, even amid a world experiencing genuine, significant upheaval and crisis."
+      }
+    ]
+  },
+  "psalms-47": {
+    "book": "Psalms",
+    "chapter": 47,
+    "title": "God, the Ruler of the Earth",
+    "scene": "The sons of Korah call all nations to enthusiastic, celebratory praise of God's universal kingship, employing joyful imagery of clapping hands and triumphant shouting to convey confident, exuberant worship appropriate to God's comprehensive sovereignty over all peoples.",
+    "sections": [
+      {
+        "heading": "God, the Ruler of the Earth",
+        "range": "47:1-9",
+        "text": "This psalm's exuberant call — “clap your hands, all you nations; shout to God with cries of joy… God has ascended amid shouts of joy, the Lord amid the sounding of trumpets” — celebrates God's universal kingship over “all the earth”, not merely Israel alone, with enthusiastic, physically expressive worship appropriate to genuinely joyful celebration, modeling worship's legitimate capacity for exuberant, embodied celebration alongside more contemplative, quiet forms of prayer and devotion found elsewhere throughout the Psalter."
+      }
+    ]
+  },
+  "psalms-48": {
+    "book": "Psalms",
+    "chapter": 48,
+    "title": "Zion, the City of God",
+    "scene": "The sons of Korah offer an extended celebration of Jerusalem's beauty and security as God's own chosen dwelling place, describing how observing this city's genuine, God-given security had left surrounding hostile nations trembling in astonished fear.",
+    "sections": [
+      {
+        "heading": "Zion, the City of God",
+        "range": "48:1-14",
+        "text": "This psalm's celebration of Jerusalem as “beautiful in its loftiness, the joy of the whole earth… God is in her citadels; he has shown himself to be her fortress” grounds the city's genuine security and honor specifically in God's own presence and protection, not merely its natural or constructed defensive advantages alone. The psalm's description of surrounding kings' astonished terror upon witnessing this divinely secured city — “they were astounded, they fled in terror. Trembling seized them there” — illustrates the genuine, visible impact God's evident presence and protection could have even on hostile observers."
+      }
+    ]
+  },
+  "psalms-49": {
+    "book": "Psalms",
+    "chapter": 49,
+    "title": "The Foolishness of Trusting in Riches",
+    "scene": "The sons of Korah offer an extended wisdom meditation addressed universally to “all peoples,” confronting the genuine folly of trusting in accumulated wealth given death's inevitable, indiscriminate reach, while voicing striking, tentative hope regarding God's own power to redeem from death itself.",
+    "sections": [
+      {
+        "heading": "The Foolishness of Trusting in Riches",
+        "range": "49:1-20",
+        "text": "This psalm's universal address — “hear this, all you peoples; listen, all who live in this world, both low and high, rich and poor alike” — signals its deliberately broad, wisdom-literature scope extending beyond Israel's own covenant community alone. The psalm's sobering observation that wealth cannot purchase exemption from death — “no one can redeem the life of another or give to God a ransom for them… people, despite their wealth, do not endure” — exposes the genuine folly of ultimate trust in material accumulation, while its striking, tentative hope — “but God will redeem me from the realm of the dead; he will surely take me to himself” — offers a remarkable, early Old Testament anticipation of resurrection hope, achieved specifically through God's own redemptive action rather than any human wealth or effort."
+      }
+    ]
+  },
+  "psalms-50": {
+    "book": "Psalms",
+    "chapter": 50,
+    "title": "The Mighty One Speaks",
+    "scene": "Asaph presents a dramatic courtroom scene in which God himself directly addresses his covenant people, correcting the mistaken assumption that ritual sacrifice itself constitutes genuine worship, while sharply confronting hypocritical worshipers whose outward religious observance masks persistent, unaddressed moral corruption.",
+    "sections": [
+      {
+        "heading": "The Mighty One Speaks",
+        "range": "50:1-23",
+        "text": "God's own direct address — “I do not rebuke you for your sacrifices… but I have no need of a bull from your stall… if I were hungry I would not tell you, for the world is mine, and all that is in it” — corrects any assumption that God genuinely needs or is nourished by sacrificial offerings, redirecting proper worship toward genuine gratitude and covenant faithfulness: “sacrifice thank offerings to God, fulfill your vows to the Most High… call on me in the day of trouble; I will deliver you, and you will honor me.” This psalm's sharp confrontation of hypocritical worshipers — those who recite God's decrees while simultaneously practicing theft, adultery, and slander — exposes the genuine danger of outward religious observance persisting alongside unaddressed, ongoing moral corruption, closing with God's own direct warning: “these things you have done and I kept silent; you thought I was exactly like you. But I now arraign you and set my accusations before you.”"
+      }
+    ]
+  },
+  "psalms-51": {
+    "book": "Psalms",
+    "chapter": 51,
+    "title": "A Prayer for Cleansing and Pardon",
+    "scene": "In what is perhaps the Psalter's most theologically significant and personally intense penitential psalm, David responds to Nathan's prophetic confrontation regarding his sin with Bathsheba, offering an extended, searching prayer of confession and plea for genuine spiritual renewal that has shaped Christian understanding of repentance for millennia.",
+    "sections": [
+      {
+        "heading": "A Prayer for Cleansing and Pardon",
+        "range": "51:1-19",
+        "text": "This psalm's specific historical setting — David's own composition following Nathan's prophetic confrontation regarding his adultery with Bathsheba and complicity in her husband Uriah's death (2 Samuel 11-12) — grounds this extended prayer of confession in genuinely severe, deliberate moral failure, not merely minor or unintentional sin. David's opening appeal — “have mercy on me, O God, according to your unfailing love; according to your great compassion blot out my transgressions” — grounds his hope for forgiveness entirely in God's own gracious character, not any claimed personal merit or extenuating circumstance. David's remarkable acknowledgment — “against you, you only, have I sinned and done what is evil in your sight” — (despite his sin's obvious, severe harm toward Bathsheba and Uriah as well) recognizes sin's ultimate, fundamental character as rebellion against God himself, without thereby minimizing its genuine harm toward other people. David's acknowledgment of inherited sinfulness — “surely I was sinful at birth, sinful from the time my mother conceived me” — provides important Old Testament grounding for the doctrine of original sin, affirming that moral corruption extends to the very root of human nature, not merely isolated individual acts alone. David's plea for genuine, internal transformation — “create in me a pure heart, O God, and renew a steadfast spirit within me… do not cast me from your presence or take your Holy Spirit from me” — seeks comprehensive spiritual renewal, not merely external forgiveness alone, while his insistence that “the sacrifices of God are a broken spirit; a broken and contrite heart you, God, will not despise” reinforces this book's consistent teaching that genuine repentance and humility matter more to God than mere ritual sacrifice, however sincerely offered."
+      }
+    ]
+  },
+  "psalms-52": {
+    "book": "Psalms",
+    "chapter": 52,
+    "title": "God's Judgment on the Deceitful",
+    "scene": "David confronts Doeg the Edomite's betrayal (2 Samuel 21-22), contrasting boastful, deceitful wickedness's ultimately self-destructive trajectory with the flourishing security of one who trusts genuinely in God's unfailing love.",
+    "sections": [
+      {
+        "heading": "God's Judgment on the Deceitful",
+        "range": "52:1-9",
+        "text": "David's confrontation of boastful evil — “why do you boast of evil, you mighty hero? Why do you boast all day long, you who are a disgrace in the eyes of God?” — addresses Doeg's specific historical betrayal (reporting David's whereabouts to Saul, resulting in the massacre of the priests at Nob), contrasting this deceitful wickedness's ultimately self-destructive trajectory with David's own confident self-description: “but I am like an olive tree flourishing in the house of God; I trust in God's unfailing love for ever and ever.”"
+      }
+    ]
+  },
+  "psalms-53": {
+    "book": "Psalms",
+    "chapter": 53,
+    "title": "A Portrait of the Wicked",
+    "scene": "David offers a psalm closely paralleling Psalm 14's earlier content regarding comprehensive human moral corruption, with slight textual variations suggesting this represents either a later, edited version or a parallel composition addressing the same enduring, universal theme.",
+    "sections": [
+      {
+        "heading": "A Portrait of the Wicked",
+        "range": "53:1-6",
+        "text": "This psalm's substantial overlap with Psalm 14 — “the fool says in his heart, 'There is no God.' They are corrupt, and their ways are vile” — with slight but notable textual variations (including different specific language regarding God's name and the concluding verses' details), suggests either an edited, later liturgical adaptation of the earlier psalm or an independent parallel composition addressing this same enduring, universally applicable theme of comprehensive human moral corruption, deliberately preserved and included twice within the Psalter's overall collection."
+      }
+    ]
+  },
+  "psalms-54": {
+    "book": "Psalms",
+    "chapter": 54,
+    "title": "A Prayer for Vindication",
+    "scene": "David appeals urgently for God's protection during a period of genuine betrayal by the Ziphites, who had reported his hiding location to the pursuing Saul, modeling confident trust in God's name and help even amid immediate, serious danger.",
+    "sections": [
+      {
+        "heading": "A Prayer for Vindication",
+        "range": "54:1-7",
+        "text": "David's urgent appeal — “Save me, O God, by your name; vindicate me by your might… strangers are attacking me; ruthless people are trying to kill me—people without regard for God” — addresses the specific historical betrayal of the Ziphites reporting his location to Saul, while his confident declaration, “surely God is my help; the Lord is the one who sustains me,” models genuine trust maintained even amid immediate, active danger and betrayal."
+      }
+    ]
+  },
+  "psalms-55": {
+    "book": "Psalms",
+    "chapter": 55,
+    "title": "A Prayer concerning Betrayal",
+    "scene": "David gives voice to profound anguish over betrayal by a formerly close, trusted friend and companion, expressing genuine desire to escape entirely from overwhelming trouble before ultimately resolving to entrust his burden to the Lord's own sustaining care.",
+    "sections": [
+      {
+        "heading": "A Prayer concerning Betrayal",
+        "range": "55:1-23",
+        "text": "David's anguished lament — “oh, that I had the wings of a dove! I would fly away and be at rest… I would flee far away and stay in the desert” — gives voice to a genuine, universally relatable desire to simply escape overwhelming trouble entirely, while his particular anguish over betrayal by “you, a man like myself, my companion, my close friend, with whom I once enjoyed sweet fellowship” conveys betrayal's uniquely painful sting when it comes from previously intimate, trusted relationship rather than merely expected hostility from acknowledged enemies. This psalm's celebrated resolution — “cast your cares on the Lord and he will sustain you; he will never let the righteous be shaken” (echoed directly in 1 Peter 5:7) — provides genuine, practical counsel for processing overwhelming burden through deliberate, active transfer of that burden to God's own capable, sustaining care."
+      }
+    ]
+  },
+  "psalms-56": {
+    "book": "Psalms",
+    "chapter": 56,
+    "title": "Trust in God",
+    "scene": "David expresses confident trust in God despite genuine, ongoing fear and hostile pursuit, offering the memorable image of God collecting his tears in a bottle and recording them in his book — tender assurance that genuine suffering doesn't go unnoticed or unrecorded.",
+    "sections": [
+      {
+        "heading": "Trust in God",
+        "range": "56:1-13",
+        "text": "David's declaration — “when I am afraid, I put my trust in you. In God, whose word I praise—in God I trust and am not afraid. What can mere mortals do to me?” — models genuine faith coexisting honestly with genuine fear, trust functioning not as the absence of fear but as fear's appropriate, faith-grounded response and redirection. This psalm's tender, memorable image — “record my misery; list my tears on your scroll—are they not in your record?” — offers genuine comfort that God notices and values even a sufferer's private tears, none of that genuine suffering going unnoticed, unrecorded, or ultimately unaddressed by a genuinely attentive, caring God."
+      }
+    ]
+  },
+  "psalms-57": {
+    "book": "Psalms",
+    "chapter": 57,
+    "title": "Praise for God's Protection",
+    "scene": "David appeals for refuge “in the shadow of your wings” while hiding from Saul, describing his enemies' hostile intent through vivid imagery of nets and pits, before this psalm's characteristic shift toward confident, exuberant praise, including its notable refrain celebrating God's exaltation above the entire earth.",
+    "sections": [
+      {
+        "heading": "Praise for God's Protection",
+        "range": "57:1-11",
+        "text": "David's appeal for refuge — “have mercy on me, my God, have mercy on me, for in you I take refuge. I will take refuge in the shadow of your wings until the disaster has passed” — conveys genuine, urgent need for protection amid immediate danger, while this psalm's celebrated, repeated refrain — “be exalted, O God, above the heavens; let your glory be over all the earth” — shifts decisively toward confident, exuberant praise even before the immediate crisis has necessarily, fully resolved, modeling faith's genuine capacity for worship offered in advance of, not merely following, actual deliverance."
+      }
+    ]
+  },
+  "psalms-58": {
+    "book": "Psalms",
+    "chapter": 58,
+    "title": "A Prayer for Justice",
+    "scene": "David delivers a severe, imprecatory prayer against corrupt judges who pervert justice for personal gain, employing striking, deliberately harsh imagery to convey the genuine severity of his righteous anger against systemic injustice and corruption.",
+    "sections": [
+      {
+        "heading": "A Prayer for Justice",
+        "range": "58:1-11",
+        "text": "David's confrontation of corrupt judges — “do you rulers indeed speak justly? Do you judge people with equity? No, in your heart you devise injustice, and your hands mete out violence on the earth” — addresses systemic judicial corruption directly, employing severe, deliberately harsh imagery (comparing the wicked to venomous serpents deserving having their teeth broken) to convey the genuine moral seriousness of institutional injustice, closing with confident affirmation that “surely there is a God who judges the earth,” ensuring corrupt human judges don't ultimately, permanently escape genuine accountability."
+      }
+    ]
+  },
+  "psalms-59": {
+    "book": "Psalms",
+    "chapter": 59,
+    "title": "A Prayer for Safety from Enemies",
+    "scene": "David appeals for protection while Saul's men watch his own house intending to kill him, employing vivid imagery comparing his enemies to prowling, snarling dogs, while affirming confident trust in God as his “fortress” and “stronghold” amid this genuinely dangerous, immediate threat.",
+    "sections": [
+      {
+        "heading": "A Prayer for Safety from Enemies",
+        "range": "59:1-17",
+        "text": "David's urgent appeal, connected to the specific historical episode of Saul's men surrounding and watching his house intending to kill him at dawn (1 Samuel 19), employs vivid imagery comparing his enemies to “howling dogs” prowling the city at night, while his repeated affirmation — “you, God, are my fortress, my loving God” — grounds genuine security and confidence specifically in God's own protective character amid this immediate, life-threatening danger."
+      }
+    ]
+  },
+  "psalms-60": {
+    "book": "Psalms",
+    "chapter": 60,
+    "title": "A Prayer for Victory",
+    "scene": "David offers a communal lament following a significant military setback, honestly processing the genuine confusion and disorientation such defeat produces while ultimately affirming confident trust that with God's help, genuine victory remains possible.",
+    "sections": [
+      {
+        "heading": "A Prayer for Victory",
+        "range": "60:1-12",
+        "text": "David's honest lament following military setback — “you have rejected us, God, and burst upon us; you have been angry—now restore us!… you have made your people see harsh things” — processes genuine national confusion and disorientation following unexpected defeat without minimizing its genuine difficulty, while the psalm's closing affirmation — “with God we will gain the victory, and he will trample down our enemies” — moves toward renewed confidence that, whatever the immediate circumstances, ultimate victory remains genuinely possible and available through God's own continued help and involvement."
+      }
+    ]
+  },
+  "psalms-61": {
+    "book": "Psalms",
+    "chapter": 61,
+    "title": "A Prayer for Protection",
+    "scene": "David prays from a place of exile or distance, requesting to be led “to the rock that is higher than I” and expressing genuine longing for God's protective, tent-like dwelling, while affirming faithful commitment to praise God continually and fulfill his own vows.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection",
+        "range": "61:1-8",
+        "text": "David's plea — “lead me to the rock that is higher than I” — acknowledges his own inability to reach genuine security and stability through his own effort alone, requiring God's own gracious leading toward a place of safety genuinely beyond his own independent reach or achievement. His longing to “dwell in your tent forever and take refuge in the shelter of your wings” conveys genuine desire for sustained, ongoing relationship and protection, not merely momentary rescue from a single specific crisis alone."
+      }
+    ]
+  },
+  "psalms-62": {
+    "book": "Psalms",
+    "chapter": 62,
+    "title": "Confidence in God Alone",
+    "scene": "David offers a celebrated meditation on finding rest and security exclusively in God, employing the repeated phrase “alone” to emphasize genuinely singular, undivided trust rather than divided confidence spread across multiple competing sources of security.",
+    "sections": [
+      {
+        "heading": "Confidence in God Alone",
+        "range": "62:1-12",
+        "text": "This psalm's repeated emphasis — “truly my soul finds rest in God; my salvation comes from him. Truly he is my rock and my salvation; he is my fortress, I will never be shaken” — conveys genuinely singular, exclusive trust rather than confidence divided among multiple competing sources of security. David's warning against trusting in “extortion” or “stolen goods,” and his caution that “though your riches increase, do not set your heart on them,” addresses wealth's persistent, recurring temptation to become a rival, competing source of ultimate security and trust, while his declaration that “one thing God has spoken, two things I have heard: 'Power belongs to you, God, and with you, Lord, is unfailing love'” beautifully holds together God's genuine power and genuine love as complementary, not competing, aspects of his complete, trustworthy character."
+      }
+    ]
+  },
+  "psalms-63": {
+    "book": "Psalms",
+    "chapter": 63,
+    "title": "Longing for God",
+    "scene": "David, composing this psalm while in the wilderness (likely during either his flight from Saul or later from Absalom), expresses intense, physical spiritual longing for God, comparing his thirst for God's presence to a parched, waterless desert's own desperate need.",
+    "sections": [
+      {
+        "heading": "Longing for God",
+        "range": "63:1-11",
+        "text": "David's intense declaration — “you, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you, in a dry and parched land where there is no water” — conveys genuinely physical, embodied spiritual longing, deliberately connecting his actual, literal wilderness circumstances to his deeper spiritual thirst for God's presence. His declaration that God's “love is better than life” and his resulting satisfaction — “my soul will be satisfied as with the richest of foods” — conveys genuine, comprehensive spiritual fulfillment exceeding even life's most basic physical necessities and pleasures."
+      }
+    ]
+  },
+  "psalms-64": {
+    "book": "Psalms",
+    "chapter": 64,
+    "title": "A Prayer for Protection from Enemies",
+    "scene": "David appeals for protection against secretive, conspiratorial enemies who plot harm through carefully concealed schemes and slanderous words, expressing confidence that God's own sudden, decisive intervention would ultimately expose and reverse their hidden malicious plotting.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection from Enemies",
+        "range": "64:1-10",
+        "text": "David's description of conspiratorial enemies — who “sharpen their tongues like swords and aim cruel words like deadly arrows… they shoot from ambush at the innocent” — addresses the particular danger of secretive, hidden malicious scheming, while his confident affirmation that “God will shoot them with his arrows; they will suddenly be struck down” expresses trust that hidden wickedness, however carefully concealed, doesn't ultimately escape God's own attentive awareness and decisive, appropriate response."
+      }
+    ]
+  },
+  "psalms-65": {
+    "book": "Psalms",
+    "chapter": 65,
+    "title": "Praise for God's Goodness",
+    "scene": "David offers an exuberant hymn of thanksgiving celebrating God's forgiveness of sin, his awesome power displayed through creation, and his generous, abundant agricultural provision — vivid, joyful imagery of valleys shouting and singing together for pure joy.",
+    "sections": [
+      {
+        "heading": "Praise for God's Goodness",
+        "range": "65:1-13",
+        "text": "This psalm's celebration of forgiveness — “when we were overwhelmed by sins, you forgave our transgressions” — moves into extended, joyful celebration of God's creative power (“who formed the mountains by your power… who stilled the roaring of the seas”) and his generous agricultural provision, culminating in vivid, personified imagery of creation's own exuberant response: “the meadows are covered with flocks and the valleys are mantled with grain; they shout for joy and sing,” conveying creation's genuine, appropriate participation in celebrating God's abundant goodness and provision."
+      }
+    ]
+  },
+  "psalms-66": {
+    "book": "Psalms",
+    "chapter": 66,
+    "title": "Praise for God's Faithfulness",
+    "scene": "This anonymous psalm calls all the earth to praise God for his awesome historical deeds, particularly Israel's deliverance through the Red Sea, before shifting toward deeply personal testimony regarding answered prayer following a period of genuine testing and refinement.",
+    "sections": [
+      {
+        "heading": "Praise for God's Faithfulness",
+        "range": "66:1-20",
+        "text": "This psalm's call for “all the earth” to “shout for joy to God” recalls specifically Israel's foundational deliverance through the Red Sea — “he turned the sea into dry land, they passed through the waters on foot” — as historical grounding for confident, ongoing trust. This psalm's personal testimony — “you, God, tested us; you refined us like silver… yet you brought us to a place of abundance” — acknowledges genuine testing's real difficulty while affirming its ultimately purposeful, refining function, closing with grateful testimony regarding specifically answered prayer: “if I had cherished sin in my heart, the Lord would not have listened; but God has surely listened and has heard my prayer.”"
+      }
+    ]
+  },
+  "psalms-67": {
+    "book": "Psalms",
+    "chapter": 67,
+    "title": "A Prayer for the Nations to Praise God",
+    "scene": "This brief psalm employs the ancient Aaronic priestly blessing as its foundation, requesting God's own blessing specifically so that his ways might become known throughout the earth, envisioning Israel's blessing as ultimately serving a genuinely missionary, outward-reaching purpose toward all nations.",
+    "sections": [
+      {
+        "heading": "A Prayer for the Nations to Praise God",
+        "range": "67:1-7",
+        "text": "This psalm's opening, echoing the Aaronic blessing (Numbers 6:24-26) — “may God be gracious to us and bless us and make his face shine on us” — immediately, explicitly connects that blessing to a genuinely missionary purpose: “so that your ways may be known on earth, your salvation among all nations,” envisioning Israel's own covenant blessing not as an end in itself, but as a means toward the nations' eventual knowledge of and praise for God, anticipating the New Testament's fuller revelation of the gospel's genuinely universal, international scope and purpose."
+      }
+    ]
+  },
+  "psalms-68": {
+    "book": "Psalms",
+    "chapter": 68,
+    "title": "Praise for God's Triumph",
+    "scene": "David offers an extended, triumphant hymn celebrating God as a warrior-king marching victoriously before his people, employing rich imagery of God's care for the vulnerable and his ultimate, universal triumph over hostile powers — material Paul directly cites regarding Christ's own ascension.",
+    "sections": [
+      {
+        "heading": "Praise for God's Triumph",
+        "range": "68:1-35",
+        "text": "This psalm's celebration of God's tender care — “a father to the fatherless, a defender of widows, is God in his holy dwelling. God sets the lonely in families” — balances this hymn's otherwise dominant martial, triumphant imagery with genuine, compassionate concern for society's most vulnerable members. This psalm's declaration — “when you ascended on high, you took many captives; you received gifts from people” — is directly quoted by Paul in Ephesians 4:8 regarding Christ's own ascension and his subsequent distribution of spiritual gifts to the church, demonstrating this ancient royal victory psalm's typological connection to Christ's ultimate triumph and continued generous provision for his people."
+      }
+    ]
+  },
+  "psalms-69": {
+    "book": "Psalms",
+    "chapter": 69,
+    "title": "A Cry of Anguish",
+    "scene": "David offers one of the Psalter's most extensively quoted messianic psalms, describing overwhelming suffering through vivid imagery of drowning waters and miry depths, containing specific details — gall to eat, vinegar to drink, zeal that consumes — the New Testament applies directly to Christ's own passion.",
+    "sections": [
+      {
+        "heading": "A Cry of Anguish",
+        "range": "69:1-36",
+        "text": "David's anguished description — “I sink in the miry depths, where there is no foothold. I have come into the deep waters; the floods engulf me” — conveys overwhelming, genuinely desperate distress through vivid drowning imagery. This psalm's specific details find striking, direct application to Christ's own passion throughout the New Testament: “zeal for your house consumes me” is applied to Jesus's temple-clearing (John 2:17); “the insults of those who insult you fall on me” is applied to Christ bearing reproach on believers' behalf (Romans 15:3); and the specific detail “they put gall in my food and gave me vinegar for my thirst” finds direct, literal fulfillment in the actual crucifixion account (Matthew 27:34, 48). This psalm's severe imprecatory section, calling for judgment against persecutors, including “may their place be deserted; let there be no one to dwell in their tents”, is echoed by Peter regarding Judas's own fate and replacement (Acts 1:20), demonstrating this psalm's comprehensive, multi-faceted connection to the New Testament's presentation of Christ's suffering, betrayal, and its aftermath."
+      }
+    ]
+  },
+  "psalms-70": {
+    "book": "Psalms",
+    "chapter": 70,
+    "title": "A Prayer for Rescue",
+    "scene": "David offers a brief, urgent prayer for immediate rescue, closely paralleling the closing verses of Psalm 40, modeling honest, unadorned urgency in prayer when facing genuinely pressing, time-sensitive distress requiring swift response.",
+    "sections": [
+      {
+        "heading": "A Prayer for Rescue",
+        "range": "70:1-5",
+        "text": "This brief psalm's urgent, repeated plea — “hasten, O God, to save me; come quickly, Lord, to help me” — models honest, unadorned prayer appropriate to genuinely pressing, urgent distress, without extensive theological elaboration or lengthy explanation, demonstrating that even the briefest, most direct cry for help constitutes entirely legitimate, appropriate prayer when circumstances genuinely require swift, immediate response rather than extended reflection."
+      }
+    ]
+  },
+  "psalms-71": {
+    "book": "Psalms",
+    "chapter": 71,
+    "title": "A Prayer for Lifelong Protection",
+    "scene": "This anonymous psalm, likely composed by an elderly worshiper reflecting on a lifetime of faithful relationship with God, expresses continued trust and hope even amid the genuine vulnerabilities and challenges old age presents.",
+    "sections": [
+      {
+        "heading": "A Prayer for Lifelong Protection",
+        "range": "71:1-24",
+        "text": "The psalmist's testimony — “for you have been my hope, Sovereign Lord, my confidence since my youth… from my mother's womb you have been my strength” — conveys sustained, lifelong faithful relationship with God, while his honest plea, “do not cast me away when I am old; do not forsake me when my strength is gone,” acknowledges genuine, appropriate vulnerability and concern regarding aging without minimizing its real challenges, modeling continued, active faith and even renewed commitment to declaring God's power “to the next generation” even in life's later stages."
+      }
+    ]
+  },
+  "psalms-72": {
+    "book": "Psalms",
+    "chapter": 72,
+    "title": "The Righteous King",
+    "scene": "This royal psalm, attributed to Solomon and closing Book Two of the Psalter, envisions an ideal future king's comprehensive, universal, and enduring righteous reign — language carrying genuine messianic significance extending well beyond any single historical Israelite monarch's actual achievement.",
+    "sections": [
+      {
+        "heading": "The Righteous King",
+        "range": "72:1-20",
+        "text": "This psalm's vision of ideal royal governance — “he will defend the afflicted among the people and save the children of the needy… he will rule from sea to sea and from the River to the ends of the earth” — describes a comprehensive, universal, and enduring righteous reign exceeding what any single historical Israelite king, including Solomon himself, ever actually achieved, suggesting this psalm's ultimate, fullest significance points toward the promised Messiah's own future, perfect reign. This psalm's closing declaration, “praise be to his glorious name forever; may the whole earth be filled with his glory,” together with the notice that “this concludes the prayers of David son of Jesse,” marks both this psalm's fitting messianic climax and the formal conclusion of the Psalter's second major structural division."
+      }
+    ]
+  },
+  "psalms-73": {
+    "book": "Psalms",
+    "chapter": 73,
+    "title": "The Destiny of the Wicked",
+    "scene": "Book Three of the Psalter opens with Asaph's remarkably honest wisdom psalm, candidly confessing his own near-collapse of faith upon observing the wicked's apparent, untroubled prosperity, before genuine worship in God's sanctuary provided the eternal perspective necessary to resolve this deeply troubling observation.",
+    "sections": [
+      {
+        "heading": "The Destiny of the Wicked",
+        "range": "73:1-28",
+        "text": "Asaph's remarkably honest confession — “but as for me, my feet had almost slipped; I had nearly lost my foothold. For I envied the arrogant when I saw the prosperity of the wicked… they have no struggles; their bodies are healthy and strong” — candidly acknowledges genuine, serious faith crisis provoked by observing apparent injustice in the world's actual moral order, echoing similar honest observations found in Job and Ecclesiastes. Asaph's turning point — “till I entered the sanctuary of God; then I understood their final destiny” — finds resolution not through additional philosophical argument alone, but through genuine worship providing renewed, eternal perspective: the wicked's prosperity, however genuinely real and currently observable, remains ultimately temporary and precarious (“surely you place them on slippery ground; you cast them down to ruin”), while Asaph's own relationship with God, whatever its present difficulty, provides something genuinely permanent and secure — “whom have I in heaven but you? And earth has nothing I desire besides you… God is the strength of my heart and my portion forever.”"
+      }
+    ]
+  },
+  "psalms-74": {
+    "book": "Psalms",
+    "chapter": 74,
+    "title": "A Prayer at a Time of National Crisis",
+    "scene": "Asaph offers a communal lament responding to the temple's actual, devastating destruction, honestly processing genuine grief and confusion at this catastrophic loss of Israel's central place of worship, while appealing to God's own historical, demonstrated power over creation as grounds for renewed hope.",
+    "sections": [
+      {
+        "heading": "A Prayer at a Time of National Crisis",
+        "range": "74:1-23",
+        "text": "This psalm's honest grief over the temple's destruction — “they burned your sanctuary to the ground; they defiled the dwelling place of your Name… they said in their hearts, 'We will crush them completely!' They burned every place where God was worshiped in the land” — processes genuine, severe communal trauma without minimization. The psalm's appeal to God's demonstrated historical power over creation and chaos — “it was you who split open the sea by your power… it was you who crushed the heads of Leviathan” — grounds renewed hope specifically in God's proven, historical capacity for decisive intervention, even amid this genuinely catastrophic, currently unresolved present crisis."
+      }
+    ]
+  },
+  "psalms-75": {
+    "book": "Psalms",
+    "chapter": 75,
+    "title": "God, the Righteous Judge",
+    "scene": "Asaph offers a psalm affirming God's own perfect, sovereign timing regarding judgment, employing the vivid image of a cup filled with foaming wine that God himself pours out for the wicked to drink, while celebrating God's ultimate authority to exalt and humble according to his own perfect wisdom.",
+    "sections": [
+      {
+        "heading": "God, the Righteous Judge",
+        "range": "75:1-10",
+        "text": "God's own declaration — “it is I who judge uprightly… in the hand of the Lord is a cup full of foaming wine mixed with spices; he pours it out, and all the wicked of the earth drink it down to its very dregs” — affirms both God's own perfect timing regarding judgment (“when I choose the appointed time, it is I who judge uprightly”) and its genuinely comprehensive, inescapable character for the persistently wicked, while its declaration that “no one from the east or the west or from the desert can exalt themselves… it is God who judges: he brings one down, he exalts another” affirms God's ultimate sovereignty over human status and position."
+      }
+    ]
+  },
+  "psalms-76": {
+    "book": "Psalms",
+    "chapter": 76,
+    "title": "God, the Conqueror",
+    "scene": "Asaph celebrates God's awesome, victorious power displayed against hostile enemy armies, employing imagery of God's own overwhelming majesty producing genuine, appropriate fear and awe among even the earth's most powerful rulers and kings.",
+    "sections": [
+      {
+        "heading": "God, the Conqueror",
+        "range": "76:1-12",
+        "text": "This psalm's celebration of God's decisive victory — “there he broke the flashing arrows, the shields and the swords, the weapons of war… who can stand before you when you are angry?” — conveys God's genuinely overwhelming power to defeat even formidable, well-equipped hostile military forces, while its declaration that “surely your wrath against mankind brings you praise, and the survivors of your wrath are restrained” suggests that even God's judgment, properly understood, ultimately serves and demonstrates his praiseworthy character rather than existing merely as arbitrary or excessive severity."
+      }
+    ]
+  },
+  "psalms-77": {
+    "book": "Psalms",
+    "chapter": 77,
+    "title": "Comfort in Time of Trouble",
+    "scene": "Asaph honestly processes a season of profound spiritual distress and apparent divine silence, before deliberately choosing to recall God's past faithfulness and mighty historical deeds — particularly the Exodus — as the pathway toward renewed hope and trust.",
+    "sections": [
+      {
+        "heading": "Comfort in Time of Trouble",
+        "range": "77:1-20",
+        "text": "Asaph's honest distress — “I cried out to God for help… when I was in distress… my soul refused to be comforted… will the Lord reject forever? Will he never show his favor again?” — gives voice to genuine spiritual anguish and troubling questions without immediate resolution. Asaph's deliberate turning point — “then I thought, 'To this I will appeal: the years of the right hand of the Most High.' I will remember the deeds of the Lord; yes, I will remember your miracles of long ago” — models an important, practical spiritual discipline: deliberately, actively recalling God's proven, historical faithfulness (here specifically recounting the Exodus's Red Sea crossing) as a genuine pathway toward renewed hope and trust when present circumstances and immediate feelings alone fail to provide that same, needed reassurance and comfort."
+      }
+    ]
+  },
+  "psalms-78": {
+    "book": "Psalms",
+    "chapter": 78,
+    "title": "God's Constant Care for Israel",
+    "scene": "Asaph offers an extended historical psalm reviewing Israel's national history from the Exodus through David's own reign, deliberately structured as a teaching tool for future generations, honestly documenting the nation's recurring cycle of divine faithfulness met with persistent human rebellion and forgetfulness.",
+    "sections": [
+      {
+        "heading": "God's Constant Care for Israel",
+        "range": "78:1-72",
+        "text": "This extended historical psalm's stated pedagogical purpose — “we will not hide them from their descendants; we will tell the next generation the praiseworthy deeds of the Lord… so the next generation would know them… and they in turn would tell their children” — establishes deliberate, intentional intergenerational transmission of Israel's covenant history as this psalm's central concern. Its extended, honest review of Israel's history — documenting God's repeated provision and mighty deeds met with the people's recurring “rebellion in the wilderness… they tested God again and again” — refuses to sanitize or idealize Israel's actual historical conduct, instead providing an honest, sobering cautionary record specifically intended to help subsequent generations avoid repeating these same recurring patterns of forgetfulness and unfaithfulness, closing with the more hopeful note of David's own eventual faithful shepherding: “he shepherded them with integrity of heart; with skillful hands he led them.”"
+      }
+    ]
+  },
+  "psalms-79": {
+    "book": "Psalms",
+    "chapter": 79,
+    "title": "A Prayer for Mercy for Jerusalem",
+    "scene": "Asaph offers another communal lament responding to Jerusalem's devastation, honestly processing the surrounding nations' mockery and appealing urgently to God's own compassion and covenant name for both forgiveness and vindication against those who had desecrated his people and sanctuary.",
+    "sections": [
+      {
+        "heading": "A Prayer for Mercy for Jerusalem",
+        "range": "79:1-13",
+        "text": "This psalm's honest description of devastation — “they have defiled your holy temple, they have reduced Jerusalem to rubble… we are objects of contempt to our neighbors, of scorn and derision to those around us” — processes genuine communal trauma and humiliation, while its appeal for both forgiveness (“do not hold against us the sins of past generations”) and vindication (“pay back into the laps of our neighbors seven times the contempt they have hurled at you, Lord”) models honest, comprehensive communal prayer addressing both genuine internal repentance and legitimate external injustice requiring appropriate response and vindication."
+      }
+    ]
+  },
+  "psalms-80": {
+    "book": "Psalms",
+    "chapter": 80,
+    "title": "A Prayer for the Nation's Restoration",
+    "scene": "Asaph appeals for God's restoration of Israel using the extended metaphor of a vine God himself had originally transplanted from Egypt and carefully cultivated, now devastated and requiring renewed divine attention and care, employing the psalm's repeated, urgent refrain requesting restoration.",
+    "sections": [
+      {
+        "heading": "A Prayer for the Nation's Restoration",
+        "range": "80:1-19",
+        "text": "This psalm's extended vine metaphor — “you transplanted a vine from Egypt… it took root and filled the land… why have you broken down its walls so that all who pass by pick its grapes?” — conveys genuine grief over the nation's current devastation despite God's own earlier, careful cultivation and provision. This psalm's repeated refrain — “restore us, God Almighty; make your face shine on us, that we may be saved” — models persistent, repeated prayer for restoration, while its closing petition regarding “the son of man you have raised up for yourself” has been understood by some interpreters as carrying additional messianic resonance regarding a coming, specifically empowered deliverer."
+      }
+    ]
+  },
+  "psalms-81": {
+    "book": "Psalms",
+    "chapter": 81,
+    "title": "A Call to Worship and Obedience",
+    "scene": "Asaph calls Israel to joyful, musical festival celebration before shifting into God's own direct, first-person address recalling the Exodus deliverance and expressing genuine grief that his people had refused to fully receive the abundant blessing he had genuinely desired to provide them.",
+    "sections": [
+      {
+        "heading": "A Call to Worship and Obedience",
+        "range": "81:1-16",
+        "text": "This psalm's call to joyful, musical celebration — “sing for joy to God our strength… blow the trumpet at the New Moon” — shifts into God's own poignant first-person lament: “if my people would only listen to me, if Israel would only follow my ways… I would feed you with the finest of wheat; with honey from the rock I would satisfy you.” This passage conveys genuine divine grief and longing — God's abundant blessing remained genuinely available and desired on his part, yet persistently unrealized specifically due to his people's own repeated unwillingness to receive and walk in it."
+      }
+    ]
+  },
+  "psalms-82": {
+    "book": "Psalms",
+    "chapter": 82,
+    "title": "A Call for Justice",
+    "scene": "Asaph presents a striking, unusual psalm depicting God presiding over a divine council, sharply confronting corrupt human judges (called “gods” in their capacity as God's appointed representatives dispensing justice) for their persistent failure to protect the weak and vulnerable — a passage Jesus himself directly cites.",
+    "sections": [
+      {
+        "heading": "A Call for Justice",
+        "range": "82:1-8",
+        "text": "This psalm's unusual scene — God “presides in the great assembly; he renders judgment among the 'gods'” — addresses human judges and rulers metaphorically termed “gods” specifically in their delegated capacity as God's appointed representatives responsible for dispensing genuine justice, sharply confronting their persistent failure: “how long will you defend the unjust and show partiality to the wicked?… defend the weak and the fatherless; uphold the cause of the poor and the oppressed.” Jesus directly quotes this psalm's language regarding “gods” (John 10:34-36) in his own defense against blasphemy charges, arguing that if this term could legitimately apply to mere human judges exercising delegated authority, his own far greater, direct claim to divine sonship shouldn't be dismissed as inherently blasphemous. This psalm's closing declaration that these corrupt “gods” will nonetheless “die like mere mortals” confirms their genuinely human, not actually divine, status, despite this metaphorical designation."
+      }
+    ]
+  },
+  "psalms-83": {
+    "book": "Psalms",
+    "chapter": 83,
+    "title": "A Prayer concerning Enemy Nations",
+    "scene": "Asaph appeals urgently for God's intervention against a coordinated coalition of hostile surrounding nations conspiring together against Israel, requesting decisive divine action so that these nations might ultimately come to recognize God's own supreme sovereignty.",
+    "sections": [
+      {
+        "heading": "A Prayer concerning Enemy Nations",
+        "range": "83:1-18",
+        "text": "This psalm's catalogue of conspiring hostile nations — “with one mind they plot together; they form an alliance against you” — addresses genuine, coordinated external military threat, while its closing purpose — “let them know that you, whose name is the Lord—that you alone are the Most High over all the earth” — reveals that even this urgent request for military deliverance ultimately serves a genuinely missionary purpose: that these very enemy nations might themselves eventually come to acknowledge and worship the one true God."
+      }
+    ]
+  },
+  "psalms-84": {
+    "book": "Psalms",
+    "chapter": 84,
+    "title": "Longing for God's House",
+    "scene": "The sons of Korah offer one of the Psalter's most beloved expressions of genuine delight in corporate worship and God's dwelling place, employing the memorable image of even sparrows and swallows finding secure nesting near God's altar to convey worship's genuinely welcoming, life-giving character.",
+    "sections": [
+      {
+        "heading": "Longing for God's House",
+        "range": "84:1-12",
+        "text": "This psalm's celebrated declaration — “how lovely is your dwelling place, Lord Almighty! My soul yearns, even faints, for the courts of the Lord” — conveys genuine, deeply felt delight in corporate worship, while its tender image — “even the sparrow has found a home, and the swallow a nest for herself, where she may have her young—a place near your altar” — illustrates God's dwelling place as genuinely welcoming and life-sustaining even for creation's smallest, most vulnerable creatures. This psalm's memorable declaration — “better is one day in your courts than a thousand elsewhere; I would rather be a doorkeeper in the house of my God than dwell in the tents of the wicked” — conveys genuine, comparative preference for even the humblest role within genuine worship and relationship with God over the most comfortable circumstances lacking that same relationship."
+      }
+    ]
+  },
+  "psalms-85": {
+    "book": "Psalms",
+    "chapter": 85,
+    "title": "A Prayer for Revival",
+    "scene": "The sons of Korah appeal for renewed national restoration following past forgiveness, expressing confident hope that God's righteousness, peace, love, and faithfulness would ultimately converge and embrace in genuine, comprehensive reconciliation.",
+    "sections": [
+      {
+        "heading": "A Prayer for Revival",
+        "range": "85:1-13",
+        "text": "This psalm's beautifully poetic vision of reconciliation — “love and faithfulness meet together; righteousness and peace kiss each other. Faithfulness springs forth from the earth, and righteousness looks down from heaven” — conveys confident hope that God's seemingly distinct attributes of justice and mercy would ultimately converge harmoniously rather than remaining in permanent, unresolved tension, a hope finding its own fullest, most complete resolution in the cross, where God's righteousness and love genuinely, fully “kiss” through Christ's atoning sacrifice."
+      }
+    ]
+  },
+  "psalms-86": {
+    "book": "Psalms",
+    "chapter": 86,
+    "title": "A Prayer for Help",
+    "scene": "David offers an extended, personal prayer combining honest acknowledgment of his own poverty and need with confident appeal to God's demonstrated, comprehensive character as “abounding in love and faithfulness” toward all who genuinely call on him.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "86:1-17",
+        "text": "David's honest self-description — “hear me, Lord, and answer me, for I am poor and needy” — models genuine humility appropriate to prayer, while his extended celebration of God's character — “you, Lord, are forgiving and good, abounding in love to all who call to you” — grounds his confident petition in God's own consistently demonstrated, comprehensive goodness toward all genuine seekers, not merely a select, privileged few, anticipating this psalm's own recognition that “all the nations you have made will come and worship before you, Lord.”"
+      }
+    ]
+  },
+  "psalms-87": {
+    "book": "Psalms",
+    "chapter": 87,
+    "title": "The Joy of Living in Zion",
+    "scene": "The sons of Korah offer a brief but theologically remarkable psalm envisioning citizens from historically hostile foreign nations — Egypt, Babylon, Philistia — being formally registered as native-born citizens of Zion, anticipating a genuinely inclusive future citizenship extending well beyond ethnic Israel alone.",
+    "sections": [
+      {
+        "heading": "The Joy of Living in Zion",
+        "range": "87:1-7",
+        "text": "This psalm's remarkable vision — God himself declaring regarding various historically hostile foreign nations, “I will record Rahab (Egypt) and Babylon among those who acknowledge me… indeed, of Zion it will be said, 'This one and that one were born in her'” — anticipates a genuinely inclusive future citizenship in God's own city extending explicitly to citizens from historically hostile foreign nations, formally registered as though native-born, rather than merely tolerated outsiders — an early, remarkable Old Testament anticipation of the New Testament's fuller revelation regarding gentile believers' full, genuine inclusion and citizenship within God's own people."
+      }
+    ]
+  },
+  "psalms-88": {
+    "book": "Psalms",
+    "chapter": 88,
+    "title": "A Prayer for Help in Despair",
+    "scene": "Heman the Ezrahite offers what is likely the single darkest, most unrelieved psalm in the entire Psalter — a sustained lament expressing genuine, apparently unresolved despair without the characteristic shift toward renewed hope or praise found in most other lament psalms, this book's honest inclusion of such unrelieved anguish itself carrying important pastoral significance.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help in Despair",
+        "range": "88:1-18",
+        "text": "This psalm's unrelenting, genuinely unresolved darkness — “I am overwhelmed with troubles and my life draws near to death… you have taken from me my closest friends and have made me repulsive to them… darkness is my closest friend” — stands alone within the Psalter as a lament that, unusually, never actually transitions toward renewed hope, praise, or confident resolution, closing instead on this same note of genuine, unrelieved anguish and isolation. This psalm's inclusion within Scripture's inspired canon, precisely because it doesn't offer the more typical resolution found elsewhere, carries important pastoral significance: it validates and normalizes genuine, prolonged, even unresolved despair and depression as a legitimate, authentic experience meriting honest expression before God, without requiring or forcing an artificially tidy, premature resolution that dishonest denial of genuine, ongoing anguish would otherwise require — God's own inspired Scripture makes explicit room for exactly this kind of unrelieved, honest lament, without judgment or required immediate resolution."
+      }
+    ]
+  },
+  "psalms-89": {
+    "book": "Psalms",
+    "chapter": 89,
+    "title": "A Psalm about God's Covenant with David",
+    "scene": "Ethan the Ezrahite closes Book Three of the Psalter with an extended, complex psalm celebrating God's unconditional covenant promises to David's royal line, before pivoting into genuine, honest lament and confusion regarding that same covenant's apparent, painful failure given Israel's actual, devastating national circumstances.",
+    "sections": [
+      {
+        "heading": "A Psalm about God's Covenant with David",
+        "range": "89:1-52",
+        "text": "This psalm's extended celebration of God's covenant with David — “I will establish your line forever and make your throne firm through all generations” — provides one of Scripture's most extensive, detailed poetic treatments of the Davidic covenant's genuine, unconditional permanence, celebrating God's “faithfulness” and “unfailing love” at considerable length. This psalm's dramatic, honest turn toward lament — “but you have rejected, you have spurned, you have been very angry with your anointed one. You have renounced the covenant with your servant and have defiled his crown in the dust” — processes genuine, painful confusion regarding this same covenant's apparent failure given Israel's actual national catastrophe and humiliation, closing this psalm, and the Psalter's third major structural division, without full resolution of this genuine tension — a tension the New Testament's own fuller revelation regarding Christ's ultimate, permanent fulfillment of this same Davidic covenant would eventually, decisively resolve, though this psalm itself honestly leaves that resolution still awaited and unrealized at its own, unresolved close."
+      }
+    ]
+  },
+  "psalms-90": {
+    "book": "Psalms",
+    "chapter": 90,
+    "title": "God's Eternity and Human Frailty",
+    "scene": "Book Four of the Psalter opens with this psalm's unique attribution to Moses himself — likely the Psalter's oldest composition — offering a sobering, contemplative meditation on God's eternal nature contrasted with human mortality's genuine brevity, closing with the celebrated prayer to “teach us to number our days.”",
+    "sections": [
+      {
+        "heading": "God's Eternity and Human Frailty",
+        "range": "90:1-17",
+        "text": "This psalm's opening declaration — “Lord, you have been our dwelling place throughout all generations. Before the mountains were born or you brought forth the whole world, from everlasting to everlasting you are God” — establishes profound contrast between God's genuine eternity and humanity's comparatively brief, fleeting existence: “a thousand years in your sight are like a day that has just gone by… you sweep people away in the sleep of death… our days may come to seventy years, or eighty, if our strength endures.” This psalm's celebrated prayer — “teach us to number our days, that we may gain a heart of wisdom” — requests not merely abstract awareness of mortality, but genuine wisdom flowing specifically from honest, sobering acknowledgment of life's actual brevity, a request this psalm's closing petition for God to “satisfy us in the morning with your unfailing love” and “establish the work of our hands” balances with genuine hope and purposeful engagement despite that same acknowledged brevity."
+      }
+    ]
+  },
+  "psalms-91": {
+    "book": "Psalms",
+    "chapter": 91,
+    "title": "Assurance of God's Protection",
+    "scene": "This anonymous psalm offers one of Scripture's most beloved, extended celebrations of God's comprehensive protective care, employing rich imagery of refuge, shelter, and shield — material Satan himself would later quote (and misapply) when tempting Jesus in the wilderness.",
+    "sections": [
+      {
+        "heading": "Assurance of God's Protection",
+        "range": "91:1-16",
+        "text": "This psalm's opening declaration — “whoever dwells in the shelter of the Most High will rest in the shadow of the Almighty… he is my refuge and my fortress, my God, in whom I trust” — introduces this psalm's extended, comprehensive celebration of divine protection against “the fowler's snare,” “the pestilence that stalks in the darkness,” and “the plague that destroys at midday.” This psalm's promise that God “will command his angels concerning you to guard you in all your ways… they will lift you up in their hands, so that you will not strike your foot against a stone” is directly quoted by Satan himself when tempting Jesus to jump from the temple's pinnacle (Matthew 4:6), illustrating an important interpretive caution: this psalm's genuine promises of protection were never intended as a blanket guarantee against every possible danger regardless of context, nor as license for presumptuous, unnecessary risk-taking that tests God's care rather than genuinely trusting it — Jesus's own refusal to misuse this psalm in that manner (“do not put the Lord your God to the test”) models the appropriate, faithful reading this psalm's genuine comfort actually requires, trusting God's care within, not as license for abandoning, appropriately wise and faithful conduct."
+      }
+    ]
+  },
+  "psalms-92": {
+    "book": "Psalms",
+    "chapter": 92,
+    "title": "A Song of Praise",
+    "scene": "This psalm, specifically designated for Sabbath worship, celebrates the genuine goodness of regular, disciplined praise, contrasting the wicked's ultimately temporary, grass-like flourishing with the righteous person's sustained, tree-like flourishing continuing productively even into old age.",
+    "sections": [
+      {
+        "heading": "A Song of Praise",
+        "range": "92:1-15",
+        "text": "This psalm's opening declaration — “it is good to praise the Lord and make music to your name, O Most High, proclaiming your love in the morning and your faithfulness at night” — commends regular, disciplined praise as genuinely good and beneficial practice, appropriate for its specifically designated Sabbath usage. This psalm's contrast between the wicked, who “spring up like grass” only to be “forever destroyed,” and the righteous, who “flourish like a palm tree… planted in the house of the Lord” and continue “bear[ing] fruit in old age,” offers genuine encouragement regarding sustained, lifelong spiritual vitality and productivity, extending meaningfully into and through life's later stages rather than inevitably declining."
+      }
+    ]
+  },
+  "psalms-93": {
+    "book": "Psalms",
+    "chapter": 93,
+    "title": "God the King",
+    "scene": "This brief but majestic psalm celebrates God's established, unshakeable kingship over all creation, employing vivid imagery of God's throne remaining secure and permanent even amid the ocean's most violent, thundering storms and floods.",
+    "sections": [
+      {
+        "heading": "God the King",
+        "range": "93:1-5",
+        "text": "This psalm's celebration — “the Lord reigns, he is robed in majesty… the world is established, firm and secure… the seas have lifted up, Lord, the seas have lifted up their voice; the seas have lifted up their pounding waves. Mightier than the thunder of the great waters… is the Lord on high” — conveys God's genuine, unshakeable sovereignty over even nature's most overwhelming, chaotic forces, his own established throne remaining permanently secure regardless of whatever storms and floods might otherwise seem overwhelming from a purely human, limited perspective."
+      }
+    ]
+  },
+  "psalms-94": {
+    "book": "Psalms",
+    "chapter": 94,
+    "title": "God Will Punish the Wicked",
+    "scene": "This anonymous psalm appeals urgently for God's judgment against arrogant oppressors who exploit the vulnerable while presuming, mistakenly, that God either doesn't notice or doesn't genuinely care, before affirming confident trust in God's reliable, sustaining support and eventual, decisive justice.",
+    "sections": [
+      {
+        "heading": "God Will Punish the Wicked",
+        "range": "94:1-23",
+        "text": "This psalm's confrontation of arrogant oppressors' mistaken presumption — “they say, 'The Lord does not see; the God of Jacob takes no notice'” — exposes wickedness's frequent, underlying theological error: assuming God's apparent patience or delayed response indicates genuine indifference or ignorance, rather than deliberate, patient timing. The psalmist's rhetorical response — “does he who fashioned the ear not hear? Does he who formed the eye not see?” — exposes this presumption's basic logical absurdity, while the psalm's closing confidence — “when I said, 'My foot is slipping,' your unfailing love, Lord, supported me” — affirms genuine, reliable divine support sustained even through periods of genuine struggle and near-failure."
+      }
+    ]
+  },
+  "psalms-95": {
+    "book": "Psalms",
+    "chapter": 95,
+    "title": "A Call to Worship and Obedience",
+    "scene": "This anonymous psalm calls worshipers to joyful, enthusiastic praise before shifting into a sobering warning against repeating the wilderness generation's historical pattern of hardened, unbelieving rebellion — material Hebrews cites extensively regarding the genuine, ongoing danger of unbelief among God's own covenant people.",
+    "sections": [
+      {
+        "heading": "A Call to Worship and Obedience",
+        "range": "95:1-11",
+        "text": "This psalm's enthusiastic call — “come, let us sing for joy to the Lord… let us come before him with thanksgiving” — shifts, notably, into a sobering historical warning: “today, if only you would hear his voice, 'Do not harden your hearts as you did at Meribah… where your ancestors tested and tried me.'” This warning against repeating the wilderness generation's specific pattern of hardened unbelief is extensively quoted and developed in Hebrews 3-4 as a direct, urgent warning to New Testament believers regarding the genuine, ongoing danger of similarly hardened hearts and unbelief, demonstrating this ancient psalm's continued, urgent relevance and application well beyond its own original historical context."
+      }
+    ]
+  },
+  "psalms-96": {
+    "book": "Psalms",
+    "chapter": 96,
+    "title": "God Is King",
+    "scene": "This psalm, closely paralleling material found in 1 Chronicles 16 regarding David's celebration when the ark was brought to Jerusalem, calls all nations and even creation itself to joyful praise of God's kingship, anticipating his coming, comprehensive judgment of the entire earth with genuine, equitable justice.",
+    "sections": [
+      {
+        "heading": "God Is King",
+        "range": "96:1-13",
+        "text": "This psalm's expansive, universal call — “sing to the Lord, all the earth… declare his glory among the nations, his marvelous deeds among all peoples” — extends worship's proper scope explicitly beyond Israel alone to encompass all nations and peoples, while its closing anticipation of God's coming judgment — “he comes to judge the earth. He will judge the world in righteousness and the peoples in his faithfulness” — frames even final judgment as genuinely good news worthy of creation's own joyful anticipation and celebration (“let the heavens rejoice, let the earth be glad… let all the trees of the forest sing for joy”), since it represents the establishment of genuine, comprehensive, and reliable justice rather than merely something to be feared."
+      }
+    ]
+  },
+  "psalms-97": {
+    "book": "Psalms",
+    "chapter": 97,
+    "title": "God the Supreme Ruler",
+    "scene": "This anonymous psalm celebrates God's overwhelming, awesome majesty using dramatic imagery of fire, lightning, and melting mountains, while affirming that righteousness and justice constitute the genuine, unshakeable foundation of his sovereign rule.",
+    "sections": [
+      {
+        "heading": "God the Supreme Ruler",
+        "range": "97:1-12",
+        "text": "This psalm's dramatic imagery of God's overwhelming majesty — “clouds and thick darkness surround him; righteousness and justice are the foundation of his throne… fire goes before him and consumes his foes on every side” — conveys God's genuine, awesome power while explicitly grounding that power in righteousness and justice, not merely arbitrary force alone. This psalm's closing exhortation, “let those who love the Lord hate evil, for he guards the lives of his faithful ones,” connects genuine love for God directly to appropriate moral response — authentic love for God necessarily includes genuine opposition to evil, not merely abstract personal devotion detached from concrete ethical commitment and conduct."
+      }
+    ]
+  },
+  "psalms-98": {
+    "book": "Psalms",
+    "chapter": 98,
+    "title": "Praise for the Lord's Salvation",
+    "scene": "This anonymous psalm calls for a genuinely “new song” celebrating God's demonstrated salvation, made known and remembered before the watching nations, employing exuberant imagery of rivers clapping their hands and mountains singing together for joy.",
+    "sections": [
+      {
+        "heading": "Praise for the Lord's Salvation",
+        "range": "98:1-9",
+        "text": "This psalm's call for “a new song” celebrates God's demonstrated salvation as genuinely public, international news — “the Lord has made his salvation known and revealed his righteousness to the nations… all the ends of the earth have seen the salvation of our God” — not merely private, individual religious experience alone, while its exuberant, personified nature imagery — “let the rivers clap their hands, let the mountains sing together for joy” — conveys creation's own genuine, appropriate participation in celebrating God's saving work and coming righteous judgment."
+      }
+    ]
+  },
+  "psalms-99": {
+    "book": "Psalms",
+    "chapter": 99,
+    "title": "Praise to God for His Holiness",
+    "scene": "This anonymous psalm celebrates God's exalted holiness and his consistent, historical pattern of hearing and answering his people's prayers through past intercessors like Moses, Aaron, and Samuel, closing with its repeated, emphatic affirmation that “the Lord our God is holy.”",
+    "sections": [
+      {
+        "heading": "Praise to God for His Holiness",
+        "range": "99:1-9",
+        "text": "This psalm's repeated refrain — “let them praise your great and awesome name—he is holy… exalt the Lord our God… for the Lord our God is holy” — emphasizes God's transcendent holiness as central to appropriate worship, while its historical reminder of Moses, Aaron, and Samuel's own experience — “they called on the Lord and he answered them… he was to Israel a forgiving God, though he punished their misdeeds” — illustrates that genuine holiness and genuine, responsive relationship aren't mutually exclusive, but exist together in God's own consistent, demonstrated character throughout Israel's own historical experience."
+      }
+    ]
+  },
+  "psalms-100": {
+    "book": "Psalms",
+    "chapter": 100,
+    "title": "A Song of Praise",
+    "scene": "This brief, beloved psalm offers one of Scripture's most concentrated, celebrated calls to joyful, grateful worship, memorably summarizing the appropriate posture and content of genuine praise in just five compact, frequently memorized verses.",
+    "sections": [
+      {
+        "heading": "A Song of Praise",
+        "range": "100:1-5",
+        "text": "This beloved psalm's compact but comprehensive call to worship — “shout for joy to the Lord, all the earth… come before him with joyful songs. Know that the Lord is God. It is he who made us, and we are his… enter his gates with thanksgiving and his courts with praise” — provides one of Scripture's most concentrated, frequently memorized calls to genuine, grateful worship, grounding that worship specifically in God's own identity as Creator and in his own consistently “good” character: “for the Lord is good and his love endures forever; his faithfulness continues through all generations,” closing this brief psalm with a fitting, comprehensive summary of appropriate worship's proper foundation and content."
+      }
+    ]
+  },
+  "psalms-101": {
+    "book": "Psalms",
+    "chapter": 101,
+    "title": "A Ruler's Commitment to God",
+    "scene": "David offers a royal commitment psalm, personally pledging himself to specific, concrete standards of personal integrity and to actively excluding deceitful, arrogant, and slanderous individuals from his own household and administration.",
+    "sections": [
+      {
+        "heading": "A Ruler's Commitment to God",
+        "range": "101:1-8",
+        "text": "David's personal pledge — “I will be careful to lead a blameless life… I will conduct the affairs of my house with a blameless heart… whoever slanders their neighbor in secret, I will put to silence” — models intentional, specific commitment to personal and household integrity extending beyond vague general aspiration into concrete, actionable standards regarding exactly who and what kind of conduct would be welcomed or excluded from his own sphere of influence and leadership."
+      }
+    ]
+  },
+  "psalms-102": {
+    "book": "Psalms",
+    "chapter": 102,
+    "title": "A Prayer in Time of Distress",
+    "scene": "This anonymous psalm, explicitly designated for use by an afflicted person pouring out genuine complaint before the Lord, honestly describes severe physical and emotional suffering before pivoting toward confident affirmation of God's own eternal permanence — language the New Testament applies directly to Christ's own eternal, unchanging nature.",
+    "sections": [
+      {
+        "heading": "A Prayer in Time of Distress",
+        "range": "102:1-28",
+        "text": "This psalm's honest, extended description of severe affliction — “my days vanish like smoke… my heart is blighted and withered like grass… I lie awake; I have become like a bird alone on a roof” — provides genuinely raw, unflinching testimony to prolonged suffering's real toll. The psalm's dramatic pivot toward celebrating God's eternal permanence — “in the beginning you laid the foundations of the earth, and the heavens are the work of your hands. They will perish, but you remain… you are the same, and your years will never end” — is directly quoted and applied to Christ in Hebrews 1:10-12, providing further New Testament scriptural support for Christ's genuine, eternal, unchanging divine nature and his role in creation itself."
+      }
+    ]
+  },
+  "psalms-103": {
+    "book": "Psalms",
+    "chapter": 103,
+    "title": "Praise for the Lord's Mercy",
+    "scene": "David offers one of the Psalter's most beloved, comprehensive celebrations of God's character, cataloguing his forgiveness, healing, and tender compassion while employing the memorable image of a loving father's compassion and the vast, immeasurable distance between east and west to convey the genuine completeness of God's forgiveness.",
+    "sections": [
+      {
+        "heading": "Praise for the Lord's Mercy",
+        "range": "103:1-22",
+        "text": "David's extended, comprehensive celebration — “praise the Lord, my soul, and forget not all his benefits—who forgives all your sins and heals all your diseases, who redeems your life from the pit and crowns you with love and compassion” — catalogues God's multifaceted, comprehensive care and provision. This psalm's celebrated declaration — “as far as the east is from the west, so far has he removed our transgressions from us” — provides one of Scripture's most beloved, memorable images of forgiveness's genuine completeness, since east and west, unlike north and south, never actually meet or converge at any point, conveying infinite, immeasurable distance and separation between the forgiven sinner and their former sin. The psalm's tender comparison — “as a father has compassion on his children, so the Lord has compassion on those who fear him. For he knows how we are formed, he remembers that we are dust” — grounds God's genuine, patient compassion in his own intimate, accurate understanding of human frailty and limitation, offering comfort appropriate to genuine human weakness rather than demanding impossible, superhuman perfection."
+      }
+    ]
+  },
+  "psalms-104": {
+    "book": "Psalms",
+    "chapter": 104,
+    "title": "Praise to the Creator",
+    "scene": "This anonymous psalm offers an extended, magnificent celebration of God's creative wisdom and continued providential care displayed throughout the natural world, systematically surveying creation's various elements — sky, water, mountains, vegetation, and diverse creatures — with genuine, delighted attention to detail.",
+    "sections": [
+      {
+        "heading": "Praise to the Creator",
+        "range": "104:1-35",
+        "text": "This psalm's extended, systematic celebration of creation — stretching “out the heavens like a tent… he makes springs pour water into the ravines… the trees of the Lord are well watered… there the birds make their nests” — conveys genuine, delighted attention to creation's comprehensive diversity and interdependence, celebrating not merely creation's original establishment but God's continued, ongoing providential sustenance and care: “these all look to you to give them their food at the proper time… when you hide your face, they are terrified; when you take away their breath, they die and return to the dust.” This psalm's closing declaration — “may the glory of the Lord endure forever; may the Lord rejoice in his works” — conveys God's own genuine delight in his creation, modeling appropriate human delight and careful, attentive appreciation of the natural world as itself a legitimate, valuable form of worship and praise."
+      }
+    ]
+  },
+  "psalms-105": {
+    "book": "Psalms",
+    "chapter": 105,
+    "title": "God's Faithfulness to Israel",
+    "scene": "This anonymous psalm, closely paralleling material found in 1 Chronicles 16, offers an extended historical review of God's covenant faithfulness from Abraham through the Exodus and conquest, emphasizing his consistent, reliable remembrance and fulfillment of his own ancient promises across many generations.",
+    "sections": [
+      {
+        "heading": "God's Faithfulness to Israel",
+        "range": "105:1-45",
+        "text": "This psalm's extended historical survey — tracing God's covenant faithfulness from Abraham through Joseph's providential rise in Egypt, Moses's deliverance through the plagues and Red Sea, and Israel's eventual entry into the promised land — emphasizes throughout God's consistent, reliable remembrance of his own covenant promises: “he remembered his holy promise given to his servant Abraham.” This extended, purely celebratory historical review (notably omitting, unlike the more balanced Psalm 78, extensive treatment of Israel's own historical failures) provides sustained, confident testimony to God's genuine, reliable covenant faithfulness across many centuries and successive historical circumstances."
+      }
+    ]
+  },
+  "psalms-106": {
+    "book": "Psalms",
+    "chapter": 106,
+    "title": "A Prayer for Deliverance from National Enemies",
+    "scene": "This anonymous psalm, closing Book Four of the Psalter, offers a companion historical review to Psalm 105, this time deliberately, honestly documenting Israel's own persistent, recurring pattern of covenant unfaithfulness and rebellion, providing an important, balancing counterpart to the preceding psalm's more exclusively celebratory historical account.",
+    "sections": [
+      {
+        "heading": "A Prayer for Deliverance from National Enemies",
+        "range": "106:1-48",
+        "text": "This psalm's honest historical review — “both we and our ancestors have sinned; we have done wrong and acted wickedly… they soon forgot what he had done and did not wait for his plan to unfold… they made a calf at Horeb and worshiped an idol cast from metal” — provides a deliberately honest, unflattering counterpart to Psalm 105's more exclusively celebratory account, documenting Israel's own persistent, recurring cycle of rebellion, judgment, and God's repeated, patient mercy: “yet he took note of their distress when he heard their cry; for their sake he remembered his covenant and out of his great love he relented.” This psalm's closing petition, “save us, Lord our God, and gather us from the nations,” combined with its concluding doxology, marks the formal, fitting conclusion to the Psalter's fourth major structural division on this note of honest confession and continued hope for restoration despite genuine, acknowledged historical failure."
+      }
+    ]
+  },
+  "psalms-107": {
+    "book": "Psalms",
+    "chapter": 107,
+    "title": "Praise for God's Deliverance",
+    "scene": "Book Five of the Psalter opens with this psalm's extended celebration of God's deliverance across four distinct, illustrative scenarios — desert wanderers, prisoners, the sick, and storm-tossed sailors — each concluding with the same repeated refrain thanking God for his “unfailing love” and “wonderful deeds.”",
+    "sections": [
+      {
+        "heading": "Praise for God's Deliverance",
+        "range": "107:1-43",
+        "text": "This psalm's four illustrative scenarios — wanderers lost in desert wastelands, prisoners bound in “darkness and utter darkness,” the sick brought “close to the gates of death,” and sailors caught in violent, life-threatening storms — each conclude with the identical, repeated refrain: “let them give thanks to the Lord for his unfailing love and his wonderful deeds for mankind.” This deliberate, repeated structure conveys God's genuine, demonstrated faithfulness across an intentionally comprehensive range of human distress and crisis, from spiritual wandering to physical imprisonment, illness, and mortal danger, establishing this psalm's opening the Psalter's fifth and final major structural division on a note of sustained, comprehensive gratitude for God's proven, reliable deliverance across life's full range of genuine difficulty and need."
+      }
+    ]
+  },
+  "psalms-108": {
+    "book": "Psalms",
+    "chapter": 108,
+    "title": "A Prayer for Help against Enemies",
+    "scene": "David offers a psalm combining material from earlier compositions (Psalms 57 and 60), expressing confident, awakened praise before requesting renewed military victory and divine assistance against continuing hostile opposition.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help against Enemies",
+        "range": "108:1-13",
+        "text": "This psalm's combination of earlier material — opening verses drawn from Psalm 57's confident praise, later verses drawn from Psalm 60's request for military help — illustrates the Psalter's own internal practice of creatively recombining and adapting existing psalm material for renewed liturgical use in new circumstances, demonstrating that these inspired compositions were treated as a living, flexible worship resource rather than rigid, unalterable fixed texts alone."
+      }
+    ]
+  },
+  "psalms-109": {
+    "book": "Psalms",
+    "chapter": 109,
+    "title": "A Prayer for Judgment on an Enemy",
+    "scene": "David offers the Psalter's most extensive, severe imprecatory psalm, calling down an extended series of specific curses against a particularly treacherous, deceitful enemy who had repaid David's own genuine kindness with hatred and false accusation — material requiring careful, thoughtful interpretation regarding its appropriate contemporary application.",
+    "sections": [
+      {
+        "heading": "A Prayer for Judgment on an Enemy",
+        "range": "109:1-31",
+        "text": "This psalm's extended series of severe curses — “may his days be few; may another take his place of leadership… may his children be wandering beggars… may the creditor seize all he has” — represents the most extensive, severe example of imprecatory prayer found anywhere in the Psalter, requiring careful, thoughtful interpretation for appropriate contemporary application: this psalm functions not as a model for personal vengeance (which Scripture elsewhere consistently, explicitly prohibits, as in Romans 12:19's “do not take revenge… leave room for God's wrath”), but rather as an extreme, honest expression of righteous anger against genuine, severe betrayal and injustice, deliberately directed toward God's own judgment rather than personal action, and reflecting ancient Near Eastern legal and poetic conventions regarding appropriately severe curses against treachery that shouldn't necessarily be read as prescribing identical, specific actions for every reader facing comparable betrayal today. This psalm's closing shift toward confident praise — “with my mouth I will greatly extol the Lord… for he stands at the right hand of the needy, to save their lives from those who would condemn them” — reframes even this severe imprecation ultimately within a context of confident trust in God's own just character and reliable defense of the genuinely innocent and needy."
+      }
+    ]
+  },
+  "psalms-110": {
+    "book": "Psalms",
+    "chapter": 110,
+    "title": "The Messiah, King and Priest",
+    "scene": "David offers perhaps the single most frequently quoted psalm throughout the entire New Testament, presenting a striking oracle in which David himself calls someone “my Lord” and describes a coming figure uniting both royal and priestly roles — material Jesus himself uses to press the religious authorities regarding the Messiah's genuine identity.",
+    "sections": [
+      {
+        "heading": "The Messiah, King and Priest",
+        "range": "110:1-7",
+        "text": "This psalm's opening declaration — “the Lord says to my Lord: 'Sit at my right hand until I make your enemies a footstool for your feet'” — is directly quoted by Jesus himself (Matthew 22:41-46) to press the Pharisees regarding a genuine theological puzzle: since David himself, the psalm's author, calls this coming figure “my Lord,” how could this figure merely be David's own descendant, in the more limited, ordinary sense the Pharisees assumed, without also being David's superior in some more exalted, genuinely divine sense? This single verse is quoted or alluded to more frequently throughout the New Testament than any other Old Testament passage (including Acts 2:34-35, Hebrews 1:13, and numerous other references), consistently applied to Christ's own exalted position at the Father's right hand following his resurrection and ascension. This psalm's additional declaration — “you are a priest forever, in the order of Melchizedek” — is extensively developed in Hebrews 5-7 regarding Christ's own unique, eternal priesthood, distinct from and superior to the Levitical priestly line, since it derives from this same ancient, mysterious Melchizedek precedent (Genesis 14) rather than ordinary hereditary succession. This remarkably compact seven-verse psalm thus provides foundational New Testament scriptural support for both Christ's exalted kingship and his unique, eternal priesthood — a comprehensive messianic significance matched by no other single psalm within the entire Psalter."
+      }
+    ]
+  },
+  "psalms-111": {
+    "book": "Psalms",
+    "chapter": 111,
+    "title": "Praise for God's Goodness",
+    "scene": "This anonymous acrostic psalm offers extended praise for God's mighty works and consistent covenant faithfulness, closing with the same foundational declaration found throughout Israel's wisdom tradition: that genuine wisdom begins with reverent fear of the Lord.",
+    "sections": [
+      {
+        "heading": "Praise for God's Goodness",
+        "range": "111:1-10",
+        "text": "This psalm's extended celebration of God's “great… works” and his “compassion and grace” closes with the same foundational wisdom principle found throughout Proverbs — “the fear of the Lord is the beginning of wisdom; all who follow his precepts have good understanding” — reinforcing this consistent, recurring biblical theme that genuine practical wisdom is inseparably grounded in reverent, worshipful relationship with God, not merely accumulated abstract knowledge or technique alone."
+      }
+    ]
+  },
+  "psalms-112": {
+    "book": "Psalms",
+    "chapter": 112,
+    "title": "Blessings of the Godly",
+    "scene": "This anonymous acrostic psalm, structured as a companion piece to Psalm 111, celebrates the genuine blessings characterizing a person who genuinely fears the Lord — generosity, stability, and fearless confidence — providing a memorable, practical portrait of righteous, godly character in action.",
+    "sections": [
+      {
+        "heading": "Blessings of the Godly",
+        "range": "112:1-10",
+        "text": "This psalm's celebration of the person “who fears the Lord, who finds great delight in his commands” describes genuine, practical righteousness in action: generosity toward the poor and needy (“they have freely scattered their gifts to the poor”), consistent moral stability (“they will never be shaken”), and remarkable, fearless confidence even amid genuinely difficult or threatening news (“they will have no fear of bad news; their hearts are steadfast, trusting in the Lord”), providing a memorable, practical companion portrait to Psalm 111's preceding celebration of God's own character."
+      }
+    ]
+  },
+  "psalms-113": {
+    "book": "Psalms",
+    "chapter": 113,
+    "title": "Praise to God's Glorious Name",
+    "scene": "This anonymous psalm, the first of six psalms traditionally grouped together as the “Egyptian Hallel” (Psalms 113-118), sung during Jewish Passover celebration, celebrates God's simultaneously exalted transcendence and genuine, personal condescension to care for society's most humble and vulnerable members.",
+    "sections": [
+      {
+        "heading": "Praise to God's Glorious Name",
+        "range": "113:1-9",
+        "text": "This psalm's celebration of God's paradoxical character — “who is like the Lord our God, the One who sits enthroned on high… he raises the poor from the dust and lifts the needy from the ash heap” — conveys the remarkable combination of God's genuine, cosmic transcendence and his equally genuine, personal condescension to notice and elevate society's most humble, overlooked members, closing with the celebrated image of God “settl[ing] the childless woman in her home as a happy mother of children” — imagery Mary's own Magnificat (Luke 1:46-55) would later echo regarding her own unexpected, humble exaltation."
+      }
+    ]
+  },
+  "psalms-114": {
+    "book": "Psalms",
+    "chapter": 114,
+    "title": "God's Wonders at the Exodus",
+    "scene": "This brief, vivid psalm celebrates the Exodus and subsequent wilderness experience through dramatic, personified natural imagery — the sea fleeing, mountains skipping like rams — conveying creation's own appropriate, dramatic response to God's powerful, historical deliverance of his people.",
+    "sections": [
+      {
+        "heading": "God's Wonders at the Exodus",
+        "range": "114:1-8",
+        "text": "This psalm's vivid, personified imagery — “the sea looked and fled, the Jordan turned back; the mountains leaped like rams, the hills like lambs” — conveys creation's own dramatic, appropriate response to God's powerful historical intervention during the Exodus and subsequent Jordan River crossing, employing deliberately exaggerated, celebratory poetic imagery to convey these historical events' genuine cosmic significance and God's comprehensive power over creation itself."
+      }
+    ]
+  },
+  "psalms-115": {
+    "book": "Psalms",
+    "chapter": 115,
+    "title": "The Living God and Lifeless Idols",
+    "scene": "This anonymous psalm contrasts idols' fundamental powerlessness with the true, living God's genuine, active power, employing memorable, satirical imagery of idols possessing mouths that cannot speak and eyes that cannot see, before calling Israel toward confident, trusting worship of the living God alone.",
+    "sections": [
+      {
+        "heading": "The Living God and Lifeless Idols",
+        "range": "115:1-18",
+        "text": "This psalm's satirical description of idols — “they have mouths, but cannot speak, eyes, but cannot see… those who make them will be like them, and so will all who trust in them” — exposes idolatry's fundamental absurdity and its ultimately dehumanizing effect on worshipers who increasingly resemble the lifeless objects of their own misplaced devotion. This psalm's opening declaration — “not to us, Lord, not to us but to your name be the glory, because of your love and faithfulness” — models appropriate humility that redirects all genuine praise and credit away from human achievement toward God's own glory and character alone."
+      }
+    ]
+  },
+  "psalms-116": {
+    "book": "Psalms",
+    "chapter": 116,
+    "title": "Praise for Recovery from Illness",
+    "scene": "This anonymous psalm offers deeply personal, grateful testimony following God's deliverance from a genuinely severe, life-threatening crisis, expressing love for God grounded specifically in his demonstrated responsiveness to prayer, and posing the memorable question regarding what appropriate response such deliverance actually requires.",
+    "sections": [
+      {
+        "heading": "Praise for Recovery from Illness",
+        "range": "116:1-19",
+        "text": "This psalm's grateful testimony — “I love the Lord, for he heard my voice; he heard my cry for mercy… the cords of death entangled me… then I called on the name of the Lord: 'Lord, save me!'” — conveys genuine, personal love for God grounded specifically in his demonstrated, experienced responsiveness to sincere prayer during genuine crisis. This psalm's memorable question — “what shall I return to the Lord for all his goodness to me?” — finds its answer not in any attempt to adequately repay an unrepayable debt, but in continued grateful worship, public testimony, and faithful covenant devotion: “I will lift up the cup of salvation and call on the name of the Lord… I will fulfill my vows to the Lord in the presence of all his people.”"
+      }
+    ]
+  },
+  "psalms-117": {
+    "book": "Psalms",
+    "chapter": 117,
+    "title": "Praise the Lord",
+    "scene": "This psalm, the Psalter's and indeed the entire Bible's shortest chapter, offers a brief but comprehensive call for all nations to praise God, its universal scope directly quoted by Paul as evidence for the gospel's genuinely international, gentile-inclusive purpose.",
+    "sections": [
+      {
+        "heading": "Praise the Lord",
+        "range": "117:1-2",
+        "text": "This remarkably brief psalm — the shortest chapter in the entire Bible, at just two verses — nonetheless conveys comprehensive, universal scope: “praise the Lord, all you nations; extol him, all you peoples. For great is his love toward us, and the faithfulness of the Lord endures forever.” This psalm's explicit call for “all you nations” and “all you peoples” to join in praise is directly quoted by Paul in Romans 15:11 as scriptural evidence supporting the gospel's genuinely universal, gentile-inclusive purpose and reach, demonstrating that even this briefest of psalms carries genuine, significant theological weight regarding God's ultimate redemptive intentions extending to all humanity."
+      }
+    ]
+  },
+  "psalms-118": {
+    "book": "Psalms",
+    "chapter": 118,
+    "title": "A Song of Victory",
+    "scene": "This psalm, closing the “Egyptian Hallel” collection traditionally sung at Passover, celebrates God's deliverance through the memorable image of a rejected stone becoming the cornerstone — language Jesus applies directly to himself, and which the crowds echoed during his own triumphal entry into Jerusalem.",
+    "sections": [
+      {
+        "heading": "A Song of Victory",
+        "range": "118:1-29",
+        "text": "This psalm's celebrated declaration — “the stone the builders rejected has become the cornerstone” — is directly applied by Jesus to himself (Matthew 21:42, Mark 12:10-11) following his parable of the wicked tenant farmers, identifying his own rejection by Israel's religious leadership as precisely, deliberately anticipated by this ancient psalm, with his subsequent resurrection and exaltation fulfilling the psalm's declaration that this same rejected stone would nonetheless become the structure's essential, foundational cornerstone. This psalm's celebrated declaration — “blessed is he who comes in the name of the Lord” — is shouted by the crowds during Jesus's own triumphal entry into Jerusalem (Matthew 21:9), directly connecting this ancient liturgical psalm to that climactic, prophetically significant moment in Jesus's own earthly ministry, while the psalm's repeated affirmation, “give thanks to the Lord, for he is good; his love endures forever,” provides this collection's fitting, celebratory conclusion."
+      }
+    ]
+  },
+  "psalms-119": {
+    "book": "Psalms",
+    "chapter": 119,
+    "title": "The Excellence of God's Law",
+    "scene": "This anonymous psalm, by far the longest chapter in the entire Bible, offers an elaborately structured acrostic meditation (twenty-two stanzas of eight verses each, corresponding to the Hebrew alphabet's twenty-two letters) celebrating virtually every conceivable aspect of God's law, word, and revealed instruction.",
+    "sections": [
+      {
+        "heading": "The Excellence of God's Law",
+        "range": "119:1-176",
+        "text": "This extraordinary psalm's elaborate structure — twenty-two carefully constructed stanzas, each stanza's eight verses all beginning with the same successive Hebrew letter, employing numerous synonymous terms for God's revelation (law, statutes, precepts, commands, decrees, word, promise) throughout its 176 total verses — represents the Psalter's, and indeed the entire Bible's, longest sustained meditation on a single subject: comprehensive delight in and devotion to God's revealed word. This psalm's recurring themes include genuine, heartfelt delight in Scripture (“oh, how I love your law! I meditate on it all day long”), Scripture's practical guidance function (“your word is a lamp for my feet, a light on my path”), and its comprehensive relevance across every dimension of life — comfort amid suffering, protection from sin, wisdom exceeding even experienced teachers, and genuine, sustained hope. This psalm's honest inclusion of genuine struggle and affliction alongside its predominant celebration (“before I was afflicted I went astray, but now I obey your word… it was good for me to be afflicted so that I might learn your decrees”) demonstrates that even suffering, rightly received, can deepen rather than diminish genuine devotion to and dependence on God's revealed word, providing this entire psalm's sustained, comprehensive testimony that Scripture itself, properly understood and received, functions not as burdensome external constraint but as genuine source of delight, freedom, guidance, and life throughout every season and circumstance."
+      }
+    ]
+  },
+  "psalms-120": {
+    "book": "Psalms",
+    "chapter": 120,
+    "title": "A Prayer for Help",
+    "scene": "This psalm opens the collection of fifteen “Songs of Ascent” (Psalms 120-134), traditionally understood as pilgrimage songs sung by worshipers journeying up to Jerusalem for major festivals, beginning with lament over dwelling among deceitful, warmongering people while genuinely desiring peace.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "120:1-7",
+        "text": "This psalm's opening lament — “woe to me that I dwell in Meshek, that I live among the tents of Kedar! Too long have I lived among those who hate peace. I am for peace; but when I speak, they are for war” — conveys the genuine difficulty of living among consistently hostile, deceitful people, appropriately opening this collection of ascending pilgrimage psalms with recognition of ordinary life's genuine difficulty before the subsequent psalms in this same collection will progressively lead worshipers, both physically and spiritually, toward Jerusalem's genuine worship and peace."
+      }
+    ]
+  },
+  "psalms-121": {
+    "book": "Psalms",
+    "chapter": 121,
+    "title": "The Lord Watches over You",
+    "scene": "This beloved Song of Ascent offers confident, reassuring affirmation of God's constant, unsleeping vigilance and protective care over the pilgrim traveler, addressing genuine, practical concerns regarding the dangers involved in ancient journey and travel.",
+    "sections": [
+      {
+        "heading": "The Lord Watches over You",
+        "range": "121:1-8",
+        "text": "This psalm's opening question and answer — “I lift up my eyes to the mountains—where does my help come from? My help comes from the Lord, the Maker of heaven and earth” — grounds genuine confidence in God's identity as Creator, uniquely capable of comprehensive protective care. This psalm's repeated emphasis on God's unsleeping vigilance — “he who watches over you will not slumber; indeed, he who watches over Israel will neither slumber nor sleep” — offers genuine reassurance regarding constant, uninterrupted divine protection, particularly meaningful for ancient pilgrims facing the genuine, practical dangers (robbery, sunstroke, wild animals) that extended travel through unfamiliar or dangerous terrain actually involved, while its closing promise — “the Lord will watch over your coming and going both now and forevermore” — extends this protective care to encompass life's entire journey, not merely a single specific trip alone."
+      }
+    ]
+  },
+  "psalms-122": {
+    "book": "Psalms",
+    "chapter": 122,
+    "title": "A Song of Praise for Jerusalem",
+    "scene": "David expresses genuine joy at the prospect of pilgrimage to Jerusalem, celebrating the city's role as the center of both worship and just governance, and calling worshipers to actively pray for the city's genuine peace and security.",
+    "sections": [
+      {
+        "heading": "A Song of Praise for Jerusalem",
+        "range": "122:1-9",
+        "text": "David's joyful anticipation — “I rejoiced with those who said to me, 'Let us go to the house of the Lord'” — conveys genuine excitement regarding corporate worship and pilgrimage, while his call to “pray for the peace of Jerusalem”, since “for the sake of the house of the Lord our God, I will seek your prosperity,” models genuine, active concern and intercession for the wellbeing of the specific worshiping community and location one belongs to and values."
+      }
+    ]
+  },
+  "psalms-123": {
+    "book": "Psalms",
+    "chapter": 123,
+    "title": "A Prayer for Mercy",
+    "scene": "This brief Song of Ascent employs the image of attentive servants watching their master's hand for the slightest signal, conveying genuine, humble dependence on God's mercy amid ongoing experience of contempt and mockery from surrounding, more powerful and comfortable observers.",
+    "sections": [
+      {
+        "heading": "A Prayer for Mercy",
+        "range": "123:1-4",
+        "text": "This psalm's memorable image — “as the eyes of slaves look to the hand of their master… so our eyes look to the Lord our God, till he shows us his mercy” — conveys genuine, attentive, humble dependence, watching expectantly for even the slightest indication of God's gracious response, appropriate to this psalm's honest acknowledgment of “the contempt of the arrogant” and mockery experienced from more comfortable, complacent observers."
+      }
+    ]
+  },
+  "psalms-124": {
+    "book": "Psalms",
+    "chapter": 124,
+    "title": "God the Protector of His People",
+    "scene": "David offers grateful reflection on God's decisive deliverance from what could otherwise have been genuinely catastrophic destruction, employing vivid imagery of floodwaters and a hunter's broken snare to convey both the danger's real severity and the deliverance's genuine completeness.",
+    "sections": [
+      {
+        "heading": "God the Protector of His People",
+        "range": "124:1-8",
+        "text": "David's grateful reflection — “if the Lord had not been on our side… the flood would have engulfed us, the torrent would have swept over us… we have escaped like a bird from the fowler's snare; the snare has been broken, and we have escaped” — conveys genuine gratitude for deliverance from what could otherwise have been comprehensive, catastrophic destruction, grounding this psalm's closing declaration, “our help is in the name of the Lord, the Maker of heaven and earth,” in actual, specific historical experience rather than merely abstract theological affirmation alone."
+      }
+    ]
+  },
+  "psalms-125": {
+    "book": "Psalms",
+    "chapter": 125,
+    "title": "God's Protection of His People",
+    "scene": "This anonymous Song of Ascent compares those who genuinely trust in the Lord to Mount Zion's own unshakeable permanence, while praying that God would preserve genuine goodness and remove those who persistently turn toward crooked, deceptive ways.",
+    "sections": [
+      {
+        "heading": "God's Protection of His People",
+        "range": "125:1-5",
+        "text": "This psalm's comparison — “those who trust in the Lord are like Mount Zion, which cannot be shaken but endures forever” — grounds genuine spiritual security in comparison to Jerusalem's own literally unshakeable, mountain-surrounded topography, while its prayer for God's continued discernment between the genuinely righteous and those who persistently “turn to crooked ways” models appropriate concern for both personal security and the community's overall moral integrity and direction."
+      }
+    ]
+  },
+  "psalms-126": {
+    "book": "Psalms",
+    "chapter": 126,
+    "title": "A Harvest of Joy",
+    "scene": "This anonymous Song of Ascent celebrates the genuine, almost dreamlike joy of national restoration from exile, before shifting toward continued prayer for further, complete restoration, employing the memorable agricultural image of sowing in tears eventually giving way to reaping with genuine songs of joy.",
+    "sections": [
+      {
+        "heading": "A Harvest of Joy",
+        "range": "126:1-6",
+        "text": "This psalm's joyful recollection — “when the Lord restored the fortunes of Zion, we were like those who dreamed. Our mouths were filled with laughter, our tongues with songs of joy” — conveys restoration's genuinely overwhelming, almost unbelievable joy. This psalm's celebrated closing image — “those who sow with tears will reap with songs of joy. Those who go out weeping, carrying seed to sow, will return with songs of joy, carrying sheaves with them” — provides genuine, hard-won comfort regarding present difficulty's potential future harvest, without denying the real, genuine cost and grief — the tears — that difficult seasons of faithful labor and sacrifice actually, honestly involve."
+      }
+    ]
+  },
+  "psalms-127": {
+    "book": "Psalms",
+    "chapter": 127,
+    "title": "The Blessings of the Lord",
+    "scene": "This Song of Ascent, attributed to Solomon, offers genuine, practical wisdom regarding the ultimate futility of human effort and anxious labor undertaken without God's own blessing and involvement, closing with a celebrated affirmation of children as God's genuine, valuable reward and heritage.",
+    "sections": [
+      {
+        "heading": "The Blessings of the Lord",
+        "range": "127:1-5",
+        "text": "This psalm's opening principle — “unless the Lord builds the house, the builders labor in vain. Unless the Lord watches over the city, the guards stand watch in vain” — doesn't discourage legitimate human effort and diligence, but insists that such effort ultimately proves futile without God's own blessing and involvement, while its related observation, “in vain you rise early and stay up late, toiling for food to eat—for he grants sleep to those he loves,” cautions against anxious, excessive labor that fails to trust God's own provision and timing. This psalm's celebrated declaration — “children are a heritage from the Lord, offspring a reward from him… blessed is the man whose quiver is full of them” — affirms children's genuine, valuable status as God's own gracious gift and reward, not merely burden or inconvenience alone."
+      }
+    ]
+  },
+  "psalms-128": {
+    "book": "Psalms",
+    "chapter": 128,
+    "title": "Blessings for Those Who Fear the Lord",
+    "scene": "This anonymous Song of Ascent celebrates the genuine, tangible blessings characterizing a household and life grounded in reverent fear of the Lord, employing warm, domestic imagery of a flourishing vine and healthy olive shoots to convey family life's genuine potential for flourishing.",
+    "sections": [
+      {
+        "heading": "Blessings for Those Who Fear the Lord",
+        "range": "128:1-6",
+        "text": "This psalm's celebration — “blessed are all who fear the Lord, who walk in obedience to him… your wife will be like a fruitful vine within your house; your children will be like olive shoots around your table” — employs warm, domestic imagery to convey genuine, practical blessing extending through faithful, reverent living into one's family life and household, closing with the hope of witnessing “your children's children”, extending this blessing's scope across multiple future generations."
+      }
+    ]
+  },
+  "psalms-129": {
+    "book": "Psalms",
+    "chapter": 129,
+    "title": "A Prayer against Israel's Enemies",
+    "scene": "This anonymous Song of Ascent honestly acknowledges Israel's long history of persecution and affliction, while affirming confident hope that persistent, unrepentant oppressors would ultimately, appropriately wither like inherently short-lived rooftop grass.",
+    "sections": [
+      {
+        "heading": "A Prayer against Israel's Enemies",
+        "range": "129:1-8",
+        "text": "This psalm's honest acknowledgment — “they have greatly oppressed me from my youth… but they have not gained the victory over me. Plowmen have plowed my back and made their furrows long” — processes genuine, historical, and ongoing persecution without minimization, while its memorable image comparing persistent oppressors to short-lived, shallow-rooted rooftop grass — “withered before it can grow… with it the reaper cannot fill his hands” — affirms confident hope that such wickedness, however currently established, would ultimately prove genuinely unsustainable and short-lived."
+      }
+    ]
+  },
+  "psalms-130": {
+    "book": "Psalms",
+    "chapter": 130,
+    "title": "Waiting for the Lord",
+    "scene": "This deeply personal Song of Ascent, another of the traditional penitential psalms, cries out from genuine spiritual depths, celebrating God's forgiveness as the very basis for appropriate, reverent worship, and modeling patient, hope-filled waiting compared to watchmen anticipating the dawn.",
+    "sections": [
+      {
+        "heading": "Waiting for the Lord",
+        "range": "130:1-8",
+        "text": "This psalm's opening cry — “out of the depths I cry to you, Lord… if you, Lord, kept a record of sins, Lord, who could stand? But with you there is forgiveness, so that we can, with reverence, serve you” — grounds genuine, reverent worship specifically in God's forgiveness, recognizing that without such forgiveness, no one could genuinely stand before or serve a holy God at all. This psalm's celebrated image of patient waiting — “I wait for the Lord, my whole being waits, and in his word I put my hope. I wait for the Lord more than watchmen wait for the morning, more than watchmen wait for the morning” — conveys genuine, sustained hope-filled patience, comparable to night watchmen's confident, expectant anticipation of the dawn's certain, though perhaps not yet immediate, arrival."
+      }
+    ]
+  },
+  "psalms-131": {
+    "book": "Psalms",
+    "chapter": 131,
+    "title": "Childlike Trust in God",
+    "scene": "In one of the Psalter's briefest and most tender compositions, David expresses genuine humility and contentment, comparing his own settled, peaceful soul to a weaned child resting quietly and securely against its own mother.",
+    "sections": [
+      {
+        "heading": "Childlike Trust in God",
+        "range": "131:1-3",
+        "text": "David's tender self-description — “my heart is not proud, Lord, my eyes are not haughty; I do not concern myself with great matters or things too wonderful for me. But I have calmed and quieted myself, I am like a weaned child with its mother; like a weaned child I am content” — provides one of Scripture's most tender, memorable images of genuine spiritual maturity: not anxious striving after things beyond one's proper concern or control, but settled, secure contentment comparable to a weaned child's own quiet, trusting rest, no longer anxiously demanding immediate nursing but genuinely, peacefully secure simply in its mother's continued presence and nearness."
+      }
+    ]
+  },
+  "psalms-132": {
+    "book": "Psalms",
+    "chapter": 132,
+    "title": "God's Promise to David",
+    "scene": "This anonymous Song of Ascent recalls David's own earlier commitment to establish a proper dwelling place for the ark, before celebrating God's own reciprocal, unconditional covenant promise regarding David's enduring royal line and Zion's status as his own chosen, permanent dwelling place.",
+    "sections": [
+      {
+        "heading": "God's Promise to David",
+        "range": "132:1-18",
+        "text": "This psalm's recollection of David's own earlier oath not to rest “until I find a place for the Lord, a dwelling for the Mighty One of Jacob” sets up God's own reciprocal, even more significant covenant promise: “the Lord swore an oath to David… 'One of your own descendants I will place on your throne… for the Lord has chosen Zion, he has desired it for his dwelling'” — celebrating both David's genuine devotion and God's own gracious, covenant-keeping response that would ultimately, in its fullest sense, be realized through Christ's own eternal Davidic kingship."
+      }
+    ]
+  },
+  "psalms-133": {
+    "book": "Psalms",
+    "chapter": 133,
+    "title": "A Song about Brotherly Harmony",
+    "scene": "David offers this brief, beloved celebration of genuine community unity, employing rich, sensory imagery of precious anointing oil flowing down and refreshing dew to convey unity's genuinely valuable, blessing-producing character.",
+    "sections": [
+      {
+        "heading": "A Song about Brotherly Harmony",
+        "range": "133:1-3",
+        "text": "David's celebration — “how good and pleasant it is when God's people live together in unity! It is like precious oil poured on the head, running down on the beard… it is as if the dew of Hermon were falling on Mount Zion” — conveys genuine community unity's valuable, refreshing character through deliberately abundant, generous sensory imagery (overflowing oil, abundant dew), affirming that such unity itself constitutes a genuine, tangible source of blessing worthy of celebration, not merely a neutral, unremarkable byproduct of otherwise more significant spiritual concerns."
+      }
+    ]
+  },
+  "psalms-134": {
+    "book": "Psalms",
+    "chapter": 134,
+    "title": "A Call to Bless the Lord at Night",
+    "scene": "This brief psalm closes the extended Songs of Ascent collection with a nighttime call for temple servants to continue faithful, ongoing worship even during the late hours, concluding with a priestly blessing extended from Zion.",
+    "sections": [
+      {
+        "heading": "A Call to Bless the Lord at Night",
+        "range": "134:1-3",
+        "text": "This brief closing psalm's call — “praise the Lord, all you servants of the Lord who minister by night in the house of the Lord” — recognizes and commends faithful worship continuing even during unglamorous, easily overlooked nighttime hours, closing this entire Songs of Ascent collection with a fitting priestly benediction: “may the Lord bless you from Zion, he who is the Maker of heaven and earth.”"
+      }
+    ]
+  },
+  "psalms-135": {
+    "book": "Psalms",
+    "chapter": 135,
+    "title": "Praise for God's Goodness",
+    "scene": "This anonymous psalm calls God's people to extended praise, celebrating his sovereign power over creation and his historical deliverance of Israel from Egypt, while returning to this book's recurring satirical critique of idols' fundamental lifelessness and powerlessness.",
+    "sections": [
+      {
+        "heading": "Praise for God's Goodness",
+        "range": "135:1-21",
+        "text": "This psalm's extended call to praise — celebrating God's sovereignty “over all gods,” his power over creation's weather patterns, and his historical deliverance of Israel from Egypt through striking down “the firstborn of Egypt” — combines historical remembrance with renewed satirical critique of idols, echoing Psalm 115's similar language: “they have mouths, but cannot speak, eyes, but cannot see… those who make them will be like them, and so will all who trust in them,” reinforcing this recurring, important biblical theme regarding idolatry's fundamental emptiness and its ultimately dehumanizing effect on those who practice it."
+      }
+    ]
+  },
+  "psalms-136": {
+    "book": "Psalms",
+    "chapter": 136,
+    "title": "A Prayer of Thanksgiving",
+    "scene": "This distinctive antiphonal psalm recounts God's mighty deeds from creation through the Exodus and conquest, with every single verse concluding with the identical, repeated refrain “his love endures forever” — likely sung responsively between a worship leader and the congregation.",
+    "sections": [
+      {
+        "heading": "A Prayer of Thanksgiving",
+        "range": "136:1-26",
+        "text": "This psalm's distinctive, sustained structure — every one of its twenty-six verses concluding with the identical refrain, “his love endures forever” — was likely performed antiphonally, with a worship leader reciting each specific historical deed (creation, the Exodus, the Red Sea crossing, wilderness provision, conquest of the promised land) while the assembled congregation responded with this same repeated affirmation, creating a powerful, immersive liturgical experience deliberately reinforcing God's consistently reliable, enduring covenant love as the unifying thread connecting every specific historical event this psalm recounts."
+      }
+    ]
+  },
+  "psalms-137": {
+    "book": "Psalms",
+    "chapter": 137,
+    "title": "A Lament of Israelite Exiles",
+    "scene": "This anonymous psalm gives voice to genuine, raw grief and anger experienced during Babylonian exile, memorably describing the exiles' refusal to sing joyful songs for their mocking captors, before closing with severely imprecatory language regarding Babylon's infants — material requiring careful, honest interpretive engagement.",
+    "sections": [
+      {
+        "heading": "A Lament of Israelite Exiles",
+        "range": "137:1-9",
+        "text": "This psalm's poignant opening — “by the rivers of Babylon we sat and wept when we remembered Zion… how can we sing the songs of the Lord while in a foreign land?” — conveys genuine, profound grief over exile's devastating loss, refusing their captors' mocking demand for entertainment amid such genuine sorrow. This psalm's shocking closing verses — pronouncing blessing on “he who seizes your infants and dashes them against the rocks” regarding Babylon — represent Scripture's most severe imprecatory language, requiring honest, careful interpretive engagement rather than either uncritical endorsement or dismissive embarrassment: this raw, unfiltered expression of a traumatized, exiled community's genuine rage (itself likely reflecting, in kind though reversed, the very violence Babylon's own armies had actually inflicted on Israelite children during the conquest, per 2 Kings 8:12 and similar ancient Near Eastern warfare practices) is honestly recorded within Scripture's inspired canon as authentic human response to genuine atrocity, without the text itself necessarily endorsing this response as a model for the psalmist's own future action, nor as license for others facing comparable trauma to actually carry out such vengeance themselves — Scripture's inclusion of such raw, unfiltered lament demonstrates its willingness to honestly document genuine human anguish and rage, even when such expression falls considerably short of Christ's own later, explicit teaching regarding love for enemies, without this inclusion thereby constituting the text's own moral endorsement of every sentiment it honestly, unflinchingly records."
+      }
+    ]
+  },
+  "psalms-138": {
+    "book": "Psalms",
+    "chapter": 138,
+    "title": "A Prayer of Thanksgiving",
+    "scene": "David offers grateful praise for God's faithfulness and answered prayer, expressing confidence that even earth's powerful kings would eventually recognize and praise God's own greater glory, while affirming trust in God's continued, purposeful involvement in his life.",
+    "sections": [
+      {
+        "heading": "A Prayer of Thanksgiving",
+        "range": "138:1-8",
+        "text": "David's grateful testimony — “I will praise you, Lord, with all my heart… when I called, you answered me; you greatly emboldened me” — grounds genuine confidence in God's demonstrated responsiveness to sincere prayer, while his closing affirmation, “the Lord will vindicate me; your love, Lord, endures forever—do not abandon the works of your hands,” expresses trust that God's purposeful involvement in his life would continue and reach genuine completion, not remain permanently unfinished or abandoned."
+      }
+    ]
+  },
+  "psalms-139": {
+    "book": "Psalms",
+    "chapter": 139,
+    "title": "God's Complete Knowledge and Care",
+    "scene": "David offers one of Scripture's most theologically profound and personally intimate psalms, celebrating God's comprehensive, inescapable knowledge and presence throughout every dimension of existence, and his personal, careful craftsmanship in forming each person even before birth — material central to biblical discussions of God's omniscience, omnipresence, and the unborn's genuine value.",
+    "sections": [
+      {
+        "heading": "God's Complete Knowledge and Care",
+        "range": "139:1-24",
+        "text": "This psalm's extended celebration of God's omniscience — “you have searched me, Lord, and you know me… before a word is on my tongue you, Lord, know it completely” — and omnipresence — “where can I go from your Spirit? Where can I flee from your presence? If I go up to the heavens, you are there; if I make my bed in the depths, you are there” — provides Scripture's most comprehensive, personally intimate treatment of these significant divine attributes, conveying both genuine comfort (nowhere is truly beyond God's caring presence) and appropriate, sobering accountability (nothing genuinely escapes his comprehensive knowledge). This psalm's celebrated declaration regarding prenatal formation — “for you created my inmost being; you knit me together in my mother's womb… my frame was not hidden from you when I was made in the secret place… your eyes saw my unformed body” — is among Scripture's most frequently cited passages regarding the unborn's genuine personhood and value, affirming God's personal, careful involvement and knowledge extending to human life's very earliest, developmental stages, well before any capacity for independent action, appearance, or conventional personhood markers might otherwise be observed. This psalm's honest, searching closing prayer — “search me, God, and know my heart; test me and know my anxious thoughts. See if there is any offensive way in me, and lead me in the way everlasting” — appropriately concludes this extended meditation on divine omniscience with genuine, humble invitation for that same comprehensive knowledge to be actively, redemptively applied to the psalmist's own continued spiritual growth and correction."
+      }
+    ]
+  },
+  "psalms-140": {
+    "book": "Psalms",
+    "chapter": 140,
+    "title": "A Prayer for Protection",
+    "scene": "David appeals urgently for protection from violent, deceitful enemies whose words function like poisonous snake venom, expressing confident trust that God genuinely secures justice for the poor and afflicted against such persistent, malicious opposition.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection",
+        "range": "140:1-13",
+        "text": "David's urgent appeal — “rescue me, Lord, from evildoers; protect me from the violent, who devise evil plans in their hearts… their tongues spit venom like a snake” — conveys genuine, urgent need for protection from calculated, malicious opposition, while his confident affirmation, “I know that the Lord secures justice for the poor and upholds the cause of the needy,” grounds this specific personal petition in God's own consistent, demonstrated character as defender of the vulnerable throughout Scripture's broader witness."
+      }
+    ]
+  },
+  "psalms-141": {
+    "book": "Psalms",
+    "chapter": 141,
+    "title": "A Prayer for Protection from Sin and Enemies",
+    "scene": "David offers an evening prayer requesting careful guard over his own speech and heart, expressing willingness to receive correction from a genuinely righteous person even when such correction proves painful, while requesting protection from both external temptation and the wicked's specific schemes.",
+    "sections": [
+      {
+        "heading": "A Prayer for Protection from Sin and Enemies",
+        "range": "141:1-10",
+        "text": "David's request — “set a guard over my mouth, Lord; keep watch over the door of my lips” — acknowledges genuine, ongoing need for divine help specifically in controlling speech, an area this entire book of Psalms and the broader wisdom tradition consistently identifies as particularly challenging and consequential. David's notable willingness to receive correction — “let a righteous man strike me—that is a kindness; let him rebuke me—that is oil on my head. My head will not refuse it” — models genuine humility and openness to potentially painful but ultimately beneficial correction from trustworthy, righteous sources."
+      }
+    ]
+  },
+  "psalms-142": {
+    "book": "Psalms",
+    "chapter": 142,
+    "title": "A Prayer for Help",
+    "scene": "David, composing this psalm while hiding in a cave during his flight from Saul, pours out genuine complaint regarding his complete isolation and abandonment, affirming that God alone remained his refuge when every human source of support and companionship had seemingly failed or disappeared.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "142:1-7",
+        "text": "David's honest complaint — “I look and see no one to my right; no one is concerned for me. I have no refuge; no one cares for my life” — conveys genuine, complete isolation during a period of extreme danger, while his declaration, “you are my refuge, my portion in the land of the living,” affirms that even when every human source of support genuinely fails or disappears, God's own presence and provision remains reliably, sufficiently available."
+      }
+    ]
+  },
+  "psalms-143": {
+    "book": "Psalms",
+    "chapter": 143,
+    "title": "A Prayer for Help",
+    "scene": "David offers the last of the traditional seven penitential psalms, combining honest acknowledgment that “no one living is righteous before you” with genuine, urgent petition for guidance, deliverance, and renewed spiritual vitality amid a spirit genuinely growing faint within him.",
+    "sections": [
+      {
+        "heading": "A Prayer for Help",
+        "range": "143:1-12",
+        "text": "David's honest theological acknowledgment — “do not bring your servant into judgment, for no one living is righteous before you” — provides important Old Testament grounding for the doctrine of universal human sinfulness, even from someone (David himself) otherwise generally regarded as genuinely, exceptionally righteous. David's urgent plea — “my spirit grows faint within me; my heart within me is dismayed… answer me quickly, Lord; my spirit fails” — conveys genuine spiritual exhaustion and urgency, while his closing request, “teach me to do your will, for you are my God; may your good Spirit lead me on level ground,” models appropriate priority on genuine guidance and Spirit-led direction, not merely immediate crisis resolution alone."
+      }
+    ]
+  },
+  "psalms-144": {
+    "book": "Psalms",
+    "chapter": 144,
+    "title": "A Prayer for Rescue and Prosperity",
+    "scene": "David offers a royal psalm combining martial imagery celebrating God as his trainer for battle with reflective wonder at humanity's genuine insignificance compared to God's own greatness, closing with a vision of genuine, comprehensive national blessing and prosperity.",
+    "sections": [
+      {
+        "heading": "A Prayer for Rescue and Prosperity",
+        "range": "144:1-15",
+        "text": "David's celebration of God as his “Rock, who trains my hands for war, my fingers for battle” combines martial imagery with genuine, humble wonder — “Lord, what are human beings that you care for them, mere mortals that you think of them? They are like a breath”, echoing Psalm 8's similar reflection — acknowledging humanity's genuine insignificance even while celebrating God's remarkable, gracious attention and care. This psalm's closing vision of comprehensive blessing — sons like well-nurtured plants, daughters like graceful pillars, barns filled with abundant crops, and cattle bearing without miscarriage — conveys genuine, holistic prosperity extending across every dimension of ordinary communal and family life."
+      }
+    ]
+  },
+  "psalms-145": {
+    "book": "Psalms",
+    "chapter": 145,
+    "title": "Praise to God",
+    "scene": "David offers an extended acrostic psalm of pure praise, celebrating God's greatness, goodness, and compassionate care for all creation — a comprehensive doxology this book's own concluding verses identify as fitting introduction to the Psalter's final, climactic sequence of pure praise psalms.",
+    "sections": [
+      {
+        "heading": "Praise to God",
+        "range": "145:1-21",
+        "text": "This psalm's extended, comprehensive celebration — “great is the Lord and most worthy of praise… the Lord is gracious and compassionate, slow to anger and rich in love. The Lord is good to all; he has compassion on all he has made” — combines celebration of God's transcendent greatness with his equally genuine, comprehensive compassion extending to “all he has made,” not merely his covenant people alone. This psalm's celebrated declaration — “the Lord is near to all who call on him, to all who call on him in truth… the Lord watches over all who love him” — provides genuine, comprehensive assurance of God's accessible, responsive presence, appropriately transitioning the Psalter toward its climactic, final sequence of pure, unbroken praise psalms with which this entire collection concludes."
+      }
+    ]
+  },
+  "psalms-146": {
+    "book": "Psalms",
+    "chapter": 146,
+    "title": "Praise the Lord Who Helps the Helpless",
+    "scene": "This anonymous psalm, the first of the Psalter's closing five “Hallelujah psalms,” celebrates God's superior reliability compared to fallible human political leaders, cataloguing his consistent care specifically for society's most vulnerable and overlooked members.",
+    "sections": [
+      {
+        "heading": "Praise the Lord Who Helps the Helpless",
+        "range": "146:1-10",
+        "text": "This psalm's caution against ultimate trust in human political leadership — “do not put your trust in princes, in human beings, who cannot save. When their spirit departs, they return to the ground; on that very day their plans come to nothing” — redirects ultimate confidence toward God alone, whose consistent character is then catalogued through his care for society's most vulnerable: “He upholds the cause of the oppressed and gives food to the hungry… the Lord watches over the foreigner and sustains the fatherless and the widow.”"
+      }
+    ]
+  },
+  "psalms-147": {
+    "book": "Psalms",
+    "chapter": 147,
+    "title": "Praise for God's Care for Jerusalem",
+    "scene": "This anonymous psalm celebrates the striking, deliberate combination of God's cosmic power (numbering and naming every star) with his intimate, personal tenderness (healing the brokenhearted and binding up their wounds), conveying his comprehensive care spanning both cosmic and deeply personal scales.",
+    "sections": [
+      {
+        "heading": "Praise for God's Care for Jerusalem",
+        "range": "147:1-20",
+        "text": "This psalm's deliberate juxtaposition — “he heals the brokenhearted and binds up their wounds. He determines the number of the stars and calls them each by name” — conveys God's remarkable, comprehensive care operating simultaneously at both the most intimate, personal scale (individual emotional healing) and the most vast, cosmic scale (numbering and personally naming countless stars), refusing any false choice between God's genuine cosmic transcendence and his equally genuine, attentive personal care and involvement."
+      }
+    ]
+  },
+  "psalms-148": {
+    "book": "Psalms",
+    "chapter": 148,
+    "title": "Praise the Lord",
+    "scene": "This anonymous psalm issues an extraordinarily comprehensive call for literally all of creation — angels, celestial bodies, weather phenomena, sea creatures, mountains, trees, animals, and every category of human person — to join together in unified, comprehensive praise of their common Creator.",
+    "sections": [
+      {
+        "heading": "Praise the Lord",
+        "range": "148:1-14",
+        "text": "This psalm's extraordinarily comprehensive call to praise — addressing angels, sun and moon, shining stars, sea creatures and ocean depths, lightning and hail, mountains and hills, wild animals and livestock, and “kings of the earth and all nations, you princes and all rulers on earth, young men and women, old men and children” — conveys creation's genuinely comprehensive, unified capacity and calling to praise its common Creator, deliberately including every conceivable category of created being, from the most exalted angelic beings to the smallest, most ordinary creatures, in this magnificent, all-encompassing chorus of praise."
+      }
+    ]
+  },
+  "psalms-149": {
+    "book": "Psalms",
+    "chapter": 149,
+    "title": "Praise for God's Salvation",
+    "scene": "This anonymous psalm calls God's people to celebratory, physically expressive worship through dance and instrumental music, while its closing verses' martial imagery regarding executing judgment on the nations requires careful interpretation within its own specific ancient covenant context.",
+    "sections": [
+      {
+        "heading": "Praise for God's Salvation",
+        "range": "149:1-9",
+        "text": "This psalm's call to exuberant, physically expressive worship — “let them praise his name with dancing and make music to him with timbrel and harp… let the faithful rejoice in this honor” — continues the Psalter's consistent affirmation of embodied, joyful, physically expressive worship as entirely appropriate and valuable. This psalm's closing martial imagery, celebrating God's people “execut[ing] the judgment written against” hostile nations, reflects this psalm's specific ancient covenant context regarding Israel's own particular historical circumstances and enemies, requiring careful, thoughtful interpretation regarding its appropriate application within the New Testament's own quite different framework, where believers' “weapons” are explicitly reframed as “not of the flesh” but spiritual in nature (2 Corinthians 10:4), and final judgment against persistent evil belongs to God's own sovereign timing and action, not to any believer's own direct, personal execution or enforcement."
+      }
+    ]
+  },
+  "psalms-150": {
+    "book": "Psalms",
+    "chapter": 150,
+    "title": "Praise the Lord",
+    "scene": "The book of Psalms closes with this magnificent, climactic doxology — a concentrated crescendo of pure, unqualified praise employing every available musical instrument and calling everything that has breath to join in this ultimate, fitting conclusion to Israel's entire inspired hymnbook and prayer book.",
+    "sections": [
+      {
+        "heading": "Praise the Lord",
+        "range": "150:1-6",
+        "text": "This magnificent closing psalm's rapid-fire, cumulative catalogue of praise — trumpet, harp and lyre, timbrel and dancing, strings and pipe, clashing and resounding cymbals — employs virtually every musical instrument available within ancient Israelite worship, conveying praise's genuinely comprehensive, exuberant, and multi-sensory character as this entire extended collection's fitting, climactic conclusion. This psalm's closing declaration — “let everything that has breath praise the Lord” — extends the Psalter's final word beyond even human worshipers alone to encompass every living, breathing creature, providing a genuinely universal, all-encompassing summons to praise that fittingly closes this entire 150-psalm collection — itself spanning centuries of composition, virtually every category of human experience and emotion (from the deepest anguish and honest complaint to the most exuberant celebration and confident trust), and ultimately, consistently pointing beyond itself toward the God whose character, faithfulness, and worthiness these many inspired voices, across so many centuries and circumstances, have persistently, honestly, and comprehensively borne witness to throughout this entire remarkable book."
+      }
+    ]
+  }
 };
 
 /* ============================================================
@@ -12747,9 +16418,15 @@ window.CHAPTER_EXPOSITIONS_NT = {
   }
 };
 
-// Merge the Prophets and New Testament sets into the main store,
-// then drop the temporary globals so only window.CHAPTER_EXPOSITIONS
-// is exposed to the rest of the app.
-Object.assign(window.CHAPTER_EXPOSITIONS, window.CHAPTER_EXPOSITIONS_PROPHETS, window.CHAPTER_EXPOSITIONS_NT);
+// Merge the Writings, Prophets, and New Testament sets into the
+// main store, then drop the temporary globals so only
+// window.CHAPTER_EXPOSITIONS is exposed to the rest of the app.
+Object.assign(
+  window.CHAPTER_EXPOSITIONS,
+  window.CHAPTER_EXPOSITIONS_WRITINGS,
+  window.CHAPTER_EXPOSITIONS_PROPHETS,
+  window.CHAPTER_EXPOSITIONS_NT
+);
+delete window.CHAPTER_EXPOSITIONS_WRITINGS;
 delete window.CHAPTER_EXPOSITIONS_PROPHETS;
 delete window.CHAPTER_EXPOSITIONS_NT;
