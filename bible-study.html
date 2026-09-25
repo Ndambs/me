@@ -176,6 +176,26 @@ at and can leave from.
   </div>
 </div>
 
+<!-- Exposition "Back" destination-choice popover -->
+<div class="bs-modal-overlay" id="bs-exp-back-overlay" aria-hidden="true">
+  <div class="bs-modal bs-exp-back-modal" role="dialog" aria-modal="true" aria-labelledby="bs-exp-back-title">
+    <h3 class="bs-modal-title" id="bs-exp-back-title">Go back to&hellip;</h3>
+    <div class="bs-exp-back-choices">
+      <button class="bs-exp-back-choice" id="bs-exp-back-prev-btn" type="button" hidden>
+        <span class="bs-exp-back-choice-label">&larr; Previous exposition</span>
+        <span class="bs-exp-back-choice-sub" id="bs-exp-back-prev-sub"></span>
+      </button>
+      <button class="bs-exp-back-choice" id="bs-exp-back-section-btn" type="button">
+        <span class="bs-exp-back-choice-label">&uarr; Section page</span>
+        <span class="bs-exp-back-choice-sub" id="bs-exp-back-section-sub"></span>
+      </button>
+    </div>
+    <div class="bs-modal-actions">
+      <button class="bs-modal-btn bs-modal-cancel" id="bs-exp-back-cancel" style="width:100%">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <script src="js/bible-data.js"></script>
 <script src="js/resources-data.js"></script>
 <script src="js/exposition-data.js"></script>

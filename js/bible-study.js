@@ -259,6 +259,7 @@
   }
   var expReturnView = "study"; // remembers which tab to go back to
   var expReturnHash = "";
+  var currentExpPrevTarget = null; // {slug, chapter, label} for the "previous exposition" choice
 
   function renderExposition(slug, chapter) {
     var key = slug + "-" + chapter;
@@ -294,11 +295,14 @@
     var prevHtml;
     if (prevCh) {
       prevHtml = navLinkHtml(slug, prevCh, bookName, "\u2190 Previous chapter");
+      currentExpPrevTarget = { slug: slug, chapter: prevCh, label: bookName + " " + prevCh };
     } else if (bookIdx > 0) {
       var prevBook = BOOKS[bookIdx - 1];
       prevHtml = navLinkHtml(prevBook.slug, prevBook.chapters, prevBook.name, "\u2190 Previous book");
+      currentExpPrevTarget = { slug: prevBook.slug, chapter: prevBook.chapters, label: prevBook.name + " " + prevBook.chapters };
     } else {
       prevHtml = '<span class="soon" style="flex:1"></span>';
+      currentExpPrevTarget = null;
     }
 
     var nextHtml;
@@ -318,7 +322,8 @@
       sectionsHtml +
       '<div class="bs-exp-pagenav">' + prevHtml + nextHtml + "</div>" +
       '<div class="bs-exp-progress-note">This library of chapter expositions is being reviewed and revised a section at a time, ' +
-      "starting from Genesis 1 and moving forward, so more content and changes will keep appearing over time.</div>";
+      "starting from Genesis 1 and moving forward, so more content and changes will keep appearing over time.</div>" +
+      '<button class="bs-exp-back bs-exp-back-bottom" id="bs-exp-back-bottom" type="button">&larr; Back</button>';
 
     contentEl.querySelectorAll("[data-exp-nav]").forEach(function (a) {
       a.addEventListener("click", function (e) {
@@ -327,6 +332,9 @@
         openExposition(parts[0], parseInt(parts[1], 10));
       });
     });
+
+    var backBottomBtn = document.getElementById("bs-exp-back-bottom");
+    if (backBottomBtn) backBottomBtn.addEventListener("click", openBackMenu);
   }
   function navLinkHtml(slug, chapter, bookName, label) {
     var exists = !!EXPOSITIONS[slug + "-" + chapter];
@@ -336,10 +344,28 @@
       "</a>";
   }
   function openExposition(slug, chapter, fromView) {
-    if (fromView) expReturnView = fromView;
-    expReturnHash = location.hash;
+    // Only a genuine *entry* into the exposition feature (fromView is passed
+    // by the study/resources views) should remember where "Back" leads and
+    // push a new history entry. Hopping chapter-to-chapter or book-to-book
+    // from inside an exposition must NOT touch expReturnView/expReturnHash -
+    // previously it did, which silently rewrote "back" to mean "one chapter
+    // back" instead of "back to where you came from", forcing readers to
+    // click Back repeatedly to escape a section. It also pushed a fresh
+    // browser-history entry per chapter, so the browser's own Back button had
+    // the same problem. Internal navigation now replaces the current history
+    // entry in place instead.
+    var isEntry = !!fromView;
+    if (isEntry) {
+      expReturnView = fromView;
+      expReturnHash = location.hash;
+    }
     renderExposition(slug, chapter);
-    location.hash = "exp-" + slug + "-" + chapter;
+    var hash = "exp-" + slug + "-" + chapter;
+    if (isEntry || !history.replaceState) {
+      location.hash = hash;
+    } else {
+      history.replaceState(null, "", "#" + hash);
+    }
     switchView("exposition");
     var scrollEl = document.getElementById("bs-view-exposition");
     if (scrollEl) scrollEl.scrollTop = 0;
@@ -807,13 +833,70 @@
     btn.addEventListener("click", function () { switchView(btn.getAttribute("data-view")); });
   });
 
+  // ---------- exposition "Back" destination-choice popover ----------
+  // Both the top back button and the one at the bottom of the writeup open
+  // this, letting the reader choose between returning to the section page
+  // they came from or stepping to the previous exposition, instead of
+  // guessing which one a single Back button will do.
   var expBackBtn = document.getElementById("bs-exp-back");
-  if (expBackBtn) {
-    expBackBtn.addEventListener("click", function () {
-      switchView(expReturnView);
-      if (expReturnHash) { location.hash = expReturnHash; }
+  var expBackOverlay = document.getElementById("bs-exp-back-overlay");
+  var expBackPrevBtn = document.getElementById("bs-exp-back-prev-btn");
+  var expBackPrevSub = document.getElementById("bs-exp-back-prev-sub");
+  var expBackSectionBtn = document.getElementById("bs-exp-back-section-btn");
+  var expBackSectionSub = document.getElementById("bs-exp-back-section-sub");
+  var expBackCancelBtn = document.getElementById("bs-exp-back-cancel");
+  var expBackLastFocused = null;
+
+  function expSectionLabel() {
+    return expReturnView === "resources" ? "Resources Library" : "today\u2019s study";
+  }
+
+  function goToSection() {
+    switchView(expReturnView);
+    if (expReturnHash) { location.hash = expReturnHash; }
+  }
+
+  function openBackMenu() {
+    if (!expBackOverlay) { goToSection(); return; } // fallback if markup is missing
+    if (currentExpPrevTarget && expBackPrevBtn) {
+      expBackPrevBtn.hidden = false;
+      if (expBackPrevSub) expBackPrevSub.textContent = currentExpPrevTarget.label;
+    } else if (expBackPrevBtn) {
+      expBackPrevBtn.hidden = true;
+    }
+    if (expBackSectionSub) expBackSectionSub.textContent = expSectionLabel();
+    expBackLastFocused = document.activeElement;
+    expBackOverlay.classList.add("show");
+    expBackOverlay.setAttribute("aria-hidden", "false");
+    var toFocus = (currentExpPrevTarget && expBackPrevBtn) ? expBackPrevBtn : expBackSectionBtn;
+    if (toFocus) toFocus.focus();
+  }
+  function closeBackMenu() {
+    if (!expBackOverlay) return;
+    expBackOverlay.classList.remove("show");
+    expBackOverlay.setAttribute("aria-hidden", "true");
+    if (expBackLastFocused && expBackLastFocused.focus) expBackLastFocused.focus();
+  }
+  if (expBackBtn) expBackBtn.addEventListener("click", openBackMenu);
+  if (expBackSectionBtn) {
+    expBackSectionBtn.addEventListener("click", function () { closeBackMenu(); goToSection(); });
+  }
+  if (expBackPrevBtn) {
+    expBackPrevBtn.addEventListener("click", function () {
+      if (!currentExpPrevTarget) return;
+      closeBackMenu();
+      openExposition(currentExpPrevTarget.slug, currentExpPrevTarget.chapter);
     });
   }
+  if (expBackCancelBtn) expBackCancelBtn.addEventListener("click", closeBackMenu);
+  if (expBackOverlay) {
+    expBackOverlay.addEventListener("click", function (e) {
+      if (e.target === expBackOverlay) closeBackMenu();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && expBackOverlay && expBackOverlay.classList.contains("show")) closeBackMenu();
+  });
 
   // ---------- auto-hide the top bar while scrolling down ----------
   // Applied to whichever pane is currently scrolling. Shows immediately on
