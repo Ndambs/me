@@ -289,8 +289,27 @@
 
     var prevCh = chapter > 1 ? chapter - 1 : null;
     var nextCh = totalChapters && chapter < totalChapters ? chapter + 1 : null;
-    var prevHtml = prevCh ? navLinkHtml(slug, prevCh, bookName, "\u2190 Previous chapter") : '<span class="soon" style="flex:1"></span>';
-    var nextHtml = nextCh ? navLinkHtml(slug, nextCh, bookName, "Next chapter \u2192") : '<span class="soon" style="flex:1"></span>';
+    var bookIdx = BOOKS.findIndex(function (b) { return b.slug === slug; });
+
+    var prevHtml;
+    if (prevCh) {
+      prevHtml = navLinkHtml(slug, prevCh, bookName, "\u2190 Previous chapter");
+    } else if (bookIdx > 0) {
+      var prevBook = BOOKS[bookIdx - 1];
+      prevHtml = navLinkHtml(prevBook.slug, prevBook.chapters, prevBook.name, "\u2190 Previous book");
+    } else {
+      prevHtml = '<span class="soon" style="flex:1"></span>';
+    }
+
+    var nextHtml;
+    if (nextCh) {
+      nextHtml = navLinkHtml(slug, nextCh, bookName, "Next chapter \u2192");
+    } else if (bookIdx > -1 && bookIdx < BOOKS.length - 1) {
+      var nextBook = BOOKS[bookIdx + 1];
+      nextHtml = navLinkHtml(nextBook.slug, 1, nextBook.name, "Next book \u2192");
+    } else {
+      nextHtml = '<span class="soon" style="flex:1"></span>';
+    }
 
     contentEl.innerHTML =
       '<div class="bs-exp-crumb">' + escapeHtml(bookName) + " &rsaquo; <b>Chapter " + chapter + "</b></div>" +
