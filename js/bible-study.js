@@ -148,12 +148,27 @@
   var modalTitle = document.getElementById("bs-modal-title");
   var modalCancel = document.getElementById("bs-modal-cancel");
   var modalConfirm = document.getElementById("bs-modal-confirm");
+  var modalExpPrompt = document.getElementById("bs-modal-exp-prompt");
+  var modalExpBtn = document.getElementById("bs-modal-exp-prompt-btn");
   var lastFocused = null;
 
-  function showConfirmModal(titleText, bodyHtml, url) {
+  // `exp`, when given, is { slug, chapter } for a chapter that also has a
+  // full exposition — shown as a secondary prompt so the reader knows that
+  // option exists before they tap through to an external site.
+  function showConfirmModal(titleText, bodyHtml, url, exp) {
     modalConfirm.setAttribute("href", url);
     modalTitle.textContent = titleText;
     modalBody.innerHTML = bodyHtml;
+    if (exp && modalExpPrompt && modalExpBtn) {
+      modalExpPrompt.hidden = false;
+      modalExpBtn.onclick = function () {
+        closeVoiceModal();
+        openExposition(exp.slug, exp.chapter, "study");
+      };
+    } else if (modalExpPrompt) {
+      modalExpPrompt.hidden = true;
+      if (modalExpBtn) modalExpBtn.onclick = null;
+    }
     lastFocused = document.activeElement;
     modalOverlay.classList.add("show");
     modalOverlay.setAttribute("aria-hidden", "false");
@@ -230,7 +245,8 @@
     var label = link.fullName + " " + link.chapterPart;
     var body = "This opens <b>" + escapeHtml(label) + "</b> on BibleGateway, in the <b>NLT</b> " +
       "(the same translation this guide uses) - in a new tab.";
-    showConfirmModal("Open " + label + "?", body, link.url);
+    var exp = findExposition(refString);
+    showConfirmModal("Open " + label + "?", body, link.url, exp ? { slug: exp.slug, chapter: exp.chapter } : null);
   }
 
   // ---------- chapter expositions ----------
@@ -492,7 +508,10 @@
       parts.push('<div class="pref">' + escapeHtml(p.ref || "") + (hasLink ? ' <span class="pref-hint">↗</span>' : "") + "</div>");
       parts.push("<p>" + escapeHtml(p.text || "") + "</p>");
       if (exp) {
-        parts.push('<button class="bs-exp-link" data-exp-slug="' + exp.slug + '" data-exp-chapter="' + exp.chapter + '">Full exposition of this chapter \u2192</button>');
+        parts.push('<button class="bs-exp-link" data-exp-slug="' + exp.slug + '" data-exp-chapter="' + exp.chapter + '">' +
+          '<span class="bs-exp-link-icon">\uD83D\uDCD6</span>' +
+          '<span class="bs-exp-link-text">Full exposition of this chapter</span>' +
+          '<span class="bs-exp-link-arrow">\u2192</span></button>');
       }
       parts.push("</div>");
       return parts.join("");

@@ -279,6 +279,12 @@
 }
 .bs-title-block span{ font-size:.72rem; color:var(--bs-text-faint); font-family:var(--bs-mono); }
 @media (max-width:760px){ .bs-title-block{ display:none; } }
+@media (max-width:920px){
+  .bs-topbar{ padding:12px 14px; gap:10px; }
+  .bs-icon-btn{ width:42px; height:42px; }
+  .bs-back{ padding:9px 12px; }
+  .bs-tab-btn{ padding:9px 15px; }
+}
 .bs-top-actions{ display:flex; align-items:center; gap:8px; flex:none; }
 .bs-icon-btn{
   width:38px; height:38px; display:flex; align-items:center; justify-content:center;
@@ -520,11 +526,24 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-passage-item.clickable:hover, .bs-passage-item.clickable:focus-visible{ background:var(--bs-passage-dim); outline:none; }
 .pref-hint{ font-size:.8rem; opacity:.7; }
 .bs-exp-link{
-  display:block; grid-column:1 / -1; margin-top:10px; font-family:var(--bs-mono); font-size:.76rem;
-  color:var(--bs-gold); background:none; border:none; padding:0; cursor:pointer;
-  text-decoration:underline; text-underline-offset:3px; text-align:left;
+  display:flex; align-items:center; gap:10px; grid-column:1 / -1; margin-top:14px;
+  font-family:var(--bs-mono); font-size:.78rem; font-weight:600;
+  color:var(--bs-gold); background:var(--bs-gold-dim);
+  border:1px solid color-mix(in srgb, var(--bs-gold) 45%, transparent);
+  border-radius:var(--bs-radius-sm); padding:13px 16px; min-height:44px;
+  cursor:pointer; text-align:left; text-decoration:none; width:100%; box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .15s, border-color .15s, transform .1s;
 }
-.bs-exp-link:hover{ opacity:.8; }
+.bs-exp-link .bs-exp-link-icon{ flex:none; font-size:.95rem; line-height:1; }
+.bs-exp-link .bs-exp-link-text{ flex:1 1 auto; }
+.bs-exp-link .bs-exp-link-arrow{ flex:none; transition:transform .15s; }
+.bs-exp-link:hover, .bs-exp-link:focus-visible{
+  background:color-mix(in srgb, var(--bs-gold) 22%, var(--bs-gold-dim));
+  border-color:var(--bs-gold); outline:none;
+}
+.bs-exp-link:hover .bs-exp-link-arrow, .bs-exp-link:focus-visible .bs-exp-link-arrow{ transform:translateX(3px); }
+.bs-exp-link:active{ transform:scale(.985); }
 @media (max-width:520px){
   .bs-passage-item{ grid-template-columns:1fr; gap:4px; }
 }
@@ -611,15 +630,23 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
   display:flex; gap:12px; margin-top:34px;
 }
 .bs-pagenav a{
-  flex:1; display:flex; flex-direction:column; gap:2px;
+  flex:1; display:flex; flex-direction:column; gap:2px; min-height:44px; justify-content:center;
   padding:14px 16px; border-radius:12px; border:1px solid var(--bs-border);
-  text-decoration:none; color:var(--bs-text); transition:.18s;
+  text-decoration:none; color:var(--bs-text); transition:.18s; min-width:0;
 }
-.bs-pagenav a:hover{ border-color:var(--bs-accent); }
+.bs-pagenav a:hover, .bs-pagenav a:focus-visible{ border-color:var(--bs-accent); outline:none; }
 .bs-pagenav a.next{ text-align:right; align-items:flex-end; }
 .bs-pagenav .pn-label{ font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint); }
-.bs-pagenav .pn-title{ font-family:var(--bs-serif); font-weight:600; font-size:.98rem; }
+.bs-pagenav .pn-title{
+  font-family:var(--bs-serif); font-weight:600; font-size:.98rem;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%;
+}
 .bs-pagenav .disabled{ opacity:.35; pointer-events:none; }
+@media (max-width:480px){
+  .bs-pagenav{ gap:8px; }
+  .bs-pagenav a{ padding:12px 12px; }
+  .bs-pagenav .pn-title{ font-size:.88rem; }
+}
 
 .bs-kbd-hint{
   display:flex; justify-content:center; gap:16px; margin-top:20px;
@@ -780,8 +807,8 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-exposition-inner{ max-width:720px; margin:0 auto; padding:0 clamp(20px,5vw,28px) 100px; }
 .bs-exp-back{
   margin:20px 0 10px; font-family:var(--bs-mono); font-size:.82rem; color:var(--bs-text-dim);
-  background:none; border:1px solid var(--bs-border); border-radius:20px; padding:7px 14px; cursor:pointer;
-  transition:.15s;
+  background:none; border:1px solid var(--bs-border); border-radius:20px; padding:9px 16px; cursor:pointer;
+  min-height:40px; transition:.15s;
 }
 .bs-exp-back:hover{ color:var(--bs-text); border-color:var(--bs-text-faint); }
 .bs-exp-crumb{
@@ -810,15 +837,23 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 
 .bs-exp-pagenav{ display:flex; gap:12px; margin-top:46px; }
 .bs-exp-pagenav a, .bs-exp-pagenav span{
-  flex:1; display:flex; flex-direction:column; gap:2px;
+  flex:1; display:flex; flex-direction:column; gap:2px; min-height:44px; justify-content:center; min-width:0;
   padding:14px 16px; border-radius:12px; border:1px solid var(--bs-border);
   text-decoration:none; color:var(--bs-text); transition:.18s;
 }
-.bs-exp-pagenav a:hover{ border-color:var(--bs-gold); }
+.bs-exp-pagenav a:hover, .bs-exp-pagenav a:focus-visible{ border-color:var(--bs-gold); outline:none; }
 .bs-exp-pagenav .next{ text-align:right; align-items:flex-end; }
 .bs-exp-pagenav .pn-label{ font-family:var(--bs-mono); font-size:.7rem; color:var(--bs-text-faint); }
-.bs-exp-pagenav .pn-title{ font-family:var(--bs-serif); font-weight:600; font-size:.98rem; }
+.bs-exp-pagenav .pn-title{
+  font-family:var(--bs-serif); font-weight:600; font-size:.98rem;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%;
+}
 .bs-exp-pagenav .soon{ opacity:.45; }
+@media (max-width:480px){
+  .bs-exp-pagenav{ gap:8px; }
+  .bs-exp-pagenav a, .bs-exp-pagenav span{ padding:12px 12px; }
+  .bs-exp-pagenav .pn-title{ font-size:.88rem; }
+}
 
 .bs-exp-progress-note{
   margin-top:20px; padding:14px 18px; border-radius:10px; background:var(--bs-gold-dim);
@@ -856,16 +891,40 @@ body.bs-view-resources-active .bs-sidebar-handle{ display:none; }
 .bs-modal-title{
   font-family:var(--bs-serif); font-weight:600; font-size:1.25rem; color:var(--bs-text); margin:0 0 10px;
 }
-.bs-modal-body{ font-size:.92rem; line-height:1.6; color:var(--bs-text-dim); margin:0 0 22px; }
+.bs-modal-body{ font-size:.92rem; line-height:1.6; color:var(--bs-text-dim); margin:0 0 18px; }
 .bs-modal-body b{ color:var(--bs-text); font-weight:600; }
+
+.bs-modal-exp-prompt{
+  display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px;
+  text-align:left; background:var(--bs-gold-dim);
+  border:1px solid color-mix(in srgb, var(--bs-gold) 40%, transparent);
+  border-radius:var(--bs-radius-sm); padding:12px 14px; margin:0 0 20px;
+}
+.bs-modal-exp-prompt-icon{ flex:none; font-size:.95rem; line-height:1; }
+.bs-modal-exp-prompt-text{ flex:1 1 160px; font-size:.82rem; line-height:1.45; color:var(--bs-text-dim); }
+.bs-modal-exp-prompt-btn{
+  flex:none; font-family:var(--bs-mono); font-size:.78rem; font-weight:700; color:var(--bs-gold);
+  background:none; border:none; cursor:pointer; padding:6px 2px; white-space:nowrap;
+  text-decoration:underline; text-underline-offset:3px;
+}
+.bs-modal-exp-prompt-btn:hover{ opacity:.8; }
+
 .bs-modal-actions{ display:flex; gap:10px; }
 .bs-modal-btn{
-  flex:1; padding:11px 14px; border-radius:10px; font-family:var(--bs-sans); font-size:.9rem; font-weight:600;
-  cursor:pointer; transition:.15s;
-  display:flex; align-items:center; justify-content:center; text-decoration:none;
+  flex:1; padding:12px 14px; border-radius:10px; font-family:var(--bs-sans); font-size:.9rem; font-weight:600;
+  cursor:pointer; transition:.15s; min-height:44px; line-height:1.25;
+  display:flex; align-items:center; justify-content:center; text-decoration:none; text-align:center;
 }
 .bs-modal-cancel{ background:none; border:1px solid var(--bs-border-strong); color:var(--bs-text-dim); }
 .bs-modal-cancel:hover{ color:var(--bs-text); border-color:var(--bs-text-faint); }
 .bs-modal-confirm{ background:var(--bs-voice); border:1px solid var(--bs-voice); color:var(--bs-bg); }
 .bs-modal-confirm:hover{ filter:brightness(1.08); }
 .bs-modal-confirm.disabled{ opacity:.5; pointer-events:none; }
+
+/* on narrow phones, stack the two actions full-width instead of squeezing
+   "Open in a new tab ↗" into half a card, which used to wrap awkwardly */
+@media (max-width:480px){
+  .bs-modal{ padding:24px 20px; }
+  .bs-modal-actions{ flex-direction:column; }
+  .bs-modal-btn{ width:100%; }
+}
