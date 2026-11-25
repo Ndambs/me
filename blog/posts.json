@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "the-many-shaped-hour",
+      "title": "The Many-Shaped Hour",
+      "excerpt": "It never comes the same way twice.",
+      "date": "2026-11-25T08:38:50.106Z",
+      "tags": [
+        "Stories"
+      ],
+      "thumbnail": "images/the-many-shaped-hour-cover-mwvvget2.jpg",
+      "readingMinutes": 4
+    },
+    {
       "slug": "welcome",
       "title": "Welcome to the Build Log",
       "excerpt": "Notes on DevOps, cloud and cybersecurity: what I build, break and fix, and why I decided to write it all down.",
