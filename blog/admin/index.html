@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" data-blog-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write | Build Log</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css">
+<link rel="stylesheet" href="../assets/blog.css">
+<link rel="stylesheet" href="admin.css">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+</head>
+<body class="admin">
+
+<header class="admin-bar">
+  <div class="admin-bar-inner">
+    <a class="back" href="../" title="Back to the blog">&larr; <span>Blog</span></a>
+    <div class="save-status" id="saveStatus" role="status" aria-live="polite"><span class="pulse"></span><span id="saveText">Ready</span></div>
+    <div class="bar-actions">
+      <button class="btn ghost" id="btnPosts" type="button">Posts</button>
+      <button class="btn ghost" id="btnPreview" type="button">Preview</button>
+      <button class="icon-btn" id="btnSettings" type="button" aria-label="Publishing settings" title="Publishing settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
+      <button class="btn primary" id="btnPublish" type="button">Finish &amp; publish</button>
+    </div>
+  </div>
+
+  <!-- Word-style toolbar -->
+  <div id="toolbar" class="toolbar" role="toolbar" aria-label="Formatting">
+    <span class="ql-formats">
+      <button class="ql-undo" type="button" title="Undo (Ctrl+Z)" aria-label="Undo">&#8630;</button>
+      <button class="ql-redo" type="button" title="Redo (Ctrl+Y)" aria-label="Redo">&#8631;</button>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-header" title="Text style">
+        <option value="2">Heading</option>
+        <option value="3">Subheading</option>
+        <option selected>Normal</option>
+      </select>
+      <select class="ql-font" title="Font">
+        <option selected></option>
+        <option value="serif"></option>
+        <option value="monospace"></option>
+      </select>
+      <select class="ql-size" title="Font size">
+        <option value="small"></option>
+        <option selected></option>
+        <option value="large"></option>
+        <option value="huge"></option>
+      </select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-bold" type="button" title="Bold (Ctrl+B)"></button>
+      <button class="ql-italic" type="button" title="Italic (Ctrl+I)"></button>
+      <button class="ql-underline" type="button" title="Underline (Ctrl+U)"></button>
+      <button class="ql-strike" type="button" title="Strikethrough"></button>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-color" title="Text colour"></select>
+      <select class="ql-background" title="Highlight colour"></select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-script" value="sub" type="button" title="Subscript"></button>
+      <button class="ql-script" value="super" type="button" title="Superscript"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-list" value="bullet" type="button" title="Bulleted list"></button>
+      <button class="ql-list" value="ordered" type="button" title="Numbered list"></button>
+      <button class="ql-indent" value="-1" type="button" title="Decrease indent"></button>
+      <button class="ql-indent" value="+1" type="button" title="Increase indent"></button>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-align" title="Alignment"></select>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-blockquote" type="button" title="Quote"></button>
+      <button class="ql-code-block" type="button" title="Code block"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-link" type="button" title="Insert link (Ctrl+K)"></button>
+      <button class="ql-image" type="button" title="Insert image"></button>
+      <button class="ql-video" type="button" title="Embed YouTube or Vimeo video"></button>
+    </span>
+    <span class="ql-formats">
+      <button class="ql-clean" type="button" title="Clear formatting"></button>
+    </span>
+  </div>
+</header>
+
+<main class="editor-shell">
+  <textarea id="title" class="title-input" rows="1" placeholder="Title" maxlength="140" aria-label="Post title"></textarea>
+  <div id="editor"></div>
+</main>
+
+<!-- Floating image controls -->
+<div class="img-bar" id="imgBar" hidden>
+  <button type="button" data-w="25%">25%</button>
+  <button type="button" data-w="50%">50%</button>
+  <button type="button" data-w="75%">75%</button>
+  <button type="button" data-w="100%">Full</button>
+  <span class="sep"></span>
+  <button type="button" data-a="left" title="Align left">&#8676;</button>
+  <button type="button" data-a="center" title="Centre">&#8596;</button>
+  <button type="button" data-a="right" title="Align right">&#8677;</button>
+  <span class="sep"></span>
+  <button type="button" data-act="alt">Alt text</button>
+  <button type="button" data-act="remove" class="danger">Remove</button>
+</div>
+
+<input type="file" id="fileImg" accept="image/*" multiple hidden>
+<input type="file" id="fileThumb" accept="image/*" hidden>
+
+<!-- Posts drawer -->
+<aside class="drawer" id="drawer" aria-label="Your posts" hidden>
+  <div class="drawer-head">
+    <h2>Your posts</h2>
+    <button class="icon-btn" id="drawerClose" type="button" aria-label="Close">&times;</button>
+  </div>
+  <button class="btn primary block" id="btnNew" type="button">+ New post</button>
+  <h3>Drafts on this device</h3>
+  <ul class="plist" id="draftList"></ul>
+  <h3>Published</h3>
+  <ul class="plist" id="pubList"></ul>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- Publish dialog -->
+<dialog id="publishDialog" class="dlg dlg-wide">
+  <form method="dialog" class="dlg-close"><button class="icon-btn" aria-label="Close">&times;</button></form>
+
+  <div id="stageForm">
+    <h2>Ready to publish?</h2>
+    <p class="sub">Add the finishing touches. This is how your post will look when someone shares the link.</p>
+
+    <div class="pub-grid">
+      <div class="pub-fields">
+        <label class="field">
+          <span>Title</span>
+          <input id="pTitle" type="text" maxlength="140">
+        </label>
+        <label class="field">
+          <span>Summary <em id="pExcerptCount"></em></span>
+          <textarea id="pExcerpt" rows="3" maxlength="200" placeholder="One or two sentences that make people want to read it."></textarea>
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Web address</span>
+            <div class="slug-box"><i>/blog/posts/</i><input id="pSlug" type="text" maxlength="70"><i>/</i></div>
+          </label>
+        </div>
+        <label class="field">
+          <span>Topics <small>(comma separated)</small></span>
+          <input id="pTags" type="text" placeholder="devops, azure, security">
+        </label>
+        <div class="field">
+          <span>Thumbnail <small>1200 &times; 630 works best</small></span>
+          <div class="thumb-actions">
+            <button class="btn" type="button" id="btnThumb">Choose image</button>
+            <button class="btn ghost" type="button" id="btnThumbFirst">Use first image in post</button>
+            <button class="btn ghost" type="button" id="btnThumbClear">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-preview">
+        <p class="pv-label">Link preview</p>
+        <div class="share-card" id="dropThumb" tabindex="0" aria-label="Thumbnail preview. Drop an image here.">
+          <div class="sc-img"><img id="pvImg" alt=""><span class="sc-hint">Drop an image here</span></div>
+          <div class="sc-body">
+            <small id="pvHost"></small>
+            <strong id="pvTitle"></strong>
+            <span id="pvDesc"></span>
+          </div>
+        </div>
+        <p class="pv-note" id="pvNote"></p>
+      </div>
+    </div>
+
+    <div class="dlg-foot">
+      <span class="foot-note" id="pubTarget"></span>
+      <button class="btn ghost" type="button" id="pCancel">Keep editing</button>
+      <button class="btn primary" type="button" id="pGo">Publish post</button>
+    </div>
+  </div>
+
+  <div id="stageProgress" hidden>
+    <h2 id="progTitle">Publishing&hellip;</h2>
+    <ol class="steps" id="steps"></ol>
+    <div class="done" id="doneBox" hidden>
+      <p id="doneMsg"></p>
+      <div class="dlg-foot">
+        <button class="btn ghost" type="button" id="doneCopy">Copy link</button>
+        <a class="btn primary" id="doneOpen" target="_blank" rel="noopener">Open post</a>
+      </div>
+    </div>
+    <div class="dlg-foot" id="errBox" hidden>
+      <button class="btn" type="button" id="errBack">Back to details</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Settings dialog -->
+<dialog id="settingsDialog" class="dlg">
+  <form method="dialog" class="dlg-close"><button class="icon-btn" aria-label="Close">&times;</button></form>
+  <h2>Connect publishing</h2>
+  <p class="sub">Publishing saves your post as files in your GitHub repository, which GitHub Pages then serves. One-time setup per browser.</p>
+  <ol class="howto">
+    <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub &rarr; New fine-grained token</a>.</li>
+    <li>Set <b>Repository access</b> to <b>Only select repositories</b> and choose <code id="repoName"></code>.</li>
+    <li>Under <b>Permissions &rarr; Repository</b>, set <b>Contents</b> to <b>Read and write</b>.</li>
+    <li>Generate the token and paste it below.</li>
+  </ol>
+  <label class="field">
+    <span>Access token</span>
+    <input id="tokenInput" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_&hellip;">
+  </label>
+  <p class="msg" id="tokenMsg" role="status"></p>
+  <p class="fine">The token stays in this browser only and is sent only to api.github.com. Use a token limited to this one repository.</p>
+  <div class="dlg-foot">
+    <button class="btn ghost danger" type="button" id="tokenRemove">Remove token</button>
+    <button class="btn primary" type="button" id="tokenSave">Save &amp; test</button>
+  </div>
+</dialog>
+
+<!-- Preview dialog -->
+<dialog id="previewDialog" class="dlg dlg-full">
+  <form method="dialog" class="dlg-close"><button class="icon-btn" aria-label="Close preview">&times;</button></form>
+  <iframe id="previewFrame" title="Post preview"></iframe>
+</dialog>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script src="../assets/config.js"></script>
+<script src="../assets/post-template.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

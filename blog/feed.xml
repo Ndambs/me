@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+<title>Build Log | Benson Ndambiri</title>
+<link>https://ndambs.github.io/me/blog/</link>
+<description>Notes on DevOps, cloud and cybersecurity: what I build, break and fix along the way.</description>
+<language>en</language>
+<atom:link href="https://ndambs.github.io/me/blog/feed.xml" rel="self" type="application/rss+xml"/>
+<lastBuildDate>Wed, 25 Nov 2026 06:30:00 GMT</lastBuildDate>
+<item><title>Welcome to the Build Log</title><link>https://ndambs.github.io/me/blog/posts/welcome/</link><guid isPermaLink="true">https://ndambs.github.io/me/blog/posts/welcome/</guid><pubDate>Wed, 25 Nov 2026 06:30:00 GMT</pubDate><description>Notes on DevOps, cloud and cybersecurity: what I build, break and fix, and why I decided to write it all down.</description><category>meta</category><category>devops</category><media:thumbnail url="https://ndambs.github.io/me/blog/images/welcome-thumb.jpg"/></item>
+</channel>
+</rss>
